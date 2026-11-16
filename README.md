@@ -69,7 +69,8 @@ overrides for the scripts (names only; no value is stored in the repo):
 
 **Where to read next:** [DESIGN.md](DESIGN.md) (tokens, themes, blocks),
 [GLOSSARY.md](GLOSSARY.md), [CONTRIBUTING.md](CONTRIBUTING.md) (commit types),
-[docs/adr/](docs/adr/), [docs/deploy-branch.md](docs/deploy-branch.md),
+[docs/adr/](docs/adr/), [docs/diagrams/](docs/diagrams/) (architecture, consume flow, build and release),
+[docs/deploy-branch.md](docs/deploy-branch.md),
 [docs/graph-3d/README.md](docs/graph-3d/README.md), and `AGENTS.md` for agents.
 
 ## Consumers

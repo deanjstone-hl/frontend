@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>frontend build and release</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --paper: var(--background, #f5f7f8);
+      --ink: var(--foreground, #241523);
+      --soft: var(--muted-foreground, #6f6873);
+      --teal: var(--primary, #0a6f75);
+      --rule: var(--border, #cdd4dc);
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: var(--background, #14181c);
+        --ink: var(--foreground, #e8eaed);
+        --soft: var(--muted-foreground, #9aa3ad);
+        --teal: var(--primary, #4fc3c8);
+        --rule: var(--border, #2c343c);
+      }
+    }
+    :root[data-theme="dark"] {
+      --paper: var(--background, #14181c);
+      --ink: var(--foreground, #e8eaed);
+      --soft: var(--muted-foreground, #9aa3ad);
+      --teal: var(--primary, #4fc3c8);
+      --rule: var(--border, #2c343c);
+    }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); padding: 16px; }
+    .frame { max-width: 360px; }
+    .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+    h1 { font-size: 20px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+    .lede { font-size: 13px; line-height: 1.45; color: var(--soft); margin-bottom: 12px; }
+    .scroll { overflow-x: auto; }
+    svg { width: 100%; min-width: 320px; display: block; }
+    .src { font-size: 11px; line-height: 1.5; color: var(--soft); margin-top: 12px; }
+    .src a { color: var(--teal); }
+    .src code { font-family: var(--mono); font-size: 10px; }
+    .divider { stroke: var(--rule); stroke-width: 1; }
+    .lane { fill: var(--soft); font-family: var(--mono); font-size: 9px; letter-spacing: .12em; }
+    .flow { fill: none; stroke: var(--soft); stroke-width: 1.2; }
+    .dashed { stroke-dasharray: 5,4; }
+    .gate { fill: none; stroke: var(--teal); stroke-width: 1.6; }
+    .mask { fill: var(--paper); }
+    .tag { fill: var(--soft); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; }
+    .tag.teal { fill: var(--teal); }
+    .node { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .node.focal { fill: color-mix(in srgb, var(--teal) 14%, var(--paper)); stroke: var(--teal); stroke-width: 1.6; }
+    .node.ext { stroke-dasharray: 4,3; }
+    .step:target .node { stroke: var(--teal); stroke-width: 2.6; fill: color-mix(in srgb, var(--teal) 22%, var(--paper)); }
+    .name { fill: var(--ink); font-family: var(--sans); font-size: 12px; font-weight: 600; text-anchor: middle; }
+    .sub { fill: var(--soft); font-family: var(--mono); font-size: 9px; text-anchor: middle; }
+    .note { fill: var(--soft); font-family: var(--sans); font-size: 11px; font-style: italic; }
+    .key { fill: var(--soft); font-family: var(--sans); font-size: 10px; }
+    .head-soft { fill: var(--soft); }
+    .head-teal { fill: var(--teal); }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Build and deploy</p>
+    <h1>frontend build and release</h1>
+    <p class="lede">Nothing deploys to a host. A version is a tag on the promoted commit, cut only when the owner promotes.</p>
+    <div class="scroll">
+    <svg viewBox="0 0 360 622" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="frontend-deploy-title frontend-deploy-desc">
+      <title id="frontend-deploy-title">frontend build and release</title>
+      <desc id="frontend-deploy-desc">A push to main runs Test and Design and publishes nothing. The owner approves on the ops hub, which fast-forwards deploy. The Release workflow checks whether anything is releasable, runs the gates on the promoted commit, then semantic-release tags it and publishes a GitHub release.</desc>
+      <defs>
+        <marker id="frontend-deploy-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon class="head-soft" points="0 0, 8 3, 0 6"/></marker>
+        <marker id="frontend-deploy-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon class="head-teal" points="0 0, 8 3, 0 6"/></marker>
+      </defs>
+      <path class="flow" d="M 152,80 L 152,104" marker-end="url(#frontend-deploy-arrow)"/>
+      <path class="flow" d="M 152,152 L 152,176" marker-end="url(#frontend-deploy-arrow)"/>
+      <path class="flow" d="M 152,224 L 152,248" marker-end="url(#frontend-deploy-arrow)"/>
+      <path class="flow" d="M 152,296 L 152,320" marker-end="url(#frontend-deploy-arrow)"/>
+      <path class="flow" d="M 152,368 L 152,392" marker-end="url(#frontend-deploy-arrow)"/>
+      <path class="flow" d="M 152,440 L 152,464" marker-end="url(#frontend-deploy-arrow)"/>
+      <path class="flow" d="M 152,512 L 152,536" marker-end="url(#frontend-deploy-arrow)"/>
+      <rect class="mask" x="155" y="158" width="49" height="12" rx="2"/>
+      <text class="tag" x="158" y="167">FLAGGED</text>
+      <g id="step-frontend-deploy-push" class="step">
+      <rect class="node" x="16" y="32" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="53">Push to main</text>
+      <text class="sub" x="152" y="68">pnpm check first (test, detector, drift, lint)</text>
+      </g>
+      <g id="step-frontend-deploy-checks" class="step">
+      <rect class="node" x="16" y="104" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="125">Test and Design</text>
+      <text class="sub" x="152" y="140">tests, geometry gate if inputs changed, lint</text>
+      </g>
+      <g id="step-frontend-deploy-approve" class="step">
+      <rect class="node ext" x="16" y="176" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="197">Owner Approve</text>
+      <text class="sub" x="152" y="212">ops-hub promotion card</text>
+      </g>
+      <g id="step-frontend-deploy-ff" class="step">
+      <rect class="node focal" x="16" y="248" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="269">Fast-forward deploy</text>
+      <text class="sub" x="152" y="284">promote.sh; SHA already on main</text>
+      </g>
+      <g id="step-frontend-deploy-pre" class="step">
+      <rect class="node" x="16" y="320" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="341">Anything to ship?</text>
+      <text class="sub" x="152" y="356">release-needed.sh: feat, fix, perf, breaking</text>
+      </g>
+      <g id="step-frontend-deploy-test" class="step">
+      <rect class="node" x="16" y="392" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="413">Test before release</text>
+      <text class="sub" x="152" y="428">tests, detector, drift, geometry gate, lint</text>
+      </g>
+      <g id="step-frontend-deploy-release" class="step">
+      <rect class="node" x="16" y="464" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="485">Release job</text>
+      <text class="sub" x="152" y="500">tested-head.sh: only the tested SHA</text>
+      </g>
+      <g id="step-frontend-deploy-tag" class="step">
+      <rect class="node focal" x="16" y="536" width="272" height="48" rx="6"/>
+      <text class="name" x="152" y="557">Tag + GitHub release</text>
+      <text class="sub" x="152" y="572">semantic-release; vX.Y.Z on the SHA</text>
+      </g>
+      <rect class="node" x="8" y="605" width="14" height="10" rx="2"/>
+      <text class="key" x="28" y="614">Step</text>
+      <rect class="node focal" x="64" y="605" width="14" height="10" rx="2"/>
+      <text class="key" x="84" y="614">Gate</text>
+      <rect class="node ext" x="120" y="605" width="14" height="10" rx="2"/>
+      <text class="key" x="140" y="614">Outside</text>
+      <line class="flow" x1="192" y1="610" x2="216" y2="610" marker-end="url(#frontend-deploy-arrow)"/>
+      <text class="key" x="222" y="614">Normal</text>
+    </svg>
+    </div>
+    <p class="src">Sources: <code>docs/deploy-branch.md</code>, <code>.github/workflows/test.yml</code>, <code>design.yml</code>, <code>release.yml</code>, <code>scripts/check.sh</code>. With nothing releasable the run ends green with no test and no version. The release commits nothing, so deploy stays a fast-forward of main. Roll back with a revert on main plus a promotion; never force-push deploy.</p>
+  </div>
+</body>
+</html>

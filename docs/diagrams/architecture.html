@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>frontend architecture</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --paper: var(--background, #f5f7f8);
+      --ink: var(--foreground, #241523);
+      --soft: var(--muted-foreground, #6f6873);
+      --teal: var(--primary, #0a6f75);
+      --rule: var(--border, #cdd4dc);
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: var(--background, #14181c);
+        --ink: var(--foreground, #e8eaed);
+        --soft: var(--muted-foreground, #9aa3ad);
+        --teal: var(--primary, #4fc3c8);
+        --rule: var(--border, #2c343c);
+      }
+    }
+    :root[data-theme="dark"] {
+      --paper: var(--background, #14181c);
+      --ink: var(--foreground, #e8eaed);
+      --soft: var(--muted-foreground, #9aa3ad);
+      --teal: var(--primary, #4fc3c8);
+      --rule: var(--border, #2c343c);
+    }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); padding: 16px; }
+    .frame { max-width: 360px; }
+    .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+    h1 { font-size: 20px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+    .lede { font-size: 13px; line-height: 1.45; color: var(--soft); margin-bottom: 12px; }
+    .scroll { overflow-x: auto; }
+    svg { width: 100%; min-width: 320px; display: block; }
+    .src { font-size: 11px; line-height: 1.5; color: var(--soft); margin-top: 12px; }
+    .src a { color: var(--teal); }
+    .src code { font-family: var(--mono); font-size: 10px; }
+    .divider { stroke: var(--rule); stroke-width: 1; }
+    .lane { fill: var(--soft); font-family: var(--mono); font-size: 9px; letter-spacing: .12em; }
+    .flow { fill: none; stroke: var(--soft); stroke-width: 1.2; }
+    .dashed { stroke-dasharray: 5,4; }
+    .gate { fill: none; stroke: var(--teal); stroke-width: 1.6; }
+    .mask { fill: var(--paper); }
+    .tag { fill: var(--soft); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; }
+    .tag.teal { fill: var(--teal); }
+    .node { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .node.focal { fill: color-mix(in srgb, var(--teal) 14%, var(--paper)); stroke: var(--teal); stroke-width: 1.6; }
+    .node.ext { stroke-dasharray: 4,3; }
+    .step:target .node { stroke: var(--teal); stroke-width: 2.6; fill: color-mix(in srgb, var(--teal) 22%, var(--paper)); }
+    .name { fill: var(--ink); font-family: var(--sans); font-size: 12px; font-weight: 600; text-anchor: middle; }
+    .sub { fill: var(--soft); font-family: var(--mono); font-size: 9px; text-anchor: middle; }
+    .note { fill: var(--soft); font-family: var(--sans); font-size: 11px; font-style: italic; }
+    .key { fill: var(--soft); font-family: var(--sans); font-size: 10px; }
+    .head-soft { fill: var(--soft); }
+    .head-teal { fill: var(--teal); }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Architecture</p>
+    <h1>frontend architecture</h1>
+    <p class="lede">A registry of files, not a package: sources and themes build into plain output on main, and each consumer pulls items with the shadcn CLI.</p>
+    <div class="scroll">
+    <svg viewBox="0 0 360 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="frontend-arch-title frontend-arch-desc">
+      <title id="frontend-arch-title">frontend architecture</title>
+      <desc id="frontend-arch-desc">Theme data and registry sources build into tokens.css, registry.json and per-item r/ output, all committed on main. The shadcn CLI in a consumer repo reads that output from GitHub by address and copies the items into the consumer.</desc>
+      <defs>
+        <marker id="frontend-arch-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon class="head-soft" points="0 0, 8 3, 0 6"/></marker>
+        <marker id="frontend-arch-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon class="head-teal" points="0 0, 8 3, 0 6"/></marker>
+      </defs>
+      <line class="divider" x1="8" y1="8" x2="352" y2="8"/>
+      <line class="divider" x1="8" y1="96" x2="352" y2="96"/>
+      <line class="divider" x1="8" y1="184" x2="352" y2="184"/>
+      <line class="divider" x1="8" y1="272" x2="352" y2="272"/>
+      <line class="divider" x1="8" y1="360" x2="352" y2="360"/>
+      <line class="divider" x1="8" y1="448" x2="352" y2="448"/>
+      <text class="lane" x="12" y="22">SOURCE</text>
+      <text class="lane" x="12" y="110">BUILD</text>
+      <text class="lane" x="12" y="198">OUTPUT</text>
+      <text class="lane" x="12" y="286">GITHUB</text>
+      <text class="lane" x="12" y="374">CONSUMERS</text>
+      <path class="flow" d="M 92,80 L 92,120" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 268,80 L 268,120" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 168,144 L 192,144" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 92,168 L 92,208" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 268,168 L 268,208" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 92,256 L 92,296" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 268,256 L 268,296" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 92,344 L 92,384" marker-end="url(#frontend-arch-arrow)"/>
+      <path class="flow" d="M 168,408 L 192,408" marker-end="url(#frontend-arch-arrow)"/>
+      <rect class="mask" x="95" y="278" width="31" height="12" rx="2"/>
+      <text class="tag" x="98" y="287">PUSH</text>
+      <rect class="mask" x="95" y="366" width="99" height="12" rx="2"/>
+      <text class="tag" x="98" y="375">READ BY ADDRESS</text>
+      <g id="step-frontend-arch-themes" class="step">
+      <rect class="node" x="16" y="32" width="152" height="48" rx="6"/>
+      <text class="name" x="92" y="53">theme/themes.json</text>
+      <text class="sub" x="92" y="68">the six T3 themes</text>
+      </g>
+      <g id="step-frontend-arch-registry" class="step">
+      <rect class="node focal" x="192" y="32" width="152" height="48" rx="6"/>
+      <text class="name" x="268" y="53">registry/</text>
+      <text class="sub" x="268" y="68">ui, blocks, hooks, lib</text>
+      </g>
+      <g id="step-frontend-arch-build-theme" class="step">
+      <rect class="node" x="16" y="120" width="152" height="48" rx="6"/>
+      <text class="name" x="92" y="141">pnpm build:theme</text>
+      <text class="sub" x="92" y="156">tokens.css, registry.json</text>
+      </g>
+      <g id="step-frontend-arch-shadcn-build" class="step">
+      <rect class="node" x="192" y="120" width="152" height="48" rx="6"/>
+      <text class="name" x="268" y="141">shadcn build</text>
+      <text class="sub" x="268" y="156">writes r/ per item</text>
+      </g>
+      <g id="step-frontend-arch-tokens" class="step">
+      <rect class="node" x="16" y="208" width="152" height="48" rx="6"/>
+      <text class="name" x="92" y="229">theme/tokens.css</text>
+      <text class="sub" x="92" y="244">plain CSS copy</text>
+      </g>
+      <g id="step-frontend-arch-r" class="step">
+      <rect class="node focal" x="192" y="208" width="152" height="48" rx="6"/>
+      <text class="name" x="268" y="229">r/ + registry.json</text>
+      <text class="sub" x="268" y="244">committed, drift-checked</text>
+      </g>
+      <g id="step-frontend-arch-github" class="step">
+      <rect class="node ext" x="16" y="296" width="328" height="48" rx="6"/>
+      <text class="name" x="180" y="317">GitHub: main + tags</text>
+      <text class="sub" x="180" y="332">the registry host</text>
+      </g>
+      <g id="step-frontend-arch-cli" class="step">
+      <rect class="node ext" x="16" y="384" width="152" height="48" rx="6"/>
+      <text class="name" x="92" y="405">shadcn CLI</text>
+      <text class="sub" x="92" y="420">shadcn add, per item</text>
+      </g>
+      <g id="step-frontend-arch-apps" class="step">
+      <rect class="node ext" x="192" y="384" width="152" height="48" rx="6"/>
+      <text class="name" x="268" y="405">Consumer repos</text>
+      <text class="sub" x="268" y="420">myargus, atto1, argus...</text>
+      </g>
+      <rect class="node" x="8" y="471" width="14" height="10" rx="2"/>
+      <text class="key" x="28" y="480">Step</text>
+      <rect class="node focal" x="64" y="471" width="14" height="10" rx="2"/>
+      <text class="key" x="84" y="480">This repo</text>
+      <rect class="node ext" x="147" y="471" width="14" height="10" rx="2"/>
+      <text class="key" x="167" y="480">Outside</text>
+      <line class="flow" x1="219" y1="476" x2="243" y2="476" marker-end="url(#frontend-arch-arrow)"/>
+      <text class="key" x="249" y="480">Calls</text>
+    </svg>
+    </div>
+    <p class="src">Sources: <code>README.md</code> (Structure, Consumers, Consuming this registry), <code>scripts/check.sh</code>, <code>scripts/theme/build.mjs</code>. No server and no publish step: the shadcn CLI reads <code>registry.json</code> straight from GitHub and copies files into the consumer. The consumer list is in the README and is checked by the primitives-usage audit.</p>
+  </div>
+</body>
+</html>
