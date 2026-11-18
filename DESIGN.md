@@ -1,5 +1,5 @@
 ---
-name: design-system
+name: frontend
 description: A shadcn/ui token layer with six selectable T3-derived themes (Ocean by default), shared by the consuming apps.
 colors:
   background: "#f5f7f8"
@@ -158,7 +158,7 @@ components:
     padding: "24px"
 ---
 
-# Design System: design-system
+# Design System: frontend
 
 ## Overview
 

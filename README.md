@@ -1,6 +1,7 @@
-# design-system
+# frontend
 
-Shared shadcn/ui component registry and design tokens, consumed by `myargus`,
+Formerly `design-system` (the repo was renamed to `deanjstone/frontend`; GitHub redirects the old
+URLs, and issue and release links keep working). Shared shadcn/ui component registry and design tokens, consumed by `myargus`,
 `atto1`, `argus`, `homelab` and `quick-capture` via the shadcn CLI (`slate-reader`
 vendors LinkPill; `budget` is migrating — see [Consumers](#consumers)). This
 repo is not a
@@ -28,7 +29,7 @@ For working **in** this repo. To use the registry from an app, skip to
 **Setup**
 
 ```bash
-git clone https://github.com/deanjstone/design-system.git && cd design-system
+git clone https://github.com/deanjstone/frontend.git && cd frontend
 pnpm install --frozen-lockfile
 ```
 
@@ -76,7 +77,7 @@ overrides for the scripts (names only; no value is stored in the repo):
 ## Consumers
 
 This list is how a registry change is checked for downstream breakage, so keep
-it true. Pins are the `@design-system` alias version in each repo's
+it true. Pins are the `@frontend` alias version in each repo's
 `components.json` on `main`, read on 2026-11-12 by
 `node docs/audits/primitives-usage/collect.mjs`, which re-reads all of them
 ([the audit](docs/audits/2026-11-12-primitives-usage.md)). The alias is where the
@@ -95,7 +96,7 @@ drift table).
 | `quick-capture` | `web` | v3.1.0 | consuming (split out of `homelab` `services/quick-capture/web` in [homelab#228](https://github.com/deanjstone/homelab/issues/228)) |
 | `atto1` | repo root | v3.1.0 | consuming |
 | `sparky` | repo root | none | **tokens only**: `src/design-system/tokens.css` is a copy of `theme/tokens.css` (identical to v3.24.0); no registry components, no `components.json` |
-| `slate-reader` | `apps/server` | none (vendored) | **LinkPill only**: `link-pill-core` (identical to v3.24.0) and `link-pill-html` are copied in; its `components.json` has no `@design-system` alias. The web UI is `apps/client` (Preact, no registry). The repo is archived ([slate-reader#17](https://github.com/deanjstone/slate-reader/issues/17)) |
+| `slate-reader` | `apps/server` | none (vendored) | **LinkPill only**: `link-pill-core` (identical to v3.24.0) and `link-pill-html` are copied in; its `components.json` has no `@frontend` alias. The web UI is `apps/client` (Preact, no registry). The repo is archived ([slate-reader#17](https://github.com/deanjstone/slate-reader/issues/17)) |
 | `budget` | `web` | none yet | **pending**: forked `components/ui` (Radix, from v1), no `components.json` ([budget#271](https://github.com/deanjstone/budget/issues/271)) |
 
 Move a pending row to consuming only once a `components.json` with the alias
@@ -142,8 +143,8 @@ GitHub by address:
 
 ```bash
 npx shadcn init            # once per project, if there is no components.json
-npx shadcn add deanjstone/design-system/theme
-npx shadcn add deanjstone/design-system/button
+npx shadcn add deanjstone/frontend/theme
+npx shadcn add deanjstone/frontend/button
 ```
 
 This uses shadcn's native GitHub-registry support: any public repo with a
@@ -208,8 +209,8 @@ a bare `registry.json` URL — that field requires a `{name}`-templated
 per-item endpoint, e.g. `.../{name}.json`, which this repo doesn't publish.
 A bare-URL entry fails the CLI's config validation and breaks every shadcn
 command in the consumer, not just registry pulls. If a stable alias is ever
-needed, it belongs under `registries` as `"@design-system": {"url":
-"https://raw.githubusercontent.com/deanjstone/design-system/main/r/{name}.json"}`
+needed, it belongs under `registries` as `"@frontend": {"url":
+"https://raw.githubusercontent.com/deanjstone/frontend/main/r/{name}.json"}`
 pointing at real per-item output from `shadcn build` — not the root
 `registry.json`.)
 
@@ -258,7 +259,7 @@ carry the history. The release commits and pushes nothing, so `main` gains no bo
 in `deploy`'s history (design-system#203). `CHANGELOG.md` is frozen at 3.24.0, the last entry the old release wrote;
 read the GitHub releases for anything newer.
 
-An unpinned `shadcn add deanjstone/design-system/<item>` pulls whatever
+An unpinned `shadcn add deanjstone/frontend/<item>` pulls whatever
 `main` holds at that moment, so an `add` re-run can pull a breaking change
 without warning. It has happened twice: `v2.0.0` replaced Radix with Base UI
 ([ADR-0001](docs/adr/0001-switch-component-library-to-base-ui.md)) and
@@ -276,11 +277,11 @@ reachable from `deploy`. Pin to it: `git merge-base --is-ancestor <tag> origin/d
 for every release made from this one on.
 
 **The named item comes from the tag; its in-repo dependencies still float.** An item's
-`registryDependencies` entries are written without a ref (`deanjstone/design-system/utils`), and
+`registryDependencies` entries are written without a ref (`deanjstone/frontend/utils`), and
 shadcn does not carry a ref across dependencies ("Refs are not inherited across
 dependencies. If a dependency should be pinned, include its own ref." [GitHub
 Registries](https://ui.shadcn.com/docs/registry/github), read 2026-10-08). So
-`add deanjstone/design-system/sidebar#v3.25.0` fetches `sidebar` from the tag and its
+`add deanjstone/frontend/sidebar#v3.25.0` fetches `sidebar` from the tag and its
 dependencies from `main` (the table below measured this on a tag with unversioned
 dependencies). Releases from `v3.1.0` to `v3.24.0` stamped `#<tag>` into each entry and
 did pin them (design-system#65); that stamp-and-restore commit pair is retired, and a tag
@@ -309,8 +310,8 @@ The `Registry output current` check runs on `main` and pull requests only.
 a branch, tag or commit SHA after `#`:
 
 ```bash
-npx shadcn add deanjstone/design-system/button#v3.0.0
-npx shadcn add deanjstone/design-system/button#645db462137cf60b416d8ee4fc753146c5e0b51d
+npx shadcn add deanjstone/frontend/button#v3.0.0
+npx shadcn add deanjstone/frontend/button#645db462137cf60b416d8ee4fc753146c5e0b51d
 ```
 
 A tag works for every release. A full 40-character SHA is the most
@@ -325,8 +326,8 @@ shipped. Register the alias once in the consumer's `components.json`:
 ```json
 {
   "registries": {
-    "@design-system": {
-      "url": "https://raw.githubusercontent.com/deanjstone/design-system/v3.0.0/r/{name}.json"
+    "@frontend": {
+      "url": "https://raw.githubusercontent.com/deanjstone/frontend/v3.0.0/r/{name}.json"
     }
   }
 }
@@ -335,12 +336,20 @@ shipped. Register the alias once in the consumer's `components.json`:
 then add by alias:
 
 ```bash
-npx shadcn add @design-system/theme @design-system/button
+npx shadcn add @frontend/theme @frontend/button
 ```
 
 This is the `{name}`-templated endpoint the warning above refers to, the
 thing a bare `registry.json` URL cannot be. `r/` exists from `v2.2.0`
 onward.
+
+**Renamed from `design-system`.** The alias is a name you choose in your own
+`components.json`, so an existing `@design-system` entry keeps working: its
+`raw.githubusercontent.com/deanjstone/design-system/<tag>/r/...` URL redirects to
+this repo, and the tags are unchanged. Rename the key to `@frontend` and the URL to
+`deanjstone/frontend` the next time you edit it, and write `deanjstone/frontend/<item>`
+for direct adds. Items already vendored list `deanjstone/design-system/<item>` in their
+`registryDependencies`; the CLI resolves those through the same redirect.
 
 **Which to use.** The two forms pin the same thing: the named item, at the
 tag. Their dependency behaviour is identical. Use `#ref` by default. It is
@@ -366,9 +375,9 @@ unversioned (the form every tag has again from design-system#203), in a fresh Vi
 
 | Command | Named item from | Dependencies from |
 |---|---|---|
-| `add deanjstone/design-system/sidebar#v2.5.1` | `645db46` (the `v2.5.1` tag) | `main` HEAD, all 8 |
-| `add deanjstone/design-system/button#645db46…` (full SHA) | that commit, no `ls-remote` for it | `utils` from `main` HEAD |
-| `add @design-system/sidebar` (alias at `v2.5.1`) | `v2.5.1/r/sidebar.json` | `main` HEAD, all 8 |
+| `add deanjstone/frontend/sidebar#v2.5.1` | `645db46` (the `v2.5.1` tag) | `main` HEAD, all 8 |
+| `add deanjstone/frontend/button#645db46…` (full SHA) | that commit, no `ls-remote` for it | `utils` from `main` HEAD |
+| `add @frontend/sidebar` (alias at `v2.5.1`) | `v2.5.1/r/sidebar.json` | `main` HEAD, all 8 |
 | `add …/separator#v2.3.0` | `v2.3.0` | — |
 | `add …/sidebar#v2.5.1 …/separator#v2.3.0` (either order) | — | `separator` from `main` |
 
@@ -396,8 +405,8 @@ kind is detected):
 | `link-pill-css` | The one stylesheet both shells use. Installs to `link-pill.css` at the project root (move it where you like) — import it once. |
 
 ```bash
-npx shadcn add deanjstone/design-system/link-pill        # React
-npx shadcn add deanjstone/design-system/link-pill-html   # HTML strings
+npx shadcn add deanjstone/frontend/link-pill        # React
+npx shadcn add deanjstone/frontend/link-pill-html   # HTML strings
 ```
 
 ```tsx
@@ -445,9 +454,9 @@ Conversation set for an agent turn:
 | `questionnaire` | Asks the person to clarify before the agent continues: single and multiple choice, freeform, skippable | `button`, `@shadcn/react@^0.3.1` |
 
 ```bash
-npx shadcn add deanjstone/design-system/trace#v3.0.0
-npx shadcn add deanjstone/design-system/code-block#v3.0.0
-npx shadcn add deanjstone/design-system/questionnaire#v3.0.0
+npx shadcn add deanjstone/frontend/trace#v3.0.0
+npx shadcn add deanjstone/frontend/code-block#v3.0.0
+npx shadcn add deanjstone/frontend/questionnaire#v3.0.0
 ```
 
 Syntax highlighting is optional and lives in `use-highlighted-code`; add
@@ -469,7 +478,7 @@ adding the items.
    `registryDependencies` / `dependencies`.
 
    A `registryDependencies` entry naming another item in this repo must use
-   its full address, `deanjstone/design-system/<name>`. A bare name such as
+   its full address, `deanjstone/frontend/<name>`. A bare name such as
    `button` means shadcn's built-in item, not ours, so the consumer silently
    gets upstream's copy (design-system#57). Write it without a ref: no release
    stamps one in any more (design-system#203).
@@ -503,8 +512,8 @@ as they were.
 To offer them in an app:
 
 ```bash
-npx shadcn add deanjstone/design-system/theme-ds deanjstone/design-system/font-aspekta
-npx shadcn add deanjstone/design-system/use-font-preference
+npx shadcn add deanjstone/frontend/theme-ds deanjstone/frontend/font-aspekta
+npx shadcn add deanjstone/frontend/use-font-preference
 bash scripts/install-ds-fonts.sh        # downloads the original font files into public/fonts/ds
 ```
 
@@ -542,8 +551,8 @@ merge subject); v3.0.0 adds the layout blocks and marks the break. Nothing
 changes in an app until it re-runs `shadcn add` against `#v3.0.0`.
 
 ```bash
-npx shadcn add deanjstone/design-system/theme#v3.0.0 -o
-npx shadcn add deanjstone/design-system/app-shell#v3.0.0
+npx shadcn add deanjstone/frontend/theme#v3.0.0 -o
+npx shadcn add deanjstone/frontend/app-shell#v3.0.0
 ```
 
 | Area | v2 | v3 | What to do |
@@ -556,7 +565,7 @@ npx shadcn add deanjstone/design-system/app-shell#v3.0.0
 | Radius | `0.625rem` | `0.625rem`, unchanged | Nothing |
 
 Rules for the blocks and the full token map are in
-[DESIGN.md](DESIGN.md#layout-blocks). A pin on a consumer's `@design-system`
+[DESIGN.md](DESIGN.md#layout-blocks). A pin on a consumer's `@frontend`
 alias stays where it is until its owner moves it.
 
 ## Tests
@@ -612,7 +621,7 @@ Two parts, and a consumer needs both:
   nothing changes there, and about 1.5 at the 150% step.
 
 **Consumers pick this up when they re-add the block**: `npx shadcn add
-deanjstone/design-system/theme` for the rule, and copy the new `<script>` from
+deanjstone/frontend/theme` for the rule, and copy the new `<script>` from
 `app-html-head.html` into `<head>`. A consumer that re-adds only the theme keeps
 today's text size (an unset scale is 100%); one that adds only the script does
 nothing either. Nothing changes off iOS: macOS Safari also has `-apple-system-body`
@@ -698,7 +707,7 @@ the extra `--corner-clear`.
 copying them by hand and drifting:
 
 ```bash
-npx shadcn add deanjstone/design-system/app-html-head
+npx shadcn add deanjstone/frontend/app-html-head
 ```
 
 It lands `app-html-head.html` at the project root; copy its tags into your
@@ -868,7 +877,7 @@ Every myargus.cc and tailnet URL comes from one registry
 | `link-check` | `scripts/link-check.sh`, `scripts/link-check-config.mjs`, `.github/workflows/link-check.yml` | The literal ban, the config check and the drift check |
 
 ```bash
-npx shadcn add deanjstone/design-system/links#v3.7.0
+npx shadcn add deanjstone/frontend/links#v3.7.0
 ```
 
 ```ts
@@ -904,7 +913,7 @@ workflow's `LINK_CHECK_MODE` to `block` when a repo reads 0. Counts are lines.
 | `literal` | A tracked line names the domain or the tailnet host. Exempt: markdown, test files and fixtures, lockfiles, changelogs, wrangler config, `_redirects`/`_headers`, files carrying the `link-check:vendored` marker in their first 10 lines, and globs in `.link-check-ignore` |
 | `retired` | A literal that names a retired host (a subset of `literal`) |
 | `config` | Vite `base`, router `basename`, manifest `start_url`/`scope`, a wrangler route or `_redirects` target that `links.json` does not hold. Textual, so it catches the common slips only |
-| `drift` | The vendored `links.json` is behind design-system's, or differs at the same revision. An unreachable upstream is reported and passes |
+| `drift` | The vendored `links.json` is behind frontend's, or differs at the same revision. An unreachable upstream is reported and passes |
 
 **Cloudflare drift** (`scripts/links/cf-drift.mjs`, not a registry item) diffs
 live DNS, tunnel ingress and Access apps against `links.json`. It makes GET
@@ -930,7 +939,7 @@ design-drift report. It is the check trialled in
 `registry:file` item:
 
 ```bash
-npx shadcn add deanjstone/design-system/design-check#v3.0.0
+npx shadcn add deanjstone/frontend/design-check#v3.0.0
 ```
 
 | Lands at | Does |
@@ -1100,7 +1109,7 @@ await transition(() => setView("billing"), { direction: "rtl", sweepMs: 700 })
 `card-list` is the grouped two-row card pattern from [design-system#188](https://github.com/deanjstone/design-system/issues/188)
 (map [argus#1084](https://github.com/deanjstone/argus/issues/1084)): a heading per group (a repo, say), and under it
 cards of two rows, the title, then status, branch, check and relative time. The selected card is raised.
-`npx shadcn add deanjstone/design-system/card-list`.
+`npx shadcn add deanjstone/frontend/card-list`.
 
 ```tsx
 <CardList>
@@ -1142,7 +1151,7 @@ one 44px row with the priority, id, status, title, labels, project or wave, due 
 `components/common/issues/issue-line.tsx` in [circle](https://github.com/ln-dev7/circle) (MIT, Copyright (c) 2025 lndev-ui |
 Circle Template; credited in the source header), rebuilt on Base UI and this registry's tokens with none of circle's
 dependencies. It pulls in `context-menu` and `dropdown-menu`.
-`npx shadcn add deanjstone/design-system/issue-row`.
+`npx shadcn add deanjstone/frontend/issue-row`.
 
 ```tsx
 <IssueRowList aria-label="Open issues">
@@ -1199,7 +1208,7 @@ the whole list in one URL search param so a filtered view can be bookmarked and 
 circle's dependencies and no nuqs. Four items: `filter-core` (the model), `url-state` (the URL helper), `use-filter-state`
 (the two joined as a hook) and the `filter-builder` block, which pulls in `badge`, `button`, `checkbox`, `input`,
 `native-select`, `popover`, `sheet` and `use-mobile`.
-`npx shadcn add deanjstone/design-system/filter-builder deanjstone/design-system/use-filter-state`.
+`npx shadcn add deanjstone/frontend/filter-builder deanjstone/frontend/use-filter-state`.
 
 ```tsx
 const FIELDS: FilterField<Issue>[] = [
@@ -1254,7 +1263,7 @@ MIT, Copyright (c) 2025 lndev-ui | Circle Template; credited in each source head
 with none of circle's dependencies (no zustand, motion or react-dnd). Three items: `list-group-core` (the model), `use-display-settings`
 (the persisted settings as a hook) and the `grouped-list` block (`GroupedList` and `DisplayMenu`), which pulls in `button`, `checkbox`,
 `collapsible`, `native-select` and `popover`. It takes any row, so `issue-row` is one choice and not a dependency.
-`npx shadcn add deanjstone/design-system/grouped-list deanjstone/design-system/use-display-settings`.
+`npx shadcn add deanjstone/frontend/grouped-list deanjstone/frontend/use-display-settings`.
 
 ```tsx
 const GROUPINGS: ListGrouping<Issue>[] = [
@@ -1309,7 +1318,7 @@ const grouping = GROUPINGS.find((g) => g.id === display.settings.groupBy) ?? nul
 
 `file-diff` is one changed file with its diff, moved from ops-hub's `file-diff.tsx`
 ([design-system#205](https://github.com/deanjstone/design-system/issues/205)). It pulls in `button`, `collapsible` and the
-`diff-core` lib (the unified-diff parser, `parsePatch`). `npx shadcn add deanjstone/design-system/file-diff`.
+`diff-core` lib (the unified-diff parser, `parsePatch`). `npx shadcn add deanjstone/frontend/file-diff`.
 
 ```tsx
 // `file` is GitHub's "list pull request files" shape; ops-hub's PullFile fits as it is.

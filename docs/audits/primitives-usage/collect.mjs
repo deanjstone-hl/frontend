@@ -327,8 +327,10 @@ function measureApp(app, registry) {
   const paths = new Set(files.keys())
 
   const config = files.has(`${root}components.json`) ? JSON.parse(files.get(`${root}components.json`)) : null
-  const pinUrl = config?.registries?.["@design-system"]?.url ?? config?.registries?.["@design-system"] ?? null
-  const pin = typeof pinUrl === "string" ? (/design-system\/([^/]+)\/r\//.exec(pinUrl)?.[1] ?? pinUrl) : null
+  const registries = config?.registries
+  const aliased = registries?.["@frontend"] ?? registries?.["@design-system"]
+  const pinUrl = aliased?.url ?? aliased ?? null
+  const pin = typeof pinUrl === "string" ? (/(?:frontend|design-system)\/([^/]+)\/r\//.exec(pinUrl)?.[1] ?? pinUrl) : null
   const packageJson = files.has(`${root}package.json`) ? JSON.parse(files.get(`${root}package.json`)) : {}
   const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies }
   const uiDir = app.uiDir ?? (config ? `${root}src/${config.aliases.ui.replace(/^@\//, "")}` : null)

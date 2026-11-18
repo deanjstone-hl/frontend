@@ -145,7 +145,7 @@ describe("vendored registry drift", () => {
     writeFileSync(join(dir, "links.json"), JSON.stringify({ ...data, revision, ...extra }))
   }
 
-  it("is clean when the vendored copy equals design-system's", () => {
+  it("is clean when the vendored copy equals frontend's", () => {
     expect(check().counts.drift).toBe(0)
   })
 
@@ -167,7 +167,7 @@ describe("vendored registry drift", () => {
     expect(check().counts.drift).toBe(0)
   })
 
-  it("says so, without failing, when design-system cannot be reached", () => {
+  it("says so, without failing, when frontend cannot be reached", () => {
     const run = check(["--mode", "block"], { LINKS_UPSTREAM: `file://${upstream}/missing.json` })
     expect(run.code).toBe(0)
     expect(run.out).toContain("link-check: drift skipped")

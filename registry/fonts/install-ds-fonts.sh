@@ -8,7 +8,7 @@
 # them (Aspekta carries a Reserved Font Name, SIL OFL 1.1). The licence notices come with
 # the font-aspekta item, into the same folder.
 #
-# Offline or in CI, point DS_FONTS_SOURCE_DIR at a checkout of design-system's registry/fonts
+# Offline or in CI, point DS_FONTS_SOURCE_DIR at a checkout of frontend's registry/fonts
 # and the files are copied from there instead (still checked against the same sha256).
 set -euo pipefail
 

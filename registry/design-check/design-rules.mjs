@@ -21,7 +21,7 @@
 // is right for a reason the rule cannot see takes a `design-rules-ignore` comment on
 // that line or the line above.
 //
-// Shipped by the design-system `design-check` registry item. The registry-owned ui
+// Shipped by the frontend `design-check` registry item. The registry-owned ui
 // directory (components.json `aliases.ui`) is never scanned: `shadcn add` put those
 // files there, so a finding there is the registry's, not this app's.
 import { execFileSync } from "node:child_process"

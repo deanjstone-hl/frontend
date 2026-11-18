@@ -75,7 +75,7 @@ describe("cn package migration", () => {
 
   it("no item pulls in utils just for cn", () => {
     const dependents = registry.items.filter((item) =>
-      item.registryDependencies?.includes("deanjstone/design-system/utils"),
+      item.registryDependencies?.includes("deanjstone/frontend/utils"),
     )
     expect(dependents.map((item) => item.name)).toEqual([])
   })

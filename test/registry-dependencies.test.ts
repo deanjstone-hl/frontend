@@ -76,7 +76,7 @@ describe("registry item dependencies", () => {
       const imported = item.files!.flatMap((file) => importsOf(file.path))
       const addresses = imported
         .filter((specifier) => specifier.startsWith("@/"))
-        .map((specifier) => `deanjstone/design-system/${registryItemName(specifier)}`)
+        .map((specifier) => `deanjstone/frontend/${registryItemName(specifier)}`)
 
       const undeclared = [...new Set(addresses)].filter((address) => !declared.has(address))
       expect(undeclared).toEqual([])

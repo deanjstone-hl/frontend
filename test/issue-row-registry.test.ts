@@ -20,7 +20,7 @@ describe("issue-row registry entry", () => {
     const source = readFileSync(`${root}${item.files[0].path}`, "utf8")
     const used = [...source.matchAll(/from "@\/components\/ui\/([^"]+)"/g)].map((match) => match[1])
     expect(used.sort()).toEqual(["context-menu", "dropdown-menu"])
-    for (const name of used) expect(item.registryDependencies).toContain(`deanjstone/design-system/${name}`)
+    for (const name of used) expect(item.registryDependencies).toContain(`deanjstone/frontend/${name}`)
   })
 
   it("points at a source file that exists", () => {

@@ -17,7 +17,7 @@ export function renderLinksModule(registry) {
   const errors = validateRegistry(registry)
   if (errors.length > 0) throw new Error(`links.json is invalid:\n- ${errors.join("\n- ")}`)
   const data = JSON.stringify(withoutMeta(registry), null, 2)
-  return `// GENERATED from links.json by design-system scripts/links/generate.mjs. Do not edit.
+  return `// GENERATED from links.json by frontend scripts/links/generate.mjs. Do not edit.
 // The URL builders for every Argus host and tailnet service: every URL in code comes from here.
 import { createLinks } from "@/lib/links-core"
 

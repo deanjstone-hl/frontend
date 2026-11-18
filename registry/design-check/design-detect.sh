@@ -8,7 +8,7 @@
 # Exit status is the detector's own: 0 clean, 1 a target could not be scanned,
 # 2 findings. 2 is also returned for a usage error.
 #
-# Shipped by the design-system `design-check` registry item. The registry-owned ui
+# Shipped by the frontend `design-check` registry item. The registry-owned ui
 # directory (components.json `aliases.ui`) is never scanned: it is copied in by
 # `shadcn add`, so a finding there is the registry's, not this app's.
 set -euo pipefail

@@ -30,7 +30,7 @@ describe("staged page-transition registry entries", () => {
     const source = read("registry/base-nova/ui/page-transition.tsx")
     const imported = [...source.matchAll(/from "@\/lib\/([a-z0-9-]+)"/g)].map((match) => match[1])
     expect(imported.length).toBeGreaterThan(0)
-    for (const name of imported) expect(ui?.registryDependencies).toContain(`deanjstone/design-system/${name}`)
+    for (const name of imported) expect(ui?.registryDependencies).toContain(`deanjstone/frontend/${name}`)
   })
 
   it("pins glimm to the exact version the tests run against", () => {

@@ -130,7 +130,7 @@ describe("ds-fonts.css", () => {
 describe("font-aspekta item", () => {
   it("is listed, with the stylesheet, the install script and the notices as plain files", () => {
     expect(item.type).toBe("registry:file")
-    expect(item.registryDependencies).toEqual(["deanjstone/design-system/font-preference"])
+    expect(item.registryDependencies).toEqual(["deanjstone/frontend/font-preference"])
     const targets = Object.fromEntries(item.files.map((file: { path: string; target: string }) => [file.path, file.target]))
     expect(targets["registry/fonts/ds-fonts.css"]).toBe("~/src/ds-fonts.css")
     expect(targets["registry/fonts/install-ds-fonts.sh"]).toBe("~/scripts/install-ds-fonts.sh")

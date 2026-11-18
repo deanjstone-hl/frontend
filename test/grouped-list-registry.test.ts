@@ -24,7 +24,7 @@ describe("grouped list registry entries", () => {
   })
 
   it("makes the hook pull in the model", () => {
-    expect(find("use-display-settings").registryDependencies).toEqual(["deanjstone/design-system/list-group-core"])
+    expect(find("use-display-settings").registryDependencies).toEqual(["deanjstone/frontend/list-group-core"])
   })
 
   it.each(["grouped-list", "use-display-settings"])("declares every registry item %s imports", (name) => {
@@ -32,16 +32,16 @@ describe("grouped list registry entries", () => {
     expect(used.length).toBeGreaterThan(0)
     for (const dependency of used) {
       if (dependency === "utils") continue
-      expect(find(name).registryDependencies).toContain(`deanjstone/design-system/${dependency}`)
+      expect(find(name).registryDependencies).toContain(`deanjstone/frontend/${dependency}`)
     }
   })
 
   it("makes the block pull in the pieces it renders, and not issue-row, which it never imports", () => {
     const block = find("grouped-list")
     for (const name of ["button", "checkbox", "collapsible", "native-select", "popover", "list-group-core"]) {
-      expect(block.registryDependencies).toContain(`deanjstone/design-system/${name}`)
+      expect(block.registryDependencies).toContain(`deanjstone/frontend/${name}`)
     }
-    expect(block.registryDependencies).not.toContain("deanjstone/design-system/issue-row")
+    expect(block.registryDependencies).not.toContain("deanjstone/frontend/issue-row")
   })
 
   it("declares every package the block imports", () => {

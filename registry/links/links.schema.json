@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/deanjstone/design-system/main/registry/links/links.schema.json",
+  "$id": "https://raw.githubusercontent.com/deanjstone/frontend/main/registry/links/links.schema.json",
   "title": "myargus links registry",
-  "description": "Structure of links.json. The cross-field rules (host per bucket, redirect targets, unique locations) live in scripts/links/registry.mjs and are enforced by the design-system tests.",
+  "description": "Structure of links.json. The cross-field rules (host per bucket, redirect targets, unique locations) live in scripts/links/registry.mjs and are enforced by the frontend tests.",
   "type": "object",
   "required": ["revision", "domain", "cookieDomain", "tailnetHost", "entries"],
   "properties": {

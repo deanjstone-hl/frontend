@@ -81,7 +81,7 @@ describe("DS theme item", () => {
   it("is listed as theme-ds, right after theme, and depends on theme", () => {
     expect(item).toBeDefined()
     expect(item.type).toBe("registry:theme")
-    expect(item.registryDependencies).toEqual(["deanjstone/design-system/theme"])
+    expect(item.registryDependencies).toEqual(["deanjstone/frontend/theme"])
     const names = registry.items.map((entry: { name: string }) => entry.name)
     expect(names.indexOf("theme-ds")).toBe(names.indexOf("theme") + 1)
   })

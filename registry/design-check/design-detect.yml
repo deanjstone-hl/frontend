@@ -1,6 +1,6 @@
 name: Design check
 
-# Two checks on the UI files a PR changes. Shipped by the design-system
+# Two checks on the UI files a PR changes. Shipped by the frontend
 # `design-check` registry item.
 #   - Impeccable's design detector. It runs no AI model: it flags low contrast,
 #     AI-slop patterns and drift from DESIGN.md. Findings are written to the job

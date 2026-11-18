@@ -1,4 +1,4 @@
-// The builders behind the myargus links registry (design-system ADR-0004).
+// The builders behind the myargus links registry (frontend ADR-0004).
 // Pure functions of the registry data: no DOM, no Node, so a Worker, a Vite
 // app and a Node service all call the same code. `links.ts` binds them to the
 // vendored data; import from there, not from here.

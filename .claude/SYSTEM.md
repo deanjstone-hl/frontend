@@ -1,11 +1,11 @@
-# SYSTEM.md — design-system
+# SYSTEM.md — frontend
 
 ## What this repo is
 
 A static shadcn/ui component registry, not a buildable application. `registry.json`
 at the root is the manifest the shadcn CLI reads directly from GitHub; the files it
 references under `registry/` are the actual distributable source. Consumers pull
-items with `npx shadcn add @design-system/<item>` — see README.md.
+items with `npx shadcn add @frontend/<item>` — see README.md.
 
 ## Constraints
 

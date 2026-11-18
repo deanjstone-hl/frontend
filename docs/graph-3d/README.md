@@ -5,7 +5,7 @@ nodes joined by faint edges (design-system#169). First consumer: the ops hub
 Memory map (argus#1047).
 
 ```bash
-npx shadcn add deanjstone/design-system/graph-3d
+npx shadcn add deanjstone/frontend/graph-3d
 ```
 
 ```tsx

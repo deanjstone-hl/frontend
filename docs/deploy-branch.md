@@ -1,4 +1,4 @@
-# design-system: the deploy branch
+# frontend: the deploy branch
 
 A new registry version is published only when the owner promotes a commit on `main` to the
 `deploy` branch. A push to `main` runs Test and nothing else: no tag, no GitHub release. Model and decisions: argus-config#1048 (map), design-system#179, modelled on
@@ -51,7 +51,7 @@ release notes carry the history. The earlier release stamped `#<tag>` into
 (design-system#65); that is retired. A tag now pins the named item, and its in-repo
 dependencies float to `main`: README, "Pinning to a release".
 
-An unpinned `shadcn add deanjstone/design-system/<item>` still reads `main`, not `deploy`.
+An unpinned `shadcn add deanjstone/frontend/<item>` still reads `main`, not `deploy`.
 Pin to a tag (README, "Pinning to a release") for a version that has been promoted.
 
 ## See what is merged but not released
@@ -114,7 +114,7 @@ Nothing below exists until the owner runs it. Agents prepare it and never run it
    thread: `scripts/promote.sh <sha>`. The first push runs `Release` once (its tests first). Pick a
    `main` SHA that is not a release-bot commit; the script refuses those. Everything since the
    last tag (`v3.17.0` at the time of writing) is released.
-2. **Add `deanjstone/design-system` to the ops hub promotion list**
+2. **Add `deanjstone/frontend` to the ops hub promotion list**
    (`OPS_HUB_PROMOTION_REPOS` in the hub's environment), so the hub card can approve a
    promotion. Until then promotion is `scripts/promote.sh` from an approval-required thread.
 3. **Do not protect `deploy` against the owner's fast-forward push**, and do not require pull

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # link-check:vendored
 # Ban hand-written myargus.cc and tailnet host literals in code, and check the
-# repo's host and path config against links.json (design-system ADR-0004,
-# decision 6). Shipped by the design-system `link-check` registry item.
+# repo's host and path config against links.json (frontend ADR-0004,
+# decision 6). Shipped by the frontend `link-check` registry item.
 #
 #   bash scripts/link-check.sh [--mode report|block]
 #
@@ -17,7 +17,7 @@
 #   retired  a literal that names a host links.json marks retired
 #   config   Vite base, router basename, manifest start_url/scope, wrangler host
 #            and path, or a _redirects target that links.json does not hold
-#   drift    the vendored links.json is behind design-system's, or differs from it
+#   drift    the vendored links.json is behind frontend's, or differs from it
 #
 # Exempt from literal and retired: markdown, test files and fixtures, lockfiles,
 # changelogs, wrangler config and _redirects/_headers (the config check covers
@@ -51,7 +51,7 @@ if [[ -z $registry ]]; then
   done
 fi
 if [[ -z $registry || ! -f $registry ]]; then
-  echo "link-check: no links.json found; install it with 'shadcn add deanjstone/design-system/links-data' or set LINKS_JSON" >&2
+  echo "link-check: no links.json found; install it with 'shadcn add deanjstone/frontend/links-data' or set LINKS_JSON" >&2
   exit 2
 fi
 command -v jq > /dev/null || { echo "link-check: jq is required" >&2; exit 2; }
@@ -135,7 +135,7 @@ else
 fi
 
 drift_lines=()
-upstream_url="${LINKS_UPSTREAM:-https://raw.githubusercontent.com/deanjstone/design-system/main/registry/links/links.json}"
+upstream_url="${LINKS_UPSTREAM:-https://raw.githubusercontent.com/deanjstone/frontend/main/registry/links/links.json}"
 scratch="$(mktemp -d)"
 trap 'rm -rf "$scratch"' EXIT
 if curl -fsS --max-time 15 "$upstream_url" -o "$scratch/upstream.json" 2> "$scratch/curl.err" \
@@ -143,9 +143,9 @@ if curl -fsS --max-time 15 "$upstream_url" -o "$scratch/upstream.json" 2> "$scra
   mine="$(jq -r '.revision' "$registry")"
   theirs="$(jq -r '.revision' "$scratch/upstream.json")"
   if [[ $mine -lt $theirs ]]; then
-    drift_lines+=("links.json is at revision $mine, design-system's is at revision $theirs: run 'shadcn add -o deanjstone/design-system/links-data'")
+    drift_lines+=("links.json is at revision $mine, frontend's is at revision $theirs: run 'shadcn add -o deanjstone/frontend/links-data'")
   elif [[ $mine -eq $theirs ]] && [[ "$(jq -S . "$registry")" != "$(jq -S . "$scratch/upstream.json")" ]]; then
-    drift_lines+=("links.json differs from design-system's at the same revision $mine: edit it in design-system, not here")
+    drift_lines+=("links.json differs from frontend's at the same revision $mine: edit it in frontend, not here")
   fi
 else
   echo "link-check: drift skipped (could not read $upstream_url)"

@@ -1,4 +1,4 @@
-// GENERATED from links.json by design-system scripts/links/generate.mjs. Do not edit.
+// GENERATED from links.json by frontend scripts/links/generate.mjs. Do not edit.
 // The URL builders for every Argus host and tailnet service: every URL in code comes from here.
 import { createLinks } from "@/lib/links-core"
 

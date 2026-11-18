@@ -25,12 +25,12 @@ describe("filter builder registry entries", () => {
   it("makes the block pull in everything it renders and the hook and model it relies on", () => {
     const block = find("filter-builder")
     for (const name of ["badge", "button", "checkbox", "input", "native-select", "popover", "sheet", "use-mobile", "filter-core"]) {
-      expect(block.registryDependencies).toContain(`deanjstone/design-system/${name}`)
+      expect(block.registryDependencies).toContain(`deanjstone/frontend/${name}`)
     }
   })
 
   it("makes the hook pull in the model and the URL helper", () => {
-    expect(find("use-filter-state").registryDependencies?.sort()).toEqual(["deanjstone/design-system/filter-core", "deanjstone/design-system/url-state"])
+    expect(find("use-filter-state").registryDependencies?.sort()).toEqual(["deanjstone/frontend/filter-core", "deanjstone/frontend/url-state"])
   })
 
   it("brings in no dependency beyond the registry's own: no nuqs, motion, react-dnd or extra icon set", () => {

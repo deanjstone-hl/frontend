@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # link-check:vendored
 # Build a myargus.cc or tailnet URL from links.json, for deploy scripts and hooks.
-# The bash twin of the links.ts builders (design-system ADR-0004): same registry,
+# The bash twin of the links.ts builders (frontend ADR-0004): same registry,
 # same canonical forms (decision 4), so a script and an app never disagree.
 #
 #   links.sh [--origin <origin>] url <id>             app root, ends in "/"
@@ -15,7 +15,7 @@
 # --origin swaps scheme, host and port for a local or preview run. Read it from
 # one env var per deployment (decision 5); never write a fallback host here.
 # links.json is found at $LINKS_JSON, else in the script's parent directory
-# (scripts/../links.json), else beside the script. Needs jq. Shipped by the design-system `links-sh` registry item.
+# (scripts/../links.json), else beside the script. Needs jq. Shipped by the frontend `links-sh` registry item.
 set -euo pipefail
 
 usage() {

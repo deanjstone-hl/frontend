@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // link-check:vendored
-// The config half of link-check (design-system ADR-0004, decision 6b): the host
+// The config half of link-check (frontend ADR-0004, decision 6b): the host
 // and path settings kept in git must agree with links.json. It reads NUL
 // separated file names on stdin (link-check.sh passes `git ls-files`) and prints
 // one finding per line as `<path>:<line>: <message>`. It prints nothing when

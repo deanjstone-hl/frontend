@@ -341,7 +341,7 @@ export function renderReport(data) {
   const count = (state) => uiCopies.filter((copy) => copy.state === state).length
   const summary = [
     `registry ${registry.ref} (${registry.sha}): ${registry.ui.length} ui primitives, ${registry.tags} tags compared`,
-    `apps: ${apps.length} measured, ${consumers.length} with a @design-system pin (${[...new Set(consumers.map((app) => app.pin))].sort((a, b) => order(a) - order(b)).map((pin) => `${pin}×${consumers.filter((app) => app.pin === pin).length}`).join(", ")})`,
+    `apps: ${apps.length} measured, ${consumers.length} with a @frontend pin (${[...new Set(consumers.map((app) => app.pin))].sort((a, b) => order(a) - order(b)).map((pin) => `${pin}×${consumers.filter((app) => app.pin === pin).length}`).join(", ")})`,
     `ui primitives in no app: ${uiUsage.filter((entry) => entry.present === 0).length} of ${uiUsage.length}; installed but never imported by app code: ${uiUsage.filter((entry) => entry.present > 0 && entry.used === 0).length}`,
     `ui copies (mirror counted once): ${uiCopies.length} = identical ${count("identical")}, stale ${count("stale")}, local-edit ${count("local-edit")}, forked ${count("forked")}`,
     `direct headless imports in app code: ${sum(apps.filter((app) => !app.mirrorOf).map((app) => app.headless.length))}; raw elements a primitive covers: ${sum(apps.filter((app) => !app.mirrorOf).flatMap((app) => Object.values(app.rawElements).map((info) => info.count)))}`,

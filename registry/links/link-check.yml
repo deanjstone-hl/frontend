@@ -2,7 +2,7 @@ name: Link check
 # link-check:vendored
 
 # Bans hand-written myargus.cc and tailnet host literals in code, and checks the
-# repo's host and path config against links.json. Shipped by the design-system
+# repo's host and path config against links.json. Shipped by the frontend
 # `link-check` registry item (ADR-0004).
 #
 # LINK_CHECK_MODE starts at `report`: the job prints every finding and passes,

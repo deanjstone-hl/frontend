@@ -26,7 +26,7 @@ describe("file-diff registry entry", () => {
   it("declares the items and packages its source imports", () => {
     const source = readFileSync(`${root}${block.files[0].path}`, "utf8")
     for (const dependency of ["button", "collapsible", "diff-core"]) {
-      expect(block.registryDependencies, dependency).toContain(`deanjstone/design-system/${dependency}`)
+      expect(block.registryDependencies, dependency).toContain(`deanjstone/frontend/${dependency}`)
     }
     expect(source).toContain('from "@/lib/diff-core"')
     for (const name of ["lucide-react"]) expect(block.dependencies).toContain(name)
