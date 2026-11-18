@@ -15,7 +15,7 @@
     "title": "page-transition",
     "description": "A WebGL sweep between views in the theme's colours, light and dark (glimm). Opt in with PageTransitionProvider and usePageTransition; reduced motion, no WebGL and a lost context are a plain cut.",
     "registryDependencies": [
-      "deanjstone/design-system/page-transition-core"
+      "deanjstone/frontend/page-transition-core"
     ],
     "dependencies": [
       "glimm@0.4.1"
