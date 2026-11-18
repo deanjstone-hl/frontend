@@ -5,11 +5,11 @@
     "cn@^0.5.0"
   ],
   "registryDependencies": [
-    "deanjstone/design-system/button",
-    "deanjstone/design-system/card",
-    "deanjstone/design-system/field",
-    "deanjstone/design-system/input",
-    "deanjstone/design-system/spinner"
+    "deanjstone/frontend/button",
+    "deanjstone/frontend/card",
+    "deanjstone/frontend/field",
+    "deanjstone/frontend/input",
+    "deanjstone/frontend/spinner"
   ],
   "files": [
     {

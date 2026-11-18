@@ -6,12 +6,12 @@
     "cn@^0.5.0"
   ],
   "registryDependencies": [
-    "deanjstone/design-system/button",
-    "deanjstone/design-system/popover",
-    "deanjstone/design-system/sheet",
-    "deanjstone/design-system/toggle-group",
-    "deanjstone/design-system/nav-link",
-    "deanjstone/design-system/theme-preference"
+    "deanjstone/frontend/button",
+    "deanjstone/frontend/popover",
+    "deanjstone/frontend/sheet",
+    "deanjstone/frontend/toggle-group",
+    "deanjstone/frontend/nav-link",
+    "deanjstone/frontend/theme-preference"
   ],
   "files": [
     {

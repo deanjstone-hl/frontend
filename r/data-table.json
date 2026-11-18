@@ -9,9 +9,9 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "deanjstone/design-system/table",
-    "deanjstone/design-system/button",
-    "deanjstone/design-system/input"
+    "deanjstone/frontend/table",
+    "deanjstone/frontend/button",
+    "deanjstone/frontend/input"
   ],
   "files": [
     {

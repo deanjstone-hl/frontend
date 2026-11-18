@@ -7,8 +7,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "deanjstone/design-system/button",
-    "deanjstone/design-system/input-group"
+    "deanjstone/frontend/button",
+    "deanjstone/frontend/input-group"
   ],
   "files": [
     {

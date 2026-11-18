@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "links-data",
   "title": "myargus links registry data",
-  "description": "links.json: every myargus.cc and tailnet host, app, route and status (ADR-0004). Vendored at the repo root; link-check compares it with design-system's.",
+  "description": "links.json: every myargus.cc and tailnet host, app, route and status (ADR-0004). Vendored at the repo root; link-check compares it with frontend's.",
   "files": [
     {
       "path": "registry/links/links.json",
