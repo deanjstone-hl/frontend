@@ -2,7 +2,7 @@
 //
 // A stamp is stamps/<name>.json. It records the hash of the generator's files, the hash of
 // the inputs, the tool pins and the hash of the output the generator produced. `verifyStamp`
-// fails when the stamp is missing, the output bytes no longer match it, or the generator,
+// fails when the stamp is missing, the output bytes differ from it, or the generator,
 // the inputs or a pin moved without a regenerate. Only a generator writes one: `writeStamp`
 // is imported by the generator scripts and nothing else (test/stamps.test.ts fails on any
 // other caller), so a stamp cannot be typed in to turn a red check green. A stamp's recorded
@@ -99,7 +99,7 @@ export const verifyStamp = (spec, root = repoRoot) => {
   const outputMoved = changed(stamp.output.files, now.output.files)
   if (outputMoved.length > 0) {
     problems.push(
-      `${spec.name}: ${outputMoved.join(", ")} no longer match the stamp. Output is changed only by its generator; ` +
+      `${spec.name}: ${outputMoved.join(", ")} differ from the stamp. Output is changed only by its generator; ` +
         `${regenerate}. A code change that disagrees with a golden is a test failure: fix the code, never re-stamp.`,
     )
   }

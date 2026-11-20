@@ -64,12 +64,12 @@ describe("writeStamp and verifyStamp", () => {
     expect(problems[0]).toContain("node gen.mjs")
   })
 
-  it("fails when the output bytes no longer match the stamp, and says a re-stamp is not the fix", () => {
+  it("fails when the output bytes differ from the stamp, and says a re-stamp is not the fix", () => {
     writeStamp(spec(), root)
     put("out.txt", "edited by hand\n")
     const problems = verifyStamp(spec(), root)
     expect(problems.join("\n")).toContain("out.txt")
-    expect(problems.join("\n")).toContain("no longer match")
+    expect(problems.join("\n")).toContain("differ from the stamp")
     expect(problems.join("\n")).toContain("never re-stamp")
   })
 
