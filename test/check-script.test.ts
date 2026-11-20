@@ -67,6 +67,7 @@ const run = (env: Record<string, string> = {}, { script = "scripts/check.sh", cw
       PATH: `${bin}:${process.env.PATH}`,
       CALLS: join(bin, "calls.txt"),
       DIRS: join(bin, "dirs.txt"),
+      HEAVY_LOCK_HELD: "1",
       ...env,
     },
   })

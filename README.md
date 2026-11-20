@@ -587,7 +587,7 @@ result, never by hand-merging. No git hook runs it: it is a step you run, and CI
 is the backstop. Its pins live in `scripts/check.sh`; `test/check-script.test.ts`
 fails if they drift from `.github/workflows/design.yml` or `package.json`.
 The script resolves the repo root from its own path, so `bash /path/to/frontend/scripts/check.sh`
-checks this tree from any directory (another repo's pre-push gate calls it that way).
+checks this tree from any directory (another repo's pre-push gate calls it that way). The gate takes the host-wide heavy lock ([argus-config/1506](https://github.com/deanjstone/argus-config/issues/1506)): `scripts/check.sh` re-runs itself through `scripts/heavy-lock.sh`, so only one full check runs at a time on a host, whichever thread or CI job starts it, and it also waits while memory `some avg60` is 10 or more. A queued run prints `waiting for the host lock` and starts when the holder ends; it exits 75 without running once `HEAVY_LOCK_TIMEOUT` (3600 s) passes. `scripts/heavy-lock.sh` and `scripts/heavy-lock.lock` are vendored byte-for-byte from argus-config (its `scripts/sync-heavy-lock.sh` rewrites both; never edit them here), and `test/heavy-lock.test.ts` fails on a copy that no longer matches its lock.
 
 The browser-side geometry check is separate: `pnpm gate:geometry` (see
 [Curve-geometry gate](#curve-geometry-gate)).
