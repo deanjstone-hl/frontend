@@ -40,8 +40,10 @@ pnpm install --frozen-lockfile
 | `pnpm test` | Vitest: renders registry sources in jsdom (`test/`) |
 | `pnpm lint` | oxlint, type-aware |
 | `pnpm check` | `test`, impeccable detector, `r/` drift, `lint`: what CI runs, in one command; run before every push |
-| `pnpm build:theme` | Regenerates `theme/tokens.css`, `registry.json` and `r/` from `theme/themes.json` |
-| `npx shadcn@4.19.1 build --output ./r` | Regenerates `r/` alone after a source or `registry.json` edit |
+| `pnpm build:theme` | Regenerates `theme/tokens.css`, `registry.json` and `r/` from `theme/themes.json`, and their stamps |
+| `pnpm build:registry` | Regenerates `r/` alone (the pinned `shadcn build`) and its stamp, after a source or `registry.json` edit |
+| `node scripts/links/generate.mjs` | Regenerates `registry/lib/links.ts` and its stamp from `links.json` |
+| `pnpm update:snapshots` | Rewrites the link-pill snapshot and its stamp; see [Stamps](#stamps-generated-output-and-goldens) |
 | `pnpm gate:geometry` | Browser check of safe areas and curves; see [Curve-geometry gate](#curve-geometry-gate) |
 | `node docs/<demo>/smoke-check.mjs` | Builds a demo and checks it in headless Chromium: `data`, `form-inputs`, `layout`, `page-transition`; `docs/card-list/screenshots.mjs`, `docs/issue-row/screenshots.mjs`, `docs/filter-builder/screenshots.mjs`, `docs/grouped-list/screenshots.mjs` and `docs/ds-theme/screenshots.mjs` do the same in headless WebKit; `docs/menus/keyboard-check.mjs` and `docs/graph-3d/{measure,inspect}.mjs` likewise |
 
@@ -131,6 +133,8 @@ theme/themes.json           the six T3 themes (light + dark) behind both; see DE
 test/                      Vitest suites, one per item, plus ones that pin the scripts and workflows
 docs/                      ADRs, deploy-branch.md, and one demo plus browser check per feature area
 scripts/geometry-gate/     the curve-geometry gate behind pnpm gate:geometry
+scripts/stamp/             the stamp mechanism, what it stamps (artefacts.mjs) and the r/ and snapshot generators
+stamps/                    one stamp per generated artefact or golden; only its generator writes it
 scripts/release/           release-needed.sh (anything to release?) and tested-head.sh (tag only the promoted SHA); scripts/promote.sh pushes deploy
 scripts/theme/              extract-t3.mjs reads T3's sheet; build.mjs writes tokens.css and registry.json
 scripts/links/              registry.mjs validates links.json, generate.mjs writes lib/links.ts, cf-drift.mjs diffs Cloudflare
@@ -582,8 +586,8 @@ promotion. The dev dependencies exist only for the checks and demos — nothing 
 Commit first, so `r/` is judged as it will be pushed. A pass prints one line,
 `check: pass <short sha>`; paste it into the issue. A failure names the step
 (`FAIL at step 3/4 ...`) and exits non-zero. A stale `r/` is fixed by
-regenerating it (`npx shadcn@4.19.1 build --output ./r`) and committing the
-result, never by hand-merging. No git hook runs it: it is a step you run, and CI
+regenerating it (`pnpm build:registry`, which runs `npx shadcn@4.19.1 build --output ./r`
+and writes the stamp) and committing the result, never by hand-merging. No git hook runs it: it is a step you run, and CI
 is the backstop. Its pins live in `scripts/check.sh`; `test/check-script.test.ts`
 fails if they drift from `.github/workflows/design.yml` or `package.json`.
 The script resolves the repo root from its own path, so `bash /path/to/frontend/scripts/check.sh`
@@ -591,6 +595,42 @@ checks this tree from any directory (another repo's pre-push gate calls it that 
 
 The browser-side geometry check is separate: `pnpm gate:geometry` (see
 [Curve-geometry gate](#curve-geometry-gate)).
+
+### Stamps: generated output and goldens
+
+Generated output and goldens carry a stamp ([frontend#234](https://github.com/deanjstone/frontend/issues/234)),
+so a check fails when they change without the generator that produced them. A stamp is
+`stamps/<name>.json`: the hash of the generator's files, the hash of its inputs, the tool pins
+and the hash of the output. It lists only the files the generator imports, never a whole
+directory. `pnpm check` verifies every stamp in its first step (`test/stamps.test.ts`) and fails
+when a stamp is missing, the output bytes differ from it, or the generator, an input or a
+pin moved without a regenerate. The message names the file and the regenerate command.
+
+| Stamp | Covers | Regenerate with | Pins |
+|---|---|---|---|
+| `registry-output` | `r/`, from `registry.json` and the sources it lists | `pnpm build:registry` | shadcn |
+| `theme` | the generated region of `theme/tokens.css` and the `theme` and `theme-ds` items of `registry.json`, from `theme/themes.json` | `pnpm build:theme` | none |
+| `links-module` | `registry/lib/links.ts`, from `registry/links/links.json` | `node scripts/links/generate.mjs` | none |
+| `link-pill-snapshot` | `test/__snapshots__/link-pill-html.test.ts.snap` | `pnpm update:snapshots` | vitest |
+| `geometry-aria` | the aria baselines in `scripts/geometry-gate/aria/` | `pnpm gate:geometry --update-aria` | playwright-core, Chromium |
+
+Rules:
+
+- **Only a generator writes a stamp.** The stamp writer is imported by the generator scripts and
+  nothing else (the tests fail on any other caller), and no command stamps what is already on
+  disk. A stamp's hashes must also match its own file lists, so editing a hash by hand fails the
+  check. Hand edits to `r/` or a baseline fail it too.
+- **A code change that disagrees with a golden is a test failure, never a reason to re-stamp.** The
+  code under test is not an input to a golden's stamp. Run `pnpm update:snapshots` or
+  `pnpm gate:geometry --update-aria` only when the oracle itself changed (its fixtures, the
+  harness or a tool pin), and review the diff it makes.
+- A partial `pnpm gate:geometry --update-aria` (with `--view` or `--url`) does not stamp, and the
+  gate refuses to stamp under a Chromium other than the one `playwright-core` pins.
+- After a rebase that conflicts in `stamps/` or `r/`, run the generator again; never hand-merge.
+- `docs/assets/` screenshots are evidence, not baselines, and are not stamped.
+
+The idea comes from [rauchg/xeet](https://github.com/rauchg/xeet)'s `golden-stamp.mjs`, a
+reference only: no code is copied (GitHub detects no licence there).
 
 **Gotcha: Base UI parts with default children.** `Select.Icon`,
 `Combobox.Icon` and `NavigationMenu.Icon` default their children to `▼`

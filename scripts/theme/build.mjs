@@ -3,7 +3,8 @@
 //
 //   node scripts/theme/build.mjs
 //
-// Then regenerate r/ with `npx shadcn build --output ./r`.
+// Then regenerate r/ with `pnpm build:registry` (`pnpm build:theme` runs both). Writing
+// the files also writes stamps/theme.json (frontend#234).
 //
 // Ocean is the default: it is the plain :root / .dark rule, so a page with no
 // data-theme attribute is Ocean. Every theme, Ocean included, also answers to
@@ -14,6 +15,8 @@
 import { readFileSync, writeFileSync } from "node:fs"
 import { fileURLToPath } from "node:url"
 
+import { THEME } from "../stamp/artefacts.mjs"
+import { writeStamp } from "../stamp/stamp.mjs"
 import { dsSurfaceCss } from "./ds-theme.mjs"
 import { DERIVED_TOKENS, MODES, THEME_NAMES, TOKEN_MAP } from "./extract-t3.mjs"
 import { STATUS_TOKENS } from "./status.mjs"
@@ -134,7 +137,8 @@ const main = () => {
   const registryPath = path("../../registry.json")
   const registry = JSON.parse(readFileSync(registryPath, "utf8"))
   writeFileSync(registryPath, `${JSON.stringify(applyDsTheme(applyToRegistry(registry, themes)), null, 2)}\n`)
-  console.log("wrote theme/tokens.css and registry.json; now run: npx shadcn build --output ./r")
+  writeStamp(THEME)
+  console.log("wrote theme/tokens.css, registry.json and stamps/theme.json; now run: pnpm build:registry")
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) main()

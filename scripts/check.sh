@@ -10,6 +10,9 @@
 #                                                 .github/workflows/design.yml "Rebuild per-item output and fail if it drifted"
 #   4. pnpm lint                                  .github/workflows/test.yml   "Run oxlint"
 #
+# Every generated artefact and golden also carries a stamp (stamps/*.json, frontend#234);
+# test/stamps.test.ts runs in step 1 and fails on a missing or stale one.
+#
 # The two pins below must equal the ones in design.yml (and shadcn's in
 # package.json build:theme); test/check-script.test.ts fails when they drift.
 #
@@ -51,7 +54,7 @@ echo "check: step 3/4 registry output current" >&2
 npx --yes "shadcn@${SHADCN_VERSION}" build --output ./r || fail "3/4" "shadcn build"
 if ! git diff --quiet -- r/ || [ -n "$(git ls-files --others --exclude-standard -- r/)" ]; then
   git status --short -- r/ >&2
-  fail "3/4" "r/ is out of date: run 'npx shadcn@${SHADCN_VERSION} build --output ./r' and commit the result"
+  fail "3/4" "r/ is out of date: run 'pnpm build:registry' and commit the result"
 fi
 
 echo "check: step 4/4 pnpm lint" >&2

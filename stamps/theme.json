@@ -1,0 +1,26 @@
+{
+  "name": "theme",
+  "generator": {
+    "hash": "f3841ecf725c7ddb8cc18bd087b8c86522b321bec497b55419c629bef0993e41",
+    "files": {
+      "scripts/theme/build.mjs": "f00e4ff197e37427e62ec40d4a10ce39b32f6d23504d157fe4ce46d50ded278f",
+      "scripts/theme/ds-theme.mjs": "deb8bf4be35e67123ad8486bc2d2059438d39cc86f3ec1742f438ad2b9bf2040",
+      "scripts/theme/extract-t3.mjs": "d658f284e64aad8297fb22b64617094943e143186471eba3ece343bcd41dc57f",
+      "scripts/theme/status.mjs": "67a9fbf36ebfe3c893581876babebb7954d9cff3e5d8dabc98992cbf89a54247"
+    }
+  },
+  "input": {
+    "hash": "787668dfb4407bc3d3e6f80c0c099da7921572f8ee56392205bdbf373e23697e",
+    "files": {
+      "theme/themes.json": "c4ddd18df97bd9668c8cc62b41770695f28fc38d230e2729231fee274520d10f"
+    }
+  },
+  "output": {
+    "hash": "b41266160589370fb3cceda8511da431d1460148f46d0f391f09b53ed95a499e",
+    "files": {
+      "registry.json (items theme, theme-ds)": "7c1208c875fc5c8e82a9a579a8e753388c3fcacdbe890d1c9f5e36770cd26f34",
+      "theme/tokens.css (theme:begin to theme:end)": "4e82730bdfc1ddcddc84c4af2c3a75f05bdf7887c403d45945a7b810dff7df07"
+    }
+  },
+  "pins": {}
+}

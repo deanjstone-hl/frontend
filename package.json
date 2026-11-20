@@ -6,7 +6,9 @@
   "packageManager": "pnpm@12.13.0",
   "scripts": {
     "test": "vitest run",
-    "build:theme": "node scripts/theme/build.mjs && npx shadcn@4.19.1 build --output ./r",
+    "build:registry": "node scripts/stamp/build-registry.mjs",
+    "build:theme": "node scripts/theme/build.mjs && node scripts/stamp/build-registry.mjs",
+    "update:snapshots": "node scripts/stamp/update-snapshots.mjs",
     "check": "bash scripts/check.sh",
     "lint": "oxlint --type-aware .",
     "gate:geometry": "node scripts/geometry-gate/run.mjs"

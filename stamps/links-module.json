@@ -1,0 +1,23 @@
+{
+  "name": "links-module",
+  "generator": {
+    "hash": "e96d86083c6039689b055ee02e5462238dd7dc5113d7e5bc28e9fbdadadaf27a",
+    "files": {
+      "scripts/links/generate.mjs": "0f652daf2aacd522e573ec5b64a765d4d2de748d38906863a42d59fbe8c10657",
+      "scripts/links/registry.mjs": "da4b7ed8854004165a0dec29ac0d2e54519d7eec3a04b5ba14ab93643e361ef3"
+    }
+  },
+  "input": {
+    "hash": "ec7e751f6201bcecde5d8dc7fcd1782bffffed0ff4875d26e38468595c0ebb30",
+    "files": {
+      "registry/links/links.json": "88d9d37dd321d2cb765359663870733fe1f46a6ea67703579b6597a09bd18f59"
+    }
+  },
+  "output": {
+    "hash": "9d35649bb29dc7e6107ed08df6b289fb2d2285a2df0978557ef91a22f251a25c",
+    "files": {
+      "registry/lib/links.ts": "3b30c96daff451e8708085c7583f74617f67c58b828573fdc158255ccfb75266"
+    }
+  },
+  "pins": {}
+}

@@ -9,6 +9,9 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { chromium } from "playwright-core"
 
+import { GEOMETRY_ARIA } from "../stamp/artefacts.mjs"
+import { chromiumPin } from "../stamp/pins.mjs"
+import { writeStamp } from "../stamp/stamp.mjs"
 import { captureScreenshot } from "./capture.mjs"
 import { CHECK_SCENARIOS,classify, runChecks, runLoginEdges } from "./checks.mjs"
 import { collectGeometry, drawOverlay } from "./collect.mjs"
@@ -41,6 +44,17 @@ const parseArgs = (argv) => {
 // half of the page at rest at that edge is held to it, because the other half is
 // scrolling past the opposite edge on its way to or from view. Fixed and sticky
 // chrome is checked in both. A page that does not scroll is checked whole.
+// The aria baselines are stamped only by a full --update-aria run: every view, the aria scenario,
+// no --url, and the Chromium the stamp pins. A partial run would stamp baselines it did not write.
+const stampAria = (browser) => {
+  const pinned = chromiumPin(repo)
+  if (!pinned.startsWith(browser.version())) {
+    throw new Error(`aria baselines not stamped: the gate ran Chromium ${browser.version()}, the pin is ${pinned}`)
+  }
+  writeStamp(GEOMETRY_ARIA)
+  console.log("aria baselines: wrote stamps/geometry-aria.json")
+}
+
 const measure = async (page, scenario) => {
   const { height } = scenario.viewport
   const scrollable = (await page.evaluate(() => document.documentElement.scrollHeight - innerHeight)) > 1
@@ -145,6 +159,7 @@ const main = async () => {
         aria: !args.url,
         glass: !args.url,
       })
+      if (args.updateAria && !args.url && args.view.length === 0 && checkScenarios.some((scenario) => scenario.name === CHECK_SCENARIOS[0])) stampAria(browser)
       if (!args.url) findings.push(...(await runLoginEdges({ browser, urlFor, scenarios, views })))
       const covered = (entry) => checkScenarios.some((scenario) => !entry.scenario || entry.scenario === scenario.name) && views.some((view) => !entry.view || entry.view === view.name)
       const { fresh, known, stale } = classify(findings, args.url ? () => false : covered)

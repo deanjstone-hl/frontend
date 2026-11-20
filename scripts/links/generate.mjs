@@ -1,9 +1,12 @@
 // Renders registry/lib/links.ts from registry/links/links.json.
 //   node scripts/links/generate.mjs           write the file
 //   node scripts/links/generate.mjs --check   exit 1 if the file is stale
-// test/links.test.ts fails on a stale file, so `pnpm check` catches it too.
+// test/links.test.ts fails on a stale file, so `pnpm check` catches it too. Writing the file
+// also writes stamps/links-module.json (frontend#234).
 import { readFileSync, writeFileSync } from "node:fs"
 import { fileURLToPath } from "node:url"
+import { LINKS_MODULE } from "../stamp/artefacts.mjs"
+import { writeStamp } from "../stamp/stamp.mjs"
 import { validateRegistry } from "./registry.mjs"
 
 const root = new URL("../../", import.meta.url)
@@ -41,5 +44,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
   } else {
     writeFileSync(modulePath, rendered)
+    writeStamp(LINKS_MODULE)
   }
 }

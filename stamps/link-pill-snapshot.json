@@ -1,0 +1,23 @@
+{
+  "name": "link-pill-snapshot",
+  "generator": {
+    "hash": "f15e2ea4325a48808f1aafa2476517af95acf1f5479be8a699fb8fd705d48b0e",
+    "files": {
+      "scripts/stamp/update-snapshots.mjs": "3dd4c5c4309ce982efe3bfa81652d39b1a29a210e9cc467cff68143e758cfbd8",
+      "test/link-pill-html.test.ts": "ebfa250d2b8200304ac7b996d441c6b8691e04a8622a58438dbd38bad57b4008"
+    }
+  },
+  "input": {
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "files": {}
+  },
+  "output": {
+    "hash": "168c14be9a53e6cb5231bdcb31183bd04e0a4a2efac4b706ac2142dfcbc4fe60",
+    "files": {
+      "test/__snapshots__/link-pill-html.test.ts.snap": "84879a30bd00b114b205a33a24f170d0e46fc5ada7b3ea0a6ddb65fc51166e82"
+    }
+  },
+  "pins": {
+    "vitest": "5.0.3"
+  }
+}

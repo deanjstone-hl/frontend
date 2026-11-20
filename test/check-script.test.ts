@@ -217,11 +217,11 @@ describe("pins match CI", () => {
     expect(scriptPin("IMPECCABLE_VERSION")).toBe(ci)
   })
 
-  it("shadcn version equals design.yml's build step and package.json's build:theme", () => {
+  it("shadcn version equals design.yml's build step and the stamp pin the wrapper runs", () => {
     const ci = design.match(/npx --yes shadcn@(\S+) build --output \.\/r/)?.[1]
     expect(ci).toBeDefined()
     expect(scriptPin("SHADCN_VERSION")).toBe(ci)
-    expect(pkg).toContain(`npx shadcn@${ci} build --output ./r`)
+    expect(read("scripts/stamp/pins.mjs")).toContain(`export const SHADCN_VERSION = "${ci}"`)
   })
 
   it("test step is the same command test.yml runs", () => {
