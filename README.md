@@ -639,6 +639,36 @@ only the element, so the glyph lands inside whatever you render — a lucide
 svg appends it as a stray text node. Give these parts an explicit child,
 `{null}` if the rendered element supplies its own (design-system#50).
 
+### Repair briefs: the issue shape for automated failures
+
+Every automated failure this repo files (the drift canary and the upstream-follow job, both
+still to come: [#237](https://github.com/deanjstone/frontend/issues/237),
+[#238](https://github.com/deanjstone/frontend/issues/238)) goes through one helper, so a worker
+gets everything from the issue alone. It also backs `.github/ISSUE_TEMPLATE/repair-brief.md`
+for a brief filed by hand.
+
+```sh
+node scripts/repair-brief/repair-brief.mjs --key "shadcn pin drift" \
+  --run-url "$RUN_URL" --changed "shadcn 4.19.1 -> 4.20.0" \
+  --failing-check "pnpm check, step 3/4" --output-file check.log \
+  --repro "pnpm install" --repro "pnpm check"
+```
+
+- **Shape.** Sections `Run`, `What changed`, `Failing check`, `Output` (fenced; the tail is
+  kept if it runs past 50,000 characters) and `Repro` (the commands, one per line). The same
+  headings are in the issue template, and a test fails if they drift.
+- **Dedupe.** The title is `Repair brief: <key>`. The helper searches open issues for that exact
+  title: it comments on the one it finds, or creates one. Keep the key stable (no run id,
+  timestamp or moving version in it), or each run files a new issue. `--repo owner/name` sets the
+  repo; in Actions the `GITHUB_TOKEN` needs `issues: write`, and `GH_TOKEN` must be set for `gh`.
+- **Labels.** Always `mode:afk` and `type:bug`, and never a `wave:` label. The orchestrator's wave
+  check places the wave (owner, 16 Nov 2026 20:00 AEDT). The CLI has no flag to add a label, and
+  `test/repair-brief.test.ts` asserts that no `wave:*` label is applied.
+
+The shape and dedupe come from [rauchg/xeet](https://github.com/rauchg/xeet)'s
+`upstream-watch.yml` and `sync.yml`. It is Apache-2.0; the helper is written for this repo and
+copies no code.
+
 ## Text size
 
 The registry follows iOS Larger Text ([#150](https://github.com/deanjstone/design-system/issues/150)):
