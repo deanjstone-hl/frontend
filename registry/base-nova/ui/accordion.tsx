@@ -1,40 +1,34 @@
-import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
+"use client"
+
+import {
+  Accordion as AccordionRoot,
+  AccordionHeader,
+  AccordionItem as AccordionItemPrimitive,
+  AccordionPanel,
+  AccordionTrigger as AccordionTriggerPrimitive,
+} from "@ui-sdk/react/accordion"
 import { cn } from "cn"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import type * as React from "react"
 
-
-
-function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
-  return (
-    <AccordionPrimitive.Root
-      data-slot="accordion"
-      className={cn("flex w-full flex-col", className)}
-      {...props}
-    />
-  )
+function Accordion({ className, ...props }: React.ComponentProps<typeof AccordionRoot>) {
+  return <AccordionRoot className={cn("flex w-full flex-col", className)} {...props} />
 }
 
-function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
-  return (
-    <AccordionPrimitive.Item
-      data-slot="accordion-item"
-      className={cn("not-last:border-b", className)}
-      {...props}
-    />
-  )
+function AccordionItem({ className, ...props }: React.ComponentProps<typeof AccordionItemPrimitive>) {
+  return <AccordionItemPrimitive className={cn("not-last:border-b", className)} {...props} />
 }
 
 function AccordionTrigger({
   className,
   children,
   ...props
-}: AccordionPrimitive.Trigger.Props) {
+}: React.ComponentProps<typeof AccordionTriggerPrimitive>) {
   return (
-    <AccordionPrimitive.Header className="flex">
-      <AccordionPrimitive.Trigger
-        data-slot="accordion-trigger"
+    <AccordionHeader className="flex">
+      <AccordionTriggerPrimitive
         className={cn(
-          "group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring aria-disabled:pointer-events-none aria-disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",
+          "group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring aria-disabled:pointer-events-none aria-disabled:opacity-50 data-disabled:pointer-events-none data-disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",
           className
         )}
         {...props}
@@ -48,8 +42,8 @@ function AccordionTrigger({
           data-slot="accordion-trigger-icon"
           className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
+      </AccordionTriggerPrimitive>
+    </AccordionHeader>
   )
 }
 
@@ -57,10 +51,10 @@ function AccordionContent({
   className,
   children,
   ...props
-}: AccordionPrimitive.Panel.Props) {
+}: React.ComponentProps<typeof AccordionPanel>) {
   return (
-    <AccordionPrimitive.Panel
-      data-slot="accordion-content"
+    <AccordionPanel
+      render={<div data-slot="accordion-content" />}
       className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
       {...props}
     >
@@ -72,7 +66,7 @@ function AccordionContent({
       >
         {children}
       </div>
-    </AccordionPrimitive.Panel>
+    </AccordionPanel>
   )
 }
 
