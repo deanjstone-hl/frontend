@@ -19,6 +19,13 @@ const tabTo = (el: HTMLElement) => {
     el.focus()
   })
 }
+// Moves fake time on. A tooltip opens at once while another one is open or was a moment ago, so a test
+// of the delay advances far first to let the earlier tests' tooltips go cold.
+const advance = (ms: number) => {
+  void act(() => {
+    vi.advanceTimersByTime(ms)
+  })
+}
 // Resting a mouse on an element.
 const rest = (el: HTMLElement) => {
   void act(() => {
@@ -37,9 +44,6 @@ function Save(props: React.ComponentProps<typeof Tooltip> & { side?: "top" | "bo
   )
 }
 
-// A tooltip opens at once while another one is open or was a moment ago, so a test of the delay lets the
-// earlier tests' tooltips go cold first.
-const cooldown = () => act(() => vi.advanceTimersByTime(10_000))
 
 const trigger = () => screen.getByRole("button", { name: "Save" })
 
@@ -93,14 +97,14 @@ describe("Tooltip: behaviour (frontend#245, on @ui-sdk)", () => {
   it("waits for its delay before opening on hover", async () => {
     vi.useFakeTimers()
     try {
-      cooldown()
+      advance(10_000)
       render(<Save delay={500} />)
       fireEvent.pointerEnter(trigger(), { pointerType: "mouse" })
 
-      act(() => vi.advanceTimersByTime(300))
+      advance(300)
       expect(screen.queryByRole("tooltip")).toBeNull()
 
-      act(() => vi.advanceTimersByTime(300))
+      advance(300)
       expect(screen.queryByRole("tooltip")).toBeTruthy()
     } finally {
       vi.useRealTimers()
@@ -148,7 +152,7 @@ describe("Tooltip: behaviour (frontend#245, on @ui-sdk)", () => {
   it("takes its delay from a TooltipProvider unless the tooltip sets one", async () => {
     vi.useFakeTimers()
     try {
-      cooldown()
+      advance(10_000)
       render(
         <TooltipProvider delay={400}>
           <Save />
@@ -156,10 +160,10 @@ describe("Tooltip: behaviour (frontend#245, on @ui-sdk)", () => {
       )
       fireEvent.pointerEnter(trigger(), { pointerType: "mouse" })
 
-      act(() => vi.advanceTimersByTime(200))
+      advance(200)
       expect(screen.queryByRole("tooltip")).toBeNull()
 
-      act(() => vi.advanceTimersByTime(300))
+      advance(300)
       expect(screen.queryByRole("tooltip")).toBeTruthy()
     } finally {
       vi.useRealTimers()

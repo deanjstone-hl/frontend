@@ -19,6 +19,13 @@ const tabTo = (el: HTMLElement) => {
     el.focus()
   })
 }
+// Moves fake time on. A tooltip opens at once while another one is open or was a moment ago, so a test
+// of the delay advances far first to let the earlier tests' tooltips go cold.
+const advance = (ms: number) => {
+  void act(() => {
+    vi.advanceTimersByTime(ms)
+  })
+}
 // Resting a mouse on an element.
 const rest = (el: HTMLElement) => {
   void act(() => {
@@ -71,10 +78,10 @@ describe("HoverCard: behaviour (frontend#245, on @ui-sdk)", () => {
       render(<Profile delay={400} />)
       fireEvent.pointerEnter(link(), { pointerType: "mouse" })
 
-      act(() => vi.advanceTimersByTime(200))
+      advance(200)
       expect(screen.queryByText("Profile preview")).toBeNull()
 
-      act(() => vi.advanceTimersByTime(300))
+      advance(300)
       expect(screen.queryByText("Profile preview")).toBeTruthy()
     } finally {
       vi.useRealTimers()
