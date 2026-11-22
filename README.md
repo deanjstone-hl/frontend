@@ -118,9 +118,10 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 | `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 |
 | `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 
-Next in order, one family per landing: the leaf and medium items
-(`checkbox`, `radio-group`, `tabs`, `accordion`, `collapsible`, `slider`, `toggle`), the dialog family, and
+Next in order, one family per landing: the rest of the leaf and medium items
+(`tabs`, `accordion`, `slider`), the dialog family, and
 last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
 
@@ -181,6 +182,30 @@ touch screen). Exported names, `data-slot` values, `className` merging and the l
 - **The empty message is a plain block**, shown by the SDK only while nothing matches (Base UI hid it with a CSS
   group variant), and the list's `max-h` reads `--list-height`, copied from `--available-height` on the content, because
   the SDK does not inherit `--available-height`.
+
+**Leaf items (`checkbox`, `radio-group`, `toggle`, `collapsible`).** Exported names, props, `className` merging and the look
+are unchanged; these have no popup, so there is no portal and no top-layer note. What a consumer may notice:
+
+- **Part slots are the SDK's, and a `data-slot` prop is ignored.** The SDK sets `data-slot` itself on every part. `checkbox`
+  (`checkbox`, `checkbox-indicator`) and `toggle` (`toggle`) keep their values. `radio-group-item` is now `radio` and
+  `radio-group-indicator` is `radio-indicator` (`radio-group` is unchanged). The `collapsible` panel was `collapsible-content`
+  and is `collapsible-panel`. To give a part your own slot, pass a `render` element:
+  `<Collapsible render={<div data-slot="mine" />}>`, as `file-diff`, `grouped-list` and `trace` now do. Update any CSS or
+  test selector of yours on the renamed slots.
+- **`collapsible` marks the open state `data-open`** on the root, trigger and panel, where Base UI used `data-panel-open`.
+  A class of yours such as `group-data-panel-open/header:` or `[&[data-panel-open]]` needs `data-open`. `aria-expanded` on the
+  trigger is unchanged. The panel's `--collapsible-panel-height` variable, `data-starting-style` and `data-ending-style`
+  work as before.
+- **`checkbox`** is a `<button role="checkbox">` (Base UI rendered a `<span>`). `onCheckedChange(checked, details)` still gets a
+  boolean and now carries the SDK's `details.reason` (`press`, `reset`, `restore`, `imperative`). `indeterminate` still works
+  (it sets the SDK's `checked="indeterminate"`, so control `checked` yourself) and is now drawn as a minus, not a check.
+  The props type is the SDK's `Checkbox` props, not `Checkbox.Root.Props`.
+- **`radio-group`** is generic over the value type; `onValueChange(value, details)` carries `details.reason`. The group keeps one
+  tab stop and moves the choice with the arrow keys, skipping a disabled radio.
+- **`toggle`**: `onPressedChange(pressed, details)` carries `details.reason`; `toggleVariants` is unchanged, so `toggle-group`
+  (still Base UI) looks the same.
+- **Tests in jsdom** that close a `collapsible` or toggle a `checkbox` hit the SDK's exit animation, which reads
+  `Element.prototype.getAnimations`. Call `installUiSdkStubs()` at the top of the test file, as for the popups.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
