@@ -120,8 +120,9 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 | `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `tooltip`, `hover-card` | the registry release after slice 6; `tooltip` is also pulled by `sidebar` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 
-Next in order, one family per landing: the dialog family, and
+Next in order, one family per landing: the dialog family (`dialog`, `alert-dialog`, `sheet`, then `drawer`), and
 last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
 
@@ -231,6 +232,21 @@ look and the `data-slot` values consumers and the theme already target are uncha
   `drag`, `step-key`, `accessibility-adjust`, `reset`, `restore`, `imperative`). `name` submits the number, or a range as `"start/end"`.
 - **Tests in jsdom** need `installUiSdkStubs()` at the top of the file, as for the other items (the exit animation reads
   `Element.prototype.getAnimations`).
+
+**`tooltip`, `hover-card`.** Popups like `popover`, so the same three popup notes apply (jsdom stubs, no `z-50`, no `Portal` or `Positioner`).
+Exported names, `data-slot` values, `className` merging, the default `side`, `sideOffset`, `align` and `alignOffset`, the arrow and the look
+are unchanged; `data-open`, `data-closed` and `data-side` are what the classes key off. What a consumer may notice:
+
+- **`TooltipProvider` is a context, not Base UI's provider.** The SDK needs none (a tooltip opens at once while another is open or was a
+  moment ago). The wrapper hands the provider's `delay` (0 unless you set it) and `closeDelay` to the tooltips under it, and a tooltip's
+  own `delay` wins. A `Tooltip` outside any provider uses the SDK's default delay, where Base UI's was 600 ms.
+- **`onOpenChange(open, details)`** carries the SDK's `details.reason` (`trigger-hover`, `trigger-focus`, `trigger-press`, `escape-key`,
+  `focus-out` and more) in place of Base UI's event details. The props types are the SDK's.
+- **Hide a tooltip with `disabled`, not `hidden`.** The sidebar's menu button used `hidden` on the content while the sidebar was expanded; it
+  now sets `disabled` on the `Tooltip`. A tooltip of yours that does the same should too.
+- **A tooltip opens on keyboard focus only for keyboard focus**, not after a click; the trigger of a `disabled` tooltip stays a working button.
+- **Tests in jsdom** that hover or focus a trigger: press Tab first (the SDK reads the input modality) and fire `pointerEnter` with
+  `pointerType: "mouse"`; a tooltip opens at once while another was open a moment ago, so a test of the delay waits that out first.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
