@@ -117,8 +117,9 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 |---|---|---|
 | `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 |
 | `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 
-Next in order, one family per landing: `combobox`, the leaf and medium items
+Next in order, one family per landing: the leaf and medium items
 (`checkbox`, `radio-group`, `tabs`, `accordion`, `collapsible`, `slider`, `toggle`), the dialog family, and
 last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
@@ -157,6 +158,29 @@ event details. Three more things for a consumer:
 - **`z-50` and `isolate` no longer matter** for stacking: the top layer sits above every `z-index`.
 - **On a small touch screen it stays a popover.** `presentation` is not set; the SDK's `"auto"` (a bottom sheet)
   is opt-in per use.
+
+**`combobox`.** A popup like `popover`, so the same three popup notes apply (jsdom stubs, no `z-50`, popover on a small
+touch screen). Exported names, `data-slot` values, `className` merging and the look are unchanged; `data-highlighted`,
+`data-selected`, `data-disabled`, `data-open` and `data-closed` are what the classes key off. What a consumer may notice:
+
+- **`Portal` and `Positioner` are gone.** `ComboboxContent` takes `side`, `align`, `sideOffset`, `alignOffset` and `anchor`
+  itself, with the same defaults. `anchor` still takes the ref from `useComboboxAnchor()`.
+- **Same list shapes.** `items` is still an array of strings, `{ value, label }` objects or Base UI groups
+  (`{ value, items }`, rendered with `ComboboxGroup items`, `ComboboxLabel` and `ComboboxCollection`), and
+  `ComboboxList` and `ComboboxValue` still take a render function (`(item, index)` and `(value)`).
+- **Renamed root props still work.** `inputValue`, `defaultInputValue`, `onInputValueChange`, `itemToStringLabel` and
+  `itemToStringValue` are passed on as the SDK's `query`, `defaultQuery`, `onQueryChange`, `itemToLabel` and
+  `itemToValue`. Other Base UI root props are the SDK's now (`onValueChange(value, details)` and
+  `onOpenChange(open, details)` carry the SDK's `details.reason`; `autoHighlight` takes `"always"`, `"selected"` or a
+  boolean). The props type is the SDK's, not `Combobox.Root.Props`.
+- **`ComboboxChip` needs a `value`** (`<ComboboxChip value={fruit}>`): the SDK removes a chip by its value, where Base UI
+  removed it by position. `ComboboxChipRemove` is named "Remove" and the trigger "Show options" unless you pass
+  `aria-label`.
+- **`disabled` on the root now disables the input and its trigger.** Base UI left the input enabled because the wrapper
+  passed `disabled={false}` to it.
+- **The empty message is a plain block**, shown by the SDK only while nothing matches (Base UI hid it with a CSS
+  group variant), and the list's `max-h` reads `--list-height`, copied from `--available-height` on the content, because
+  the SDK does not inherit `--available-height`.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
