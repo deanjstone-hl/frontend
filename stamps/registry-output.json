@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "1fc2e80c849a99eceabf93530638110742cb230cb13d1c7edea96c7fe38224ac",
+    "hash": "380a705e63cc703cdac2374b77c1f7db548c70329e2860648ae1709611a0dd1c",
     "files": {
-      "registry.json": "179bd8db8fd85bd3de72e4eb91a46ec66db131f9e55ecc1a09119e3582fb60d4",
+      "registry.json": "9f8d4e12c0666a913ecf843463468fd70d73f1f0f242a11135528a5ff1a35811",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "6e318605ed6fb41d4a3fed114064abbfc2ae368ae8cffc4e4046a4e0c2056f96",
       "registry/base-nova/blocks/app-switcher.tsx": "dad17ebc1d7b7c22cdcfeedd8fd9f32bf3a17c8009761bafe7533dd69c6af759",
@@ -87,7 +87,7 @@
       "registry/base-nova/ui/slider.tsx": "cdff3011bbbb07bbc0a3c90f96b6785680524cb25b72af00a8553354016dadf5",
       "registry/base-nova/ui/sonner.tsx": "5ce0174f00c9fc85fea187267e26f3501181882f24a31578d62c8f259b901edd",
       "registry/base-nova/ui/spinner.tsx": "049fa7637ec9fbdb8fd54b5d493004c337a185a1862d8641e150818a46c7b206",
-      "registry/base-nova/ui/switch.tsx": "0cb85b0563c1adf46e6ce2fd0fb063b2af00f42c9768fac8884b65a5a1d174a8",
+      "registry/base-nova/ui/switch.tsx": "ca7dc1c8dc98196946a0d2ce534bb15331334f7906680ed9f2aafd4d75d57a59",
       "registry/base-nova/ui/table.tsx": "55c01f1b39a9d32669fa9ed870436ee2dbba0e3fb8f6c563f3dc0ab5270250e9",
       "registry/base-nova/ui/tabs.tsx": "4a95bace24bd87413147998754c3063a336255e9b016dfbe8099e6f470fbf2ce",
       "registry/base-nova/ui/textarea.tsx": "d2b0a12de5792037fbec2314c7493f494161589557eb5571397b418bb1cbe3c3",
@@ -128,7 +128,7 @@
     }
   },
   "output": {
-    "hash": "e112a59fb328247efbb09162e190d6e9582ae7d2f5a614b840a348e6f23bb434",
+    "hash": "f278aea05a661976ef05461c98e63fee6f606e99460a3bea99abde3c84cf6509",
     "files": {
       "r/accordion.json": "9d0e4d43194f7a159fcb837cd95f4519b79b0c7169429595fa1f4435dde6cf9a",
       "r/alert-dialog.json": "3e4d087b55a7568aa015c9564f3d673748425044f30dca82700a21b8bc7bcf91",
@@ -207,7 +207,7 @@
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "757e1632833318d04b9eab104403ec1548731b61e16b6e6c50abb654962b73c5",
-      "r/registry.json": "179bd8db8fd85bd3de72e4eb91a46ec66db131f9e55ecc1a09119e3582fb60d4",
+      "r/registry.json": "9f8d4e12c0666a913ecf843463468fd70d73f1f0f242a11135528a5ff1a35811",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
       "r/select.json": "fb5231b194319f88f5aae660f25fa2d14745f00ed223c0bc2b44562748d6073e",
@@ -219,7 +219,7 @@
       "r/slider.json": "e3a32b451255e35f888ec6354ce22d0df8adc4c94acc2b71d41f3d4aaea8f266",
       "r/sonner.json": "3b052004a78e75fce946850d34e002b5aed92c83c84df72fd1bb552b68d7a524",
       "r/spinner.json": "00648ee80b703bdc8ba8e862fc2e6dc3422a042f0c48cb74d5f2904a2aba30c4",
-      "r/switch.json": "9bc732d886a1f9e10ef4d6e51a5d551b3c7edef8cfc0e165f37fe3977444719f",
+      "r/switch.json": "1fbf10b5fb14610996bd0f085696ebf4d32e1cd62c7a26c7ed3c196c4dfef09a",
       "r/table.json": "052ea030651897ba2733b72210d567c38bc53421df237d1355dc9d42e289c77f",
       "r/tabs.json": "b0de392e18085d4cb89033c3bb5a5896c75b0e7cdfcaa30191925283eb8e3b1e",
       "r/textarea.json": "73e3305c28809c8d1c8ec6e561f26c256061cc7669f75fdfa8cf45ca24bb8403",

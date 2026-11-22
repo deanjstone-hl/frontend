@@ -104,6 +104,59 @@ drift table).
 Move a pending row to consuming only once a `components.json` with the alias
 is on that repo's `main`.
 
+### Items on UI SDK
+
+[`@ui-sdk`](https://github.com/vercel-labs/ui) (Vercel Labs, Apache-2.0, beta) is the behaviour layer
+under a growing set of items, replacing Base UI one item at a time
+([frontend#245](https://github.com/deanjstone/frontend/issues/245); the fit check is
+[frontend#244](https://github.com/deanjstone/frontend/issues/244)). A consumer keeps the same exported
+names and props. The SDK is not a shadcn registry: it ships as npm packages, so each migrated item's
+`.tsx` is rewritten over SDK parts and lists the SDK as an exact-pinned dependency.
+
+| Item | On UI SDK since | Pin |
+|---|---|---|
+| `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+
+Next in order, one family per landing: `popover` (the first popup), `combobox`, the leaf and medium items
+(`checkbox`, `radio-group`, `tabs`, `accordion`, `collapsible`, `slider`, `toggle`), the dialog family, and
+last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
+`badge` and the like) never move.
+
+**What re-pulling a migrated item changes** (`npx shadcn add deanjstone/frontend/<item>`; consumers
+move only when they choose to re-add):
+
+1. **Two new dependencies.** The consumer gets `@ui-sdk/core` and `@ui-sdk/react` at the exact pinned
+   version (no caret) and a lockfile change. Both need React 19 or newer (`react >=19`, `@types/react >=19.2.10`);
+   every consumer already has it. `@base-ui/react` stays until every item the consumer uses has moved, so
+   it carries both for a while.
+2. **Same API, same look.** Exported names, props (`size`), `className` merging, `data-slot` values and the
+   `data-checked` / `data-unchecked` / `data-disabled` state attributes the classes key off are unchanged for
+   `switch`. Two things differ: the root is a `<button role="switch">` (Base UI rendered a `<span>`), and
+   `onCheckedChange(checked, details)` now carries `details.reason` (`press`, `reset`, `restore`, `imperative`)
+   in place of Base UI's event details. The props type is the SDK's, not `Switch.Root.Props`.
+3. **Your own CSS and tests.** Anything of yours that targets a Base UI element, attribute or class on that
+   component (a `span` selector, the Base UI event shape) needs a look.
+4. **Possibly a CSP change.** The SDK can inject a style sheet; without `'unsafe-inline'` in `style-src` it needs
+   a `csp-nonce` meta tag. Not confirmed for `switch` (frontend tests run in jsdom, which has no CSP), so a consumer
+   that sets a CSP should load a page with a switch once after re-pulling. The popup items settle it.
+5. **Local edits to the file are overwritten.** As with any re-add.
+
+**Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
+every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
+`package.json` disagree, or when the two packages differ. Every beta is a semver "patch" and may break, so
+a bump is one change here: edit both pins, `pnpm install`, `pnpm vendor:ui-sdk`, `pnpm build:registry`, run
+`pnpm check`, and promote a registry release. Consumers see nothing until they re-pull. Never use a tag or
+range: the npm `latest` tag is behind `beta`.
+
+**The skill and docs** are vendored from the pinned packages into `vendor/ui-sdk/` (`skill/SKILL.md`,
+`docs/llms.txt`, and the rest), never pulled from GitHub: `npx skills add vercel-labs/ui` reads an
+unversioned branch, so do not run it. `pnpm vendor:ui-sdk` rewrites them and `stamps/ui-sdk-vendor.json`; drift fails
+`pnpm check`. `AGENTS.md` points agents at them.
+
+**WebMCP.** The SDK's `registerTools` is opt-in per app and no registry item calls it. A consumer that wants it
+decides that on its own.
+
+
 ## Structure
 
 ```

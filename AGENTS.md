@@ -9,6 +9,7 @@
 - `base-nova` shadcn style on Base UI (`@base-ui/react`), Tailwind v4 (`@theme inline`, no `tailwind.config.js`), OKLCH color tokens. Switched from `new-york`/Radix in ADR-0001 — don't add a second style variant without an ADR.
 - No build step, no npm publish. Files are copied into consumer repos as-is by the shadcn CLI.
 - Every new component: source file(s) under `registry/`, plus a matching `registry.json` entry, in the same commit — the two must never drift.
+- **UI SDK** (`@ui-sdk/core` and `@ui-sdk/react`, beta, exact-pinned, behind the registry components one item at a time): read `vendor/ui-sdk/skill/SKILL.md` and `vendor/ui-sdk/docs/llms.txt`, vendored from the pinned packages. Never run `npx skills add vercel-labs/ui` (unversioned GitHub read). A bump is `package.json`, `registry.json`, `pnpm install`, `pnpm vendor:ui-sdk`, `pnpm build:registry`. See README § Items on UI SDK.
 
 ## Governance
 
