@@ -189,7 +189,7 @@ scripts/geometry-gate/     the curve-geometry gate behind pnpm gate:geometry
 scripts/stamp/             the stamp mechanism, what it stamps (artefacts.mjs) and the r/ and snapshot generators
 stamps/                    one stamp per generated artefact or golden; only its generator writes it
 vendor/ui-sdk/             the @ui-sdk skill and docs, vendored from the pinned packages (pnpm vendor:ui-sdk); not shipped to consumers
-scripts/ui-sdk/            vendor.mjs copies them and stamps; files.mjs says from where
+scripts/ui-sdk/            vendor.mjs copies them and stamps; scripts/stamp/ui-sdk-files.mjs says from where
 scripts/release/           release-needed.sh (anything to release?) and tested-head.sh (tag only the promoted SHA); scripts/promote.sh pushes deploy
 scripts/theme/              extract-t3.mjs reads T3's sheet; build.mjs writes tokens.css and registry.json
 scripts/links/              registry.mjs validates links.json, generate.mjs writes lib/links.ts, cf-drift.mjs diffs Cloudflare

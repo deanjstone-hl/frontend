@@ -1,10 +1,10 @@
 {
   "name": "ui-sdk-vendor",
   "generator": {
-    "hash": "d828e9c682f64ca3f8868c6305005b7c2fd997c1482007aabd7676b0df12ef7c",
+    "hash": "0e84e4f1a800c5d9411c28dbfe084f5e1b750f6830e741a71e93e6807debbb4d",
     "files": {
-      "scripts/ui-sdk/files.mjs": "df8c5e76e28ac55efcf8a97d09e72e5aba587170b73e511c57a2e92084b1a135",
-      "scripts/ui-sdk/vendor.mjs": "f6bbb9fece504b3b607f3df8bbd2d8d755872f23b3d09d386117ad3da9bbf465"
+      "scripts/stamp/ui-sdk-files.mjs": "df8c5e76e28ac55efcf8a97d09e72e5aba587170b73e511c57a2e92084b1a135",
+      "scripts/ui-sdk/vendor.mjs": "594b8986577c485d6da6772d707ec26b5dfea9813eab04f450607c9dc8015447"
     }
   },
   "input": {

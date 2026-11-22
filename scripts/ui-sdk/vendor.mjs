@@ -8,7 +8,7 @@ import { dirname, join } from "node:path"
 import { UI_SDK_VENDOR } from "../stamp/artefacts.mjs"
 import { installedVersion } from "../stamp/pins.mjs"
 import { repoRoot, writeStamp } from "../stamp/stamp.mjs"
-import { NOTE_PATH, VENDORED, note } from "./files.mjs"
+import { NOTE_PATH, VENDORED, note } from "../stamp/ui-sdk-files.mjs"
 
 rmSync(join(repoRoot, "vendor/ui-sdk"), { recursive: true, force: true })
 for (const [source, destination] of VENDORED) {

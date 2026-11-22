@@ -17,7 +17,7 @@ import { join } from "node:path"
 
 import { SHADCN_VERSION, chromiumPin, installedVersion } from "./pins.mjs"
 import { fileEntries } from "./stamp.mjs"
-import { sourceFiles, vendoredFiles } from "../ui-sdk/files.mjs"
+import { sourceFiles, vendoredFiles } from "./ui-sdk-files.mjs"
 
 const readText = (root, path) => readFileSync(join(root, path), "utf8")
 
@@ -126,7 +126,7 @@ export const UI_SDK_VENDOR = {
   name: "ui-sdk-vendor",
   regenerate: "pnpm vendor:ui-sdk",
   writer: "scripts/ui-sdk/vendor.mjs",
-  generator: ["scripts/ui-sdk/vendor.mjs", "scripts/ui-sdk/files.mjs"],
+  generator: ["scripts/ui-sdk/vendor.mjs", "scripts/stamp/ui-sdk-files.mjs"],
   inputs: (root) => sourceFiles(root),
   outputs: (root) => fileEntries(root, vendoredFiles(root)),
   pins: (root) => ({ "@ui-sdk/core": installedVersion(root, "@ui-sdk/core"), "@ui-sdk/react": installedVersion(root, "@ui-sdk/react") }),
