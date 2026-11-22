@@ -12,6 +12,9 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "../registry/base-nova/ui/popover"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 afterEach(cleanup)
 

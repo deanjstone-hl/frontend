@@ -2,6 +2,9 @@ import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-li
 import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { AppSwitcher, type SwitcherApp } from "../registry/base-nova/blocks/app-switcher"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 // jsdom has no layout and no matchMedia. A test that wants a desktop width
 // installs one that answers the switcher's min-width query.

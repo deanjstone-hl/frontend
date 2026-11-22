@@ -4,6 +4,9 @@ import { readFileSync } from "node:fs"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { AppShell, type ShellSection } from "../registry/base-nova/blocks/app-shell"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 afterEach(cleanup)
 

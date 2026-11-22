@@ -5,6 +5,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import type { Filter, FilterField } from "../registry/lib/filter-core"
 import { FilterBuilder } from "../registry/base-nova/blocks/filter-builder"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 // jsdom has no matchMedia, which useIsMobile reads. Anything that is not a phone by default.
 const stubMatchMedia = (matches: boolean) =>

@@ -6,6 +6,9 @@ import { join } from "node:path"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { Switch } from "../registry/base-nova/ui/switch"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 afterEach(cleanup)
 

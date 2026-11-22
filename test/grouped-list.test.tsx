@@ -7,6 +7,9 @@ import { IssueRow } from "../registry/base-nova/blocks/issue-row"
 import { DisplayMenu, GroupedList } from "../registry/base-nova/blocks/grouped-list"
 import { useDisplaySettings } from "../registry/base-nova/hooks/use-display-settings"
 import { groupItems, pickVisible, type DisplayConfig, type ListGrouping } from "../registry/lib/list-group-core"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 // The grouped list and its display menu (design-system#194): collapsible group headers with a count, and
 // a menu that turns row properties on and off. The settings model has its own tests.

@@ -37,8 +37,6 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     include: ["test/**/*.test.{ts,tsx}"],
-    // jsdom stubs the @ui-sdk popups need (frontend#245); a no-op under the node environment.
-    setupFiles: ["./test/setup/ui-sdk.ts"],
     // The host is shared and often loaded; the tsc and git-spawning tests take 8-15 s there
     // against vitest's 5 s default, and pass when given room.
     testTimeout: 30_000,

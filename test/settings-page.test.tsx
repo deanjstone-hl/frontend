@@ -8,6 +8,9 @@ import {
   SettingsSection,
   THEME_LABELS,
 } from "../registry/base-nova/blocks/settings-page"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 afterEach(cleanup)
 

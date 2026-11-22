@@ -151,7 +151,8 @@ event details. Three more things for a consumer:
 - **Tests that render a popup in jsdom need stubs.** jsdom has no top layer: without
   `HTMLElement.prototype.showPopover`, `hidePopover` and `Element.prototype.getAnimations` stubbed, and
   `[popover] { display: block !important }` added, the popup never shows. The registry's own copy is
-  `test/setup/ui-sdk.ts`; it is not an item, so a consumer copies it into its Vitest `setupFiles`. It does not
+  `installUiSdkStubs()` in `test/setup/ui-sdk.ts`; it is not an item, so a consumer copies it and calls it at the top
+  of each test file that renders a popup (not as a global setup: the `getAnimations` stub changes how Base UI menus close). It does not
   test native popup behaviour, so check placement in a real browser.
 - **`z-50` and `isolate` no longer matter** for stacking: the top layer sits above every `z-index`.
 - **On a small touch screen it stays a popover.** `presentation` is not set; the SDK's `"auto"` (a bottom sheet)
