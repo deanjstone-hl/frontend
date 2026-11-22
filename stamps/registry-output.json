@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "380a705e63cc703cdac2374b77c1f7db548c70329e2860648ae1709611a0dd1c",
+    "hash": "015b06a098677cb23948cb0ed1e19db031012be945177626832a9122ebf613f9",
     "files": {
-      "registry.json": "9f8d4e12c0666a913ecf843463468fd70d73f1f0f242a11135528a5ff1a35811",
+      "registry.json": "35d3c1c0cbfbd96a9903e90bb29e7e30a8e3f43aea9f0a74c61c1818becdf660",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "6e318605ed6fb41d4a3fed114064abbfc2ae368ae8cffc4e4046a4e0c2056f96",
       "registry/base-nova/blocks/app-switcher.tsx": "dad17ebc1d7b7c22cdcfeedd8fd9f32bf3a17c8009761bafe7533dd69c6af759",
@@ -73,7 +73,7 @@
       "registry/base-nova/ui/native-select.tsx": "4d6bbd45578b4a01745dd247fa0e86806c2c244bc77a1a15bc9acc629360889f",
       "registry/base-nova/ui/navigation-menu.tsx": "4c8116fc2ad2325a69facf9f6e152e7aec50e5a005533a1702fb0087abd5b4e7",
       "registry/base-nova/ui/pagination.tsx": "7d88c6f8d73b89528dd2eb88b5c5202c44bd62560fe8953f6114d8fee143655f",
-      "registry/base-nova/ui/popover.tsx": "8b9a76eecb55742f2975f11398416d2f086eb9c1f1414c6f9ae5635d9c7bdb79",
+      "registry/base-nova/ui/popover.tsx": "a1f27ec3d646047b659ff097c4382b63fcb5bb5a78e38536c4193d0e6f1fc072",
       "registry/base-nova/ui/progress.tsx": "3cd9d89f2c9ea7a80cd3336389b06d9325f8b99e5c28ddbfa2a0fafb49f694e5",
       "registry/base-nova/ui/questionnaire.tsx": "c2e669ba04fe14fb53fb7989a51b0d1e0461cec41963619fd96d8effa2132ca4",
       "registry/base-nova/ui/radio-group.tsx": "f779542f2370b82fcbb91278fb94f7ad4af59d0f36512633492604b27da48e8d",
@@ -128,7 +128,7 @@
     }
   },
   "output": {
-    "hash": "f278aea05a661976ef05461c98e63fee6f606e99460a3bea99abde3c84cf6509",
+    "hash": "a2d155190e1dfc71ec43d670f002bc0bf4ca3c8e61fa5703ac49a2a3aadf6d9f",
     "files": {
       "r/accordion.json": "9d0e4d43194f7a159fcb837cd95f4519b79b0c7169429595fa1f4435dde6cf9a",
       "r/alert-dialog.json": "3e4d087b55a7568aa015c9564f3d673748425044f30dca82700a21b8bc7bcf91",
@@ -203,11 +203,11 @@
       "r/navigation-menu.json": "a746c83acdc13ed2031402d5fd5e1231af4e32ede752cc2cf7aa8f4ce4f178da",
       "r/page-header.json": "f76211d2fb6ae433e8ab3f2d9f9c7c3aedf7f56904ce2c6bf28e901119add81c",
       "r/pagination.json": "bd2be92206fcd03bb2c679a945ff52e516969f02acfa45eb4e958775db03d977",
-      "r/popover.json": "77334386ded89a1aba4780eca58703a66f83eaf8a9f20be8d9622374d9eb4737",
+      "r/popover.json": "fbf25b3166c27c639f99b7523322f6e7e98c78233b12ec0684004264fcfe691a",
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "757e1632833318d04b9eab104403ec1548731b61e16b6e6c50abb654962b73c5",
-      "r/registry.json": "9f8d4e12c0666a913ecf843463468fd70d73f1f0f242a11135528a5ff1a35811",
+      "r/registry.json": "35d3c1c0cbfbd96a9903e90bb29e7e30a8e3f43aea9f0a74c61c1818becdf660",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
       "r/select.json": "fb5231b194319f88f5aae660f25fa2d14745f00ed223c0bc2b44562748d6073e",

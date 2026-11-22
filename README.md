@@ -115,9 +115,10 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 
 | Item | On UI SDK since | Pin |
 |---|---|---|
-| `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 |
+| `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 
-Next in order, one family per landing: `popover` (the first popup), `combobox`, the leaf and medium items
+Next in order, one family per landing: `combobox`, the leaf and medium items
 (`checkbox`, `radio-group`, `tabs`, `accordion`, `collapsible`, `slider`, `toggle`), the dialog family, and
 last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
@@ -140,6 +141,21 @@ move only when they choose to re-add):
    a `csp-nonce` meta tag. Not confirmed for `switch` (frontend tests run in jsdom, which has no CSP), so a consumer
    that sets a CSP should load a page with a switch once after re-pulling. The popup items settle it.
 5. **Local edits to the file are overwritten.** As with any re-add.
+
+**Popups (`popover`, and what pulls it).** The SDK renders a popup in the browser's top layer, so `Portal` and
+`Positioner` are gone: `PopoverContent` takes `side`, `align`, `sideOffset` and `alignOffset` itself, with the
+same defaults. `PopoverTrigger` still takes `render`. `onOpenChange(open, details)` carries `details.reason`
+(`trigger-press`, `escape-key`, `outside-press`, `focus-out`, `close-press`, and more) in place of Base UI's
+event details. Three more things for a consumer:
+
+- **Tests that render a popup in jsdom need stubs.** jsdom has no top layer: without
+  `HTMLElement.prototype.showPopover`, `hidePopover` and `Element.prototype.getAnimations` stubbed, and
+  `[popover] { display: block !important }` added, the popup never shows. The registry's own copy is
+  `test/setup/ui-sdk.ts`; it is not an item, so a consumer copies it into its Vitest `setupFiles`. It does not
+  test native popup behaviour, so check placement in a real browser.
+- **`z-50` and `isolate` no longer matter** for stacking: the top layer sits above every `z-index`.
+- **On a small touch screen it stays a popover.** `presentation` is not set; the SDK's `"auto"` (a bottom sheet)
+  is opt-in per use.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
