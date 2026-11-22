@@ -10,6 +10,10 @@ import {
   CommandItem,
   CommandList,
 } from "../registry/base-nova/ui/command"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+// CommandDialog is an SDK dialog now, which needs the jsdom top-layer stubs.
+installUiSdkStubs()
 
 // cmdk measures its list and scrolls the selected item into view; jsdom has
 // neither API.
@@ -77,7 +81,7 @@ describe("Command", () => {
 })
 
 describe("CommandDialog", () => {
-  it("renders the command inside an accessible dialog when open", () => {
+  it("renders the command inside an accessible dialog when open", async () => {
     render(
       <CommandDialog open title="Go to">
         <Command>
@@ -88,7 +92,7 @@ describe("CommandDialog", () => {
       </CommandDialog>
     )
 
-    expect(screen.getByRole("dialog", { name: "Go to" })).toBeTruthy()
+    expect(await screen.findByRole("dialog", { name: "Go to" })).toBeTruthy()
     expect(screen.getByRole("option", { name: "Settings" })).toBeTruthy()
   })
 })
