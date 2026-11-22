@@ -119,9 +119,9 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 | `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 
-Next in order, one family per landing: the rest of the leaf and medium items
-(`tabs`, `accordion`, `slider`), the dialog family, and
+Next in order, one family per landing: the dialog family, and
 last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
 
@@ -206,6 +206,31 @@ are unchanged; these have no popup, so there is no portal and no top-layer note.
   (still Base UI) looks the same.
 - **Tests in jsdom** that close a `collapsible` or toggle a `checkbox` hit the SDK's exit animation, which reads
   `Element.prototype.getAnimations`. Call `installUiSdkStubs()` at the top of the test file, as for the popups.
+
+**`tabs`, `accordion`, `slider`.** No popup, so no portal and no top-layer note. Exported names, props, `className` merging, the
+look and the `data-slot` values consumers and the theme already target are unchanged: `tabs-trigger`, `tabs-content`,
+`accordion-content` and `slider-range` are kept through a `render` element, because the SDK names those parts `tabs-tab`,
+`tabs-panel`, `accordion-panel` and `slider-indicator` and ignores a `data-slot` prop. What a consumer may notice:
+
+- **`tabs` marks the selected tab and its panel `data-selected`** where Base UI used `data-active` on the tab. A class of yours such
+  as `data-active:` or `group-data-active/tab:` needs `data-selected`. A disabled tab stays focusable with the arrow keys (as the tabs pattern asks) and carries `data-disabled`, which the classes now key off.
+  `onValueChange(value, details)` carries the SDK's `details.reason` (`item-press`, `list-navigation`, `find-in-page`,
+  `item-removed`, `imperative`); the props type is the SDK's, not `Tabs.Root.Props`. `activation="manual"`, `loop` and
+  `hiddenUntilFound` are new options.
+- **`accordion`** keeps one item open at a time unless you pass `multiple`, and the open item can close. `value` is still an array
+  and `onValueChange(value, details)` carries `details.reason` (`trigger-press`, `find-in-page`, `imperative`). Arrow keys do not
+  move focus between triggers, as before: Tab does. The trigger sits in an `h3` and carries `aria-controls` once its panel has
+  mounted, one microtask after the first render (tests that check it right after `render` need `await act(async () => {})`).
+  `data-open` / `data-closed` and `--accordion-panel-height` work as before.
+- **`slider`** is a number or an array. A plain number now draws one thumb (the Base UI wrapper drew two); an array draws one per
+  value; no value draws a range over `min` and `max`. Each thumb holds a hidden `<input type="range">` that takes focus, so draw focus
+  with `has-[:focus-visible]` (the item does) and name it: a single slider uses the root's `aria-label` or `aria-labelledby`, a range
+  takes the new `thumbLabels={["Minimum price", "Maximum price"]}`. Thumbs sit centred on the track and are placed by the SDK, so
+  the control carries 6px of padding to keep them inside it where `thumbAlignment="edge"` did that; the track no longer clips
+  (`overflow-hidden` is gone). `onValueChange(value, details)` and the new `onValueCommit` carry `details.reason` (`track-press`,
+  `drag`, `step-key`, `accessibility-adjust`, `reset`, `restore`, `imperative`). `name` submits the number, or a range as `"start/end"`.
+- **Tests in jsdom** need `installUiSdkStubs()` at the top of the file, as for the other items (the exit animation reads
+  `Element.prototype.getAnimations`).
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
