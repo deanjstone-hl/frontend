@@ -121,8 +121,9 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 | `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 | `tooltip`, `hover-card` | the registry release after slice 6; `tooltip` is also pulled by `sidebar` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `dialog`, `alert-dialog`, `sheet` | the registry release after slice 7; `dialog` is also the base of `command` (for `CommandDialog`), `sheet` of `sidebar` (mobile), `app-shell`, `app-switcher` and `filter-builder` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
 
-Next in order, one family per landing: the dialog family (`dialog`, `alert-dialog`, `sheet`, then `drawer`), and
+Next in order, one family per landing: `drawer` (open SDK swipe bug), and
 last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
 
@@ -247,6 +248,27 @@ are unchanged; `data-open`, `data-closed` and `data-side` are what the classes k
 - **A tooltip opens on keyboard focus only for keyboard focus**, not after a click; the trigger of a `disabled` tooltip stays a working button.
 - **Tests in jsdom** that hover or focus a trigger: press Tab first (the SDK reads the input modality) and fire `pointerEnter` with
   `pointerType: "mouse"`; a tooltip opens at once while another was open a moment ago, so a test of the delay waits that out first.
+
+**`dialog`, `alert-dialog`, `sheet`.** Modal popups, so the popup notes apply (jsdom stubs, no `z-50`, no `Portal`). Exported names, props
+(`showCloseButton`, `size`, `side`), `className` merging, the safe-area classes and the look are unchanged. What a consumer may notice:
+
+- **The SDK renders a dialog in the top layer.** `DialogPortal` and `AlertDialogPortal` are kept as passthroughs, and `SheetPortal` was never
+  exported. The page behind is made modal with `aria-modal` and a focus trap, not hidden with `aria-hidden`, so an axe run over the whole
+  page with a dialog open reports the page-level `region` rule: skip that one rule in such a test.
+- **A sheet's content slot is `dialog-content`, not `sheet-content`.** The SDK finds a dialog's own content for focus and nesting by that
+  slot, so renaming it would let Tab leave the sheet. Tell sheets apart with `data-side`. `sheet-overlay`, `sheet-header`, `sheet-footer`,
+  `sheet-title`, `sheet-description` and `sheet-close` are unchanged; a `data-slot` prop on any SDK part is ignored, so
+  `SidebarMenu` mobile's `data-slot="sidebar"` is gone from its sheet (`data-sidebar` and `data-mobile` stay), and your own trigger slot goes
+  through `render`: `<SheetTrigger render={<button data-slot="mine" />}>`, as `app-shell` and `app-switcher` do.
+- **`onOpenChange(open, details)`** carries the SDK's `details.reason` (`trigger-press`, `escape-key`, `outside-press`, `close-press`, `action`
+  and more) and `details.returnValue`, the `value` of the close part that closed it, in place of Base UI's event details.
+  A close part can also take an `action` that returns a promise and keeps the dialog open while it runs.
+- **`alert-dialog`** never closes on a backdrop press (the SDK's rule, as Base UI's was). `AlertDialogAction` is still a plain `Button`
+  that closes nothing; wrap it in `AlertDialogClose` (from `@ui-sdk/react/alert-dialog`) or close from your own handler.
+- **The dialog shows one microtask after it renders.** Tests that look for the dialog by role right after `render` need `findByRole`, and a
+  focus-trap check in jsdom (`checkPattern(dialog, "dialog")`) needs `Element.prototype.checkVisibility` stubbed to return true, because
+  jsdom has no layout.
+- **`CommandDialog`**'s screen-reader title and description now sit inside the dialog content, where the SDK reads them.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
