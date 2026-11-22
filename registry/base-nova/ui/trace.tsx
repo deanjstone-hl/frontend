@@ -96,7 +96,7 @@ function TraceCollapsible({
   )) {
   return (
     <Collapsible
-      data-slot="trace-collapsible"
+      render={<div data-slot="trace-collapsible" />}
       className={cn("flex w-full min-w-0 flex-col", className)}
       {...props}
     />
@@ -110,7 +110,7 @@ function TraceCollapsibleTrigger({
 }: React.ComponentProps<typeof CollapsibleTrigger>) {
   return (
     <CollapsibleTrigger
-      data-slot="trace-collapsible-trigger"
+      render={<button data-slot="trace-collapsible-trigger" />}
       className={cn(
         "group/trace-collapsible-trigger flex w-fit max-w-full min-w-0 cursor-pointer items-center gap-1 rounded-md text-left text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring has-[[data-status=error]]:text-destructive",
         className
@@ -132,7 +132,7 @@ function TraceCollapsibleContent({
 }: React.ComponentProps<typeof CollapsibleContent>) {
   return (
     <CollapsibleContent
-      data-slot="trace-collapsible-content"
+      render={<div data-slot="trace-collapsible-content" />}
       className="h-(--collapsible-panel-height) min-w-0 overflow-hidden transition-[height] duration-200 data-ending-style:h-0 data-starting-style:h-0"
       {...props}
     >

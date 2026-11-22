@@ -3,6 +3,9 @@ import axe from "axe-core"
 import { afterEach, describe, expect, it } from "vitest"
 
 import { FileDiff } from "../registry/base-nova/blocks/file-diff"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 // The wrapping diff block (design-system#205). jsdom has no layout, so these tests read the classes and
 // the structure that make the diff wrap; the real-browser check at 390 px is in the issue's Resolution.

@@ -11,6 +11,9 @@ import {
   TraceLine,
   TraceTitle,
 } from "../registry/base-nova/ui/trace"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 afterEach(cleanup)
 

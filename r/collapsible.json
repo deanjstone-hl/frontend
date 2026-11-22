@@ -2,12 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collapsible",
   "dependencies": [
-    "@base-ui/react"
+    "@ui-sdk/core@0.1.0-beta.14",
+    "@ui-sdk/react@0.1.0-beta.14"
   ],
   "files": [
     {
       "path": "registry/base-nova/ui/collapsible.tsx",
-      "content": "\"use client\"\n\nimport { Collapsible as CollapsiblePrimitive } from \"@base-ui/react/collapsible\"\n\nfunction Collapsible({ ...props }: CollapsiblePrimitive.Root.Props) {\n  return <CollapsiblePrimitive.Root data-slot=\"collapsible\" {...props} />\n}\n\nfunction CollapsibleTrigger({ ...props }: CollapsiblePrimitive.Trigger.Props) {\n  return (\n    <CollapsiblePrimitive.Trigger data-slot=\"collapsible-trigger\" {...props} />\n  )\n}\n\nfunction CollapsibleContent({ ...props }: CollapsiblePrimitive.Panel.Props) {\n  return (\n    <CollapsiblePrimitive.Panel data-slot=\"collapsible-content\" {...props} />\n  )\n}\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
+      "content": "\"use client\"\n\nimport {\n  Collapsible as CollapsibleRoot,\n  CollapsiblePanel,\n  CollapsibleTrigger as CollapsibleTriggerPrimitive,\n} from \"@ui-sdk/react/collapsible\"\nimport type * as React from \"react\"\n\nfunction Collapsible({ ...props }: React.ComponentProps<typeof CollapsibleRoot>) {\n  return <CollapsibleRoot {...props} />\n}\n\nfunction CollapsibleTrigger({ ...props }: React.ComponentProps<typeof CollapsibleTriggerPrimitive>) {\n  return <CollapsibleTriggerPrimitive {...props} />\n}\n\nfunction CollapsibleContent({ ...props }: React.ComponentProps<typeof CollapsiblePanel>) {\n  return <CollapsiblePanel {...props} />\n}\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
       "type": "registry:ui"
     }
   ],

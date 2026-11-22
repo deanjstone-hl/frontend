@@ -44,7 +44,7 @@ function FileDiff({ file, bleed = false, defaultOpen, className, ...props }: Fil
 
   return (
     <Collapsible
-      data-slot="file-diff"
+      render={<div data-slot="file-diff" />}
       data-file={file.filename}
       defaultOpen={open}
       className={cn("overflow-hidden rounded-md border", bleed && "max-md:rounded-none max-md:border-x-0", className)}
@@ -55,7 +55,7 @@ function FileDiff({ file, bleed = false, defaultOpen, className, ...props }: Fil
           <Button
             variant="ghost"
             size="sm"
-            className="h-auto min-h-11 w-full justify-start gap-2 rounded-none py-2 text-left whitespace-normal [&[data-panel-open]>svg:first-child]:rotate-90"
+            className="h-auto min-h-11 w-full justify-start gap-2 rounded-none py-2 text-left whitespace-normal [&[data-open]>svg:first-child]:rotate-90"
           />
         }
       >

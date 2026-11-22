@@ -1623,7 +1623,8 @@
       "name": "collapsible",
       "type": "registry:ui",
       "dependencies": [
-        "@base-ui/react"
+        "@ui-sdk/core@0.1.0-beta.14",
+        "@ui-sdk/react@0.1.0-beta.14"
       ],
       "files": [
         {
