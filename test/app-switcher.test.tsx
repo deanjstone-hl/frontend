@@ -140,7 +140,7 @@ describe("AppSwitcher", () => {
       open()
 
       const dialog = screen.getByRole("dialog", { name: "Switch app" })
-      expect(dialog.getAttribute("data-slot")).toBe("sheet-content")
+      expect(dialog.getAttribute("data-slot")).toBe("dialog-content")
       expect(dialog.getAttribute("data-side")).toBe("bottom")
     })
 
@@ -148,7 +148,7 @@ describe("AppSwitcher", () => {
       render(<AppSwitcher appName="Reader" apps={apps} currentAppId="reader" />)
       open()
 
-      expect(screen.getByRole("dialog", { name: "Switch app" }).getAttribute("data-slot")).toBe("sheet-content")
+      expect(screen.getByRole("dialog", { name: "Switch app" }).getAttribute("data-slot")).toBe("dialog-content")
     })
   })
 

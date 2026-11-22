@@ -79,6 +79,7 @@ function AppSwitcher({
 
   const trigger = (
     <Button
+      data-slot="app-switcher-trigger"
       variant="ghost"
       className={cn("max-h-[66px] min-h-[clamp(44px,2.75rem,66px)] min-w-0 shrink gap-1 px-2 font-heading text-[min(1rem,24px)] font-semibold [&_svg]:size-[min(1rem,24px)]", className)}
     />
@@ -155,7 +156,7 @@ function AppSwitcher({
   if (desktop) {
     return (
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger data-slot="app-switcher-trigger" render={trigger}>
+        <PopoverTrigger render={trigger}>
           {triggerContent}
         </PopoverTrigger>
         <PopoverContent align="start" sideOffset={8} className="w-80 gap-0 p-0 py-2">
@@ -171,7 +172,7 @@ function AppSwitcher({
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger data-slot="app-switcher-trigger" render={trigger}>
+      <SheetTrigger render={trigger}>
         {triggerContent}
       </SheetTrigger>
       <SheetContent side="bottom" className="rounded-t-xl">

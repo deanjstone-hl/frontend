@@ -12,6 +12,9 @@ import {
   DrawerTitle,
 } from "../registry/base-nova/ui/drawer"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../registry/base-nova/ui/sheet"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 // Curve-safe overlays (design-system#140). jsdom resolves no CSS, so these tests read
 // the utility classes each overlay edge carries. The pixel check on a real device is
@@ -47,7 +50,7 @@ function renderSheet(side: "top" | "right" | "bottom" | "left", children?: React
       </SheetContent>
     </Sheet>,
   )
-  return document.querySelector('[data-slot="sheet-content"]')
+  return document.querySelector('[data-slot="dialog-content"]')
 }
 
 describe("SheetContent insets", () => {
@@ -81,25 +84,26 @@ describe("SheetContent insets", () => {
 })
 
 describe("SheetContent close button", () => {
-  const closeOf = (side: "top" | "right" | "bottom" | "left") => {
+  // The SDK shows a dialog one microtask after it renders, so wait for it before looking for a button.
+  const closeOf = async (side: "top" | "right" | "bottom" | "left") => {
     renderSheet(side)
-    return classesOf(screen.getByRole("button", { name: "Close" }))
+    return classesOf(await screen.findByRole("button", { name: "Close" }))
   }
 
-  it("moves below the status bar and inside the right curve on a right sheet", () => {
-    const classes = closeOf("right")
+  it("moves below the status bar and inside the right curve on a right sheet", async () => {
+    const classes = await closeOf("right")
     expect(classes).toContain("top-[calc(var(--safe-t)+0.75rem)]")
     expect(classes).toContain("right-[calc(var(--safe-r)+0.75rem)]")
   })
 
-  it("moves below the status bar on a left sheet but stays 0.75rem off the sheet's inner edge", () => {
-    const classes = closeOf("left")
+  it("moves below the status bar on a left sheet but stays 0.75rem off the sheet's inner edge", async () => {
+    const classes = await closeOf("left")
     expect(classes).toContain("top-[calc(var(--safe-t)+0.75rem)]")
     expect(classes).toContain("right-3")
   })
 
-  it("keeps the 0.75rem top offset on a bottom sheet, which has no top inset", () => {
-    const classes = closeOf("bottom")
+  it("keeps the 0.75rem top offset on a bottom sheet, which has no top inset", async () => {
+    const classes = await closeOf("bottom")
     expect(classes).toContain("top-3")
     expect(classes).toContain("right-[calc(var(--safe-r)+0.75rem)]")
   })

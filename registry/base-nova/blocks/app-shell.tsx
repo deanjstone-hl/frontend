@@ -439,7 +439,7 @@ function AppShell({
           {overflow.length > 0 ? (
             <Sheet>
               <SheetTrigger
-                data-slot="app-shell-more"
+                render={<button data-slot="app-shell-more" />}
                 data-active={overflowActive ? "true" : undefined}
                 className={tabClass(overflowActive)}
               >

@@ -432,6 +432,12 @@ describe("AppShell", () => {
       expect(bar.getByRole("button", { name: "More" })).toBeTruthy()
     })
 
+    it("keeps the app-shell-more slot on the More button, which the geometry gate measures", () => {
+      const { container } = render(<AppShell appName="Reader" sections={six}>x</AppShell>)
+
+      expect(within(tabBar(container)).getByRole("button", { name: "More" }).getAttribute("data-slot")).toBe("app-shell-more")
+    })
+
     it("puts a fifth section under More", () => {
       const { container } = render(<AppShell appName="Reader" sections={six.slice(0, 5)}>x</AppShell>)
 
