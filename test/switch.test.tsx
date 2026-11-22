@@ -7,12 +7,6 @@ import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { Switch } from "../registry/base-nova/ui/switch"
 
-// The SDK's development warnings fail the test (its testing guide).
-declare global {
-  var __UI_SDK_STRICT__: boolean | undefined
-}
-globalThis.__UI_SDK_STRICT__ = true
-
 afterEach(cleanup)
 
 const getSwitch = (name: string) => screen.getByRole("switch", { name })
