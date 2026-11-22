@@ -135,6 +135,8 @@ docs/                      ADRs, deploy-branch.md, and one demo plus browser che
 scripts/geometry-gate/     the curve-geometry gate behind pnpm gate:geometry
 scripts/stamp/             the stamp mechanism, what it stamps (artefacts.mjs) and the r/ and snapshot generators
 stamps/                    one stamp per generated artefact or golden; only its generator writes it
+vendor/ui-sdk/             the @ui-sdk skill and docs, vendored from the pinned packages (pnpm vendor:ui-sdk); not shipped to consumers
+scripts/ui-sdk/            vendor.mjs copies them and stamps; files.mjs says from where
 scripts/release/           release-needed.sh (anything to release?) and tested-head.sh (tag only the promoted SHA); scripts/promote.sh pushes deploy
 scripts/theme/              extract-t3.mjs reads T3's sheet; build.mjs writes tokens.css and registry.json
 scripts/links/              registry.mjs validates links.json, generate.mjs writes lib/links.ts, cf-drift.mjs diffs Cloudflare
@@ -613,6 +615,7 @@ pin moved without a regenerate. The message names the file and the regenerate co
 | `links-module` | `registry/lib/links.ts`, from `registry/links/links.json` | `node scripts/links/generate.mjs` | none |
 | `link-pill-snapshot` | `test/__snapshots__/link-pill-html.test.ts.snap` | `pnpm update:snapshots` | vitest |
 | `geometry-aria` | the aria baselines in `scripts/geometry-gate/aria/` | `pnpm gate:geometry --update-aria` | playwright-core, Chromium |
+| `ui-sdk-vendor` | `vendor/ui-sdk/`, copied from the installed `@ui-sdk` packages | `pnpm vendor:ui-sdk` | `@ui-sdk/core`, `@ui-sdk/react` |
 
 Rules:
 

@@ -17,6 +17,7 @@ import { join } from "node:path"
 
 import { SHADCN_VERSION, chromiumPin, installedVersion } from "./pins.mjs"
 import { fileEntries } from "./stamp.mjs"
+import { sourceFiles, vendoredFiles } from "../ui-sdk/files.mjs"
 
 const readText = (root, path) => readFileSync(join(root, path), "utf8")
 
@@ -119,4 +120,16 @@ export const GEOMETRY_ARIA = {
   pins: (root) => ({ "playwright-core": installedVersion(root, "playwright-core"), chromium: chromiumPin(root) }),
 }
 
-export const ARTEFACTS = [REGISTRY_OUTPUT, THEME, LINKS_MODULE, LINK_PILL_SNAPSHOT, GEOMETRY_ARIA]
+// The @ui-sdk skill and docs, copied from the pinned packages (frontend#245). The input is the
+// installed package's own files, so a changed package without a regenerate fails too.
+export const UI_SDK_VENDOR = {
+  name: "ui-sdk-vendor",
+  regenerate: "pnpm vendor:ui-sdk",
+  writer: "scripts/ui-sdk/vendor.mjs",
+  generator: ["scripts/ui-sdk/vendor.mjs", "scripts/ui-sdk/files.mjs"],
+  inputs: (root) => sourceFiles(root),
+  outputs: (root) => fileEntries(root, vendoredFiles(root)),
+  pins: (root) => ({ "@ui-sdk/core": installedVersion(root, "@ui-sdk/core"), "@ui-sdk/react": installedVersion(root, "@ui-sdk/react") }),
+}
+
+export const ARTEFACTS = [REGISTRY_OUTPUT, THEME, LINKS_MODULE, LINK_PILL_SNAPSHOT, GEOMETRY_ARIA, UI_SDK_VENDOR]

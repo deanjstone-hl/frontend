@@ -35,13 +35,14 @@ type Artefact = { name: string; regenerate: string; writer: string; generator: s
 const artefacts = ARTEFACTS as Artefact[]
 
 describe("every generated artefact and golden is stamped", () => {
-  it("covers r/, the theme output, the links module, the link-pill snapshot and the aria baselines", () => {
+  it("covers r/, the theme output, the links module, the link-pill snapshot, the aria baselines and the vendored @ui-sdk files", () => {
     expect(artefacts.map((artefact) => artefact.name).sort()).toEqual([
       "geometry-aria",
       "link-pill-snapshot",
       "links-module",
       "registry-output",
       "theme",
+      "ui-sdk-vendor",
     ])
   })
 
