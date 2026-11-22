@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "cb595e1ae351417f943b535c38e94192084cc7488f8ac3b8b3a44a72799af92e",
+    "hash": "7a480d4f61852b61826c8f40080ce1c59c75455d0de71b9bf860d59089c415d1",
     "files": {
-      "registry.json": "cdcf9e48f35ca7d7e1e78bf34e3e79d89febb281e8b0ed7ca8ecc13e1668eb43",
+      "registry.json": "191220d854deb2f55e72b8ac6d6f1b47448905efecbe0c3e23f8bfc32633cf81",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "6e318605ed6fb41d4a3fed114064abbfc2ae368ae8cffc4e4046a4e0c2056f96",
       "registry/base-nova/blocks/app-switcher.tsx": "dad17ebc1d7b7c22cdcfeedd8fd9f32bf3a17c8009761bafe7533dd69c6af759",
@@ -44,7 +44,7 @@
       "registry/base-nova/ui/carousel.tsx": "d0061762c9396673d4fad47b8f5f03b17a0f4baee595e75e5d98aa00be749f89",
       "registry/base-nova/ui/chart-lazy.tsx": "b4bb440cf2675884a01d9d7b70e407997bdbcb808159f9af57c98cd3e4d05253",
       "registry/base-nova/ui/chart.tsx": "a1c53fad6ee22ae2b0381faf552ccb5dcdc0a8d135273e521853eb5064cc3393",
-      "registry/base-nova/ui/checkbox.tsx": "1d42326dba5fa97a74cba9df3dcba134a057bf0cc4c5bbb0be18c2e18628b5fa",
+      "registry/base-nova/ui/checkbox.tsx": "2a5b95b62b0f4dd456decb0fee5f10d8e326c82d453a6d3f6995b70a90cd410f",
       "registry/base-nova/ui/code-block.tsx": "9c9ed6018fa181580d8748a9976b2d9186445c3b5c7608cdcf6f50768b7c2e3a",
       "registry/base-nova/ui/collapsible.tsx": "ead4349ff7b01d696ef89294a81d18ee1d3f732321398896462c834ab9b9e065",
       "registry/base-nova/ui/combobox.tsx": "aabed1d6921409e7511dc36aaefe85dff4b5f0ac5d83015bcafe94e97d03e2e8",
@@ -128,7 +128,7 @@
     }
   },
   "output": {
-    "hash": "bbc99f3d57b881e8aec469797998b667500f16b0ac3489328beb93dddc496fc3",
+    "hash": "6c34752f3d91592a39b24a84a885b78b8e090958787fa526e5582e50c2bfb9d0",
     "files": {
       "r/accordion.json": "9d0e4d43194f7a159fcb837cd95f4519b79b0c7169429595fa1f4435dde6cf9a",
       "r/alert-dialog.json": "3e4d087b55a7568aa015c9564f3d673748425044f30dca82700a21b8bc7bcf91",
@@ -149,7 +149,7 @@
       "r/card.json": "aada5db81e5b708052689b47beb5122c45fcb1f2e466ea5686018fc078b5edab",
       "r/carousel.json": "45da36d295e77a9d62e5b63b91bf9f498114b7cbd564cde2cf834deef17fc7cc",
       "r/chart.json": "c4b3588fd16882539cc62cbeb15e4c9c434332f20020ee3d8978ab547d93d984",
-      "r/checkbox.json": "dbbd09829680383c46e881be9d6d0394e7818912dcaeac5a1a238758ff5155ea",
+      "r/checkbox.json": "083f8b9cab7fc03968c39d1ecf236288b6ebe0ec7f9a54b5fbbf5591131cfa2d",
       "r/code-block.json": "84c7e6aa67961839181eae4293e405943af2b906713710ed87fa0839af8cec73",
       "r/collapsible.json": "df59d6e939430455c1f9915a210fa7ac6157be8e1b5f886492a8e168daf7f436",
       "r/combobox.json": "4c6a7f07566ef172a267edda30af82751a2347c1048a4da0415a4ac3f54c56a0",
@@ -207,7 +207,7 @@
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "757e1632833318d04b9eab104403ec1548731b61e16b6e6c50abb654962b73c5",
-      "r/registry.json": "cdcf9e48f35ca7d7e1e78bf34e3e79d89febb281e8b0ed7ca8ecc13e1668eb43",
+      "r/registry.json": "191220d854deb2f55e72b8ac6d6f1b47448905efecbe0c3e23f8bfc32633cf81",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
       "r/select.json": "fb5231b194319f88f5aae660f25fa2d14745f00ed223c0bc2b44562748d6073e",
