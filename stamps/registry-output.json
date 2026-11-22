@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "5a6cfb4c1c496c54b3303558b6a101fb28d92db27517af1d2955423f8c2a3d5e",
+    "hash": "7be5ce823528046d59bd5392b4ca99c6142823e6d5be4f48477222a449f7621c",
     "files": {
-      "registry.json": "7a1b1b467646ab8ce4d834e3d6cb166c227270008a4dcd1ba0abcd022d734bb3",
+      "registry.json": "732683821aaa9bae65eb0f049fa5f7f425a587031618563a2077d024ce8f7234",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "6e318605ed6fb41d4a3fed114064abbfc2ae368ae8cffc4e4046a4e0c2056f96",
       "registry/base-nova/blocks/app-switcher.tsx": "dad17ebc1d7b7c22cdcfeedd8fd9f32bf3a17c8009761bafe7533dd69c6af759",
@@ -128,10 +128,10 @@
     }
   },
   "output": {
-    "hash": "03af7dc83e61c902b7b9985daee2d184562bbb6cb734e037a3a4ad136ebb2257",
+    "hash": "689388357cb7e68ab88daf3a978f3b51f27ff3f5e5928dcadbb78095a03345a9",
     "files": {
       "r/accordion.json": "e9bb2cd7834c8aa40a31462ca55ae00c8e4d92a218df0754d38c86dc5e071f93",
-      "r/alert-dialog.json": "914cd27122c09bb21b4e542a49d335f89cd152aa820910abf662e8713968713d",
+      "r/alert-dialog.json": "0262fd158330e269fd8253d943434e98c143a8727d0d97bcb2e93b9e1fa7639a",
       "r/alert.json": "282e506ef98e312f6165a6c9cd64d22939899db2341c958290b6a773d1244194",
       "r/app-html-head.json": "c47e72f9b9abbfa3bce4e893ebdd038e09e28e29a044cd84dcbbcf89ca1f665f",
       "r/app-shell.json": "6c2dd40b118a3cb7bd83a90bb0d7ac8bfb4614cb86fa78c04fbb88d54e487c00",
@@ -207,7 +207,7 @@
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "de1bd7bf276635e6753907c46bc09c3265b71d13eab31f12152c2ec53c3f9fd4",
-      "r/registry.json": "7a1b1b467646ab8ce4d834e3d6cb166c227270008a4dcd1ba0abcd022d734bb3",
+      "r/registry.json": "732683821aaa9bae65eb0f049fa5f7f425a587031618563a2077d024ce8f7234",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
       "r/select.json": "fb5231b194319f88f5aae660f25fa2d14745f00ed223c0bc2b44562748d6073e",
