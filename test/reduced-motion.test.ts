@@ -9,8 +9,8 @@ import { describe, expect, it } from "vitest"
 
 // Reduced motion (design-system#147). Each component's classes are run through the
 // real Tailwind compiler, so these assert on the CSS a consumer receives: under
-// `prefers-reduced-motion: reduce` the looping spinner and skeleton stop, and the
-// sheet and drawer fade instead of sliding. The rendered proof is
+// `prefers-reduced-motion: reduce` the looping spinner and skeleton stop, the
+// sheet stops moving and fading, and the drawer fades instead of sliding. The rendered proof is
 // scripts/verify-reduced-motion.mjs (document.getAnimations() under emulateMedia).
 
 const require = createRequire(import.meta.url)
@@ -61,10 +61,13 @@ describe("looping indicators", () => {
 })
 
 describe("sheet and drawer", () => {
-  it("drops the sheet slide under reduce and keeps the opacity fade", async () => {
+  it("drops the sheet slide under reduce, and its transitions with it", async () => {
     const reduced = reduceBlock(await compileUtilities("../registry/base-nova/ui/sheet.tsx"))
     expect(reduced).toMatch(/data-starting-style[\s\S]*?translate: none !important/)
     expect(reduced).toMatch(/data-ending-style[\s\S]*?translate: none !important/)
+    // The SDK mounts an open sheet through a real transition, which the geometry gate's
+    // reduced-motion check sees (fades count as motion there), so reduce turns both off.
+    expect(reduced).toContain("transition-property: none")
     expect(read("../registry/base-nova/ui/sheet.tsx")).toContain("data-starting-style:opacity-0")
   })
 
