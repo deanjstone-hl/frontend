@@ -46,7 +46,7 @@ const record = (name, ok, detail = "") => {
 }
 
 const items = [
-  ["radio-group", "#radio-heading", '[data-slot="radio-group-item"]'],
+  ["radio-group", "#radio-heading", '[data-slot="radio"]'],
   ["native-select", "#native-select-heading", '[data-slot="native-select"]'],
   ["input-otp", "#otp-heading", '[data-slot="input-otp-slot"]'],
   ["combobox", "#combobox-heading", '[data-slot="input-group"]'],
