@@ -33,11 +33,12 @@ const Nav = ({ defaultOpen }: { defaultOpen: boolean }) => (
   </TooltipProvider>
 )
 
-const rest = (el: HTMLElement) =>
-  act(() => {
+const rest = (el: HTMLElement) => {
+  void act(() => {
     fireEvent.pointerEnter(el, { pointerType: "mouse" })
     fireEvent.pointerMove(el, { pointerType: "mouse" })
   })
+}
 
 describe("SidebarMenuButton tooltip (frontend#245, tooltip on @ui-sdk)", () => {
   it("shows the tooltip while the sidebar is collapsed to icons", async () => {

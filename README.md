@@ -239,7 +239,7 @@ are unchanged; `data-open`, `data-closed` and `data-side` are what the classes k
 
 - **`TooltipProvider` is a context, not Base UI's provider.** The SDK needs none (a tooltip opens at once while another is open or was a
   moment ago). The wrapper hands the provider's `delay` (0 unless you set it) and `closeDelay` to the tooltips under it, and a tooltip's
-  own `delay` wins. A `Tooltip` outside any provider uses the SDK's default delay, where Base UI's was 600 ms.
+  own `delay` wins. A `Tooltip` outside any provider waits the SDK's 600 ms, the same as Base UI's default.
 - **`onOpenChange(open, details)`** carries the SDK's `details.reason` (`trigger-hover`, `trigger-focus`, `trigger-press`, `escape-key`,
   `focus-out` and more) in place of Base UI's event details. The props types are the SDK's.
 - **Hide a tooltip with `disabled`, not `hidden`.** The sidebar's menu button used `hidden` on the content while the sidebar was expanded; it

@@ -13,17 +13,19 @@ installUiSdkStubs()
 afterEach(cleanup)
 
 // Opening on focus needs keyboard modality: press Tab first, as a person arriving by keyboard does.
-const tabTo = (el: HTMLElement) =>
-  act(() => {
+const tabTo = (el: HTMLElement) => {
+  void act(() => {
     fireEvent.keyDown(document.body, { key: "Tab" })
     el.focus()
   })
+}
 // Resting a mouse on an element.
-const rest = (el: HTMLElement) =>
-  act(() => {
+const rest = (el: HTMLElement) => {
+  void act(() => {
     fireEvent.pointerEnter(el, { pointerType: "mouse" })
     fireEvent.pointerMove(el, { pointerType: "mouse" })
   })
+}
 
 function Profile(props: React.ComponentProps<typeof HoverCard>) {
   return (
