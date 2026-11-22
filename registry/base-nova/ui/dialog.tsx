@@ -51,7 +51,8 @@ function DialogContent({
   children,
   showCloseButton = true,
   ...props
-}: React.ComponentProps<typeof DialogPopup> & {
+}: Omit<React.ComponentProps<typeof DialogPopup>, "children"> & {
+  children?: React.ReactNode
   showCloseButton?: boolean
 }) {
   return (

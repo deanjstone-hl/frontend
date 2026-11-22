@@ -258,7 +258,7 @@ are unchanged; `data-open`, `data-closed` and `data-side` are what the classes k
 - **A sheet's content slot is `dialog-content`, not `sheet-content`.** The SDK finds a dialog's own content for focus and nesting by that
   slot, so renaming it would let Tab leave the sheet. Tell sheets apart with `data-side`. `sheet-overlay`, `sheet-header`, `sheet-footer`,
   `sheet-title`, `sheet-description` and `sheet-close` are unchanged; a `data-slot` prop on any SDK part is ignored, so
-  `SidebarMenu` mobile's `data-slot="sidebar"` is gone from its sheet (`data-sidebar` and `data-mobile` stay), and your own trigger slot goes
+  `Sidebar` mobile's `data-slot="sidebar"` is gone from its sheet (`data-sidebar` and `data-mobile` stay), and your own trigger slot goes
   through `render`: `<SheetTrigger render={<button data-slot="mine" />}>`, as `app-shell` and `app-switcher` do.
 - **`onOpenChange(open, details)`** carries the SDK's `details.reason` (`trigger-press`, `escape-key`, `outside-press`, `close-press`, `action`
   and more) and `details.returnValue`, the `value` of the close part that closed it, in place of Base UI's event details.

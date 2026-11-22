@@ -60,7 +60,8 @@ function SheetContent({
   side = "right",
   showCloseButton = true,
   ...props
-}: React.ComponentProps<typeof SheetPopup> & {
+}: Omit<React.ComponentProps<typeof SheetPopup>, "children"> & {
+  children?: React.ReactNode
   side?: "top" | "right" | "bottom" | "left"
   showCloseButton?: boolean
 }) {
