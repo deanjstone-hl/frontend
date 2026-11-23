@@ -25,7 +25,7 @@
     - combobox [expanded]
     - group
   - listbox "Suggestions"
-  - combobox "Choice": a
+  - combobox "Choice": A
   - tablist:
     - tab "One" [selected]
     - tab "Two"
