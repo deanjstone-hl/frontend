@@ -116,16 +116,23 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 | Item | On UI SDK since | Pin |
 |---|---|---|
 | `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 |
-| `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
-| `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
-| `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
-| `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
-| `tooltip`, `hover-card` | the registry release after slice 6; `tooltip` is also pulled by `sidebar` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
-| `dialog`, `alert-dialog`, `sheet` | the registry release after slice 7; `dialog` is also the base of `command` (for `CommandDialog`), `sheet` of `sidebar` (mobile), `app-shell`, `app-switcher` and `filter-builder` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.14` |
+| `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `tooltip`, `hover-card` | the registry release after slice 6; `tooltip` is also pulled by `sidebar` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `dialog`, `alert-dialog`, `sheet` | the registry release after slice 7; `dialog` is also the base of `command` (for `CommandDialog`), `sheet` of `sidebar` (mobile), `app-shell`, `app-switcher` and `filter-builder` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `dropdown-menu`, `context-menu`, `menubar`, `navigation-menu`, `select` | the registry release after [frontend#247](https://github.com/deanjstone/frontend/issues/247); `dropdown-menu` is also the base of `menubar`, and `dropdown-menu` with `context-menu` of `issue-row` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
 
-Next in order, one family per landing: `drawer` (open SDK swipe bug), and
-last `menu` and `select` while the SDK's open menu bugs clear. Items with no behaviour layer (`card`, `table`,
+Next in order: `drawer` ([frontend#248](https://github.com/deanjstone/frontend/issues/248), waiting on the SDK's
+swipe bug [ui#1010](https://github.com/vercel-labs/ui/issues/1010)). Items with no behaviour layer (`card`, `table`,
 `badge` and the like) never move.
+
+The pin moved from `0.1.0-beta.14` to `0.1.0-beta.16` on 24 Nov 2026 ([frontend#247](https://github.com/deanjstone/frontend/issues/247)),
+for every item above at once. Re-pulling an older item now carries beta.16, which changes no exported name or prop; it
+fixes a menu click lost while the thread was busy ([ui#1005](https://github.com/vercel-labs/ui/issues/1005)), Escape in a
+hover-opened submenu closing the whole menu ([ui#1006](https://github.com/vercel-labs/ui/issues/1006)) and a `Field`
+label losing its `Select` ([ui#1012](https://github.com/vercel-labs/ui/issues/1012)).
 
 **What re-pulling a migrated item changes** (`npx shadcn add deanjstone/frontend/<item>`; consumers
 move only when they choose to re-add):
@@ -156,7 +163,7 @@ event details. Three more things for a consumer:
   `HTMLElement.prototype.showPopover`, `hidePopover` and `Element.prototype.getAnimations` stubbed, and
   `[popover] { display: block !important }` added, the popup never shows. The registry's own copy is
   `installUiSdkStubs()` in `test/setup/ui-sdk.ts`; it is not an item, so a consumer copies it and calls it at the top
-  of each test file that renders a popup (not as a global setup: the `getAnimations` stub changes how Base UI menus close). It does not
+  of each test file that renders a popup (not as a global setup: the `getAnimations` stub changes how the Base UI items left, `drawer` and `toggle-group`, close). It also stubs `Element.prototype.scrollIntoView`, which a menu or a select calls for the highlighted item. It does not
   test native popup behaviour, so check placement in a real browser.
 - **`z-50` and `isolate` no longer matter** for stacking: the top layer sits above every `z-index`.
 - **On a small touch screen it stays a popover.** `presentation` is not set; the SDK's `"auto"` (a bottom sheet)
@@ -269,6 +276,67 @@ are unchanged; `data-open`, `data-closed` and `data-side` are what the classes k
   focus-trap check in jsdom (`checkPattern(dialog, "dialog")`) needs `Element.prototype.checkVisibility` stubbed to return true, because
   jsdom has no layout.
 - **`CommandDialog`**'s screen-reader title and description now sit inside the dialog content, where the SDK reads them.
+
+**`dropdown-menu`, `context-menu`, `menubar`.** Popups like `popover`, so the same three popup notes apply (jsdom stubs, no `z-50`, no
+`Portal` or `Positioner`: `DropdownMenuPortal`, `ContextMenuPortal` and `MenubarPortal` stay as passthroughs). Exported names, `variant`,
+`inset`, `className` merging, the `side`, `align` and offset defaults on the content and the look are unchanged. What a consumer may notice:
+
+- **Highlight and open state are SDK attributes.** An item or trigger of yours styled with `focus:` or `data-popup-open:` needs
+  `data-highlighted:` and `data-open:`; the classes in the items use those now, and `issue-row` moved with them. A disabled item stays
+  focusable (the menu pattern) and carries `aria-disabled` and `data-disabled`.
+- **`data-slot` and `render`.** The SDK ignores a `data-slot` prop, so each part puts its slot (`dropdown-menu-item`, `menubar-trigger`, and
+  the rest, as before) on the element it renders and takes a `data-slot` or a `render` element from you:
+  `<DropdownMenuTrigger data-slot="mine" render={<a href="/more" />}>`, as `issue-row` does. `render` as a function keeps the SDK's slot.
+- **`onClick` on an item** still runs for a press and for Enter or Space (the item maps the SDK's selection event, which Base UI turned
+  into a click); it runs once for a press. On a checkbox or radio item it runs for a press only: use `onCheckedChange(checked, details)` and
+  `onValueChange(value, details)`, which carry the SDK's `details.reason` (`item-press`, `imperative`) in place of Base UI's event details.
+  A checkbox item without a `value` still works; the SDK names it by one it generates.
+- **`onOpenChange(open, details)`** carries `details.reason` (`trigger-press`, `escape-key`, `outside-press`, `focus-out`,
+  `submenu-switch` and more). Escape in a submenu a hover opened closes that submenu first (beta.16).
+- **`ContextMenuTrigger`** opens on a right-click, on a 500 ms long press (the SDK swallows the click that follows a held press, so a
+  link inside is not followed) and on the context-menu key or Shift+F10 when the trigger can take focus (give it `tabIndex={0}`);
+  `disabled` leaves the browser's own menu. It takes `render`, as `issue-row` does with `<li />`.
+- **`menubar`** is one tab stop on its first trigger, moves between menus with the arrow keys and switches an open menu when the pointer rests
+  on another trigger. Its triggers are `menuitem`s that open menus. It takes the SDK's `orientation`, `loop`, `disabled` and `modal`, and its
+  menus are always popovers. Name the bar with `aria-label`.
+- **Tests in jsdom** open a menu with a click (or `contextmenu` for the context menu) and find it with `findByRole("menu")`, because it shows one
+  microtask later; a long-press test sends `pointerdown` with `pointerType: "touch"`, `isPrimary: true` and `button: 0`, then `pointerup` and the
+  click that follows it.
+
+**`navigation-menu`.** Popups like `popover` (jsdom stubs, no `z-50`, no `Portal`). Exported names (including `navigationMenuTriggerStyle`
+and `NavigationMenuPositioner`), the `align` prop, the chevron in each trigger, `data-slot` values and `className` merging are unchanged.
+What a consumer may notice:
+
+- **One viewport, not a positioner and a popup.** `NavigationMenuPositioner` is now the SDK's viewport (it takes `side`, `sideOffset`,
+  `align` and `alignOffset`), and `NavigationMenu` still renders it for you. An open panel moves into it; a panel is at the viewport's
+  corner with its own width and slides between panels on `data-motion`. A closed panel is not in the page unless you pass `keepMounted`.
+- **`active` is `current`.** A `NavigationMenuLink` still takes `active`, and now also `current`; either sets `aria-current="page"` and
+  `data-current`, which the classes key off in place of `data-active`. A trigger is styled with `data-open` in place of `data-popup-open`.
+- **`value` names an item.** `value` and `onValueChange(value, details)` use the `value` of a `NavigationMenuItem`: give each item one when you
+  control the menu. `details.reason` is `trigger-press`, `trigger-hover`, `escape-key` and more. `delay`, `closeDelay` and `openOnHover`
+  are the SDK's.
+- **It is a `nav`.** Give it an `aria-label`. The list is a `ul` and each item an `li`.
+- **Tests in jsdom**: Enter on a trigger needs the click a browser sends with it (`fireEvent.keyDown` then `fireEvent.click(trigger, { detail: 0 })`),
+  ArrowDown opens a panel and moves into it, and a test that checks focus in a panel stubs `Element.prototype.checkVisibility` to return true.
+
+**`select`.** A popup like `popover` (jsdom stubs, no `z-50`, no `Portal` or `Positioner`). Exported names, `size`, the chevron, the
+selected check, `alignItemWithTrigger` (on by default), the placeholder, `className` merging and the look are unchanged. What a consumer
+may notice:
+
+- **Base UI's props still work.** `items` is an array of strings or `{ value, label }`, a record of value to label, or groups shaped
+  `{ value, items }`; `itemToStringLabel` and `itemToStringValue` are passed on as the SDK's `itemToLabel` and `itemToValue`. A `disabled`
+  on a `SelectItem` is reported to the root, because the SDK reads an option's disabled flag from `items`. The props type is the SDK's, not
+  `Select.Root.Props`; `onValueChange(value, details)` and `onOpenChange(open, details)` carry `details.reason` (`item-press`,
+  `trigger-press`, `escape-key`, `outside-press` and more). `isItemEqualToValue`, `multiple`, `name`, `required` and `disabled` are the SDK's.
+- **The content places itself.** `SelectContent` takes `side`, `align`, `sideOffset`, `alignOffset` and `alignItemWithTrigger`. With
+  `alignItemWithTrigger` it falls back to opening below the trigger by touch or when there is no room, as Base UI did.
+- **The list scrolls natively.** `SelectScrollUpButton` and `SelectScrollDownButton` are still exported and draw nothing.
+- **`SelectLabel` is the group label** (slot `select-label`), as before: name a group with it inside `SelectGroup`. Name the trigger with
+  `aria-label`, or with a `label` whose `htmlFor` is the trigger's `id`.
+- **State attributes**: `data-highlighted` and `data-selected` on an option, `data-placeholder` on the trigger and the value, `data-open`
+  and `data-closed` on the trigger and the content, in place of Base UI's. Typing on the closed trigger selects the next option that starts
+  with the text, like a native select.
+- **Tests in jsdom** need `installUiSdkStubs()` (it includes `scrollIntoView`), a click and `findByRole("listbox")` to open it.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
