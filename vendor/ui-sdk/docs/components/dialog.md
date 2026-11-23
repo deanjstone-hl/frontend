@@ -1360,6 +1360,7 @@ The trigger is a button that opens a dialog, and the dialog follows the [WAI-ARI
 - Each time focus moves in, the dialog is named by its title and described by its description.
 - Tab moves through the dialog in order.
 - Tab from the last element wraps to the first.
+- Tab keeps focus inside where the browser's Tab skips the buttons.
 - Shift+Tab from the first element wraps to the last.
 - … from inside an iframe that is the … element wraps around the dialog.
 - Shift+Tab from the first element wraps to the checked radio of a group outside a form.

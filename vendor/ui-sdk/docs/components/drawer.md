@@ -1154,6 +1154,7 @@ Also tested:
 - An open modal drawer is marked aria-modal.
 - A keyboard open focuses its first control, and Tab cycles through the controls in order.
 - A controller's open() resolves with how it closed.
+- Focus inside a popup open in its content leaves that popup's scrolling alone.
 
 **Shortcuts**
 
@@ -1195,6 +1196,7 @@ Also tested:
 - On a touch screen `auto` keeps the pointer driver with …=….
 - It opens at its first snap point with the browser's scrolling.
 - A swipe up snaps to the next snap point and reports the swipe.
+- A swipe up from the handle snaps to the next snap point.
 - It comes to rest when the scroll ends before the page hears the finger lift.
 - The handle moves it with a spring, like the pointer driver.
 

@@ -1368,6 +1368,7 @@ Also tested:
 - A toast is announced politely, with its title and description.
 - An error is announced assertively.
 - Toasts that arrive together are announced together.
+- Text that already ends a sentence gets no second stop.
 - The visible region isn't a live region, so nothing is read twice.
 
 **The shortcut**

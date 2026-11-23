@@ -8,7 +8,7 @@
     }
   },
   "input": {
-    "hash": "d38ba18d384918cca82aae6af930420d0a0b25b9b8da0eec6190d02689bbd763",
+    "hash": "ce82fe0436fc36d0d15d2088f755fec20e5618cf5bef6d285cd0d4ab6aae257c",
     "files": {
       "node_modules/@ui-sdk/core/skills/ui-sdk/SKILL.md": "ae96d59e4f575dbd28eb86b94a272adad34cd92271b4a8da2dd8cced1bbbf479",
       "node_modules/@ui-sdk/core/skills/ui-sdk/references/agent-ready.md": "a5d0428748b722346eaaf74057565f557d62d2077eeb48e55d3cab71a013bb14",
@@ -34,8 +34,8 @@
       "node_modules/@ui-sdk/react/docs/components/command.md": "2e124f085523fbc9c9777e478c67cebfc148376a9f6a75fdcbaf46b055119b50",
       "node_modules/@ui-sdk/react/docs/components/date-input.md": "99e7bd0274f39abed484d279e5796ea931ca8594b68af009860fe46f63081d08",
       "node_modules/@ui-sdk/react/docs/components/date-picker.md": "fdd233b8f5ddcf0d2b724eb03aed75b195b160ef54cc854527b00ad9ca30ca93",
-      "node_modules/@ui-sdk/react/docs/components/dialog.md": "8ab0fc6f836cf7636656079cbace6fff39f7cfccf8281e906824bfbbf7a82bf7",
-      "node_modules/@ui-sdk/react/docs/components/drawer.md": "14129c359c4e046b81f4f009f20ae8260d79afdfbac5529402c4295ecaeed60f",
+      "node_modules/@ui-sdk/react/docs/components/dialog.md": "20c8ae42844e0ec94006d833c912e6a44d9bc80837bf05cc7275e8793cea9eb5",
+      "node_modules/@ui-sdk/react/docs/components/drawer.md": "fc0a001d139c89f27cae5ccbcee0d1a56691b9d617a2a82943322a981b718244",
       "node_modules/@ui-sdk/react/docs/components/field.md": "664090fbea0e0ecf8c97b092bb9ac3995f575d283229e5b4aa333936efb63f0b",
       "node_modules/@ui-sdk/react/docs/components/file-input.md": "070a17757ae7c42e7ad1a5455f62dd0a54e129b0363e38dda5553a4f3f30a878",
       "node_modules/@ui-sdk/react/docs/components/hover-card.md": "8e716fab22c4551c272396f138bb9513eeb857f4878a7d2396f05068296b39fb",
@@ -67,7 +67,7 @@
       "node_modules/@ui-sdk/react/docs/components/textarea.md": "c3985712e87c2331f32b298d489f7ee3d46ad0c6c1e45190f8b3cf4443e89af8",
       "node_modules/@ui-sdk/react/docs/components/time-input.md": "ee9fd9502de64dbf3ba2c8d99f9262519e15a9c6a0e1ff7b99e718542a4e5a4d",
       "node_modules/@ui-sdk/react/docs/components/timeline.md": "86bf5a7b3d838fe22142508df2c3577b7784b93388bdb7f95292136eb2cd77d6",
-      "node_modules/@ui-sdk/react/docs/components/toast.md": "4dc3ed452490933c450bbbb9987c5ce79d85026b0fd70f69396cfccba5126339",
+      "node_modules/@ui-sdk/react/docs/components/toast.md": "3cf3adc9a19a31ddba46c21385708d2b8c81b52d10a0ab051591bafa7a652981",
       "node_modules/@ui-sdk/react/docs/components/toggle.md": "12f82f130c13a3f2c037c06c53ec123c30ee4d75b21e58c9ddcda163d91f57cf",
       "node_modules/@ui-sdk/react/docs/components/token-input.md": "bc4b5e3adb070c2cd66f819162d0621d4d880b1f1eb8761122c358dd1a05f0d5",
       "node_modules/@ui-sdk/react/docs/components/toolbar.md": "81e114b57a3075b3b44e5474b4082d7063b97b591d688eb449f72aa2561b9e74",
@@ -95,9 +95,9 @@
     }
   },
   "output": {
-    "hash": "8ca12370ecdd463ad2961638e71b39295d62e5276334ae9cdc0ebb3ba352fa9d",
+    "hash": "eb52c10ebd9067647971758f2559ceb44a4ed877a36a059a10afacf3ea224e7c",
     "files": {
-      "vendor/ui-sdk/VENDORED.md": "dba9acc2456f6cf8f9a8cb0d60d5482fdc1acda4c841fc4bc83a985a92b1891f",
+      "vendor/ui-sdk/VENDORED.md": "279ac8dc71d46723a1fe27de235a8625d74e9cbe0b93c62dee18f11226ce041c",
       "vendor/ui-sdk/docs/README.md": "faa05458a8dd455039e41b775dc929d4780f34a1ab2247b29b143f4448304791",
       "vendor/ui-sdk/docs/agents.md": "8a4fb10b445363ae5c11b857cf8d579ce6d9c96e50c5244f258c74210f374481",
       "vendor/ui-sdk/docs/components/accordion.md": "630c98adf64d69bb7d4f35459d53fa6ba5dd0ec00ea95200adda48c0e9197fd7",
@@ -114,8 +114,8 @@
       "vendor/ui-sdk/docs/components/command.md": "2e124f085523fbc9c9777e478c67cebfc148376a9f6a75fdcbaf46b055119b50",
       "vendor/ui-sdk/docs/components/date-input.md": "99e7bd0274f39abed484d279e5796ea931ca8594b68af009860fe46f63081d08",
       "vendor/ui-sdk/docs/components/date-picker.md": "fdd233b8f5ddcf0d2b724eb03aed75b195b160ef54cc854527b00ad9ca30ca93",
-      "vendor/ui-sdk/docs/components/dialog.md": "8ab0fc6f836cf7636656079cbace6fff39f7cfccf8281e906824bfbbf7a82bf7",
-      "vendor/ui-sdk/docs/components/drawer.md": "14129c359c4e046b81f4f009f20ae8260d79afdfbac5529402c4295ecaeed60f",
+      "vendor/ui-sdk/docs/components/dialog.md": "20c8ae42844e0ec94006d833c912e6a44d9bc80837bf05cc7275e8793cea9eb5",
+      "vendor/ui-sdk/docs/components/drawer.md": "fc0a001d139c89f27cae5ccbcee0d1a56691b9d617a2a82943322a981b718244",
       "vendor/ui-sdk/docs/components/field.md": "664090fbea0e0ecf8c97b092bb9ac3995f575d283229e5b4aa333936efb63f0b",
       "vendor/ui-sdk/docs/components/file-input.md": "070a17757ae7c42e7ad1a5455f62dd0a54e129b0363e38dda5553a4f3f30a878",
       "vendor/ui-sdk/docs/components/hover-card.md": "8e716fab22c4551c272396f138bb9513eeb857f4878a7d2396f05068296b39fb",
@@ -147,7 +147,7 @@
       "vendor/ui-sdk/docs/components/textarea.md": "c3985712e87c2331f32b298d489f7ee3d46ad0c6c1e45190f8b3cf4443e89af8",
       "vendor/ui-sdk/docs/components/time-input.md": "ee9fd9502de64dbf3ba2c8d99f9262519e15a9c6a0e1ff7b99e718542a4e5a4d",
       "vendor/ui-sdk/docs/components/timeline.md": "86bf5a7b3d838fe22142508df2c3577b7784b93388bdb7f95292136eb2cd77d6",
-      "vendor/ui-sdk/docs/components/toast.md": "4dc3ed452490933c450bbbb9987c5ce79d85026b0fd70f69396cfccba5126339",
+      "vendor/ui-sdk/docs/components/toast.md": "3cf3adc9a19a31ddba46c21385708d2b8c81b52d10a0ab051591bafa7a652981",
       "vendor/ui-sdk/docs/components/toggle.md": "12f82f130c13a3f2c037c06c53ec123c30ee4d75b21e58c9ddcda163d91f57cf",
       "vendor/ui-sdk/docs/components/token-input.md": "bc4b5e3adb070c2cd66f819162d0621d4d880b1f1eb8761122c358dd1a05f0d5",
       "vendor/ui-sdk/docs/components/toolbar.md": "81e114b57a3075b3b44e5474b4082d7063b97b591d688eb449f72aa2561b9e74",
@@ -183,7 +183,7 @@
     }
   },
   "pins": {
-    "@ui-sdk/core": "0.1.0-beta.14",
-    "@ui-sdk/react": "0.1.0-beta.14"
+    "@ui-sdk/core": "0.1.0-beta.16",
+    "@ui-sdk/react": "0.1.0-beta.16"
   }
 }
