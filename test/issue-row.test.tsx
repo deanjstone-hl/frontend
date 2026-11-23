@@ -1,8 +1,11 @@
-import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react"
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react"
 import axe from "axe-core"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { IssueRow, IssueRowList } from "../registry/base-nova/blocks/issue-row"
+import { installUiSdkStubs } from "./setup/ui-sdk"
+
+installUiSdkStubs()
 
 afterEach(() => {
   cleanup()
@@ -19,9 +22,10 @@ const actions = (onSelect = vi.fn()) => [
 
 const cell = (container: HTMLElement, slot: string) => container.querySelector<HTMLElement>(`[data-slot=issue-row-${slot}]`)
 
-// jsdom opens a Base UI menu from a bare click; the full mouse sequence toggles it open and shut again.
-const openMore = () => {
+// The menu is on @ui-sdk: it opens from a click and shows one microtask later.
+const openMore = async () => {
   fireEvent.click(screen.getByRole("button", { name: /more actions/i }))
+  return screen.findByRole("menu")
 }
 
 describe("IssueRowList", () => {
@@ -206,94 +210,103 @@ describe("IssueRow: the actions behind the right-click", () => {
       expect(screen.getByRole("button", { name: "Weitere Aktionen" })).toBeTruthy()
     })
 
-    it("opens a menu of the actions", () => {
+    it("opens a menu of the actions", async () => {
       render(<IssueRow title="T" actions={actions()} />)
 
-      openMore()
+      const menu = await openMore()
 
-      const menu = screen.getByRole("menu")
       expect(within(menu).getByRole("menuitem", { name: "Assign to me" })).toBeTruthy()
       expect(within(menu).getByRole("menuitem", { name: "Close" })).toBeTruthy()
     })
 
-    it("runs the action chosen and closes the menu", () => {
+    it("runs the action chosen and closes the menu", async () => {
       const onSelect = vi.fn()
       render(<IssueRow title="T" actions={actions(onSelect)} />)
 
-      openMore()
+      await openMore()
       fireEvent.click(screen.getByRole("menuitem", { name: "Assign to me" }))
 
       expect(onSelect).toHaveBeenCalledTimes(1)
-      expect(screen.queryByRole("menu")).toBeNull()
+      await waitFor(() => expect(screen.queryByRole("menu")).toBeNull())
     })
   })
 
   describe("right-click", () => {
-    it("opens the same menu", () => {
+    it("opens the same menu", async () => {
       render(<IssueRow title="T" href="/x" actions={actions()} />)
 
       fireEvent.contextMenu(screen.getByRole("link", { name: "T" }))
 
-      const menu = screen.getByRole("menu")
+      const menu = await screen.findByRole("menu")
       expect(within(menu).getAllByRole("menuitem")).toHaveLength(2)
     })
 
-    it("runs the action chosen", () => {
+    it("runs the action chosen", async () => {
       const onSelect = vi.fn()
       render(<IssueRow title="T" href="/x" actions={actions(onSelect)} />)
 
       fireEvent.contextMenu(screen.getByRole("link", { name: "T" }))
-      fireEvent.click(screen.getByRole("menuitem", { name: "Close" }))
+      fireEvent.click(await screen.findByRole("menuitem", { name: "Close" }))
 
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
   })
 
   describe("long-press", () => {
-    const touch = (x: number, y: number) => ({ touches: [{ clientX: x, clientY: y }] })
+    const finger = (x: number, y: number) => ({ pointerType: "touch", pointerId: 7, isPrimary: true, button: 0, clientX: x, clientY: y })
 
-    it("opens the same menu once the finger has been down for half a second", () => {
+    it("opens the same menu once the finger has been down for half a second", async () => {
       vi.useFakeTimers()
       render(<IssueRow title="T" href="/x" actions={actions()} />)
 
-      fireEvent.touchStart(screen.getByRole("link", { name: "T" }), touch(40, 20))
-      act(() => {
-        vi.advanceTimersByTime(499)
+      fireEvent.pointerDown(screen.getByRole("link", { name: "T" }), finger(40, 20))
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(499)
       })
       expect(screen.queryByRole("menu")).toBeNull()
 
-      act(() => {
-        vi.advanceTimersByTime(1)
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(1)
       })
       expect(within(screen.getByRole("menu")).getAllByRole("menuitem")).toHaveLength(2)
+
+      // Lifting the finger ends the press, and the browser's click that follows is swallowed, so the link is not followed.
+      fireEvent.pointerUp(screen.getByRole("link", { name: "T" }), finger(40, 20))
+      expect(fireEvent.click(screen.getByRole("link", { name: "T" }))).toBe(false)
     })
 
-    it("does not open for a tap that ends first, so a tap still opens the item", () => {
+    it("does not open for a tap that ends first, so a tap still opens the item", async () => {
       vi.useFakeTimers()
       render(<IssueRow title="T" href="/x" actions={actions()} />)
 
       const link = screen.getByRole("link", { name: "T" })
-      fireEvent.touchStart(link, touch(40, 20))
-      fireEvent.touchEnd(link)
-      act(() => {
-        vi.advanceTimersByTime(800)
+      fireEvent.pointerDown(link, finger(40, 20))
+      fireEvent.pointerUp(link, finger(40, 20))
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(800)
       })
 
       expect(screen.queryByRole("menu")).toBeNull()
     })
 
-    it("does not open when the finger moves off, which is a scroll", () => {
+    it("does not open when the finger moves off, which is a scroll", async () => {
       vi.useFakeTimers()
       render(<IssueRow title="T" href="/x" actions={actions()} />)
 
       const link = screen.getByRole("link", { name: "T" })
-      fireEvent.touchStart(link, touch(40, 20))
-      fireEvent.touchMove(link, touch(40, 80))
-      act(() => {
-        vi.advanceTimersByTime(800)
+      fireEvent.pointerDown(link, finger(40, 20))
+      fireEvent.pointerMove(link, finger(40, 80))
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(800)
       })
 
       expect(screen.queryByRole("menu")).toBeNull()
+
+      // A browser cancels the pointer when it starts a scroll; until then the SDK swallows the click that would follow it.
+      fireEvent.pointerCancel(link, finger(40, 80))
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(10)
+      })
     })
 
     it("turns off the iOS link callout and text selection so the press reaches the menu", () => {
@@ -305,29 +318,28 @@ describe("IssueRow: the actions behind the right-click", () => {
     })
   })
 
-  it("marks a destructive action so it reads as one", () => {
+  it("marks a destructive action so it reads as one", async () => {
     render(<IssueRow title="T" actions={actions()} />)
 
-    openMore()
+    await openMore()
 
     expect(screen.getByRole("menuitem", { name: "Close" }).getAttribute("data-variant")).toBe("destructive")
     expect(screen.getByRole("menuitem", { name: "Assign to me" }).getAttribute("data-variant")).toBe("default")
   })
 
-  it("sizes the menu to its labels instead of the 44px more button it opens from", () => {
+  it("sizes the menu to its labels instead of the 44px more button it opens from", async () => {
     render(<IssueRow title="T" actions={actions()} />)
 
-    openMore()
+    const menu = await openMore()
 
-    const menu = screen.getByRole("menu")
     expect(menu.className).toContain("w-auto")
     expect(menu.className).toContain("min-w-48")
   })
 
-  it("grows the menu items to 44px under a coarse pointer", () => {
+  it("grows the menu items to 44px under a coarse pointer", async () => {
     render(<IssueRow title="T" actions={actions()} />)
 
-    openMore()
+    await openMore()
 
     for (const item of screen.getAllByRole("menuitem")) {
       expect(item.className).toContain("pointer-coarse:min-h-11")

@@ -109,7 +109,7 @@ function IssueRow({
     "relative flex min-h-11 w-full min-w-0 items-center gap-2 select-none [-webkit-touch-callout:none]",
     "pl-[max(0.75rem,env(safe-area-inset-left))]",
     hasActions ? "pr-[max(0.25rem,env(safe-area-inset-right))]" : "pr-[max(0.75rem,env(safe-area-inset-right))]",
-    "hover:bg-muted/50 active:bg-muted/50 data-popup-open:bg-muted/50",
+    "hover:bg-muted/50 active:bg-muted/50 data-open:bg-muted/50",
     className,
   )
 
@@ -162,7 +162,7 @@ function IssueRow({
           <DropdownMenuTrigger
             data-slot="issue-row-more"
             aria-label={moreName}
-            className="relative z-10 inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-md text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-muted data-popup-open:text-foreground"
+            className="relative z-10 inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-md text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-open:bg-muted data-open:text-foreground"
           >
             <EllipsisIcon aria-hidden="true" className="size-4" />
           </DropdownMenuTrigger>
