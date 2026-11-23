@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Menu as MenuPrimitive } from "@base-ui/react/menu"
-import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
+import { MenuCheckboxItem, MenuItemIndicator, MenuRadioItem } from "@ui-sdk/react/menu"
+import { Menubar as MenubarRoot } from "@ui-sdk/react/menubar"
 import { cn } from "cn"
 
 import {
@@ -23,10 +23,31 @@ import {
 import { CheckIcon } from "lucide-react"
 
 
-function Menubar({ className, ...props }: MenubarPrimitive.Props) {
+// The SDK sets data-slot on every part itself and ignores a data-slot prop, so a part keeps its slot
+// through the element it renders.
+type SlotProp = { "data-slot"?: string }
+
+function slotted<Render>(
+  slot: string,
+  fallback: React.ReactElement,
+  render: Render | undefined
+): Render | React.ReactElement {
+  if (typeof render === "function") return render
+  const element = (React.isValidElement(render) ? render : fallback) as React.ReactElement<SlotProp>
+  return React.cloneElement(element, {
+    "data-slot": element.props["data-slot"] ?? slot,
+  })
+}
+
+function Menubar({
+  "data-slot": slot = "menubar",
+  className,
+  render,
+  ...props
+}: React.ComponentProps<typeof MenubarRoot> & SlotProp) {
   return (
-    <MenubarPrimitive
-      data-slot="menubar"
+    <MenubarRoot
+      render={slotted(slot, <div />, render) as typeof render}
       className={cn(
         "flex h-8 items-center gap-0.5 rounded-lg border p-[3px]",
         className
@@ -37,7 +58,7 @@ function Menubar({ className, ...props }: MenubarPrimitive.Props) {
 }
 
 function MenubarMenu({ ...props }: React.ComponentProps<typeof DropdownMenu>) {
-  return <DropdownMenu data-slot="menubar-menu" {...props} />
+  return <DropdownMenu {...props} />
 }
 
 function MenubarGroup({
@@ -49,7 +70,7 @@ function MenubarGroup({
 function MenubarPortal({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPortal>) {
-  return <DropdownMenuPortal data-slot="menubar-portal" {...props} />
+  return <DropdownMenuPortal {...props} />
 }
 
 function MenubarTrigger({
@@ -102,7 +123,7 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive!",
+        "group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:data-highlighted:bg-destructive/10 data-[variant=destructive]:data-highlighted:text-destructive dark:data-[variant=destructive]:data-highlighted:bg-destructive/20 data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive!",
         className
       )}
       {...props}
@@ -111,33 +132,37 @@ function MenubarItem({
 }
 
 function MenubarCheckboxItem({
+  "data-slot": slot = "menubar-checkbox-item",
   className,
   children,
-  checked,
+  value,
   inset,
+  render,
   ...props
-}: MenuPrimitive.CheckboxItem.Props & {
-  inset?: boolean
-}) {
+}: Omit<React.ComponentProps<typeof MenuCheckboxItem>, "value"> &
+  SlotProp & {
+    value?: string
+    inset?: boolean
+  }) {
+  const generatedValue = React.useId()
   return (
-    <MenuPrimitive.CheckboxItem
-      data-slot="menubar-checkbox-item"
+    <MenuCheckboxItem
+      render={slotted(slot, <div />, render) as typeof render}
+      value={value ?? generatedValue}
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-highlighted:**:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
-      checked={checked}
       {...props}
     >
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
-        <MenuPrimitive.CheckboxItemIndicator>
-          <CheckIcon
-          />
-        </MenuPrimitive.CheckboxItemIndicator>
+        <MenuItemIndicator>
+          <CheckIcon />
+        </MenuItemIndicator>
       </span>
       {children}
-    </MenuPrimitive.CheckboxItem>
+    </MenuCheckboxItem>
   )
 }
 
@@ -148,31 +173,33 @@ function MenubarRadioGroup({
 }
 
 function MenubarRadioItem({
+  "data-slot": slot = "menubar-radio-item",
   className,
   children,
   inset,
+  render,
   ...props
-}: MenuPrimitive.RadioItem.Props & {
-  inset?: boolean
-}) {
+}: React.ComponentProps<typeof MenuRadioItem> &
+  SlotProp & {
+    inset?: boolean
+  }) {
   return (
-    <MenuPrimitive.RadioItem
-      data-slot="menubar-radio-item"
+    <MenuRadioItem
+      render={slotted(slot, <div />, render) as typeof render}
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-highlighted:**:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
-        <MenuPrimitive.RadioItemIndicator>
-          <CheckIcon
-          />
-        </MenuPrimitive.RadioItemIndicator>
+        <MenuItemIndicator>
+          <CheckIcon />
+        </MenuItemIndicator>
       </span>
       {children}
-    </MenuPrimitive.RadioItem>
+    </MenuRadioItem>
   )
 }
 
@@ -217,7 +244,7 @@ function MenubarShortcut({
     <DropdownMenuShortcut
       data-slot="menubar-shortcut"
       className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground",
+        "ml-auto text-xs tracking-widest text-muted-foreground group-data-highlighted/menubar-item:text-accent-foreground",
         className
       )}
       {...props}
@@ -228,7 +255,7 @@ function MenubarShortcut({
 function MenubarSub({
   ...props
 }: React.ComponentProps<typeof DropdownMenuSub>) {
-  return <DropdownMenuSub data-slot="menubar-sub" {...props} />
+  return <DropdownMenuSub {...props} />
 }
 
 function MenubarSubTrigger({
@@ -243,7 +270,7 @@ function MenubarSubTrigger({
       data-slot="menubar-sub-trigger"
       data-inset={inset}
       className={cn(
-        "gap-1.5 rounded-md px-1.5 py-1 text-sm focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-open:bg-accent data-open:text-accent-foreground [&_svg:not([class*='size-'])]:size-4",
+        "gap-1.5 rounded-md px-1.5 py-1 text-sm data-highlighted:bg-accent data-highlighted:text-accent-foreground data-inset:pl-7 data-open:bg-accent data-open:text-accent-foreground [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
