@@ -1,20 +1,51 @@
-import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu"
+"use client"
+
+import * as React from "react"
+import {
+  NavigationMenu as NavigationMenuRoot,
+  NavigationMenuContent as NavigationMenuPanel,
+  NavigationMenuIndicator as NavigationMenuIndicatorPart,
+  NavigationMenuItem as NavigationMenuItemPart,
+  NavigationMenuLink as NavigationMenuLinkPart,
+  NavigationMenuList as NavigationMenuListPart,
+  NavigationMenuTrigger as NavigationMenuTriggerPart,
+  NavigationMenuViewport,
+} from "@ui-sdk/react/navigation-menu"
 import { cva } from "class-variance-authority"
 import { cn } from "cn"
 import { ChevronDownIcon } from "lucide-react"
 
+// The SDK sets data-slot on every part itself and ignores a data-slot prop, so a part keeps its slot
+// (and takes one from a caller) through the element it renders.
+type SlotProp = { "data-slot"?: string }
 
+function slotted<Render>(
+  slot: string,
+  fallback: React.ReactElement,
+  render: Render | undefined
+): Render | React.ReactElement {
+  if (typeof render === "function") return render
+  const element = (React.isValidElement(render) ? render : fallback) as React.ReactElement<SlotProp>
+  return React.cloneElement(element, {
+    "data-slot": element.props["data-slot"] ?? slot,
+  })
+}
+
+type ViewportProps = React.ComponentProps<typeof NavigationMenuViewport>
 
 function NavigationMenu({
+  "data-slot": slot = "navigation-menu",
   align = "start",
   className,
   children,
+  render,
   ...props
-}: NavigationMenuPrimitive.Root.Props &
-  Pick<NavigationMenuPrimitive.Positioner.Props, "align">) {
+}: React.ComponentProps<typeof NavigationMenuRoot> &
+  SlotProp &
+  Pick<ViewportProps, "align">) {
   return (
-    <NavigationMenuPrimitive.Root
-      data-slot="navigation-menu"
+    <NavigationMenuRoot
+      render={slotted(slot, <nav />, render) as typeof render}
       className={cn(
         "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
         className
@@ -23,17 +54,19 @@ function NavigationMenu({
     >
       {children}
       <NavigationMenuPositioner align={align} />
-    </NavigationMenuPrimitive.Root>
+    </NavigationMenuRoot>
   )
 }
 
 function NavigationMenuList({
+  "data-slot": slot = "navigation-menu-list",
   className,
+  render,
   ...props
-}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.List>) {
+}: React.ComponentProps<typeof NavigationMenuListPart> & SlotProp) {
   return (
-    <NavigationMenuPrimitive.List
-      data-slot="navigation-menu-list"
+    <NavigationMenuListPart
+      render={slotted(slot, <ul />, render) as typeof render}
       className={cn(
         "group flex flex-1 list-none items-center justify-center gap-0",
         className
@@ -44,12 +77,14 @@ function NavigationMenuList({
 }
 
 function NavigationMenuItem({
+  "data-slot": slot = "navigation-menu-item",
   className,
+  render,
   ...props
-}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.Item>) {
+}: React.ComponentProps<typeof NavigationMenuItemPart> & SlotProp) {
   return (
-    <NavigationMenuPrimitive.Item
-      data-slot="navigation-menu-item"
+    <NavigationMenuItemPart
+      render={slotted(slot, <li />, render) as typeof render}
       className={cn("relative", className)}
       {...props}
     />
@@ -57,38 +92,44 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-muted/50 data-popup-open:hover:bg-muted data-open:bg-muted/50 data-open:hover:bg-muted data-open:focus:bg-muted"
+  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-open:bg-muted/50 data-open:hover:bg-muted data-open:focus:bg-muted"
 )
 
 function NavigationMenuTrigger({
+  "data-slot": slot = "navigation-menu-trigger",
   className,
   children,
+  render,
   ...props
-}: NavigationMenuPrimitive.Trigger.Props) {
+}: React.ComponentProps<typeof NavigationMenuTriggerPart> & SlotProp) {
   return (
-    <NavigationMenuPrimitive.Trigger
-      data-slot="navigation-menu-trigger"
+    <NavigationMenuTriggerPart
+      render={slotted(slot, <button />, render) as typeof render}
       className={cn(navigationMenuTriggerStyle(), "group", className)}
       {...props}
     >
       {children}{" "}
       <ChevronDownIcon
-        className="relative top-px ml-1 size-3 transition duration-300 group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180"
+        className="relative top-px ml-1 size-3 transition duration-300 group-data-open/navigation-menu-trigger:rotate-180"
         aria-hidden="true"
       />
-    </NavigationMenuPrimitive.Trigger>
+    </NavigationMenuTriggerPart>
   )
 }
 
+// The SDK moves an open panel into the viewport and sizes the viewport to it, so a panel sits at the
+// viewport's corner with its own width and takes the SDK's motion attributes for the slide between panels.
 function NavigationMenuContent({
+  "data-slot": slot = "navigation-menu-content",
   className,
+  render,
   ...props
-}: NavigationMenuPrimitive.Content.Props) {
+}: React.ComponentProps<typeof NavigationMenuPanel> & SlotProp) {
   return (
-    <NavigationMenuPrimitive.Content
-      data-slot="navigation-menu-content"
+    <NavigationMenuPanel
+      render={slotted(slot, <div />, render) as typeof render}
       className={cn(
-        "data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] h-full w-auto p-1 transition-[opacity,transform,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[viewport=false]/navigation-menu:rounded-lg group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:ring-1 group-data-[viewport=false]/navigation-menu:ring-foreground/10 group-data-[viewport=false]/navigation-menu:duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0 data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-open:animate-in group-data-[viewport=false]/navigation-menu:data-open:fade-in-0 group-data-[viewport=false]/navigation-menu:data-open:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-closed:animate-out group-data-[viewport=false]/navigation-menu:data-closed:fade-out-0 group-data-[viewport=false]/navigation-menu:data-closed:zoom-out-95",
+        "absolute start-0 top-0 max-h-(--available-height,var(--panel-height)) w-max overflow-y-auto p-1 transition-[opacity,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none data-ending-style:opacity-0 data-starting-style:opacity-0 data-[motion=from-end]:data-starting-style:translate-x-12 data-[motion=from-start]:data-starting-style:-translate-x-12 data-[motion=to-end]:data-ending-style:translate-x-12 data-[motion=to-start]:data-ending-style:-translate-x-12 rtl:data-[motion=from-end]:data-starting-style:-translate-x-12 rtl:data-[motion=from-start]:data-starting-style:translate-x-12 rtl:data-[motion=to-end]:data-ending-style:-translate-x-12 rtl:data-[motion=to-start]:data-ending-style:translate-x-12",
         className
       )}
       {...props}
@@ -96,44 +137,52 @@ function NavigationMenuContent({
   )
 }
 
+// The SDK's viewport is the positioned popup that holds whichever panel is open, where Base UI used a
+// positioner, a popup and a viewport. The name stays for existing imports.
 function NavigationMenuPositioner({
+  "data-slot": slot = "navigation-menu-viewport",
   className,
   side = "bottom",
   sideOffset = 8,
   align = "start",
   alignOffset = 0,
+  render,
   ...props
-}: NavigationMenuPrimitive.Positioner.Props) {
+}: ViewportProps & SlotProp) {
   return (
-    <NavigationMenuPrimitive.Portal>
-      <NavigationMenuPrimitive.Positioner
-        side={side}
-        sideOffset={sideOffset}
-        align={align}
-        alignOffset={alignOffset}
-        className={cn(
-          "isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-instant:transition-none data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0",
-          className
-        )}
-        {...props}
-      >
-        <NavigationMenuPrimitive.Popup className="data-[ending-style]:easing-[ease] xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-lg bg-popover text-popover-foreground shadow ring-1 ring-foreground/10 transition-[opacity,transform,width,height,scale,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] outline-none data-ending-style:scale-90 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:scale-90 data-starting-style:opacity-0">
-          <NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
-        </NavigationMenuPrimitive.Popup>
-      </NavigationMenuPrimitive.Positioner>
-    </NavigationMenuPrimitive.Portal>
+    <NavigationMenuViewport
+      render={slotted(slot, <div />, render) as typeof render}
+      side={side}
+      sideOffset={sideOffset}
+      align={align}
+      alignOffset={alignOffset}
+      className={cn(
+        "relative h-(--viewport-height) w-(--viewport-width) origin-(--transform-origin) overflow-hidden rounded-lg bg-popover text-popover-foreground shadow ring-1 ring-foreground/10 transition-[width,height,left,top,opacity,scale] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] outline-none [--panel-height:var(--available-height)] motion-reduce:transition-none data-ending-style:scale-90 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:scale-90 data-starting-style:opacity-0",
+        className
+      )}
+      {...props}
+    />
   )
 }
 
+// Base UI marked the link for the current page with `active`; the SDK calls it `current`.
 function NavigationMenuLink({
+  "data-slot": slot = "navigation-menu-link",
   className,
+  active,
+  current,
+  render,
   ...props
-}: NavigationMenuPrimitive.Link.Props) {
+}: React.ComponentProps<typeof NavigationMenuLinkPart> &
+  SlotProp & {
+    active?: boolean
+  }) {
   return (
-    <NavigationMenuPrimitive.Link
-      data-slot="navigation-menu-link"
+    <NavigationMenuLinkPart
+      render={slotted(slot, <a />, render) as typeof render}
+      current={current ?? active}
       className={cn(
-        "flex items-center gap-2 rounded-lg p-2 text-sm transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md data-active:bg-muted/50 data-active:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-2 rounded-lg p-2 text-sm transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md data-current:bg-muted/50 data-current:hover:bg-muted data-current:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -142,20 +191,22 @@ function NavigationMenuLink({
 }
 
 function NavigationMenuIndicator({
+  "data-slot": slot = "navigation-menu-indicator",
   className,
+  render,
   ...props
-}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.Icon>) {
+}: React.ComponentProps<typeof NavigationMenuIndicatorPart> & SlotProp) {
   return (
-    <NavigationMenuPrimitive.Icon
-      data-slot="navigation-menu-indicator"
+    <NavigationMenuIndicatorPart
+      render={slotted(slot, <div />, render) as typeof render}
       className={cn(
-        "top-full z-1 flex h-1.5 items-end justify-center overflow-hidden data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:animate-in data-[state=visible]:fade-in",
+        "absolute top-full left-(--active-item-left) z-1 flex h-1.5 w-(--active-item-width) items-end justify-center overflow-hidden data-closed:animate-out data-closed:fade-out data-open:animate-in data-open:fade-in not-data-visible:hidden",
         className
       )}
       {...props}
     >
       <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
-    </NavigationMenuPrimitive.Icon>
+    </NavigationMenuIndicatorPart>
   )
 }
 

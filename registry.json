@@ -2253,7 +2253,8 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@base-ui/react",
+        "@ui-sdk/core@0.1.0-beta.16",
+        "@ui-sdk/react@0.1.0-beta.16",
         "class-variance-authority",
         "cn@^0.5.0",
         "lucide-react"
