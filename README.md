@@ -2147,7 +2147,8 @@ it holds no control of its own, and a link in prose is not a touch target. App a
   way as `theme`/`button` above:
   - *Controls* — `button`, `input`, `textarea`, `select`, `native-select`,
     `combobox`, `checkbox`, `radio-group`, `switch`, `slider`, `input-otp`,
-    `calendar`, `date-picker`, `label`, `kbd`
+    `calendar`, `date-picker`, `label`, `kbd`. `native-select` is 44px tall with 16px text under a coarse
+    pointer (also at `size="sm"`), so a phone neither misses it nor zooms into it; a mouse keeps 32px and 14px.
   - *Surfaces and overlays* — `card`, `dialog`, `alert-dialog`, `sheet`,
     `drawer`, `popover`, `hover-card`, `dropdown-menu`, `context-menu`,
     `collapsible`, `accordion`, `scroll-area`, `resizable`

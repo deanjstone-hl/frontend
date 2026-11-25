@@ -565,6 +565,7 @@ Which controls get the floor, and how:
 | --- | --- |
 | `button`, `toggle`, `toggle-group-item`, `dialog-close` | `min-height` and `min-width` 44px |
 | `input`, `command-input`, `select-trigger` | `min-height` 44px |
+| `native-select` | `pointer-coarse:h-11` on the `<select>` itself (also at `size="sm"`), with 16px text so iOS does not zoom; 32px (28px at `sm`) and 14px under a fine pointer |
 | `tabs-trigger` | 44px each way, inside a `tabs-list` of 50px |
 | `checkbox`, `switch` | drawn size unchanged; the `::after` tap region is centred and at least 44px each way |
 | link or button `badge` | the same `::after` tap region, and `overflow: visible` so it is not clipped. A plain badge is not a control and is left alone |
