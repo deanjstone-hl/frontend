@@ -407,7 +407,7 @@ registry/
   lib/relative-time.ts      formatRelativeTime ("5m ago", "in 2h") and the useNow clock-tick hook
   lib/list-group-core.ts    grouping and display-settings model (grouped-list)
   lib/page-transition-core.ts  theme tokens to glimm band colours (page-transition, staged: not in registry.json yet)
-  base-nova/ui/               69 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
+  base-nova/ui/               70 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
   base-nova/hooks/            use-mobile (pulled by sidebar), use-online (pulled by offline-banner), use-highlighted-code (pulled by code-block), use-theme-preference, use-font-preference, use-filter-state, use-display-settings
   base-nova/blocks/           v3 layout blocks: app-shell, app-switcher, page-header, empty-page, settings-page, login, card-list, issue-row, filter-builder, grouped-list, file-diff
   design-check/             scripts and workflow of the design-check item (CI, not UI)
@@ -1292,7 +1292,7 @@ VoiceOver, so turn it on for any drawer without another close control.
 controls clear of the display curves, the Dynamic Island and the home-indicator
 band ([design-system#143](https://github.com/deanjstone/design-system/issues/143)).
 It builds a harness page of the registry blocks (AppShell, login, sheet on four
-sides, dialog, alert dialog, drawer, toast, stat tile), opens each in Playwright Chromium and
+sides, dialog, alert dialog, drawer, toast, stat tile, copy button), opens each in Playwright Chromium and
 sets the insets with the CDP method `Emulation.setSafeAreaInsetsOverride`, so
 `env(safe-area-inset-*)` resolves to the device values. Chromium draws no curves;
 the gate measures instead.
@@ -2023,6 +2023,38 @@ an `ErrorNotice`. When to use it: [DESIGN.md](DESIGN.md#offline-banner).
 
 `test/use-online.test.tsx` and `test/offline-banner.test.tsx` fire the `online` and `offline` events, and
 `test/offline-banner-registry.test.ts` holds the two entries. App adoption is filed per app, not done here.
+
+## Copy button
+
+`copy-button` ([frontend#220](https://github.com/deanjstone-hl/frontend/issues/220)) is the one copy of what ops-hub
+(`promotion-parts.tsx`, the SHA button) and email (`CopyField.tsx`) each wrote for themselves, per the
+[primitives usage audit](docs/audits/2026-11-12-primitives-usage.md). It is built on `button`, declares `lucide-react` and pulls
+in `button`. `npx shadcn add deanjstone/frontend/copy-button`.
+
+```tsx
+<CopyButton value={sha} label={`Copy full SHA ${sha.slice(0, 7)}`} />              // icon only
+<CopyButton value={url} onCopyError={(error) => toast.error(String(error))}>Copy</CopyButton>   // with a word
+```
+
+| Prop | What it does |
+|---|---|
+| `value` | The text that goes on the clipboard |
+| `children` | The visible label while idle. With none it is an icon button, `icon-sm`; with some it is `sm`. The label swaps to `copiedLabel` or `failedLabel` after a click |
+| `label` | The accessible name of an icon-only button (default "Copy"). It stays put after a click |
+| `copiedLabel`, `failedLabel` | What the status region says, and what a labelled button shows (default "Copied", "Couldn't copy") |
+| `resetAfter` | Milliseconds before copied or failed goes back to idle (default 2000). A second click restarts it |
+| `onCopy(value)`, `onCopyError(error)` | After a copy, and when the clipboard rejects or the page has none (not https) |
+| `variant`, `size`, `className`, `onClick`, other `Button` props | Passed to the `button`. `variant` defaults to `ghost`. `onClick` runs first, and `event.preventDefault()` in it skips the copy |
+
+The state is `data-state` (`idle`, `copied`, `failed`) on the button. A polite `role="status"` sibling (`data-slot="copy-button-status"`)
+is in the page from the first render and says the result, so a screen reader hears it. The button renders as `Button`
+(`data-slot="button"`), so the 44px coarse-pointer floor applies. It returns the button and the status as a fragment: put it in a
+flex row, not in a fixed-height one. `code-block` keeps its own `CodeBlockCopyButton`. When to use it: [DESIGN.md](DESIGN.md#copy-button).
+
+`test/copy-button.test.tsx` stubs the clipboard (success, a rejection, none at all) and the timers, and
+`test/copy-button-registry.test.ts` holds the entry. The geometry gate draws it as the `copy-button` view (an icon button beside a SHA and a
+labelled button at the end of a wrapping value, in the AppShell), measures both against the 44×44 touch floor in every scenario, and keeps an aria baseline in
+`scripts/geometry-gate/aria/copy-button.yml`. App adoption is filed per app, not done here.
 
 ## Style
 

@@ -1136,6 +1136,25 @@ each keep.
   answers. A failed request is still an error notice.
 - **Colour.** The `warning` token on its wash, as every `warning` alert.
 
+### Copy button
+
+The button that puts one value on the clipboard (`copy-button`), built on `button`. It replaces the SHA
+button in ops-hub's promotion card and email's `CopyField`.
+
+- **Icon beside a value, or a word at the end of a row.** With no children it is an icon button
+  (`icon-sm`) named "Copy", or by the `label` you give it ("Copy full SHA 9f8e7d6"): name the thing
+  copied. With children it is a `sm` button and the children are the visible label.
+- **Three states, never colour alone.** Idle shows the copy icon. Copied swaps to a check in `success`
+  and, for a labelled button, the word "Copied". Failed swaps to a circle-alert in `destructive` and
+  "Couldn't copy". Each goes back to idle after two seconds.
+- **A screen reader hears it.** A polite status region beside the button says "Copied" or "Couldn't
+  copy". The icon-only button's own name does not change, so the region is the one announcer.
+- **Say when it failed.** The clipboard refuses without permission and does not exist off https.
+  The failed state shows it; use `onCopyError` for a toast or a message that says why.
+- **44px on a touch screen.** It is a `button`, so the coarse-pointer floor applies. Leave room for
+  it: let the row wrap and do not put it in a fixed-height row.
+- **`code-block` keeps its own.** `CodeBlockCopyButton` stays the copy control inside a code panel.
+
 ### Inputs
 
 - **Style:** Transparent ground with a 1px `input` border at 10px radius,
@@ -1190,7 +1209,7 @@ treatment, the radius scale, the 32px control height where they are controls —
 and are listed here so the inventory is not something you have to infer from
 `registry.json`.
 
-**Controls** — `button`, `input`, `textarea`, `select`, `checkbox`,
+**Controls** — `button`, `copy-button`, `input`, `textarea`, `select`, `checkbox`,
 `switch`, `slider`, `label`. Anything the user operates directly. All take the
 control height and the two-layer focus treatment; `checkbox`, `switch` and
 `slider` are the three that carry state in their own geometry rather than in a
