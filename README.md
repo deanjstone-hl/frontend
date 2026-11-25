@@ -1425,7 +1425,8 @@ npx shadcn add deanjstone/frontend/design-check#v3.0.0
 |---|---|
 | `scripts/design-detect.sh` | Runs `impeccable@4.7.0 detect` on the UI files a PR changed (`.tsx`, `.jsx`, `.css`, `.html`, `.vue`, `.svelte`) and writes counts by rule and severity to the job summary |
 | `scripts/design-rules.mjs` | The iPhone safe-area and touch rules below, on the same changed files. **A finding fails the job** |
-| `.github/workflows/design-detect.yml` | Runs both on PRs that touch those files, `DESIGN.md`, `components.json` or `.impeccable/`. The detector step is `continue-on-error: true`, so a detector finding or a failed scan never blocks a merge; the rules step has no such flag |
+| `scripts/registry-stale.mjs` | Lists the registry files copied into the app that match an **older release than the app's pin**, with the release each matches. Warn-only: see below |
+| `.github/workflows/design-detect.yml` | Runs all three on PRs that touch those files, `DESIGN.md`, `components.json` or `.impeccable/`. The detector and stale-copy steps are `continue-on-error: true`, so a finding or a failed scan never blocks a merge; the rules step has no such flag |
 
 **The design rules** (`design-rules.mjs`, [design-system#137](https://github.com/deanjstone/design-system/issues/137)):
 
@@ -1443,6 +1444,41 @@ common slips, not every case. A line that is right for a reason a rule cannot se
 takes a `design-rules-ignore` comment on that line or the line above. Only files
 the PR changed are scanned, so an old finding in an untouched file never fails a
 PR.
+
+**Stale copies** (`registry-stale.mjs`, [frontend#211](https://github.com/deanjstone-hl/frontend/issues/211)).
+Moving the `@frontend` pin in `components.json` does not move the code `shadcn add` already copied into
+the app, and the README pin table shows only the alias. The script, for each `components.json` in the
+repo:
+
+1. reads the pin from `registries["@frontend"]` (or the old `@design-system`);
+2. takes the files directly in the app's `aliases.ui` and `aliases.components` directories that carry
+   a registry file's name;
+3. fingerprints each against the item at the pin (`r/<item>.json`), reading a copy through what the
+   shadcn CLI rewrites: the `"use client"` line, the `cn-*` marker classes, `font-heading`, whitespace;
+4. compares each copy that differs from the pin with every older release, and lists the ones that
+   equal one.
+
+```text
+### Registry copies older than the pin (`apps/email`, pin v3.18.0, not blocking)
+
+2 of 21 registry copies match an older release than v3.18.0:
+
+| File | Matches | Pin |
+|---|---|---|
+| `apps/email/src/components/ui/card.tsx` | v2.10.0 to v3.9.1 | v3.18.0 |
+| `apps/email/src/components/ui/input.tsx` | v3.6.1 to v3.8.0 | v3.18.0 |
+```
+
+A copy that equals no release is a local edit or a fork and is not listed. Exit status: `0` nothing
+stale, `2` stale copies found, `1` the registry could not be read; the workflow step is
+`continue-on-error: true`, so none of them blocks a merge (drop that line to make it block). It needs
+`git` and Node 20 or later, lists releases with `git ls-remote` and reads each `r/<item>.json` over HTTP
+from the URL the pin names. A `components.json` with no tagged pin (no alias, or a branch such as `main`)
+is reported as having none; `--pin <tag> --registry-url <template> --remote <git url>` supply what it
+lacks. Run it locally with `node scripts/registry-stale.mjs` from the consumer's checkout. To bring a
+copy to the pin, look at the diff and then `npx shadcn add @frontend/<item> --overwrite`. The
+[primitives usage audit](docs/audits/2026-11-12-primitives-usage.md) measures the same thing across every
+app, with the same `fingerprint` (it imports it from this script).
 
 - **Pinned, telemetry off.** The version is one variable in the script
   (`IMPECCABLE_VERSION`); a bump is a deliberate edit. `DO_NOT_TRACK=1` and
