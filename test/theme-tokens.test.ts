@@ -356,8 +356,9 @@ describe("tinted washes", () => {
     const notice = ui("notice")
     const alert = ui("alert")
     const variantOf = (component: string) => {
-      const match = notice.match(new RegExp(`function ${component}\\b[\\s\\S]*?<Alert\\b[^>]*?variant="(\\w+)"`))
-      return match ? match[1] : "default"
+      const body = notice.split(/^function /m).find((chunk) => chunk.startsWith(`${component}(`))
+      expect(body, `${component} in notice`).toBeDefined()
+      return body!.match(/<Alert\b[^>]*?variant="(\w+)"/)?.[1] ?? "default"
     }
     const alertClasses = (variant: string) => alert.match(new RegExp(`\\b${variant}:\\s*"([^"]+)"`))![1]
 

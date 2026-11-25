@@ -2354,6 +2354,22 @@
       ]
     },
     {
+      "name": "notice",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "deanjstone/frontend/alert"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/notice.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": [

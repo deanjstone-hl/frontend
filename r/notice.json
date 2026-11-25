@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notice",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "deanjstone/frontend/alert"
+  ],
+  "files": [
+    {
+      "path": "registry/base-nova/ui/notice.tsx",
+      "content": "import * as React from \"react\"\nimport { Loader2Icon } from \"lucide-react\"\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\n\ntype NoticeProps = Omit<React.ComponentProps<typeof Alert>, \"variant\" | \"title\" | \"children\"> & {\n  /** What is happening or what failed, one short line: \"Loading briefings\", \"Couldn't load jobs\". */\n  title: React.ReactNode\n  /** The detail under the title: for an error, the error's message. */\n  description?: React.ReactNode\n}\n\ntype ErrorNoticeProps = NoticeProps & {\n  /** Extra content under the description: a hint or a link. */\n  children?: React.ReactNode\n  /** Buttons for the way out (\"Try again\", \"Sign out\"), in one row that wraps under the words. */\n  action?: React.ReactNode\n}\n\n// What a screen shows while its data loads: an alert in the default variant with a spinning icon. A\n// status, not an alert, so a screen reader reads it politely instead of interrupting.\nfunction LoadingNotice({ title, description, icon, ...props }: Omit<NoticeProps, \"children\">) {\n  return (\n    <Alert\n      role=\"status\"\n      aria-live=\"polite\"\n      icon={\n        icon === undefined ? (\n          <Loader2Icon aria-hidden=\"true\" className=\"animate-spin motion-reduce:animate-none\" />\n        ) : (\n          icon\n        )\n      }\n      {...props}\n    >\n      <AlertTitle>{title}</AlertTitle>\n      {description ? <AlertDescription>{description}</AlertDescription> : null}\n    </Alert>\n  )\n}\n\n// What a screen shows when its data failed to load: the critical alert, with the variant's own icon.\n// An alert, so a screen reader announces it.\nfunction ErrorNotice({ title, description, children, action, ...props }: ErrorNoticeProps) {\n  return (\n    <Alert variant=\"critical\" {...props}>\n      <AlertTitle>{title}</AlertTitle>\n      {description ? <AlertDescription>{description}</AlertDescription> : null}\n      {children ? (\n        <div\n          data-slot=\"notice-body\"\n          className=\"text-sm group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground\"\n        >\n          {children}\n        </div>\n      ) : null}\n      {action ? (\n        <div\n          data-slot=\"notice-actions\"\n          className=\"mt-2 flex flex-wrap gap-2 group-has-[>svg]/alert:col-start-2\"\n        >\n          {action}\n        </div>\n      ) : null}\n    </Alert>\n  )\n}\n\nexport { LoadingNotice, ErrorNotice }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
