@@ -33,7 +33,7 @@ const findCoarse = (node: unknown): Record<string, Record<string, string>> | und
 }
 const registryCoarse = findCoarse(registryTheme.css)!
 
-const FLOORED = ["button", "input", "command-input", "select-trigger", "toggle", "tabs-trigger", "dialog-close"]
+const FLOORED = ["button", "input", "command-input", "select-trigger", "toggle", "toggle-group-item", "tabs-trigger", "dialog-close"]
 const WIDENED = ['[data-slot="checkbox"]::after', '[data-slot="switch"]::after', 'a[data-slot="badge"]::after', 'button[data-slot="badge"]::after']
 
 describe("coarse-pointer block", () => {

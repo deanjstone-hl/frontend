@@ -1009,6 +1009,12 @@
     min-width: 44px;
   }
 
+  /* A ToggleGroup item is a Toggle with its own slot, at every size (h-7, h-8, h-9). */
+  [data-slot="toggle-group-item"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
   [data-slot="tabs-list"] {
     min-height: 50px;
   }

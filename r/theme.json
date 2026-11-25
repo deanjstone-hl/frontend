@@ -845,6 +845,10 @@
         "min-height": "44px",
         "min-width": "44px"
       },
+      "[data-slot=\"toggle-group-item\"]": {
+        "min-height": "44px",
+        "min-width": "44px"
+      },
       "[data-slot=\"tabs-list\"]": {
         "min-height": "50px"
       },
