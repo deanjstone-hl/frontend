@@ -35,10 +35,9 @@ concurrency:
   group: release
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
+# No token by default (frontend#236): each job asks for what it needs. The test job
+# reads the repo; the Release job writes the tag, the release and its notes.
+permissions: {}
 
 jobs:
   # The pre-check runs first: a promotion with nothing releasable costs no test and
@@ -66,24 +65,25 @@ jobs:
           exit 1
 
       # github.sha: the commit that was promoted (or the tip of deploy for a manual run).
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: ${{ github.sha }}
           # The pre-check reads every commit since the last tag.
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Anything to release?
         id: precheck
         run: bash scripts/release/release-needed.sh
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         if: steps.precheck.outputs.releasable == 'true' && runner.environment == 'github-hosted'
 
       - name: Use the host pnpm (self-hosted)
         if: steps.precheck.outputs.releasable == 'true' && runner.environment != 'github-hosted'
         uses: ./.github/actions/host-pnpm
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         if: steps.precheck.outputs.releasable == 'true'
         with:
           node-version: 22
@@ -125,7 +125,7 @@ jobs:
 
       - name: Restore Chromium
         if: steps.precheck.outputs.releasable == 'true' && runner.environment == 'github-hosted'
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ~/.cache/ms-playwright
           key: playwright-chromium-${{ runner.os }}-${{ runner.arch }}-playwright-core-${{ env.PLAYWRIGHT_CORE_VERSION }}
@@ -140,7 +140,7 @@ jobs:
 
       - name: Upload curve screenshots
         if: failure() && steps.precheck.outputs.releasable == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: geometry-gate-curves
           path: geometry-gate-out/curves/
@@ -157,8 +157,12 @@ jobs:
     # Nothing releasable: the test job ended green having run nothing, and there is no version.
     if: needs.test.outputs.releasable == 'true'
     runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '"ubuntu-latest"') }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           # The tip of deploy, not github.sha: semantic-release releases only a branch
           # that is level with the remote, and the gate below proves the tip is the
@@ -176,14 +180,14 @@ jobs:
         env:
           TESTED_SHA: ${{ github.sha }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         if: steps.gate.outputs.release == 'true' && runner.environment == 'github-hosted'
 
       - name: Use the host pnpm (self-hosted)
         if: steps.gate.outputs.release == 'true' && runner.environment != 'github-hosted'
         uses: ./.github/actions/host-pnpm
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         if: steps.gate.outputs.release == 'true'
         with:
           node-version: 22

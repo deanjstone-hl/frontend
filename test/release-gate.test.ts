@@ -173,9 +173,11 @@ describe("release.yml follows the shared release pattern", () => {
     expect(workflow).toMatch(/^concurrency:\s*\n\s+group: release\s*\n\s+cancel-in-progress: false\s*$/m)
   })
 
-  it("lets the release job write to the repo, and the test job only read it", () => {
-    expect(workflow).toMatch(/^permissions:\s*\n\s+contents: write/m)
-    expect(testJob).toMatch(/permissions:\s*\n\s+contents: read/)
+  it("starts with no token, lets the release job write to the repo and the test job only read it (frontend#236)", () => {
+    expect(workflow).toMatch(/^permissions: \{\}\s*$/m)
+    expect(releaseJob).toMatch(/permissions:\s*\n\s+contents: write\s*\n\s+issues: write\s*\n\s+pull-requests: write/)
+    expect(testJob).toMatch(/permissions:\s*\n\s+contents: read\s*\n/)
+    expect(testJob).not.toMatch(/: write/)
   })
 
   it("is the only place Test's push to deploy used to be: test.yml no longer runs on deploy", () => {

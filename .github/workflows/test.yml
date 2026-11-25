@@ -10,6 +10,9 @@ on:
 # A pull request's newer push replaces its older run. A push to main gets a group of its
 # own (its SHA), so it is never cancelled and never dropped from a queue: every trunk SHA
 # gets a verdict (design-system#184).
+# No token by default: each job below asks for the one scope it needs.
+permissions: {}
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -21,12 +24,15 @@ jobs:
   changes:
     name: Geometry gate inputs changed
     runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '"ubuntu-latest"') }}
+    permissions:
+      contents: read
     outputs:
       geometry: ${{ steps.filter.outputs.geometry }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Check the gate's inputs
         id: filter
@@ -38,17 +44,21 @@ jobs:
   test:
     name: Component tests
     runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '"ubuntu-latest"') }}
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         if: runner.environment == 'github-hosted'
 
       - name: Use the host pnpm (self-hosted)
         if: runner.environment != 'github-hosted'
         uses: ./.github/actions/host-pnpm
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: pnpm
@@ -64,17 +74,21 @@ jobs:
     needs: changes
     if: needs.changes.outputs.geometry == 'true'
     runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '"ubuntu-latest"') }}
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         if: runner.environment == 'github-hosted'
 
       - name: Use the host pnpm (self-hosted)
         if: runner.environment != 'github-hosted'
         uses: ./.github/actions/host-pnpm
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: pnpm
@@ -96,7 +110,7 @@ jobs:
 
       - name: Restore Chromium
         if: runner.environment == 'github-hosted'
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ~/.cache/ms-playwright
           key: playwright-chromium-${{ runner.os }}-${{ runner.arch }}-playwright-core-${{ env.PLAYWRIGHT_CORE_VERSION }}
@@ -109,7 +123,7 @@ jobs:
 
       - name: Upload curve screenshots
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: geometry-gate-curves
           path: geometry-gate-out/curves/
@@ -118,17 +132,21 @@ jobs:
   lint:
     name: Lint (oxlint)
     runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '"ubuntu-latest"') }}
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         if: runner.environment == 'github-hosted'
 
       - name: Use the host pnpm (self-hosted)
         if: runner.environment != 'github-hosted'
         uses: ./.github/actions/host-pnpm
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: pnpm

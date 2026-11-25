@@ -34,7 +34,7 @@ describe("geometry gate job in test.yml", () => {
   })
 
   it("restores the browser from actions/cache on GitHub-hosted runners, keyed on playwright-core", () => {
-    expect(workflow).toMatch(/uses: actions\/cache@v\d/)
+    expect(workflow).toMatch(/uses: actions\/cache@[0-9a-f]{40} # v\d/)
     expect(workflow).toMatch(/runner\.environment == 'github-hosted'/)
     expect(workflow).toMatch(/key: playwright-chromium-.*playwright-core/)
   })
@@ -48,7 +48,7 @@ describe("geometry gate job in test.yml", () => {
 
   it("uploads the curve screenshots when the gate fails", () => {
     expect(workflow).toMatch(/if: failure\(\)/)
-    expect(workflow).toMatch(/uses: actions\/upload-artifact@v\d/)
+    expect(workflow).toMatch(/uses: actions\/upload-artifact@[0-9a-f]{40} # v\d/)
     expect(workflow).toContain("geometry-gate-out/curves/")
   })
 })

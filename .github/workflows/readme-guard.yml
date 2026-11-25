@@ -4,7 +4,9 @@ name: README guard
 # install script, package.json scripts or bin, an env template, a CLI entry point) but
 # touches no README and has no `README: not needed because ...` line (argus-config#1147).
 # The logic is .github/scripts/readme-guard.sh; this file and that script are vendored
-# byte-for-byte into every active repo, argus-config being the source. A shared reusable
+# into every active repo, argus-config being the source; this copy also carries the SHA pin,
+# empty top-level permissions and persist-credentials: false of frontend#236, which
+# argus-config's copy has to adopt before the two are byte-for-byte again. A shared reusable
 # workflow was rejected: from a private repo it needs an Actions-access setting on the
 # source repo and ties every repo's CI to this one.
 #
@@ -22,8 +24,7 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
@@ -38,13 +39,16 @@ jobs:
     name: README guard
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       # A pull request needs its merge commit and the base tip (depth 2). A push needs the
       # range it carried, so it fetches the history. The depths are strings: the number 0 is falsy, so
       # `&& 0 ||` fell through to 2 and a push was judged on its last commit only (argus-config#1540).
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: ${{ github.event_name == 'push' && '0' || '2' }}
+          persist-credentials: false
 
       # The body and the commit messages reach the script through the environment, never
       # interpolated into the shell text.
