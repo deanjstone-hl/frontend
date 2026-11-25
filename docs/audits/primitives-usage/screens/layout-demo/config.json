@@ -1,0 +1,11 @@
+{
+  "app": "layout-demo",
+  "repo": "design-system",
+  "note": "The geometry gate's AppShell harness page (scripts/geometry-gate/harness), rendered as the opt-in phone title's before and after (frontend#208). `titled` passes `pageTitle` to AppShell; `hidden` is the same page with `PageHeader hideOnPhone` and no `pageTitle`, the shape that left seven audited screens with no title on a phone. Build it with `GATE_OUT=~/.cache/primitives-usage/dist/layout-demo npx vite build -c scripts/geometry-gate/harness/vite.config.mjs`.",
+  "baseUrl": "http://127.0.0.1:4872",
+  "base": "/",
+  "screens": [
+    { "name": "hidden", "path": "/?v=shell-hidden", "waitFor": "h1", "primaryAction": "text=Act", "expectsProgress": false, "why": "Before: AppShell without `pageTitle` over a page whose PageHeader is `hideOnPhone`. The phone header shows the app name alone." },
+    { "name": "titled", "path": "/?v=shell-titled", "waitFor": "h1", "primaryAction": "text=Act", "expectsProgress": false, "why": "After: AppShell with `pageTitle`. The phone header shows the page title as the h1 and the app name sits in the switcher." }
+  ]
+}

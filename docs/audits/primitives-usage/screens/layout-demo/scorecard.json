@@ -1,0 +1,7033 @@
+{
+ "app": "layout-demo",
+ "baseUrl": "http://127.0.0.1:4872",
+ "rules": {
+  "fontSizesInFirstViewport": 3,
+  "largestRatio": 1.2,
+  "largestElements": 2,
+  "chipsPerRow": 1,
+  "coloursPerRow": 2,
+  "interactiveInFirstViewport": 15,
+  "alphaSteps": 4,
+  "tapTarget": 44,
+  "inputFontSize": 16,
+  "thumbZoneFrom": 0.6,
+  "bodyFontSize": 16,
+  "lineLength": [
+   45,
+   75
+  ],
+  "contrast": 4.5,
+  "contrastLarge": 3
+ },
+ "screens": [
+  {
+   "name": "hidden",
+   "path": "/?v=shell-hidden",
+   "why": "Before: AppShell without `pageTitle` over a page whose PageHeader is `hideOnPhone`. The phone header shows the app name alone.",
+   "primaryAction": "text=Act",
+   "expectsProgress": false,
+   "checks": {
+    "hierarchy": {
+     "oneLargest": {
+      "pass": false,
+      "detail": "16px ×2 \"Shell\", next 14px"
+     },
+     "fontSizes": {
+      "pass": false,
+      "detail": "16/14/13/12.8/12"
+     },
+     "pageTitleVisible": {
+      "pass": false,
+      "detail": "no h1 on show in the first viewport"
+     },
+     "headingVisible": {
+      "pass": false,
+      "detail": "no heading in the first viewport"
+     },
+     "headingOutweighsRows": {
+      "pass": null,
+      "detail": "no rows or no heading"
+     },
+     "headingOutweighsRowsDesktop": {
+      "pass": true,
+      "detail": "heading 600, row title 400"
+     }
+    },
+    "clutter": {
+     "chipsPerRow": {
+      "pass": true,
+      "detail": "max 0 in 10 rows"
+     },
+     "coloursPerRow": {
+      "pass": true,
+      "detail": "max 0"
+     },
+     "noNestedBorders": {
+      "pass": true,
+      "detail": "0 rows"
+     },
+     "chipsPerRowDesktop": {
+      "pass": true,
+      "detail": "max 0 in 2 rows"
+     },
+     "coloursPerRowDesktop": {
+      "pass": true,
+      "detail": "max 0"
+     },
+     "nothingCutOff": {
+      "pass": true,
+      "detail": "0 texts cut short, 0 of them in list rows"
+     },
+     "interactiveCount": {
+      "pass": false,
+      "detail": "24"
+     },
+     "alphaSteps": {
+      "pass": true,
+      "detail": "4: 0.3, 0.6, 0.74, 0.8"
+     }
+    },
+    "action": {
+     "primaryVisible": {
+      "pass": true,
+      "detail": "\"Act\" at 72px"
+     },
+     "primaryInThumbZone": {
+      "pass": false,
+      "detail": "centre at 10% of the viewport"
+     },
+     "tapTargets": {
+      "pass": false,
+      "detail": "1 of 25 under 44px"
+     },
+     "inputText": {
+      "pass": true,
+      "detail": "0 of 3 under 16px"
+     }
+    },
+    "state": {
+     "moreThanColour": {
+      "pass": null,
+      "detail": "no status colour on screen"
+     },
+     "statusFromTokens": {
+      "pass": null,
+      "detail": "no status colour on screen"
+     },
+     "progressShown": {
+      "pass": null,
+      "detail": "no goal on this screen"
+     },
+     "emptySaysNext": {
+      "pass": null,
+      "detail": "no empty state on screen"
+     }
+    },
+    "reading": {
+     "bodyText": {
+      "pass": false,
+      "detail": "14px"
+     },
+     "lineLength": {
+      "pass": null,
+      "detail": "no wrapped paragraph on desktop"
+     },
+     "contrast": {
+      "pass": true,
+      "detail": "iphone-light 0, iphone-dark 0, desktop-light 0, desktop-dark 0"
+     },
+     "noSidewaysScroll": {
+      "pass": true,
+      "detail": "390: 0px, 320: 0px"
+     },
+     "reducedMotion": {
+      "pass": true,
+      "detail": "0 running"
+     }
+    }
+   },
+   "variants": {
+    "iphone-light": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 16,
+       "elements": 2,
+       "weight": 600,
+       "text": "Shell",
+       "nextSize": 14
+      },
+      "headings": []
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 65,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden"
+    },
+    "iphone-dark": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 16,
+       "elements": 2,
+       "weight": 600,
+       "text": "Shell",
+       "nextSize": 14
+      },
+      "headings": []
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 65,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden"
+    },
+    "desktop-light": {
+     "viewport": [
+      1440,
+      900
+     ],
+     "coarse": false,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 26,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 277
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       }
+      ],
+      "largest": {
+       "size": 26,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 26,
+        "weight": 600,
+        "top": 72
+       }
+      ]
+     },
+     "rows": {
+      "count": 2,
+      "sample": [
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "1"
+       },
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "Ada Lovelace"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       36
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 24,
+      "small": 21,
+      "smallSample": [
+       {
+        "what": "Home",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Inbox",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Search",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Settings",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "button",
+        "width": 32,
+        "height": 32
+       },
+       {
+        "what": "Act",
+        "tag": "button",
+        "width": 44.5,
+        "height": 32
+       },
+       {
+        "what": "Default",
+        "tag": "button",
+        "width": 73.2,
+        "height": 32
+       },
+       {
+        "what": "Small",
+        "tag": "button",
+        "width": 57.5,
+        "height": 28
+       },
+       {
+        "what": "Outline",
+        "tag": "button",
+        "width": 72.7,
+        "height": 32
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": [
+       {
+        "what": "name",
+        "tag": "input",
+        "size": 14
+       },
+       {
+        "what": "Notes",
+        "tag": "textarea",
+        "size": 14
+       },
+       {
+        "what": "Search",
+        "tag": "input",
+        "size": 14
+       }
+      ]
+     },
+     "controls": [
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 0,
+       "bottom": 40,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 44,
+       "bottom": 84,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 88,
+       "bottom": 128,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 132,
+       "bottom": 172,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Settings",
+       "tag": "a",
+       "top": 176,
+       "bottom": 216,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 273,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 321,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 16,
+       "bottom": 48,
+       "left": 1383,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 104,
+       "left": 1287.5,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 32
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 32
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 143,
+       "bottom": 171,
+       "left": 437.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 28
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 502.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 32
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 583.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 32
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 143,
+       "bottom": 175,
+       "left": 709.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 32
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 806.9,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 213,
+       "bottom": 245,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 32
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 253,
+       "bottom": 317,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 339,
+       "bottom": 355,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 38,
+       "height": 30
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 389.8,
+       "bottom": 408.2,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 54,
+       "height": 32.4
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 444.5,
+       "bottom": 463.5,
+       "left": 390,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 932,
+       "height": 19
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 483,
+       "bottom": 515,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 32
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 359,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 42.5,
+       "height": 25
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 401.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 40.3,
+       "height": 25
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 571,
+       "bottom": 590,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 19
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 65,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": -8,
+      "runningAnimations": 0
+     },
+     "textRuns": 65,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 0,
+      "sample": []
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden"
+    },
+    "desktop-dark": {
+     "viewport": [
+      1440,
+      900
+     ],
+     "coarse": false,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 26,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 277
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       }
+      ],
+      "largest": {
+       "size": 26,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 26,
+        "weight": 600,
+        "top": 72
+       }
+      ]
+     },
+     "rows": {
+      "count": 2,
+      "sample": [
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "1"
+       },
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "Ada Lovelace"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       36
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 24,
+      "small": 21,
+      "smallSample": [
+       {
+        "what": "Home",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Inbox",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Search",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Settings",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "button",
+        "width": 32,
+        "height": 32
+       },
+       {
+        "what": "Act",
+        "tag": "button",
+        "width": 44.5,
+        "height": 32
+       },
+       {
+        "what": "Default",
+        "tag": "button",
+        "width": 73.2,
+        "height": 32
+       },
+       {
+        "what": "Small",
+        "tag": "button",
+        "width": 57.5,
+        "height": 28
+       },
+       {
+        "what": "Outline",
+        "tag": "button",
+        "width": 72.7,
+        "height": 32
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": [
+       {
+        "what": "name",
+        "tag": "input",
+        "size": 14
+       },
+       {
+        "what": "Notes",
+        "tag": "textarea",
+        "size": 14
+       },
+       {
+        "what": "Search",
+        "tag": "input",
+        "size": 14
+       }
+      ]
+     },
+     "controls": [
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 0,
+       "bottom": 40,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 44,
+       "bottom": 84,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 88,
+       "bottom": 128,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 132,
+       "bottom": 172,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Settings",
+       "tag": "a",
+       "top": 176,
+       "bottom": 216,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 273,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 321,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 16,
+       "bottom": 48,
+       "left": 1383,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 104,
+       "left": 1287.5,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 32
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 32
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 143,
+       "bottom": 171,
+       "left": 437.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 28
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 502.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 32
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 583.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 32
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 143,
+       "bottom": 175,
+       "left": 709.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 32
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 806.9,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 213,
+       "bottom": 245,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 32
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 253,
+       "bottom": 317,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 339,
+       "bottom": 355,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 38,
+       "height": 30
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 389.8,
+       "bottom": 408.2,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 54,
+       "height": 32.4
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 444.5,
+       "bottom": 463.5,
+       "left": 390,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 932,
+       "height": 19
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 483,
+       "bottom": 515,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 32
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 359,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 42.5,
+       "height": 25
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 401.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 40.3,
+       "height": 25
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 571,
+       "bottom": 590,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 19
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 65,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": -8,
+      "runningAnimations": 0
+     },
+     "textRuns": 65,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 0,
+      "sample": []
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden"
+    },
+    "iphone-320": {
+     "viewport": [
+      320,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 16,
+       "elements": 2,
+       "weight": 600,
+       "text": "Shell",
+       "nextSize": 14
+      },
+      "headings": []
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 288,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 65,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 259,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 83.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 180.9,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 244,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 78.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 131.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 184.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 237.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden"
+    },
+    "iphone-reduced-motion": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 16,
+       "elements": 2,
+       "weight": 600,
+       "text": "Shell",
+       "nextSize": 14
+      },
+      "headings": []
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 65,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden"
+    },
+    "iphone-insets-light": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 16,
+       "elements": 2,
+       "weight": 600,
+       "text": "Shell",
+       "nextSize": 14
+      },
+      "headings": []
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Shell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 65,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-hidden",
+     "underInsets": [
+      "Back",
+      "Shell",
+      "Alerts",
+      "Home",
+      "Inbox",
+      "Alerts",
+      "Search",
+      "More"
+     ]
+    }
+   }
+  },
+  {
+   "name": "titled",
+   "path": "/?v=shell-titled",
+   "why": "After: AppShell with `pageTitle`. The phone header shows the page title as the h1 and the app name sits in the switcher.",
+   "primaryAction": "text=Act",
+   "expectsProgress": false,
+   "checks": {
+    "hierarchy": {
+     "oneLargest": {
+      "pass": true,
+      "detail": "20px ×1 \"Page title\", next 16px"
+     },
+     "fontSizes": {
+      "pass": false,
+      "detail": "20/16/14/13/12.8/12"
+     },
+     "pageTitleVisible": {
+      "pass": true,
+      "detail": "h1 \"Page title\""
+     },
+     "headingVisible": {
+      "pass": true,
+      "detail": "h1 \"Page title\" at 19.5px"
+     },
+     "headingOutweighsRows": {
+      "pass": true,
+      "detail": "heading 600, row title 400"
+     },
+     "headingOutweighsRowsDesktop": {
+      "pass": true,
+      "detail": "heading 600, row title 400"
+     }
+    },
+    "clutter": {
+     "chipsPerRow": {
+      "pass": true,
+      "detail": "max 0 in 10 rows"
+     },
+     "coloursPerRow": {
+      "pass": true,
+      "detail": "max 0"
+     },
+     "noNestedBorders": {
+      "pass": true,
+      "detail": "0 rows"
+     },
+     "chipsPerRowDesktop": {
+      "pass": true,
+      "detail": "max 0 in 2 rows"
+     },
+     "coloursPerRowDesktop": {
+      "pass": true,
+      "detail": "max 0"
+     },
+     "nothingCutOff": {
+      "pass": true,
+      "detail": "0 texts cut short, 0 of them in list rows"
+     },
+     "interactiveCount": {
+      "pass": false,
+      "detail": "24"
+     },
+     "alphaSteps": {
+      "pass": true,
+      "detail": "4: 0.3, 0.6, 0.74, 0.8"
+     }
+    },
+    "action": {
+     "primaryVisible": {
+      "pass": true,
+      "detail": "\"Act\" at 72px"
+     },
+     "primaryInThumbZone": {
+      "pass": false,
+      "detail": "centre at 10% of the viewport"
+     },
+     "tapTargets": {
+      "pass": false,
+      "detail": "1 of 25 under 44px"
+     },
+     "inputText": {
+      "pass": true,
+      "detail": "0 of 3 under 16px"
+     }
+    },
+    "state": {
+     "moreThanColour": {
+      "pass": null,
+      "detail": "no status colour on screen"
+     },
+     "statusFromTokens": {
+      "pass": null,
+      "detail": "no status colour on screen"
+     },
+     "progressShown": {
+      "pass": null,
+      "detail": "no goal on this screen"
+     },
+     "emptySaysNext": {
+      "pass": null,
+      "detail": "no empty state on screen"
+     }
+    },
+    "reading": {
+     "bodyText": {
+      "pass": false,
+      "detail": "14px"
+     },
+     "lineLength": {
+      "pass": null,
+      "detail": "no wrapped paragraph on desktop"
+     },
+     "contrast": {
+      "pass": true,
+      "detail": "iphone-light 0, iphone-dark 0, desktop-light 0, desktop-dark 0"
+     },
+     "noSidewaysScroll": {
+      "pass": true,
+      "detail": "390: 0px, 320: 0px"
+     },
+     "reducedMotion": {
+      "pass": true,
+      "detail": "0 running"
+     }
+    }
+   },
+   "variants": {
+    "iphone-light": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 20,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 4
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 20,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 20,
+        "weight": 600,
+        "top": 19.5
+       }
+      ]
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Switch app, now in ShellShell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-titled"
+    },
+    "iphone-dark": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 20,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 4
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 20,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 20,
+        "weight": 600,
+        "top": 19.5
+       }
+      ]
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Switch app, now in ShellShell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-titled"
+    },
+    "desktop-light": {
+     "viewport": [
+      1440,
+      900
+     ],
+     "coarse": false,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 26,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 277
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       }
+      ],
+      "largest": {
+       "size": 26,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 26,
+        "weight": 600,
+        "top": 72
+       }
+      ]
+     },
+     "rows": {
+      "count": 2,
+      "sample": [
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "1"
+       },
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "Ada Lovelace"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       36
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 24,
+      "small": 21,
+      "smallSample": [
+       {
+        "what": "Home",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Inbox",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Search",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Settings",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "button",
+        "width": 32,
+        "height": 32
+       },
+       {
+        "what": "Act",
+        "tag": "button",
+        "width": 44.5,
+        "height": 32
+       },
+       {
+        "what": "Default",
+        "tag": "button",
+        "width": 73.2,
+        "height": 32
+       },
+       {
+        "what": "Small",
+        "tag": "button",
+        "width": 57.5,
+        "height": 28
+       },
+       {
+        "what": "Outline",
+        "tag": "button",
+        "width": 72.7,
+        "height": 32
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": [
+       {
+        "what": "name",
+        "tag": "input",
+        "size": 14
+       },
+       {
+        "what": "Notes",
+        "tag": "textarea",
+        "size": 14
+       },
+       {
+        "what": "Search",
+        "tag": "input",
+        "size": 14
+       }
+      ]
+     },
+     "controls": [
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 0,
+       "bottom": 40,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 44,
+       "bottom": 84,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 88,
+       "bottom": 128,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 132,
+       "bottom": 172,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Settings",
+       "tag": "a",
+       "top": 176,
+       "bottom": 216,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 273,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Switch app, now in ShellShell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 321,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 16,
+       "bottom": 48,
+       "left": 1383,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 104,
+       "left": 1287.5,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 32
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 32
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 143,
+       "bottom": 171,
+       "left": 437.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 28
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 502.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 32
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 583.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 32
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 143,
+       "bottom": 175,
+       "left": 709.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 32
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 806.9,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 213,
+       "bottom": 245,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 32
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 253,
+       "bottom": 317,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 339,
+       "bottom": 355,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 38,
+       "height": 30
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 389.8,
+       "bottom": 408.2,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 54,
+       "height": 32.4
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 444.5,
+       "bottom": 463.5,
+       "left": 390,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 932,
+       "height": 19
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 483,
+       "bottom": 515,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 32
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 359,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 42.5,
+       "height": 25
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 401.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 40.3,
+       "height": 25
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 571,
+       "bottom": 590,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 19
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 65,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": -8,
+      "runningAnimations": 0
+     },
+     "textRuns": 65,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 0,
+      "sample": []
+     },
+     "waitForSeen": false,
+     "pageErrors": [],
+     "url": "/?v=shell-titled"
+    },
+    "desktop-dark": {
+     "viewport": [
+      1440,
+      900
+     ],
+     "coarse": false,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 26,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 9
+       },
+       {
+        "size": 14,
+        "chars": 277
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       }
+      ],
+      "largest": {
+       "size": 26,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 26,
+        "weight": 600,
+        "top": 72
+       }
+      ]
+     },
+     "rows": {
+      "count": 2,
+      "sample": [
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "1"
+       },
+       {
+        "height": 36,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 14,
+        "titleText": "Ada Lovelace"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       36
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 24,
+      "small": 21,
+      "smallSample": [
+       {
+        "what": "Home",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Inbox",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Search",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Settings",
+        "tag": "a",
+        "width": 231,
+        "height": 40
+       },
+       {
+        "what": "Alerts",
+        "tag": "button",
+        "width": 32,
+        "height": 32
+       },
+       {
+        "what": "Act",
+        "tag": "button",
+        "width": 44.5,
+        "height": 32
+       },
+       {
+        "what": "Default",
+        "tag": "button",
+        "width": 73.2,
+        "height": 32
+       },
+       {
+        "what": "Small",
+        "tag": "button",
+        "width": 57.5,
+        "height": 28
+       },
+       {
+        "what": "Outline",
+        "tag": "button",
+        "width": 72.7,
+        "height": 32
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": [
+       {
+        "what": "name",
+        "tag": "input",
+        "size": 14
+       },
+       {
+        "what": "Notes",
+        "tag": "textarea",
+        "size": 14
+       },
+       {
+        "what": "Search",
+        "tag": "input",
+        "size": 14
+       }
+      ]
+     },
+     "controls": [
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 0,
+       "bottom": 40,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 44,
+       "bottom": 84,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 88,
+       "bottom": 128,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 132,
+       "bottom": 172,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Settings",
+       "tag": "a",
+       "top": 176,
+       "bottom": 216,
+       "left": 12,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 231,
+       "height": 40
+      },
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 273,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Switch app, now in ShellShell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 321,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 82.7,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 16,
+       "bottom": 48,
+       "left": 1383,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 104,
+       "left": 1287.5,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 32
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 32
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 143,
+       "bottom": 171,
+       "left": 437.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 28
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 502.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 32
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 583.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 32
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 143,
+       "bottom": 175,
+       "left": 709.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 32
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 143,
+       "bottom": 175,
+       "left": 806.9,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 32,
+       "height": 32
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 213,
+       "bottom": 245,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 32
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 253,
+       "bottom": 317,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 339,
+       "bottom": 355,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 38,
+       "height": 30
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 389.8,
+       "bottom": 408.2,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 54,
+       "height": 32.4
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 444.5,
+       "bottom": 463.5,
+       "left": 390,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 932,
+       "height": 19
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 483,
+       "bottom": 515,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 32
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 359,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 42.5,
+       "height": 25
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 534.5,
+       "bottom": 559.5,
+       "left": 401.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 40.3,
+       "height": 25
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 571,
+       "bottom": 590,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 976,
+       "height": 19
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 65,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": -8,
+      "runningAnimations": 0
+     },
+     "textRuns": 65,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 0,
+      "sample": []
+     },
+     "waitForSeen": false,
+     "pageErrors": [],
+     "url": "/?v=shell-titled"
+    },
+    "iphone-320": {
+     "viewport": [
+      320,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 20,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 4
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 20,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 20,
+        "weight": 600,
+        "top": 19.5
+       }
+      ]
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 288,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Switch app, now in ShellShell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 211,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 259,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 83.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 180.9,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 244,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 78.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 131.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 184.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 237.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 48.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-titled"
+    },
+    "iphone-reduced-motion": {
+     "viewport": [
+      390,
+      844
+     ],
+     "coarse": true,
+     "hierarchy": {
+      "fontSizes": [
+       {
+        "size": 20,
+        "chars": 10
+       },
+       {
+        "size": 16,
+        "chars": 4
+       },
+       {
+        "size": 14,
+        "chars": 71
+       },
+       {
+        "size": 13,
+        "chars": 15
+       },
+       {
+        "size": 12.8,
+        "chars": 5
+       },
+       {
+        "size": 12,
+        "chars": 25
+       }
+      ],
+      "largest": {
+       "size": 20,
+       "elements": 1,
+       "weight": 600,
+       "text": "Page title",
+       "nextSize": 16
+      },
+      "headings": [
+       {
+        "tag": "h1",
+        "text": "Page title",
+        "size": 20,
+        "weight": 600,
+        "top": 19.5
+       }
+      ]
+     },
+     "rows": {
+      "count": 10,
+      "sample": [
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       },
+       {
+        "height": 48,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 400,
+        "titleSize": 16,
+        "titleText": "Paragraph"
+       }
+      ],
+      "maxChips": 0,
+      "maxColours": 0,
+      "nested": 0,
+      "heights": [
+       35,
+       48
+      ],
+      "titleWeightMax": 400
+     },
+     "interactive": {
+      "firstViewport": 24,
+      "measured": 25,
+      "small": 1,
+      "smallSample": [
+       {
+        "what": "Tab content",
+        "tag": "div",
+        "width": 358,
+        "height": 19
+       }
+      ],
+      "inputs": 3,
+      "smallInputs": []
+     },
+     "controls": [
+      {
+       "what": "Back",
+       "tag": "a",
+       "top": 10,
+       "bottom": 54,
+       "left": 17,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Switch app, now in ShellShell",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Alerts",
+       "tag": "button",
+       "top": 10,
+       "bottom": 54,
+       "left": 329,
+       "inFirstViewport": true,
+       "centreAt": 0,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Act",
+       "tag": "button",
+       "top": 72,
+       "bottom": 116,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.1,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 44.5,
+       "height": 44
+      },
+      {
+       "what": "Default",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 73.2,
+       "height": 44
+      },
+      {
+       "what": "Small",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 97.2,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": true,
+       "width": 57.5,
+       "height": 44
+      },
+      {
+       "what": "Outline",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 162.7,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 72.7,
+       "height": 44
+      },
+      {
+       "what": "Link",
+       "tag": "button",
+       "top": 132,
+       "bottom": 176,
+       "left": 243.4,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 50.7,
+       "height": 44
+      },
+      {
+       "what": "Link badge",
+       "tag": "a",
+       "top": 184,
+       "bottom": 228,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 89.5,
+       "height": 44
+      },
+      {
+       "what": "Bold",
+       "tag": "button",
+       "top": 184,
+       "bottom": 228,
+       "left": 113.5,
+       "inFirstViewport": true,
+       "centreAt": 0.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "name",
+       "tag": "input",
+       "top": 266,
+       "bottom": 310,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 44
+      },
+      {
+       "what": "Notes",
+       "tag": "textarea",
+       "top": 318,
+       "bottom": 382,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 64
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 404,
+       "bottom": 420,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "BUTTON",
+       "tag": "button",
+       "top": 454.8,
+       "bottom": 473.2,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Search",
+       "tag": "input",
+       "top": 503,
+       "bottom": 547,
+       "left": 50,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 314,
+       "height": 44
+      },
+      {
+       "what": "Choice",
+       "tag": "button",
+       "top": 560,
+       "bottom": 604,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 51.6,
+       "height": 44
+      },
+      {
+       "what": "One",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 19,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Two",
+       "tag": "button",
+       "top": 623,
+       "bottom": 667,
+       "left": 63,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Tab content",
+       "tag": "div",
+       "top": 678,
+       "bottom": 697,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 19
+      },
+      {
+       "what": "Wide tableNameRoleRegionLast seenStatusA",
+       "tag": "div",
+       "top": 932.3,
+       "bottom": 1050.7,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 118.3
+      },
+      {
+       "what": "Home",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 25.8,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Inbox",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Alerts",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "Search",
+       "tag": "a",
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      },
+      {
+       "what": "More",
+       "tag": "button",
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
+       "pinnedToBottom": true,
+       "primaryFill": false,
+       "width": 62.9,
+       "height": 50
+      }
+     ],
+     "alphaSteps": [
+      0.3,
+      0.6,
+      0.74,
+      0.8
+     ],
+     "state": {
+      "statusTokens": [
+       "--warning #8a5300",
+       "--success #137333",
+       "--critical #c10007",
+       "--unreachable #b04400",
+       "--destructive #c10007"
+      ],
+      "statusColoured": 0,
+      "offToken": [],
+      "colourOnly": 0,
+      "colourOnlySamples": [],
+      "countsInHeadings": 0,
+      "progressText": 0,
+      "usesSafeTokens": true,
+      "progressElements": 0,
+      "empties": []
+     },
+     "reading": {
+      "bodySize": 14,
+      "lines": [],
+      "contrastChecked": 63,
+      "contrastUnknown": 0,
+      "contrastFails": [],
+      "contrastFailCount": 0,
+      "overflowX": 0,
+      "runningAnimations": 0
+     },
+     "textRuns": 63,
+     "truncated": {
+      "count": 0,
+      "inRows": 0,
+      "sample": []
+     },
+     "covered": {
+      "runs": 1,
+      "sample": [
+       "Card body (14px at 792)"
+      ]
+     },
+     "waitForSeen": true,
+     "pageErrors": [],
+     "url": "/?v=shell-titled"
+    }
+   }
+  }
+ ],
+ "mocks": [],
+ "blocked": [],
+ "unmockedLocal": []
+}

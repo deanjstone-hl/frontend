@@ -18,7 +18,10 @@ const apps = readdirSync(path.join(here, "screens"))
   .sort()
   .map((name) => ({ name, config: JSON.parse(readFileSync(path.join(here, "screens", name, "config.json"), "utf8")), card: JSON.parse(readFileSync(path.join(here, "screens", name, "scorecard.json"), "utf8")) }))
 
-const screens = apps.flatMap((app) => app.card.screens.filter((screen) => !screen.checks.error).map((screen) => ({ app: app.name, baseline: app.name === "ds-sample" || app.name === "proposed", ...screen })))
+// Samples of the registry itself, not apps: left out of the app-level counts.
+const BASELINES = new Set(["ds-sample", "proposed", "layout-demo"])
+
+const screens = apps.flatMap((app) => app.card.screens.filter((screen) => !screen.checks.error).map((screen) => ({ app: app.name, baseline: BASELINES.has(app.name), ...screen })))
 const lines = []
 for (const screen of screens) for (const [need, checks] of Object.entries(screen.checks)) for (const name of Object.keys(checks)) if (!lines.some((line) => line.need === need && line.name === name)) lines.push({ need, name })
 const mark = (check) => (!check || check.pass === null ? "–" : check.pass ? "✓" : "✗")
