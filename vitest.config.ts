@@ -29,6 +29,7 @@ export default defineConfig({
       "@/lib/theme-preference": fileURLToPath(new URL("./registry/lib/theme-preference.ts", import.meta.url)),
       "@/lib/font-preference": fileURLToPath(new URL("./registry/lib/font-preference.ts", import.meta.url)),
       "@/lib/nav-link": fileURLToPath(new URL("./registry/lib/nav-link.tsx", import.meta.url)),
+      "@/lib/relative-time": fileURLToPath(new URL("./registry/lib/relative-time.ts", import.meta.url)),
       "@/hooks": fileURLToPath(new URL("./registry/base-nova/hooks", import.meta.url)),
       "@/components/ui": fileURLToPath(new URL("./registry/base-nova/ui", import.meta.url)),
       "@/components": fileURLToPath(new URL("./registry/base-nova/blocks", import.meta.url)),
