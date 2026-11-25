@@ -807,6 +807,199 @@ describe("AppShell", () => {
     })
   })
 
+  // A primary action sat in the header, out of thumb reach on a phone (frontend#213, the primitives usage
+  // audit). `primaryAction` is opt-in: under `pointer: coarse` it is drawn in a glass strip above the tab
+  // bar, in the bottom of the screen; under `pointer: fine` it stays in the header with the header actions.
+  describe("primaryAction slot", () => {
+    const pointer = (coarse: boolean) =>
+      vi.stubGlobal("matchMedia", (query: string) => ({
+        matches: coarse && query.includes("pointer: coarse"),
+        media: query,
+        addEventListener: () => {},
+        removeEventListener: () => {},
+      }))
+    const withLayout = (sizes: { bar: number; action: number; banner?: number }) => {
+      vi.stubGlobal("ResizeObserver", FakeResizeObserver)
+      Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
+        configurable: true,
+        get() {
+          const slot = (this as HTMLElement).dataset.slot
+          if (slot === "app-shell-tabbar") return sizes.bar
+          if (slot === "app-shell-action") return sizes.action
+          if (slot === "app-shell-banner") return sizes.banner ?? 0
+          return slot === "app-shell-top" ? 64 : 0
+        },
+      })
+    }
+    afterEach(() => {
+      vi.unstubAllGlobals()
+      if (offsetHeight) Object.defineProperty(HTMLElement.prototype, "offsetHeight", offsetHeight)
+      document.documentElement.removeAttribute("style")
+      observed.length = 0
+    })
+
+    const root = (container: HTMLElement) => container.querySelector<HTMLElement>("[data-slot=app-shell]")!
+    const strip = (container: HTMLElement) => container.querySelector<HTMLElement>("[data-slot=app-shell-action]")
+    const add = <button type="button">Add item</button>
+
+    it("draws nothing without the prop, and leaves the variables and the page's margin as they were", () => {
+      pointer(true)
+      withLayout({ bar: 60, action: 0 })
+      const { container } = render(<AppShell appName="Reader" sections={four}>x</AppShell>)
+
+      expect(strip(container)).toBeNull()
+      expect(root(container).style.getPropertyValue("--shell-action")).toBe("")
+      expect(root(container).style.getPropertyValue("--shell-bottom")).toBe("60px")
+      expect(root(container).className).not.toContain("--shell-action")
+      expect(screen.getByRole("main").className).toContain("mb-(--shell-banner)")
+      expect(screen.getByRole("main").className).not.toContain("--shell-action")
+    })
+
+    it("keeps it in the header, beside the header actions, under a fine pointer", () => {
+      pointer(false)
+      const { container } = render(
+        <AppShell appName="Reader" sections={four} headerActions={<button type="button">Alerts</button>} primaryAction={add}>
+          x
+        </AppShell>
+      )
+
+      expect(strip(container)).toBeNull()
+      expect(within(header(container)).getByRole("button", { name: "Add item" })).toBeTruthy()
+      expect(within(header(container)).getByRole("button", { name: "Alerts" })).toBeTruthy()
+    })
+
+    it("keeps it in the header when there are no other header actions", () => {
+      pointer(false)
+      const { container } = render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      expect(within(header(container)).getByRole("button", { name: "Add item" })).toBeTruthy()
+    })
+
+    it("moves it out of the header into a fixed glass strip above the tab bar under a coarse pointer", () => {
+      pointer(true)
+      const { container } = render(
+        <AppShell appName="Reader" sections={four} headerActions={<button type="button">Alerts</button>} primaryAction={add}>
+          x
+        </AppShell>
+      )
+
+      expect(within(header(container)).queryByRole("button", { name: "Add item" })).toBeNull()
+      const bar = strip(container)!
+      expect(within(bar).getByRole("button", { name: "Add item" })).toBeTruthy()
+      expect(bar.className).toContain("surface-glass")
+      expect(bar.className).toContain("fixed")
+      expect(bar.className).toContain("bottom-[calc(var(--shell-bar)+8px)]")
+      expect(bar.className).toContain("z-30")
+    })
+
+    it("renders the node once, so its ids and handlers are not doubled", () => {
+      pointer(true)
+      render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      expect(screen.getAllByRole("button", { name: "Add item" })).toHaveLength(1)
+    })
+
+    it("clears the display curve at the sides the way the tab bar does, and gives each control a 44px target", () => {
+      pointer(true)
+      const { container } = render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      const className = strip(container)!.className
+      expect(className).toContain("right-[max(1.3rem,env(safe-area-inset-right))]")
+      expect(className).toContain("left-[max(1.3rem,env(safe-area-inset-left))]")
+      expect(className).toContain("[&>*]:min-h-[clamp(44px,2.75rem,66px)]")
+      expect(className).toContain("[&>*]:flex-1")
+    })
+
+    it("adds its height and an 8px gap to --shell-bottom, and the bar alone stays in --shell-bar", () => {
+      pointer(true)
+      withLayout({ bar: 60, action: 52 })
+      const { container } = render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      expect(root(container).style.getPropertyValue("--shell-action")).toBe("60px")
+      expect(root(container).style.getPropertyValue("--shell-bar")).toBe("60px")
+      expect(root(container).style.getPropertyValue("--shell-bottom")).toBe("120px")
+      expect(document.documentElement.style.getPropertyValue("--scroll-pad-bottom")).toBe("120px")
+    })
+
+    it("adds it to the bar's CSS fallback when no bar is measured", () => {
+      pointer(true)
+      withLayout({ bar: 0, action: 52 })
+      const { container } = render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      expect(root(container).style.getPropertyValue("--shell-bottom")).toBe("calc(var(--shell-bar) + 60px)")
+      expect(document.documentElement.style.getPropertyValue("--scroll-pad-bottom")).toBe("60px")
+    })
+
+    it("keeps the page clear of it, and of a banner too, with a bottom margin of both", () => {
+      pointer(true)
+      render(<AppShell appName="Reader" sections={four} banner={<p>b</p>} primaryAction={add}>x</AppShell>)
+
+      expect(screen.getByRole("main").className).toContain("mb-[calc(var(--shell-banner)+var(--shell-action,0px))]")
+    })
+
+    it("stacks a banner above it, and counts both in --shell-bottom", () => {
+      pointer(true)
+      withLayout({ bar: 60, action: 52, banner: 44 })
+      const { container } = render(
+        <AppShell appName="Reader" sections={four} banner={<p>b</p>} primaryAction={add}>
+          x
+        </AppShell>
+      )
+
+      const banner = container.querySelector<HTMLElement>("[data-slot=app-shell-banner]")!
+      expect(banner.className).toContain("bottom-[calc(var(--shell-bar)+var(--shell-action,0px)+8px)]")
+      expect(root(container).style.getPropertyValue("--shell-banner")).toBe("52px")
+      expect(root(container).style.getPropertyValue("--shell-bottom")).toBe("172px")
+    })
+
+    it("leaves a banner where it was when the action is in the header", () => {
+      pointer(false)
+      const { container } = render(<AppShell appName="Reader" sections={four} banner={<p>b</p>} primaryAction={add}>x</AppShell>)
+
+      const banner = container.querySelector<HTMLElement>("[data-slot=app-shell-banner]")!
+      expect(banner.className).toContain("bottom-[calc(var(--shell-bar)+0.5rem)]")
+      expect(banner.className).not.toContain("--shell-action")
+    })
+
+    it("re-measures when the strip changes size, and hands the variable back when it goes", () => {
+      pointer(true)
+      withLayout({ bar: 60, action: 52 })
+      const { container, rerender } = render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      withLayout({ bar: 60, action: 70 })
+      observerCallback?.()
+      expect(root(container).style.getPropertyValue("--shell-action")).toBe("78px")
+
+      rerender(<AppShell appName="Reader" sections={four}>x</AppShell>)
+      expect(root(container).style.getPropertyValue("--shell-action")).toBe("")
+      expect(root(container).style.getPropertyValue("--shell-bottom")).toBe("60px")
+    })
+
+    it("docks in focus mode even under a fine pointer, where there is no header to hold it", () => {
+      pointer(false)
+      withLayout({ bar: 0, action: 52 })
+      const { container } = render(<AppShell appName="Reader" sections={four} chrome="none" primaryAction={add}>x</AppShell>)
+
+      expect(within(strip(container)!).getByRole("button", { name: "Add item" })).toBeTruthy()
+      expect(root(container).style.getPropertyValue("--shell-bottom")).toBe("calc(var(--shell-bar) + 60px)")
+    })
+
+    it("sits at the bottom edge with a single section, where there is no tab bar", () => {
+      pointer(true)
+      const { container } = render(<AppShell appName="Reader" sections={[four[0]!]} primaryAction={add}>x</AppShell>)
+
+      expect(strip(container)).toBeTruthy()
+      expect(tabBar(container)).toBeNull()
+    })
+
+    it("clears the landscape rail", () => {
+      pointer(true)
+      const { container } = render(<AppShell appName="Reader" sections={four} primaryAction={add}>x</AppShell>)
+
+      expect(strip(container)!.className).toContain("[@media(orientation:landscape)_and_(max-height:500px)]:left-[calc(var(--edge-x)+4.5rem)]")
+    })
+  })
+
   // Content that scrolls up under the glass header showed through it and was cut mid-line at its edge
   // (design-system#185). On a phone the header zone is a solid band, and the page fades out below it.
   describe("header scroll edge", () => {

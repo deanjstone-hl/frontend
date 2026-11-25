@@ -7,11 +7,11 @@
     }
   },
   "input": {
-    "hash": "c952c824b07cf43917f3305f69326d70eea7a4e4d93ef2c3e659bc1e2f6a4b24",
+    "hash": "6050b772d04bd9ffeda318ce2c6ad5ccbb6228015df9302fe6a4326535fa7460",
     "files": {
       "registry.json": "f6b9cccb1a3290ab15c443e2623ab24d8a1bf14196d070799fb83a676ef870ab",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
-      "registry/base-nova/blocks/app-shell.tsx": "6db238ff94dfdfa70f5ba9f964ab0aa683bbf3939ce60c43ccbe8dfa7469ba72",
+      "registry/base-nova/blocks/app-shell.tsx": "c7d666bc38f225ee389ee2d359c634201d52fd0da9187ccd3d1495e815c2d658",
       "registry/base-nova/blocks/app-switcher.tsx": "4c580598f5b56f873dfae1dd418fdaf077c873f0ad7b69fa0d77a1180ffe20d6",
       "registry/base-nova/blocks/card-list.tsx": "21c71b856b6cfca46fdbb29539cc166a729da7795d2cf616b6171bd1b9d38f3c",
       "registry/base-nova/blocks/empty-page.tsx": "1d2c6c4d76e83b9109ee49b1dca7cb2ffc5b3a1049cbfc5a5441380378676969",
@@ -129,13 +129,13 @@
     }
   },
   "output": {
-    "hash": "9f15c8aca77b09941c044fcfabb7ff957daa46cde2efa7ec6635926a95a773db",
+    "hash": "b4ad6308e0016f2dafb07c5de7b411746d1ecac8ed96b45d293071251ab077a3",
     "files": {
       "r/accordion.json": "0a6cb6cbce574b426a020944bcba3bea6fa8ae700300d7a5a1f09c330d954b14",
       "r/alert-dialog.json": "5f3784fa2527d82ebe23d1300f34a6880b2a7eccc19ef38bbd02e62e5efe383b",
       "r/alert.json": "fd525b54c27e3ee9207c323d8375f6c18f599a870fe7f58f92243f0e9fc198d8",
       "r/app-html-head.json": "c47e72f9b9abbfa3bce4e893ebdd038e09e28e29a044cd84dcbbcf89ca1f665f",
-      "r/app-shell.json": "7983fb16ed3c2b465f8ecc25b1f6ab905c1c516cdad8c24dc9ad5596a8273c7a",
+      "r/app-shell.json": "5e362349926eae4251aa8f5d195e441c5e6de0dcd0aca4e596ff980001d4f0d5",
       "r/app-switcher.json": "6d177ca4ae8efd267c182300f6ed83fb925fcfb256dbba3d74612dc157cef2cf",
       "r/aspect-ratio.json": "8703089408eb43664ebb11e1f01d2c38362832f16ff2d32344725e5fb097e654",
       "r/attachment.json": "7165889e30f854b7e2c020a4520290640d6090916be5380c0756cf11de5c8f86",

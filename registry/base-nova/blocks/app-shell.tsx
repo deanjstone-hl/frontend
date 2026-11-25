@@ -55,6 +55,17 @@ type AppShellProps = Pick<AppSwitcherProps, "mode" | "onModeChange" | "currentAp
    * prop out, when there is nothing to say. The shell draws the glass; the content is yours.
    */
   banner?: React.ReactNode
+  /**
+   * The page's one primary action (an "Add item" button, "Log charge", "Scan"), opt in. Under
+   * `pointer: coarse` (a phone or a tablet) it leaves the header for a glass strip just above the tab bar,
+   * in reach of a thumb, with each control at least 44px tall and the strip clear of the safe area and
+   * the tab bar. Under `pointer: fine` it stays in the header, after `headerActions`. In focus mode
+   * (`chrome="none"`), which has no header, it docks whatever the pointer. The node renders once, in
+   * one place, so a handler or an id inside it is never doubled. Without the prop nothing changes.
+   * `--shell-action` is the strip's height plus its 8px gap, `0` with none, and `--shell-bottom` and
+   * the page's bottom scroll padding count it; a `banner` stacks above it.
+   */
+  primaryAction?: React.ReactNode
   renderLink?: RenderLink
   className?: string
   children: React.ReactNode
@@ -102,10 +113,12 @@ const useShellMetrics = (
   barRef: React.RefObject<HTMLElement | null>,
   backRef: React.RefObject<HTMLElement | null>,
   bannerRef: React.RefObject<HTMLElement | null>,
+  actionRef: React.RefObject<HTMLElement | null>,
   showTabBar: boolean,
   focus: boolean,
   rail: boolean,
-  hasBanner: boolean
+  hasBanner: boolean,
+  hasAction: boolean
 ) => {
   React.useLayoutEffect(() => {
     const root = rootRef.current
@@ -118,16 +131,21 @@ const useShellMetrics = (
       setPixels(root, name, pixels)
       setPixels(page, scrollPadName, pixels)
     }
-    // The bar's block and the banner's block stack at the bottom. With a banner and no measured bar (the
-    // rail, from lg, one section, focus mode) --shell-bottom keeps the bar's CSS fallback and adds the banner.
+    // The bar's block, the primary action's and the banner's stack at the bottom, in that order. With
+    // either strip and no measured bar (the rail, from lg, one section, focus mode) --shell-bottom keeps
+    // the bar's CSS fallback and adds the strips.
     const publishBottom = (barBlock: number) => {
       const banner = bannerRef.current
       const bannerBlock = banner && banner.offsetHeight > 0 ? banner.offsetHeight + BANNER_GAP : 0
+      const action = actionRef.current
+      const actionBlock = action && action.offsetHeight > 0 ? action.offsetHeight + BANNER_GAP : 0
+      const stripBlock = bannerBlock + actionBlock
       setPixels(root, "--shell-bar", barBlock)
       setPixels(root, "--shell-banner", bannerBlock)
-      setPixels(page, "--scroll-pad-bottom", barBlock + bannerBlock)
-      if (bannerBlock > 0 && barBlock === 0) root.style.setProperty("--shell-bottom", `calc(var(--shell-bar) + ${bannerBlock}px)`)
-      else setPixels(root, "--shell-bottom", barBlock + bannerBlock)
+      setPixels(root, "--shell-action", actionBlock)
+      setPixels(page, "--scroll-pad-bottom", barBlock + stripBlock)
+      if (stripBlock > 0 && barBlock === 0) root.style.setProperty("--shell-bottom", `calc(var(--shell-bar) + ${stripBlock}px)`)
+      else setPixels(root, "--shell-bottom", barBlock + stripBlock)
     }
     const measure = () => {
       if (focus) {
@@ -155,6 +173,7 @@ const useShellMetrics = (
       publish("--shell-bottom", "--scroll-pad-bottom", 0)
       setPixels(root, "--shell-bar", 0)
       setPixels(root, "--shell-banner", 0)
+      setPixels(root, "--shell-action", 0)
     }
     if (typeof ResizeObserver === "undefined") return release
     const observer = new ResizeObserver(measure)
@@ -162,11 +181,12 @@ const useShellMetrics = (
     if (barRef.current) observer.observe(barRef.current)
     if (backRef.current) observer.observe(backRef.current)
     if (bannerRef.current) observer.observe(bannerRef.current)
+    if (actionRef.current) observer.observe(actionRef.current)
     return () => {
       observer.disconnect()
       release()
     }
-  }, [rootRef, topRef, barRef, backRef, bannerRef, showTabBar, focus, rail, hasBanner])
+  }, [rootRef, topRef, barRef, backRef, bannerRef, actionRef, showTabBar, focus, rail, hasBanner, hasAction])
 }
 
 // WebKit on iOS can match :focus-visible after a tap (focus handed back to the More tab when its sheet
@@ -283,6 +303,7 @@ function AppShell({
   back,
   headerActions,
   banner,
+  primaryAction,
   renderLink = renderAnchor,
   className,
   children,
@@ -296,10 +317,15 @@ function AppShell({
   const barRef = React.useRef<HTMLElement>(null)
   const backRef = React.useRef<HTMLDivElement>(null)
   const bannerRef = React.useRef<HTMLDivElement>(null)
+  const actionRef = React.useRef<HTMLDivElement>(null)
   const focus = chrome === "none"
   const phoneTitle = !focus && Boolean(pageTitle)
   const rail = useMediaQuery(RAIL_QUERY)
-  useShellMetrics(rootRef, topRef, barRef, backRef, bannerRef, showTabBar, focus, rail, Boolean(banner))
+  const coarsePointer = useMediaQuery("(pointer: coarse)")
+  // The action docks under a coarse pointer, and in focus mode, which has no header to hold it.
+  const dockedAction = Boolean(primaryAction) && (coarsePointer || focus)
+  const headerAction = Boolean(primaryAction) && !dockedAction
+  useShellMetrics(rootRef, topRef, barRef, backRef, bannerRef, actionRef, showTabBar, focus, rail, Boolean(banner), dockedAction)
   usePointerModality(rootRef)
   // In the rail the header is not sticky: it scrolls away by itself.
   const headerHidden = useAutoHideHeader(topRef, autoHideHeader && !focus && !rail)
@@ -406,7 +432,12 @@ function AppShell({
                 onModeChange={onModeChange}
                 renderLink={renderLink}
               />
-              {headerActions ? <div className="ml-auto flex shrink-0 items-center gap-1 [&_.size-8]:max-h-[66px] [&_.size-8]:max-w-[66px] [&_.size-9]:max-h-[66px] [&_.size-9]:max-w-[66px]">{headerActions}</div> : null}
+              {headerActions || headerAction ? (
+                <div className="ml-auto flex shrink-0 items-center gap-1 [&_.size-8]:max-h-[66px] [&_.size-8]:max-w-[66px] [&_.size-9]:max-h-[66px] [&_.size-9]:max-w-[66px]">
+                  {headerActions}
+                  {headerAction ? primaryAction : null}
+                </div>
+              ) : null}
             </header>
           </div>
         )}
@@ -414,7 +445,8 @@ function AppShell({
         <main
           data-slot="app-shell-main"
           className={cn(
-            "mx-auto mb-(--shell-banner) flex w-full max-w-5xl flex-1 flex-col px-edge lg:px-6",
+            dockedAction ? "mb-[calc(var(--shell-banner)+var(--shell-action,0px))]" : "mb-(--shell-banner)",
+            "mx-auto flex w-full max-w-5xl flex-1 flex-col px-edge lg:px-6",
             focus
               ? cn("pb-edge", back ? "pt-[calc(max(1rem,var(--safe-t))+min(3.25rem,78px))]" : "pt-[max(1rem,var(--safe-t))]")
               : cn("pt-2 lg:pb-6 [@media(orientation:landscape)_and_(max-height:500px)]:pb-edge", showTabBar ? "pb-[calc(6rem+var(--edge-b))] [@media(orientation:landscape)_and_(max-height:500px)]:pl-[calc(var(--edge-x)+4.5rem)]" : "pb-edge")
@@ -431,13 +463,26 @@ function AppShell({
           className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-(--edge-b) bg-background lg:hidden"
         />
       ) : null}
+      {dockedAction ? (
+        <div
+          ref={actionRef}
+          data-slot="app-shell-action"
+          className={cn(
+            glassBar,
+            "fixed right-[max(1.3rem,env(safe-area-inset-right))] bottom-[calc(var(--shell-bar)+8px)] left-[max(1.3rem,env(safe-area-inset-left))] z-30 flex items-stretch gap-1 rounded-2xl p-1 lg:right-6 lg:left-[calc(16rem+1.5rem)] [@media(orientation:landscape)_and_(max-height:500px)]:left-[calc(var(--edge-x)+4.5rem)] [&>*]:min-h-[clamp(44px,2.75rem,66px)] [&>*]:flex-1"
+          )}
+        >
+          {primaryAction}
+        </div>
+      ) : null}
       {banner ? (
         <div
           ref={bannerRef}
           data-slot="app-shell-banner"
           className={cn(
             glassBar,
-            "fixed right-[max(1.3rem,env(safe-area-inset-right))] bottom-[calc(var(--shell-bar)+0.5rem)] left-[max(1.3rem,env(safe-area-inset-left))] z-30 rounded-2xl px-4 py-2 text-sm lg:right-6 lg:left-[calc(16rem+1.5rem)] [@media(orientation:landscape)_and_(max-height:500px)]:left-[calc(var(--edge-x)+4.5rem)]"
+            dockedAction ? "bottom-[calc(var(--shell-bar)+var(--shell-action,0px)+8px)]" : "bottom-[calc(var(--shell-bar)+0.5rem)]",
+            "fixed right-[max(1.3rem,env(safe-area-inset-right))] left-[max(1.3rem,env(safe-area-inset-left))] z-30 rounded-2xl px-4 py-2 text-sm lg:right-6 lg:left-[calc(16rem+1.5rem)] [@media(orientation:landscape)_and_(max-height:500px)]:left-[calc(var(--edge-x)+4.5rem)]"
           )}
         >
           {banner}
