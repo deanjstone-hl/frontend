@@ -45,6 +45,7 @@ pnpm install --frozen-lockfile
 | `pnpm build:registry` | Regenerates `r/` alone (the pinned `shadcn build`) and its stamp, after a source or `registry.json` edit |
 | `node scripts/links/generate.mjs` | Regenerates `registry/lib/links.ts` and its stamp from `links.json` |
 | `pnpm update:snapshots` | Rewrites the link-pill snapshot and its stamp; see [Stamps](#stamps-generated-output-and-goldens) |
+| `node scripts/drift-canary/canary.mjs --dry-run` | Reads npm and shadcn's published items now and prints any upstream drift; files nothing. See [Drift canary](#drift-canary-upstream-changes-filed-as-repair-briefs) |
 | `pnpm gate:geometry` | Browser check of safe areas and curves; see [Curve-geometry gate](#curve-geometry-gate) |
 | `node docs/<demo>/smoke-check.mjs` | Builds a demo and checks it in headless Chromium: `data`, `form-inputs`, `layout`, `page-transition`; `docs/card-list/screenshots.mjs`, `docs/issue-row/screenshots.mjs`, `docs/filter-builder/screenshots.mjs`, `docs/grouped-list/screenshots.mjs` and `docs/ds-theme/screenshots.mjs` do the same in headless WebKit; `docs/menus/keyboard-check.mjs` and `docs/graph-3d/{measure,inspect}.mjs` likewise |
 
@@ -913,8 +914,8 @@ svg appends it as a stray text node. Give these parts an explicit child,
 
 ### Repair briefs: the issue shape for automated failures
 
-Every automated failure this repo files (the drift canary and the upstream-follow job, both
-still to come: [#237](https://github.com/deanjstone/frontend/issues/237),
+Every automated failure this repo files (the [drift canary](#drift-canary-upstream-changes-filed-as-repair-briefs),
+[#237](https://github.com/deanjstone/frontend/issues/237), and the upstream-follow job, still to come:
 [#238](https://github.com/deanjstone/frontend/issues/238)) goes through one helper, so a worker
 gets everything from the issue alone. It also backs `.github/ISSUE_TEMPLATE/repair-brief.md`
 for a brief filed by hand.
@@ -940,6 +941,47 @@ node scripts/repair-brief/repair-brief.mjs --key "shadcn pin drift" \
 The shape and dedupe come from [rauchg/xeet](https://github.com/rauchg/xeet)'s
 `upstream-watch.yml` and `sync.yml`. It is Apache-2.0; the helper is written for this repo and
 copies no code.
+
+### Drift canary: upstream changes, filed as Repair briefs
+
+A scheduled workflow ([`drift-canary.yml`](.github/workflows/drift-canary.yml), daily at 08:17
+AEDT) notices when something this registry copies from moves, and files one Repair brief
+([frontend#237](https://github.com/deanjstone/frontend/issues/237)). Three probes, all in
+`scripts/drift-canary/canary.mjs`:
+
+| Probe | Compares | Brief key |
+|---|---|---|
+| `shadcn-pin` | the pinned `shadcn` CLI with npm's `latest` | `shadcn pin drift` |
+| `impeccable-pin` | the pinned `impeccable` detector with npm's `latest` | `impeccable pin drift` |
+| `upstream-sources` | shadcn's published `base-nova` items (`ui.shadcn.com/r/styles/base-nova/<name>.json`) with the hashes in `scripts/drift-canary/upstream-baseline.json` | `upstream shadcn source drift` |
+
+```sh
+node scripts/drift-canary/canary.mjs --dry-run   # what each probe sees now; files nothing, writes nothing
+node scripts/drift-canary/canary.mjs record      # re-baseline the upstream hashes, then commit the file
+```
+
+- **Threshold.** The same drift must show on 2 consecutive runs (`--threshold`) before a brief is
+  filed, and a probe that goes clean in between starts over, so a flapping upstream files nothing.
+  Once filed, the same drift is not filed again; a drift that moves to a new value (a newer
+  `shadcn`, another item changing) comments on the open brief, because the key holds no version.
+  The streak is a small JSON file the workflow keeps in the Actions cache; a lost cache delays a
+  filing by one threshold and never files twice (the helper dedupes on the title).
+- **Broken probe.** A probe that cannot reach its upstream (an `error`, not a drift) files its own
+  brief, `<probe> probe broken`, after the same threshold, so a silent canary is noticed.
+- **Baseline.** `upstream-baseline.json` is "upstream as last reviewed", a sha256 over each item's
+  files and dependencies. It covers the 62 items in `registry/base-nova/ui/` that shadcn publishes;
+  the registry's own (`chart-lazy`, `data-table`, `date-picker`, `graph-3d`, `link-pill`,
+  `page-transition`) have no upstream and are left out. Many of the 62 are rewritten here (the
+  UI SDK ones, for a start), so a drift means "read upstream's change", not "ours is wrong".
+  Run `record` only after a worker has read what moved.
+- **Where it runs.** GitHub Actions cron, not a homelab timer: the repo is public, so a
+  GitHub-hosted runner costs no minutes (the billing note in argus-config's `lint.yml` is about
+  private repos), the run is a few seconds of Node with no install, and a timer would tie the
+  canary to one host being up. It runs on `schedule` and `workflow_dispatch` only, with
+  `contents: read` and `issues: write`.
+- **Tests.** `test/drift-canary.test.ts` runs the probes, the threshold and the brief offline,
+  against npm and upstream responses recorded on 25 Nov 2026 in `test/fixtures/drift-canary/`.
+  Nothing in `pnpm check` touches the network for this.
 
 ## Text size
 
