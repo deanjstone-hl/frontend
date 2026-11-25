@@ -7,7 +7,7 @@
     }
   },
   "input": {
-    "hash": "645c5ccdb1c9169740b259148d919cff46a6688588a32e601800c61939387819",
+    "hash": "f2c6da9eb8bf65ea168f2cb25eb9c82f69a37c01dbec5302f612ecdf5af7ea52",
     "files": {
       "registry.json": "069b7fa97a5176440466800b458ef911185b9bbba93f5d7674d778f8c64cdde1",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
@@ -73,7 +73,7 @@
       "registry/base-nova/ui/menubar.tsx": "700366a922867a277ec692806005c69734ce885b6f537381a49b3f22a636dff2",
       "registry/base-nova/ui/message-scroller.tsx": "653012cfeefe555badfb7b7f2079bd758c21fbfc7123140cf0d0bdcb7d6ca349",
       "registry/base-nova/ui/message.tsx": "64e9ae0f9d1e268b0ed7b738a53d374d273fe1e7e2dd7b35ad7417e50a9bbe6c",
-      "registry/base-nova/ui/native-select.tsx": "4d6bbd45578b4a01745dd247fa0e86806c2c244bc77a1a15bc9acc629360889f",
+      "registry/base-nova/ui/native-select.tsx": "1d64e38a5c7ccb6f37a8f1447a8ffa11bdc77f23e1c54d9a50894978383b7ff2",
       "registry/base-nova/ui/navigation-menu.tsx": "ac5500cb7d52bec249e6b6a98e665c8778b7302a21290458d068fed8cdd95563",
       "registry/base-nova/ui/notice.tsx": "823c346cb28cd2ce2171346580f08507b7dd7093629a70921a05f5f7403fd4a3",
       "registry/base-nova/ui/offline-banner.tsx": "708787b09908c9953b1fec3942d2a551bcae6fd1ffec15a184b32e46a95c1cd3",
@@ -136,7 +136,7 @@
     }
   },
   "output": {
-    "hash": "d6f2981b0d374983d170b2ea932e4a6a9b590d455ccc4f40b08a73d6836fe31a",
+    "hash": "37bc58f2f7f0ca75b6bc51820cdbadabd6dc9d249b843e849798e927fb584189",
     "files": {
       "r/accordion.json": "520dc8d11031fbc0f6064a4d40f51f0c4989c5a27cb7b62c3d02b923f9fae897",
       "r/alert-dialog.json": "19842157d20aecc58b2af6df11ab993c78f1c0c04ef5bba82bca00ceac0d5069",
@@ -208,7 +208,7 @@
       "r/menubar.json": "9bd32cb0ef24044090a197c5a91bbb43eaf1c6f06426a2052c2ca36aa07773c2",
       "r/message-scroller.json": "eee444b4d7c02d942b2806e5aa85420de919be372f0d1104c41222b6f71b81d8",
       "r/message.json": "2bc56984a877a303026afa0046d1a0c30b1b6700c20e67be46151160a353aa3d",
-      "r/native-select.json": "7e972ff4bc401e4d2df4444974289840ec33655688c23e3289420d295f189f22",
+      "r/native-select.json": "4f2b7efdb7edab56885912bc70501bf1187e49a720d46aa344abef99938eb725",
       "r/nav-link.json": "0bb9057243017f8ca532831ee83b4033094e2445eb9d279e9d34c882ab4ca3a8",
       "r/navigation-menu.json": "c5e6e0f70ea7b189e26bd022df0e800ea41304308c5f753f5dc9022f3f622133",
       "r/notice.json": "3487376eab5999ab4805fbc4ca472eb35dcba7a34eca1249988482d2c047ec93",
