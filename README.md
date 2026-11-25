@@ -119,23 +119,27 @@ names and props. The SDK is not a shadcn registry: it ships as npm packages, so 
 | Item | On UI SDK since | Pin |
 |---|---|---|
 | `switch` | the first registry release after [frontend#245](https://github.com/deanjstone/frontend/issues/245) slice 1 |
-| `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
-| `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
-| `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
-| `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
-| `tooltip`, `hover-card` | the registry release after slice 6; `tooltip` is also pulled by `sidebar` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
-| `dialog`, `alert-dialog`, `sheet` | the registry release after slice 7; `dialog` is also the base of `command` (for `CommandDialog`), `sheet` of `sidebar` (mobile), `app-shell`, `app-switcher` and `filter-builder` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
-| `dropdown-menu`, `context-menu`, `menubar`, `navigation-menu`, `select` | the registry release after [frontend#247](https://github.com/deanjstone/frontend/issues/247); `dropdown-menu` is also the base of `menubar`, and `dropdown-menu` with `context-menu` of `issue-row` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.16` |
+| `popover` | the registry release after slice 2; also the base of `date-picker`, `app-switcher`, `filter-builder` and `grouped-list`, which pull it | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `combobox` | the registry release after slice 3 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `checkbox`, `radio-group`, `toggle`, `collapsible` | the registry release after slice 4; `toggle` is also pulled by `toggle-group` (for `toggleVariants`), and `checkbox` and `collapsible` by `filter-builder`, `grouped-list`, `file-diff` and `trace` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `tabs`, `accordion`, `slider` | the registry release after slice 5 | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `tooltip`, `hover-card` | the registry release after slice 6; `tooltip` is also pulled by `sidebar` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `dialog`, `alert-dialog`, `sheet` | the registry release after slice 7; `dialog` is also the base of `command` (for `CommandDialog`), `sheet` of `sidebar` (mobile), `app-shell`, `app-switcher` and `filter-builder` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `dropdown-menu`, `context-menu`, `menubar`, `navigation-menu`, `select` | the registry release after [frontend#247](https://github.com/deanjstone/frontend/issues/247); `dropdown-menu` is also the base of `menubar`, and `dropdown-menu` with `context-menu` of `issue-row` | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
+| `drawer` | the registry release after [frontend#248](https://github.com/deanjstone/frontend/issues/248); with a workaround for [ui#1010](https://github.com/vercel-labs/ui/issues/1010) | `@ui-sdk/core` and `@ui-sdk/react` `0.1.0-beta.17` |
 
-Next in order: `drawer` ([frontend#248](https://github.com/deanjstone/frontend/issues/248), waiting on the SDK's
-swipe bug [ui#1010](https://github.com/vercel-labs/ui/issues/1010)). Items with no behaviour layer (`card`, `table`,
-`badge` and the like) never move.
+`drawer` is the last item of [frontend#245](https://github.com/deanjstone/frontend/issues/245)'s order. Items with no behaviour layer
+(`card`, `table`, `badge` and the like) never move.
 
 The pin moved from `0.1.0-beta.14` to `0.1.0-beta.16` on 24 Nov 2026 ([frontend#247](https://github.com/deanjstone/frontend/issues/247)),
 for every item above at once. Re-pulling an older item now carries beta.16, which changes no exported name or prop; it
 fixes a menu click lost while the thread was busy ([ui#1005](https://github.com/vercel-labs/ui/issues/1005)), Escape in a
 hover-opened submenu closing the whole menu ([ui#1006](https://github.com/vercel-labs/ui/issues/1006)) and a `Field`
 label losing its `Select` ([ui#1012](https://github.com/vercel-labs/ui/issues/1012)).
+
+The pin moved again, from `0.1.0-beta.16` to `0.1.0-beta.17`, on 25 Nov 2026 ([frontend#248](https://github.com/deanjstone/frontend/issues/248)),
+for every item above at once. It changes no exported name or prop. Among its fixes: a sheet swiped away closes once it
+has left the screen, and a popup lets go of its content when it unmounts.
 
 **What re-pulling a migrated item changes** (`npx shadcn add deanjstone/frontend/<item>`; consumers
 move only when they choose to re-add):
@@ -166,7 +170,7 @@ event details. Three more things for a consumer:
   `HTMLElement.prototype.showPopover`, `hidePopover` and `Element.prototype.getAnimations` stubbed, and
   `[popover] { display: block !important }` added, the popup never shows. The registry's own copy is
   `installUiSdkStubs()` in `test/setup/ui-sdk.ts`; it is not an item, so a consumer copies it and calls it at the top
-  of each test file that renders a popup (not as a global setup: the `getAnimations` stub changes how the Base UI items left, `drawer` and `toggle-group`, close). It also stubs `Element.prototype.scrollIntoView`, which a menu or a select calls for the highlighted item. It does not
+  of each test file that renders a popup (not as a global setup: the `getAnimations` stub changes how the Base UI items left, such as `toggle-group`, close). It also stubs `Element.prototype.scrollIntoView`, which a menu or a select calls for the highlighted item, and `ResizeObserver`, which a drawer measures its sheet with. It does not
   test native popup behaviour, so check placement in a real browser.
 - **`z-50` and `isolate` no longer matter** for stacking: the top layer sits above every `z-index`.
 - **On a small touch screen it stays a popover.** `presentation` is not set; the SDK's `"auto"` (a bottom sheet)
@@ -340,6 +344,35 @@ may notice:
   and `data-closed` on the trigger and the content, in place of Base UI's. Typing on the closed trigger selects the next option that starts
   with the text, like a native select.
 - **Tests in jsdom** need `installUiSdkStubs()` (it includes `scrollIntoView`), a click and `findByRole("listbox")` to open it.
+
+**`drawer`.** A modal popup like `dialog` (jsdom stubs, no `z-50`, no `Portal`: `DrawerPortal` stays as a passthrough). Exported names
+(`Drawer`, `DrawerTrigger`, `DrawerContent`, `DrawerHeader`, `DrawerFooter`, `DrawerTitle`, `DrawerDescription`, `DrawerClose`, `DrawerOverlay`,
+`DrawerSwipeHandle`, `DrawerPortal`), `modal`, `showSwipeHandle`, `swipeDirection`, `snapPoints`, `showCloseButton`, the safe-area insets,
+`className` merging and the look are unchanged. What a consumer may notice:
+
+- **The SDK moves the sheet.** It places the sheet in a full-screen viewport and moves it with its own spring: on a phone a bottom drawer
+  moves by native scrolling with CSS snap points, elsewhere by pointer dragging. The classes in `DrawerContent` only size it, give it a surface and
+  corners and clear the screen edges; the slide, the swipe, the nesting scale (`--drawer-stack`) and the fade under reduced motion are the SDK's.
+  `data-swipe-direction`, `data-swipe-axis` and `data-snap-points` are still on the sheet, so classes that key off them keep working.
+- **Slots changed.** The sheet is the SDK's `drawer-content` slot (it was the inner `drawer-popup`); `drawer-viewport` is the SDK's and the content
+  wrapper is `drawer-body` (it was `drawer-content`). `drawer-popup` is gone. `drawer-overlay`, `drawer-header`, `drawer-footer`, `drawer-title`,
+  `drawer-description`, `drawer-close` and `drawer-swipe-handle` are unchanged. The SDK ignores a `data-slot` prop on its parts.
+- **`swipeDirection` picks the edge.** `down` is a bottom drawer, `up` a top one, `left` and `right` as named; the `side` prop is not passed on.
+  `onOpenChange(open, details)` carries the SDK's `details.reason` (`trigger-press`, `escape-key`, `outside-press`, `close-press`, `swipe` and more)
+  and `snapPoints` takes the SDK's values (a fraction of the screen, pixels, `"20rem"`, `"50%"`, `"content"`). The props type is the SDK's, not
+  `Drawer.Root.Props`.
+- **`DrawerSwipeHandle` stays a decorative bar** (`aria-hidden`). The SDK's own `DrawerHandle` is a button that steps through the snap points; import
+  it from `@ui-sdk/react/drawer` when a drawer with several snap points should offer that to a keyboard.
+- **Keep the content out of scroll containers.** Under the scroll-snap driver a swipe moves the sheet by scrolling its host, and the SDK writes
+  `overscroll-behavior: contain` on the sheet, so a sheet or a wrapper inside it with `overflow: hidden`, `auto` or `scroll` swallows a swipe that starts
+  in it ([ui#1010](https://github.com/vercel-labs/ui/issues/1010), still open upstream; the handle half is fixed in beta.16). The registry's wrapper
+  clips its rounded corners with `overflow-clip`, which is not a scroll container, and `overscroll-contain` is gone from it. Do the same in your own
+  `className`s; a region that must scroll goes in an element of your own, and the SDK hands a downward swipe to the sheet once it reaches the top.
+  Checked in Chromium with real touch events: a swipe down from the title closes the sheet with `overflow-clip`, and does not with the old wrapper's
+  `overflow-hidden overscroll-contain` or with `overflow-hidden` on the sheet. Drop the workaround when ui#1010 closes and a pinned release carries it.
+- **Tests in jsdom** need `installUiSdkStubs()` (it includes `ResizeObserver`), a click on the trigger and `findByRole("dialog")`, because the drawer
+  shows one microtask after it renders; a focus-trap check in jsdom (`checkPattern(dialog, "dialog")`) needs `Element.prototype.checkVisibility`
+  stubbed to return true.
 
 **Pinning.** Both packages are exact-pinned in `package.json` `devDependencies` and as `name@version` in
 every migrated item's `dependencies` in `registry.json`; `test/ui-sdk-pin.test.ts` fails when an item and
@@ -1285,7 +1318,7 @@ design (the indicator sits about 12px below where content looks right).
 **Also checked, in the same contexts.** Token contrast (the two vitest files, run
 first); WCAG 2.5.8 target size (24px, hit area counted) at 402×874 and 874×402;
 inputs at 16px or more; reduced motion (a `reducedMotion: "reduce"` context, then
-`document.getAnimations()` for movement); glass-bar contrast (every theme and mode: each label on the AppShell header and tab bar is measured against the bar as painted, with the labels hidden and the pixels under them sampled, 4.5:1 for text and 3:1 for icons); an aria snapshot per block against
+`document.getAnimations()` for movement; a scroll-linked animation, such as the `@ui-sdk` drawer's sheet and backdrop under its scroll-snap driver, follows the reader's finger and is neither waited for while the page settles nor counted as movement); glass-bar contrast (every theme and mode: each label on the AppShell header and tab bar is measured against the bar as painted, with the labels hidden and the pixels under them sampled, 4.5:1 for text and 3:1 for icons); an aria snapshot per block against
 `scripts/geometry-gate/aria/`; a Tab loop whose focused control must not be under
 something else; a 320px / 200% text context (sideways scroll, clipped tab labels and controls,
 header plus tab bar under 25% of the viewport, the published `--shell-*`
