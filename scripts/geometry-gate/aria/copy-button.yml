@@ -1,0 +1,19 @@
+- banner: Shell
+- main:
+  - heading "Copy" [level=1]
+  - code: 9f8e7d6
+  - button "Copy full SHA 9f8e7d6"
+  - status
+  - code: https://example.com/a/very/long/link/that/does/not/fit/on/a/phone
+  - button "Copy"
+  - status
+- navigation "Sections":
+  - link "Home":
+    - /url: "#a"
+  - link "Inbox":
+    - /url: "#b"
+  - link "Alerts":
+    - /url: "#c"
+  - link "Search":
+    - /url: "#d"
+  - button "More"

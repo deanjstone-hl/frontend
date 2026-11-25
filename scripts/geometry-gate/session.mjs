@@ -25,6 +25,7 @@ export const VIEWS = [
   { name: "drawer", query: "v=drawer" },
   { name: "states", query: "v=states" },
   { name: "stat-tile", query: "v=stat-tile" },
+  { name: "copy-button", query: "v=copy-button" },
   { name: "toast-bottom", query: "v=toast&position=bottom-center" },
   { name: "toast-top", query: "v=toast&position=top-center" },
 ]

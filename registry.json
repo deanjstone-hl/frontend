@@ -2397,6 +2397,22 @@
       ]
     },
     {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "deanjstone/frontend/button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": [

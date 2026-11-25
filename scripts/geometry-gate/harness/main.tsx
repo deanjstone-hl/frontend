@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Command, CommandInput, CommandList } from "@/components/ui/command"
+import { CopyButton } from "@/components/ui/copy-button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
@@ -171,6 +172,22 @@ const Tiles = () => (
   </div>
 )
 
+// Copy buttons in the two shapes the apps hand-built (frontend#220): an icon-only one beside a short SHA, and a
+// labelled one at the end of a long value that wraps. Both are Buttons, so the 44px floor applies to each.
+const Copies = () => (
+  <div className="flex flex-col gap-4">
+    <PageHeader title="Copy" />
+    <span className="flex flex-wrap items-center gap-x-0.5">
+      <code className="font-mono text-sm">9f8e7d6</code>
+      <CopyButton value="9f8e7d6c5b4a39281706f5e4d3c2b1a098765432" label="Copy full SHA 9f8e7d6" />
+    </span>
+    <div className="flex min-w-0 items-center gap-2 rounded-lg border bg-muted/40 py-1 pl-3 pr-1">
+      <code className="min-w-0 flex-1 break-all font-mono text-sm">https://example.com/a/very/long/link/that/does/not/fit/on/a/phone</code>
+      <CopyButton className="shrink-0" value="https://example.com/a/very/long/link/that/does/not/fit/on/a/phone">Copy</CopyButton>
+    </div>
+  </div>
+)
+
 const SIDES = ["top", "right", "bottom", "left"] as const
 type Side = (typeof SIDES)[number]
 const side: Side = SIDES.includes(params.get("side") as Side) ? (params.get("side") as Side) : "right"
@@ -254,6 +271,13 @@ const App = () => {
     return (
       <AppShell appName="Shell" sections={sections} activeSectionId="a">
         <Tiles />
+      </AppShell>
+    )
+  }
+  if (view === "copy-button") {
+    return (
+      <AppShell appName="Shell" sections={sections} activeSectionId="a">
+        <Copies />
       </AppShell>
     )
   }

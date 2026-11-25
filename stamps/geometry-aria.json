@@ -1,17 +1,17 @@
 {
   "name": "geometry-aria",
   "generator": {
-    "hash": "2c7f179bed9f3e327479622969cb200f093bbac20f91ff994885ed828498b425",
+    "hash": "680410033eb8935399f9fa84785bc287b505f46e79c50da5118c48f66231746c",
     "files": {
       "scripts/geometry-gate/checks.mjs": "87bc240de98b08858042c3af8320515b4ffe9236caf8acbf9a9d713cbd63fffc",
       "scripts/geometry-gate/collect.mjs": "c008c34eede453f44f2123c22141585384b35c97adddc059b7955d181fd8eca2",
       "scripts/geometry-gate/geometry.mjs": "c77b7a2b8b128abc4f30c873a1a6b0c30ebcb40c5546e362b657bf5fa741a298",
       "scripts/geometry-gate/harness/index.css": "6e2c43ad2cda427c0340aa2aa93a772e524676879f30e75207147a1f06166b83",
       "scripts/geometry-gate/harness/index.html": "ab58e3c105e0382845877cd8dc001c7870baf44775e90960bebd902c09a3e118",
-      "scripts/geometry-gate/harness/main.tsx": "0ac038c93e4a0ec9ea7cdf9ea204d93082693b84f44814467bbda5ada1687614",
+      "scripts/geometry-gate/harness/main.tsx": "4585fdee88be2ff6145a45857d9e2d2d78c97166fdea62b414af0ed21cfb1cb7",
       "scripts/geometry-gate/harness/vite.config.mjs": "1bd428b0514cceb35708e534e6ed95f3a70177cdcf71bba09ba5d8d93f412e78",
       "scripts/geometry-gate/run.mjs": "68743dc0481a927187473310bb41e5dc7450f5040e3a699cad88b50efe442e4d",
-      "scripts/geometry-gate/session.mjs": "1b8145e508e0eeeded473230118efc76f6ebeadfc52c35048a98621c574cb29f"
+      "scripts/geometry-gate/session.mjs": "3e6f25731a87a94dc4f80f6308ee0e062b3304453f0a367d9b76b144bec2dac5"
     }
   },
   "input": {
@@ -19,9 +19,10 @@
     "files": {}
   },
   "output": {
-    "hash": "4a6ef3e9c0e54b5a0c4ddf066577e020b095e2014ed9cc7c4537287afb7ffa0f",
+    "hash": "7730c6853356b3e5cbde91dd8f4c732484d8f9a5b26a80e8f2ac6323b72fd407",
     "files": {
       "scripts/geometry-gate/aria/alert-dialog.yml": "5fae6438bb0b98fc91b876957452324ccb63d1fe2945a8b79aa98dd8d5d94b12",
+      "scripts/geometry-gate/aria/copy-button.yml": "44d15826de29369b9775d4f391ee30bd0b07e06ee1b8c54282ff47da3e8416d4",
       "scripts/geometry-gate/aria/dialog.yml": "a5cf04bb40e110e8ed708d62e2c9c1cb629f8e0f1baf3ee696c6e0a580090d46",
       "scripts/geometry-gate/aria/drawer.yml": "4deb2f91d14d9d5ebe6b45a7b3ac46481676a4099778ad01102d3e3504567c9e",
       "scripts/geometry-gate/aria/login.yml": "5532ba6a2fa6d9fbca9370484c27238e1e049f2100ff028a026e2164c1e416b3",
