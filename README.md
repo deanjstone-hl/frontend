@@ -1843,7 +1843,8 @@ const grouping = GROUPINGS.find((g) => g.id === display.settings.groupBy) ?? nul
   foreground, primary/secondary/accent/muted, destructive, border/input/
   ring), plus `--radius`, `--card`, `--popover`, `--chart-1..5`, the status
   tokens `--success`/`--warning`/`--unreachable`/`--critical` (each with a
-  `-foreground`; `badge` has a variant per role), and
+  `-foreground`; `badge` has a variant per role, and `alert` has `success`, `warning`
+  and `critical`, each with a default icon you replace with `icon` or drop with `icon={null}`), and
   `--font-sans` (IBM Plex Sans — typeface is mechanics here, not identity;
   see [ADR-0002](docs/adr/0002-registry-owns-the-font-token.md)).
 - Opt-in additions to the `theme` item (no effect unless a consumer uses

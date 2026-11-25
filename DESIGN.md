@@ -270,7 +270,20 @@ flat grey.
   mode is tested for 4.5:1 of each role as text on `--background` and
   `--card`, on its own badge tint (10% light, 15% dark), and of
   `-foreground` on the solid role colour. Colour is never the only carrier:
-  a status badge always has a text label.
+  state is an icon plus a word in a status token. A status badge always has a
+  text label, and an `alert` with the `success`, `warning` or `critical`
+  variant draws an icon (its own, or one passed as `icon`; `icon={null}` opts
+  out) beside its title. Chart colours (`chart-1` to `chart-5`) never mean
+  state: a series that is "healthy" or "degraded" takes `success` or
+  `warning`, not the greens and ambers of the chart ramp. A notice that is not
+  a health state (a saved draft, an offline banner) still picks the nearest
+  status role rather than a hand-tinted colour.
+
+  Destructive text on its own wash is held to the same 4.5:1. The dark-mode
+  wash of a destructive button, bubble or menu item is 10% (12% on hover),
+  the badge's step, because 20% measured 4.05 to 4.42:1 on four themes
+  (`test/theme-tokens.test.ts` scans the sources for every dark
+  `bg-destructive/NN`).
 
   ![Status badges on every theme, light](docs/assets/status-badges-light.png)
   ![Status badges on every theme, dark](docs/assets/status-badges-dark.png)
