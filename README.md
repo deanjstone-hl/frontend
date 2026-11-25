@@ -1289,7 +1289,10 @@ inputs at 16px or more; reduced motion (a `reducedMotion: "reduce"` context, the
 `scripts/geometry-gate/aria/`; a Tab loop whose focused control must not be under
 something else; a 320px / 200% text context (sideways scroll, clipped tab labels and controls,
 header plus tab bar under 25% of the viewport, the published `--shell-*`
-heights); a 320px / 310% context (sideways scroll, and any element reaching past the right edge);
+heights, counting any strip above the tab bar); the `shell-action` view, where
+AppShell's `primaryAction` must be drawn above the tab bar with each control's centre in
+the bottom 40% of the screen, at least 44×44, clear of the tab bar, and the end of the page clear of
+it ([frontend#213](https://github.com/deanjstone-hl/frontend/issues/213)); a 320px / 310% context (sideways scroll, and any element reaching past the right edge);
 a 75% root context for the 16px input minimum; and axe `target-size` and
 `scrollable-region-focusable`. A finding the #144 audit already filed sits in
 `KNOWN` in `scripts/geometry-gate/checks.mjs`: it is reported with its issue and

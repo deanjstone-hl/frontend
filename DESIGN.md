@@ -833,6 +833,22 @@ Two helpers come with them: the `nav-link` lib (`renderAnchor`, the type of a
   together and `--scroll-pad-bottom` follows. With no banner `--shell-banner`
   is `0px` and every other value is as before. A page that drew its own
   `fixed bottom-0` banner passes it here instead.
+- **Primary action slot.** `primaryAction` takes the page's one primary action
+  (an "Add item" button, "Log charge", "Scan") and is opt in. Under
+  `pointer: coarse` it leaves the header for a glass strip 8px above the tab bar,
+  level with its sides, in reach of a thumb: each control is at least 44px
+  tall, and the strip is clear of the safe area because the tab bar's offset
+  already is. Under `pointer: fine` it stays in the header, after `headerActions`.
+  In focus mode (`chrome="none"`), which has no header, it docks whatever the
+  pointer. The node renders once, in one place, so a handler or an id inside it
+  is never doubled; on a phone the first server render puts it in the header and
+  the client moves it once it reads the pointer. While it is docked,
+  `--shell-action` is its height plus the 8px gap, `--shell-bottom` and
+  `--scroll-pad-bottom` count it, the page's bottom margin is
+  `--shell-banner` plus `--shell-action`, and a `banner` stacks above it. With
+  no `primaryAction`, `--shell-action` is unset and every other value is as
+  before. The geometry gate's `shell-action` view holds the strip in the bottom
+  40% of the screen, at 44px, clear of the tab bar (frontend#213).
 - **Focus ring after a tap.** The shell marks its root (`data-pointer`) once a
   pointer or touch goes down and clears the mark on a key press (a lone
   modifier does not count). While it is set, the tabs, More and the sidebar
