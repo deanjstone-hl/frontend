@@ -55,4 +55,6 @@ To change a threshold or a screen's `primaryAction` without rendering again: edi
 
 ## The samples
 
+`screens/layout-demo` is the geometry gate's AppShell harness page, rendered before and after the opt-in phone title ([frontend#208](https://github.com/deanjstone-hl/frontend/issues/208)): `hidden` is `PageHeader hideOnPhone` with no `pageTitle`, `titled` passes it. It is a baseline like the others (`scores.mjs` leaves it out of the app counts). Build it with `GATE_OUT=~/.cache/primitives-usage/dist/layout-demo npx vite build -c scripts/geometry-gate/harness/vite.config.mjs`, then `render-app.sh layout-demo`.
+
 `proposed/` is five sample screens in the style of `docs/audits/hierarchy-density/proposed.tsx`. `screens/ds-sample` and `screens/proposed` hold their build commands in `config.json`.

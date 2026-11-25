@@ -1120,6 +1120,33 @@ a new one anywhere else fails the test.
 | `ui/sidebar.tsx` | 2 | Sidebar menu button labels: navigation |
 | `ui/trace.tsx` | 1 | The trace line's title: a one-line collapsible trigger |
 
+## AppShell: the page title on a phone
+
+A phone header shows the app name, and `PageHeader hideOnPhone` hides the page's
+own title visually, so a screen can say nothing about which view it is
+([frontend#208](https://github.com/deanjstone-hl/frontend/issues/208): 7 of the 26 audited screens).
+`AppShell` takes one opt-in prop, `pageTitle`:
+
+```tsx
+<AppShell appName="Reader" apps={apps} currentAppId="reader" sections={sections} pageTitle="Library">
+  <PageHeader title="Library" hideOnPhone actions={<Button>Add</Button>} />
+  ...
+</AppShell>
+```
+
+- **Use it** when a screen's title would be hidden on a phone, or the app name is
+  all the header says. Leave it off, and the header is exactly as before, where
+  the page's own `h1` already shows on a phone.
+- **On a phone (below 640px)** the header shows the title as the page's `h1`, and
+  the app name moves into the switcher, which collapses to an apps icon ("Switch
+  app, now in Reader" to a screen reader). **From 640px** nothing changes.
+- **One `h1`.** Pair it with `PageHeader hideOnPhone`: that `h1` then leaves the
+  accessibility tree on a phone, so the page has one. Keep both `title`s the same.
+- Details and the rules around it: [DESIGN.md](DESIGN.md#layout-blocks), "Page
+  title on a phone". The geometry gate checks it as the `shell-titled` view; the
+  usage audit renders it before and after in
+  `docs/audits/primitives-usage/screens/layout-demo/`.
+
 ## Safe areas (iPhone)
 
 The theme carries the safe-area foundation, so an app never hand-rolls an inset

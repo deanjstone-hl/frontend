@@ -704,9 +704,9 @@ an auth client.
 
 | Block | What it is | Composes |
 |---|---|---|
-| `app-shell` | Glass floating header, glass bottom tab bar, and from 1024px a left sidebar | `app-switcher`, `button`, `sheet` |
+| `app-shell` | Glass floating header, glass bottom tab bar, and from 1024px a left sidebar; `pageTitle` opts in to the page title as the phone header's `h1` | `app-switcher`, `button`, `sheet` |
 | `app-switcher` | Every app and the Light / Dark / System quick toggle: a popover from 768px, a bottom sheet below | `popover`, `sheet`, `toggle-group`, `button` |
-| `page-header` | The page's one `h1`, a description and the main actions; `hideOnPhone` hides the title and description visually on a phone, where the shell header already names the page (the `h1` stays for screen readers) | none |
+| `page-header` | The page's one `h1`, a description and the main actions; `hideOnPhone` hides the title and description visually on a phone, where the shell header already names the page (the `h1` stays for screen readers, unless the shell shows `pageTitle`, which then holds the page's `h1` on a phone) | none |
 | `empty-page` | A whole page with nothing in it | `empty` |
 | `settings-page` | `SettingsPage`, `SettingsSection` and `AppearanceSection` (theme list, Light / Dark / System) | `page-header`, `toggle-group` |
 | `login` | Passkey, email link and password, behind handlers the app passes | `card`, `field`, `input`, `button`, `spinner` |
@@ -761,6 +761,28 @@ Two helpers come with them: the `nav-link` lib (`renderAnchor`, the type of a
   `top: max(1rem, --safe-t)`, `left: max(1rem, --safe-l)`; the page starts below
   it, and `--scroll-pad-top` keeps a focused control clear of it. With no `back`
   there is no control. `chrome="full"` is the default.
+- **Page title on a phone.** Off by default, a phone header shows the app name
+  and nothing says which view this is: with `PageHeader hideOnPhone` (which only
+  hides the title visually) no title is on show at all, which 7 of the 26 screens
+  in the [primitives usage audit](docs/audits/2026-11-12-primitives-usage.md)
+  did. **Use `pageTitle` when the screen's title would otherwise be hidden on a
+  phone, or when the app name is all the header says.** It is one prop,
+  `<AppShell pageTitle="Library" ...>`, paired with
+  `<PageHeader title="Library" hideOnPhone />` on the page. Below 640px the
+  header then draws the title as the page's `h1` (20px, one line, truncated, the
+  largest text on the screen), after the back button and before the switcher,
+  and the app name moves into the switcher: its trigger becomes an apps icon
+  whose screen-reader name is "Switch app, now in Reader", and the sheet it opens
+  is unchanged. `PageHeader hideOnPhone` drops its own `h1` out of the tree on a
+  phone (`display: none`, through the shell's `data-phone-title` mark), so the
+  page keeps exactly one `h1`; from 640px the header is as it was (the app name
+  trigger) and the page's `h1` shows. The title text is the app's to keep in
+  step with `PageHeader`'s `title`. With no `apps` there is no switcher to move
+  the name into, so it is hidden on a phone, kept for screen readers. Focus mode
+  (`chrome="none"`) has no header, so the prop does nothing there. Leave it off
+  where the page's own `h1` already shows on a phone: two `h1`s on show repeat
+  the title. The geometry gate renders it as the `shell-titled` view, down to
+  the 310% text size at 320px.
 - **Auto-hide header.** `autoHideHeader` slides the header away on scroll down
   (once past its own height, after 8px of travel) and back on scroll up, at the
   top of the page, or when focus arrives in it: about 64px back. It never hides
@@ -824,8 +846,9 @@ Two helpers come with them: the `nav-link` lib (`renderAnchor`, the type of a
   drop to icons only and stay in the accessibility tree.
 - **Touch.** Tabs are 50px tall (the bar is 60px with its padding and borders, as in native iOS floating tab bars); every other control in a block is at least 44px
   (`min-h-11`), whatever the pointer.
-- **Titles.** One `h1` per page, from `page-header` (or `login`). A section
-  inside a page is an `h2`. Use `empty-page` when a page has nothing to show; use
+- **Titles.** One `h1` per page, from `page-header` (or `login`), or on a phone
+  from the shell header when the app passes `pageTitle` (see Page title on a
+  phone, below). A section inside a page is an `h2`. Use `empty-page` when a page has nothing to show; use
   `empty` for an empty list inside a page.
 - **Links.** Blocks draw links through a `renderLink` prop, an `<a>` by default,
   so an app on a client-side router keeps navigation in-app. Section `href`s,
