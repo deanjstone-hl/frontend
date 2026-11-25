@@ -283,3 +283,124 @@ describe("trialAll", () => {
     expect(allowed).toHaveLength(1)
   })
 })
+
+// A fake `gh`, as test/repair-brief.test.ts has: records every call and the body files.
+const fakeGh = (openIssues: { number: number; title: string }[] = []) => {
+  const calls: string[][] = []
+  const bodies: string[] = []
+  const run = async (args: string[]) => {
+    calls.push(args)
+    const bodyFlag = args.indexOf("--body-file")
+    if (bodyFlag !== -1) bodies.push(readFileSync(args[bodyFlag + 1], "utf8"))
+    if (args[0] === "issue" && args[1] === "list") return { stdout: JSON.stringify(openIssues) }
+    if (args[0] === "issue" && args[1] === "create") return { stdout: "https://github.com/deanjstone-hl/frontend/issues/901\n" }
+    return { stdout: "" }
+  }
+  return { calls, bodies, run }
+}
+
+const RUN_URL = "https://github.com/deanjstone-hl/frontend/actions/runs/42"
+const green = {
+  id: "shadcn-pin",
+  fingerprint: "latest=4.23.0",
+  ok: true,
+  pkg: "shadcn",
+  from: "4.19.1",
+  to: "4.23.0",
+  output: PASS_LOG,
+  changes: { status: " M r/button.json\n M stamps/registry-output.json", stat: "2 files changed, 9 insertions(+), 3 deletions(-)" },
+}
+const red = {
+  id: "impeccable-pin",
+  fingerprint: "latest=4.11.0",
+  ok: false,
+  pkg: "impeccable",
+  from: "3.6.1",
+  to: "4.11.0",
+  failingCheck: "pnpm check, step 2/4 (impeccable detect registry/ theme/)",
+  output: "registry/ui/button.tsx: 3 findings\ncheck: FAIL at step 2/4 (impeccable detect registry/ theme/)\n",
+}
+
+describe("the green issue", () => {
+  it("is titled with the bump, labelled mode:afk and type:build, and has no wave label", async () => {
+    const gh = fakeGh([])
+    const result = await follow.fileOutcome(green, { gh: gh.run, runUrl: RUN_URL })
+    expect(result).toEqual({ action: "created", url: "https://github.com/deanjstone-hl/frontend/issues/901" })
+    const create = gh.calls.find((args) => args[1] === "create")!
+    expect(create).toContain("Upstream follow: bump shadcn 4.19.1 -> 4.23.0")
+    const labels = create.flatMap((arg, i) => (arg === "--label" ? [create[i + 1]] : []))
+    expect(labels.sort()).toEqual(["mode:afk", "type:build"])
+    expect(create.join(" ")).not.toMatch(/wave:/)
+  })
+
+  it("names the bump, attaches the check output with its pass line, and says how to land it", async () => {
+    const gh = fakeGh([])
+    await follow.fileOutcome(green, { gh: gh.run, runUrl: RUN_URL })
+    const body = gh.bodies[0]
+    expect(body).toContain("shadcn 4.19.1 -> 4.23.0")
+    expect(body).toContain(RUN_URL)
+    expect(body).toContain("check: pass 61296b3")
+    expect(body).toContain("M r/button.json")
+    expect(body).toContain("2 files changed, 9 insertions(+), 3 deletions(-)")
+    expect(body).toContain("node scripts/upstream-follow/follow.mjs apply shadcn 4.23.0\npnpm check")
+    expect(body).toMatch(/nothing was pushed/i)
+    expect(body.trimEnd().endsWith("Mode: AFK")).toBe(true)
+  })
+
+  it("keeps the tail of a very long check output, where the pass line is", async () => {
+    const gh = fakeGh([])
+    await follow.fileOutcome({ ...green, output: `${"noise\n".repeat(20_000)}check: pass abcdef1\n` }, { gh: gh.run, runUrl: RUN_URL })
+    expect(gh.bodies[0].length).toBeLessThan(65_536)
+    expect(gh.bodies[0]).toContain("check: pass abcdef1")
+    expect(gh.bodies[0]).toMatch(/truncated/i)
+  })
+
+  it("comments on the open issue for the same bump instead of filing a second", async () => {
+    const gh = fakeGh([{ number: 77, title: "Upstream follow: bump shadcn 4.19.1 -> 4.23.0" }])
+    const result = await follow.fileOutcome(green, { gh: gh.run, runUrl: RUN_URL })
+    expect(result).toMatchObject({ action: "commented", number: 77 })
+    expect(gh.calls.some((args) => args[1] === "create")).toBe(false)
+  })
+
+  it("files a new issue for a newer bump of the same package", async () => {
+    const gh = fakeGh([{ number: 77, title: "Upstream follow: bump shadcn 4.19.1 -> 4.22.0" }])
+    const result = await follow.fileOutcome(green, { gh: gh.run, runUrl: RUN_URL })
+    expect(result.action).toBe("created")
+  })
+
+  it("passes the repo through to gh, and the body as a file, never inline", async () => {
+    const gh = fakeGh([])
+    await follow.fileOutcome(green, { gh: gh.run, runUrl: RUN_URL, repo: "deanjstone-hl/frontend" })
+    for (const args of gh.calls) expect(args.slice(-2)).toEqual(["-R", "deanjstone-hl/frontend"])
+    expect(gh.calls.find((args) => args[1] === "create")).not.toContain("--body")
+  })
+})
+
+describe("the red Repair brief", () => {
+  it("goes through the Repair brief helper under the probe's own key", async () => {
+    const gh = fakeGh([])
+    const result = await follow.fileOutcome(red, { gh: gh.run, runUrl: RUN_URL })
+    expect(result.action).toBe("created")
+    const create = gh.calls.find((args) => args[1] === "create")!
+    expect(create).toContain("Repair brief: impeccable pin drift")
+    const labels = create.flatMap((arg, i) => (arg === "--label" ? [create[i + 1]] : []))
+    expect(labels.sort()).toEqual(["mode:afk", "type:bug"])
+  })
+
+  it("carries the run link, the bump, the failing step, its output and a repro that starts from a fresh checkout", async () => {
+    const gh = fakeGh([])
+    await follow.fileOutcome(red, { gh: gh.run, runUrl: RUN_URL })
+    const body = gh.bodies[0]
+    expect(body).toContain(RUN_URL)
+    expect(body).toContain("impeccable 3.6.1 -> 4.11.0")
+    expect(body).toContain("pnpm check, step 2/4 (impeccable detect registry/ theme/)")
+    expect(body).toContain("registry/ui/button.tsx: 3 findings")
+    expect(body).toContain("pnpm install --frozen-lockfile\nnode scripts/upstream-follow/follow.mjs apply impeccable 4.11.0\npnpm check")
+  })
+
+  it("comments on the open brief when the same probe is red for a newer version, since the key holds no version", async () => {
+    const gh = fakeGh([{ number: 55, title: "Repair brief: impeccable pin drift" }])
+    const result = await follow.fileOutcome(red, { gh: gh.run, runUrl: RUN_URL })
+    expect(result).toMatchObject({ action: "commented", number: 55 })
+  })
+})

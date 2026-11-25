@@ -52,18 +52,18 @@ export const repairBriefTitle = (key) => {
 
 // A fence one backtick longer than the longest run inside the text, so output that holds
 // its own fences cannot close ours early.
-const fenceFor = (text) => {
+export const fenceFor = (text) => {
   const longest = Math.max(0, ...(text.match(/`+/g) ?? []).map((run) => run.length))
   return "`".repeat(Math.max(3, longest + 1))
 }
 
-const fenced = (text, info = "") => {
+export const fenced = (text, info = "") => {
   const fence = fenceFor(text)
   return `${fence}${info}\n${text}\n${fence}`
 }
 
 // The failing line is at the bottom of a log, so a cut keeps the tail.
-const tail = (text, limit) => {
+export const tail = (text, limit) => {
   if (text.length <= limit) return { text, cut: false }
   return { text: text.slice(text.length - limit), cut: true }
 }
@@ -91,9 +91,9 @@ export const renderBrief = ({ runUrl, changed, failingCheck, output, repro }) =>
   return body.length > MAX_BODY_CHARS ? `${body.slice(0, MAX_BODY_CHARS)}\n\n(body truncated)` : body
 }
 
-const withRepo = (args, repo) => (repo ? [...args, "-R", repo] : args)
+export const withRepo = (args, repo) => (repo ? [...args, "-R", repo] : args)
 
-const defaultGh = async (args) => {
+export const defaultGh = async (args) => {
   const { stdout } = await execFileAsync("gh", args, { maxBuffer: 16 * 1024 * 1024 })
   return { stdout }
 }

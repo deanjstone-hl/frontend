@@ -24,8 +24,12 @@
 // The idea comes from rauchg/xeet's sync.yml (Apache-2.0); this code is written for this
 // repo and copies none of it.
 import { spawn } from "node:child_process"
-import { readFileSync, writeFileSync } from "node:fs"
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { tmpdir } from "node:os"
 import { join } from "node:path"
+
+import { PROBES } from "../drift-canary/canary.mjs"
+import { defaultGh, fenced, fileRepairBrief, tail, withRepo } from "../repair-brief/repair-brief.mjs"
 
 // ── The pin sites ────────────────────────────────────────────────────────────────────────
 
@@ -207,3 +211,92 @@ export const trialAll = async ({ root, followups, exec = spawnExec, env = proces
   }
   return outcomes
 }
+
+// ── Filing ───────────────────────────────────────────────────────────────────────────────
+
+// Labels are fixed, as the Repair brief's are: no `wave:` label, because the orchestrator's
+// wave check places the wave (owner, 16 Nov 2026 20:00 AEDT).
+export const FOLLOW_LABELS = Object.freeze(["mode:afk", "type:build"])
+
+const MAX_BODY_CHARS = 60_000
+const MAX_OUTPUT_CHARS = 12_000
+const MAX_CHANGE_LINES = 60
+
+export const followTitle = ({ pkg, from, to }) => `Upstream follow: bump ${pkg} ${from} -> ${to}`
+
+const cappedLines = (value, limit) => {
+  const lines = value.split("\n")
+  return lines.length <= limit ? value : `${lines.slice(0, limit).join("\n")}\n... and ${lines.length - limit} more`
+}
+
+export const renderFollowIssue = ({ pkg, from, to, output, changes }, runUrl) => {
+  const shown = tail(String(output ?? "").trim(), MAX_OUTPUT_CHARS)
+  const changed = `${changes?.status ?? ""}`.trim()
+  const sections = [
+    `The drift canary saw \`${pkg}\` move from ${from} to ${to} (npm latest). With the new pin, regenerated output and \`pnpm check\` pass in a throwaway tree. Nothing was pushed.`,
+    `## Run\n\n${runUrl ?? "No run link given."}`,
+    `## Bump\n\n${pkg} ${from} -> ${to}`,
+    `## What the bump changes\n\n${
+      changed === ""
+        ? "Nothing changed beyond the pin."
+        : fenced(`${cappedLines(changed, MAX_CHANGE_LINES)}${changes.stat ? `\n\n${changes.stat}` : ""}`)
+    }`,
+    `## Check output\n\n${
+      shown.text === ""
+        ? "No output captured."
+        : `${shown.cut ? `Output truncated to its last ${MAX_OUTPUT_CHARS} characters.\n\n` : ""}${fenced(shown.text)}`
+    }`,
+    `## Land it\n\nRead ${pkg}'s release notes first, then, from a worktree on main:\n\n${fenced(
+      [`node scripts/upstream-follow/follow.mjs apply ${pkg} ${to}`, "pnpm check"].join("\n"),
+      "sh",
+    )}\n\nCommit the result with \`Refs\` to this issue. When it changes what \`r/\` serves, say what changed for consumers in the commit type and message.`,
+    "Mode: AFK",
+  ]
+  const body = sections.join("\n\n")
+  return body.length > MAX_BODY_CHARS ? `${body.slice(0, MAX_BODY_CHARS)}\n\n(body truncated)\n\nMode: AFK` : body
+}
+
+const withBodyFile = async (body, use) => {
+  const dir = mkdtempSync(join(tmpdir(), "upstream-follow-"))
+  const bodyFile = join(dir, "body.md")
+  writeFileSync(bodyFile, body)
+  try {
+    return await use(bodyFile)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+
+// One green outcome as one issue, or a comment on the open issue for the same bump.
+export const fileFollowIssue = async (outcome, { gh = defaultGh, repo, runUrl } = {}) => {
+  const title = followTitle(outcome)
+  const listed = await gh(
+    withRepo(["issue", "list", "--state", "open", "--search", `"${title}" in:title`, "--limit", "30", "--json", "number,title"], repo),
+  )
+  const existing = JSON.parse(listed.stdout || "[]").find((issue) => issue.title === title)
+  return withBodyFile(renderFollowIssue(outcome, runUrl), async (bodyFile) => {
+    if (existing) {
+      await gh(withRepo(["issue", "comment", String(existing.number), "--body-file", bodyFile], repo))
+      return { action: "commented", number: existing.number }
+    }
+    const labels = FOLLOW_LABELS.flatMap((label) => ["--label", label])
+    const created = await gh(withRepo(["issue", "create", "--title", title, "--body-file", bodyFile, ...labels], repo))
+    return { action: "created", url: created.stdout.trim() }
+  })
+}
+
+// A red outcome as a Repair brief under the probe's own key, so the canary's brief for the
+// same probe and this one are the same issue.
+export const briefForRed = (outcome, runUrl) => ({
+  key: PROBES[outcome.id].driftKey,
+  runUrl,
+  changed: `${outcome.pkg} ${outcome.from} -> ${outcome.to} (npm latest); the check fails with the new pin`,
+  failingCheck: outcome.failingCheck,
+  output: outcome.output,
+  repro: ["pnpm install --frozen-lockfile", `node scripts/upstream-follow/follow.mjs apply ${outcome.pkg} ${outcome.to}`, "pnpm check"],
+})
+
+export const fileOutcome = (outcome, { gh = defaultGh, repo, runUrl } = {}) =>
+  outcome.ok
+    ? fileFollowIssue(outcome, { gh, repo, runUrl })
+    : fileRepairBrief(briefForRed(outcome, runUrl), { gh, repo })

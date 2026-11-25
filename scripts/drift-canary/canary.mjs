@@ -230,12 +230,14 @@ export const markFiled = (state, result) => ({
 
 // ── The brief ────────────────────────────────────────────────────────────────────────────
 
+export const runUrlOf = (env = process.env) =>
+  env.GITHUB_SERVER_URL && env.GITHUB_REPOSITORY && env.GITHUB_RUN_ID
+    ? `${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}`
+    : undefined
+
 export const briefFor = (result, env = process.env) => {
   const probe = PROBES[result.id]
-  const runUrl =
-    env.GITHUB_SERVER_URL && env.GITHUB_REPOSITORY && env.GITHUB_RUN_ID
-      ? `${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}`
-      : undefined
+  const runUrl = runUrlOf(env)
   return {
     key: result.status === "error" ? probe.errorKey : probe.driftKey,
     runUrl,
