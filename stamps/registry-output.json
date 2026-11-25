@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "99d25009eea3ac9db02d14c274e1c07d4f1d0143cd9f35f3b094415868dd3ceb",
+    "hash": "d95bcfc89d53474eb71bc26179fc67d16587db5f20673397ccd77edc289460cf",
     "files": {
-      "registry.json": "5a89c787b2d4d50e07d155de8ff4f5dac24cb3f520ee7dc21c30586476e8aaa2",
+      "registry.json": "8deaa065ca654edd06e7393623b00cc2cb5fe0df81614cc9519e74fbed1bfc41",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "c7d666bc38f225ee389ee2d359c634201d52fd0da9187ccd3d1495e815c2d658",
       "registry/base-nova/blocks/app-switcher.tsx": "4c580598f5b56f873dfae1dd418fdaf077c873f0ad7b69fa0d77a1180ffe20d6",
@@ -51,6 +51,7 @@
       "registry/base-nova/ui/combobox.tsx": "aabed1d6921409e7511dc36aaefe85dff4b5f0ac5d83015bcafe94e97d03e2e8",
       "registry/base-nova/ui/command.tsx": "94db5e4e750070616328ed259ba8538c3c6a1fbfe3f9cb26296e895f2c141e59",
       "registry/base-nova/ui/context-menu.tsx": "893a34512900c8bc3c77769960ea7dd8bcd883a207dd698ffd54d435235b9b10",
+      "registry/base-nova/ui/copy-button.tsx": "d1a4ad1bb8cbcc24c18298c2bdb70ba7ce23a5df262ef2b5897f6ac6816fe9da",
       "registry/base-nova/ui/data-table.tsx": "d25c5784c31b87e430b83f8dab0131f5bbfe964bf3bcef3be7936dec385e0f63",
       "registry/base-nova/ui/date-picker.tsx": "9979165bd650a44e4501f41f64bb00de5d5a757793cbd3d28fc70a2ef4f144d4",
       "registry/base-nova/ui/dialog.tsx": "987bc3cdd43b8b53898325265a459785d1458bf6c17fd1f1f70f05792d538010",
@@ -134,7 +135,7 @@
     }
   },
   "output": {
-    "hash": "269631597259de3fc0d313b0f98b8acbc6aaadcd448daea931c3780a6b6141a2",
+    "hash": "5cbfcb68b63c4c1922d3adc2eed64ad0fb2e4856930aed2f4fb638e3202bb31f",
     "files": {
       "r/accordion.json": "520dc8d11031fbc0f6064a4d40f51f0c4989c5a27cb7b62c3d02b923f9fae897",
       "r/alert-dialog.json": "19842157d20aecc58b2af6df11ab993c78f1c0c04ef5bba82bca00ceac0d5069",
@@ -161,6 +162,7 @@
       "r/combobox.json": "a27da6d96c833f8f5b8a9978602b6aa35455e8df36e417b0f1fdf902bd2e52d1",
       "r/command.json": "fe3f0e29f79783857073e2535cf4d7c7bea7b9fcfc1f3c11f24b0455542d54da",
       "r/context-menu.json": "45555cc9855d8223c8edc31a85dfd052a4d281d3b661fbe326cb5ee7c207539c",
+      "r/copy-button.json": "4997e42cd16f54757862a129e4c244d5de90737e31c44fb6f9b3aa44aa49fd5b",
       "r/data-table.json": "e68dc65fa6db8bec87cf3795fc465121b09b53145558b60927f543bd74746f92",
       "r/date-picker.json": "e384bb2443fe8659c249851077ef276f77cb3248adee6901af0c9b5d82487bda",
       "r/design-check.json": "c5b7907b1d7159a26a2c22b34ede5d2dd5ffa0ee20a09e75879efd563edbe10f",
@@ -215,7 +217,7 @@
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "f2922d6c15f4ef0d2cce72e9f54a24bae003a1e2d7bc8428a906343ab4dc12e1",
-      "r/registry.json": "5a89c787b2d4d50e07d155de8ff4f5dac24cb3f520ee7dc21c30586476e8aaa2",
+      "r/registry.json": "8deaa065ca654edd06e7393623b00cc2cb5fe0df81614cc9519e74fbed1bfc41",
       "r/relative-time.json": "8c3d27e4b7adbe7792ae5d2bd6c6e4ee404bdcc32599155072619b044b71cd75",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
