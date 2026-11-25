@@ -865,6 +865,20 @@ fails if they drift from `.github/workflows/design.yml` or `package.json`.
 The script resolves the repo root from its own path, so `bash /path/to/frontend/scripts/check.sh`
 checks this tree from any directory (another repo's pre-push gate calls it that way). The gate takes the host-wide heavy lock ([argus-config/1506](https://github.com/deanjstone/argus-config/issues/1506)): `scripts/check.sh` re-runs itself through `scripts/heavy-lock.sh`, so only one full check runs at a time on a host, whichever thread or CI job starts it, and it also waits while memory `some avg60` is 10 or more. A queued run prints `waiting for the host lock` and starts when the holder ends; it exits 75 without running once `HEAVY_LOCK_TIMEOUT` (3600 s) passes. `scripts/heavy-lock.sh` and `scripts/heavy-lock.lock` are vendored byte-for-byte from argus-config (its `scripts/sync-heavy-lock.sh` rewrites both; never edit them here), and `test/heavy-lock.test.ts` fails on a copy that no longer matches its lock.
 
+**Workflows are hardened** ([frontend#236](https://github.com/deanjstone-hl/frontend/issues/236)):
+- **Pinned actions.** Every third-party action is `owner/repo@<40-char commit SHA> # <version tag>`.
+  `.github/dependabot.yml` opens one weekly pull request that moves the SHAs and the tag comments together.
+  To bump by hand, resolve the tag to its commit (`gh api repos/<owner>/<repo>/commits/<tag> --jq .sha`; dereference an annotated tag) and change every file that uses it.
+- **Least permissions.** Each workflow starts with `permissions: {}` and each job names what it needs: `contents: read`
+  everywhere, except the `Release` job, which also writes `contents`, `issues` and `pull-requests` for semantic-release.
+  A checkout sets `persist-credentials: false`, since nothing here pushes with its token.
+- **A hermetic push gate.** `test.yml` fetches nothing but its install (`pnpm install` and the pinned Chromium download) and compares against no
+  live upstream; it has no `curl`, `gh api` or `npx` step. A comparison against a live upstream or a remote page belongs in a scheduled workflow, not there.
+- **CODEOWNERS** (`.github/CODEOWNERS`) names the owner for `.github/` and `scripts/`.
+
+`test/workflow-hardening.test.ts` fails on an unpinned action, a missing `permissions`, a checkout that keeps its credentials, a push gate that
+fetches, or a missing Dependabot or CODEOWNERS entry. `readme-guard.yml` carries these changes ahead of argus-config's copy, which has to adopt them.
+
 The browser-side geometry check is separate: `pnpm gate:geometry` (see
 [Curve-geometry gate](#curve-geometry-gate)).
 
