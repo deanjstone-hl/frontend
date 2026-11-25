@@ -563,7 +563,7 @@ Which controls get the floor, and how:
 
 | Control | How it reaches 44px on a coarse pointer |
 | --- | --- |
-| `button`, `toggle`, `dialog-close` | `min-height` and `min-width` 44px |
+| `button`, `toggle`, `toggle-group-item`, `dialog-close` | `min-height` and `min-width` 44px |
 | `input`, `command-input`, `select-trigger` | `min-height` 44px |
 | `tabs-trigger` | 44px each way, inside a `tabs-list` of 50px |
 | `checkbox`, `switch` | drawn size unchanged; the `::after` tap region is centred and at least 44px each way |
