@@ -351,4 +351,41 @@ describe("tinted washes", () => {
       })
     })
   })
+
+  describe("notice pair", () => {
+    const notice = ui("notice")
+    const alert = ui("alert")
+    const variantOf = (component: string) => {
+      const match = notice.match(new RegExp(`function ${component}\\b[\\s\\S]*?<Alert\\b[^>]*?variant="(\\w+)"`))
+      return match ? match[1] : "default"
+    }
+    const alertClasses = (variant: string) => alert.match(new RegExp(`\\b${variant}:\\s*"([^"]+)"`))![1]
+
+    it("builds the error notice on the critical alert variant and the loading notice on the default", () => {
+      expect(variantOf("ErrorNotice")).toBe("critical")
+      expect(variantOf("LoadingNotice")).toBe("default")
+    })
+
+    describe.each(THEME_NAMES)("%s", (theme: string) => {
+      it.each(MODES)("holds the loading notice's title and description on its card surface at 4.5:1 in %s mode", (mode: string) => {
+        const t = resolveTokens(cssRules, theme, mode === "dark")
+        expect(alertClasses("default")).toContain("bg-card")
+        expect(alertClasses("default")).toContain("text-card-foreground")
+        expect(contrastRatio(t["--card-foreground"], t["--card"]), "title on card").toBeGreaterThanOrEqual(4.5)
+        expect(contrastRatio(t["--muted-foreground"], t["--card"]), "description on card").toBeGreaterThanOrEqual(4.5)
+      })
+
+      it.each(MODES)("holds the error notice's icon, title and description on the critical wash at 4.5:1 in %s mode", (mode: string) => {
+        const t = resolveTokens(cssRules, theme, mode === "dark")
+        const classes = alertClasses(variantOf("ErrorNotice"))
+        const prefix = mode === "dark" ? "dark:" : ""
+        const match = classes.match(new RegExp(`(?:^|\\s)${prefix}bg-critical/(\\d+)(?=\\s|$)`))
+        expect(match, `${prefix}bg-critical/NN`).not.toBeNull()
+        for (const ground of grounds) {
+          const ratio = contrastRatio(t["--critical"], wash(t["--critical"], t[ground], Number(match![1]) / 100))
+          expect(ratio, `critical on its wash over ${ground}`).toBeGreaterThanOrEqual(4.5)
+        }
+      })
+    })
+  })
 })
