@@ -404,6 +404,7 @@ registry/
   lib/highlighter.tsx       Shiki loader behind use-highlighted-code
   lib/graph-3d-*.ts         graph-3d prop mapping and three.js engine (lazy-loaded)
   lib/filter-core.ts, url-state.ts  filter model and one-search-param URL state (filter-builder)
+  lib/relative-time.ts      formatRelativeTime ("5m ago", "in 2h") and the useNow clock-tick hook
   lib/list-group-core.ts    grouping and display-settings model (grouped-list)
   lib/page-transition-core.ts  theme tokens to glimm band colours (page-transition, staged: not in registry.json yet)
   base-nova/ui/               67 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
@@ -1945,6 +1946,28 @@ const grouping = GROUPINGS.find((g) => g.id === display.settings.groupBy) ?? nul
   running edge to edge in its card on phones. Writes `docs/assets/file-diff-<width>-<theme>.png`. Screenshots:
   ![390 light](docs/assets/file-diff-390-light.png) ![390 dark](docs/assets/file-diff-390-dark.png)
   ![320 light](docs/assets/file-diff-320-light.png)
+
+## Relative time
+
+`relative-time` is a lib item with one formatter and one clock-tick hook ([frontend#217](https://github.com/deanjstone-hl/frontend/issues/217)),
+the single copy of what watchtower (`units.ts`), ops-hub (`format.ts`), knowledge (`live-notes-status.ts`) and budget (two files) each
+wrote for themselves. It needs no other item and no package beyond your React. `npx shadcn add deanjstone/frontend/relative-time`.
+
+```tsx
+const now = useNow()                                  // epoch ms, refreshed every 30 s
+formatRelativeTime(run.finishedAt, now)               // "5m ago"
+formatRelativeTime(job.dueAt, now)                    // "in 2h"
+formatRelativeTime(note.syncedAt, now, "never")       // "never" when there is no timestamp
+```
+
+- **`formatRelativeTime(value, now?, fallback?)`** takes an ISO string, epoch milliseconds or a `Date`. One unit, rounded
+  down, so `5m ago` is five minutes and some seconds, never six. Under 5 s either side of now it reads `just now`, which
+  also absorbs a little clock skew. Then `5s`, `5m`, `3h`, `2d`, as `5m ago` for the past and `in 5m` for the future.
+- **Nothing past days.** 400 days back reads `400d ago`. A screen that wants a date there should switch to one.
+- **No timestamp is not an error.** `null`, `undefined` and an unparseable value return `fallback` (empty by default).
+- **`now` is yours.** It defaults to the clock. Pass the value from `useNow` to keep a label true, or a fixed one in a test.
+- **`useNow(intervalMs = 30_000)`** returns the current time and re-renders on that interval; the timer stops on unmount.
+  Each caller runs its own timer, so call it once in a list's parent and pass `now` down.
 
 ## Style
 

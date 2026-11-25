@@ -1266,6 +1266,16 @@
       ]
     },
     {
+      "name": "relative-time",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "registry/lib/relative-time.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "use-filter-state",
       "type": "registry:hook",
       "registryDependencies": [
