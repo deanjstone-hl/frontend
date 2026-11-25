@@ -63,7 +63,12 @@ export const collectGeometry = () => {
 // that can start a frame late, so animation state alone is not enough.
 export const settle = async () => {
   await document.fonts.ready
-  const finite = () => document.getAnimations().filter((animation) => animation.effect?.getComputedTiming().iterations !== Infinity)
+  // Only clock-driven animations are waited for: a scroll-linked one (the @ui-sdk drawer under its
+  // scroll-snap driver) follows a scroll position, so its `finished` never resolves while it rests.
+  const finite = () =>
+    document
+      .getAnimations()
+      .filter((animation) => animation.timeline === document.timeline && animation.effect?.getComputedTiming().iterations !== Infinity)
   const snapshot = () =>
     [...document.body.querySelectorAll("*")]
       .map((element) => {

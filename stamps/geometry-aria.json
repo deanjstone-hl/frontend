@@ -1,10 +1,10 @@
 {
   "name": "geometry-aria",
   "generator": {
-    "hash": "cdb5645de545049b0032dced571f8d6a006719b054b2dabf504b15703a35d315",
+    "hash": "cadbd613dbc2f78bf971f3345fbc9fee70b56e0ca4e295c6cdc2f937a794f37e",
     "files": {
       "scripts/geometry-gate/checks.mjs": "87bc240de98b08858042c3af8320515b4ffe9236caf8acbf9a9d713cbd63fffc",
-      "scripts/geometry-gate/collect.mjs": "4e6a90966a318edce62a564e98da437963f7dc17fe1a5972d37be32a8d22c4ca",
+      "scripts/geometry-gate/collect.mjs": "c008c34eede453f44f2123c22141585384b35c97adddc059b7955d181fd8eca2",
       "scripts/geometry-gate/geometry.mjs": "c77b7a2b8b128abc4f30c873a1a6b0c30ebcb40c5546e362b657bf5fa741a298",
       "scripts/geometry-gate/harness/index.css": "6e2c43ad2cda427c0340aa2aa93a772e524676879f30e75207147a1f06166b83",
       "scripts/geometry-gate/harness/index.html": "ab58e3c105e0382845877cd8dc001c7870baf44775e90960bebd902c09a3e118",

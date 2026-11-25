@@ -81,6 +81,8 @@ export const motion = async () => {
   const found = new Map()
   for (let sample = 0; sample < 16; sample++) {
     for (const animation of document.getAnimations()) {
+      // A scroll-linked animation follows the reader's finger, never the clock: it cannot keep moving.
+      if (animation.timeline !== document.timeline) continue
       const timing = animation.effect?.getComputedTiming()
       if (!timing || (timing.iterations !== Infinity && Number(timing.duration) <= 1)) continue
       if (animation.transitionProperty && !movement.test(animation.transitionProperty)) continue
