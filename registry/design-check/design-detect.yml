@@ -10,6 +10,9 @@ name: Design check
 #     safe edge, a bare env(safe-area-inset-left|right), and form text under 16px.
 #     A finding fails the job. A line that is right for a reason the rule cannot
 #     see takes a `design-rules-ignore` comment.
+#   - The stale-copy report (scripts/registry-stale.mjs). Moving the `@frontend` pin
+#     does not move the registry files already copied into the app; this lists the
+#     copies that match an older release than the pin. Warn-only: it never blocks.
 
 on:
   pull_request:
@@ -26,6 +29,7 @@ on:
       - '.impeccable/**'
       - 'scripts/design-detect.sh'
       - 'scripts/design-rules.mjs'
+      - 'scripts/registry-stale.mjs'
       - '.github/workflows/design-detect.yml'
 
 permissions:
@@ -61,6 +65,14 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: bash scripts/design-detect.sh "$BASE_SHA"
+
+      # continue-on-error: the report exits 2 when a copy is older than the pin and 1 when
+      # the registry could not be read. Either shows as a failed step, never a failed check.
+      # Move this off continue-on-error to make stale copies block.
+      # Before the rules step, which blocks: a failed rules step would skip this report.
+      - name: Report registry copies older than the pin
+        continue-on-error: true
+        run: node scripts/registry-stale.mjs
 
       # No continue-on-error: this one blocks. It reads only the files the PR changed.
       - name: Check the design rules

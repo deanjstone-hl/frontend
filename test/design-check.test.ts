@@ -44,6 +44,7 @@ describe("design-check registry item", () => {
     expect(targets).toEqual({
       "registry/design-check/design-detect.sh": "~/scripts/design-detect.sh",
       "registry/design-check/design-rules.mjs": "~/scripts/design-rules.mjs",
+      "registry/design-check/registry-stale.mjs": "~/scripts/registry-stale.mjs",
       "registry/design-check/design-detect.yml": "~/.github/workflows/design-detect.yml",
     })
   })
@@ -82,6 +83,17 @@ describe("design-detect.yml", () => {
     const step = text.slice(text.indexOf("- name: Check the design rules"))
     expect(step).not.toContain("continue-on-error")
     expect(text).toContain("'scripts/design-rules.mjs'")
+  })
+
+  // frontend#211: the stale-copy report is warn-only, and runs before the blocking rules
+  // step so a failed rules step cannot skip it.
+  it("reports registry copies older than the pin in a step that never blocks, ahead of the rules step", () => {
+    const text = workflow()
+    expect(text).toMatch(
+      /- name: Report registry copies older than the pin\n\s+continue-on-error: true\n\s+run: node scripts\/registry-stale\.mjs\n/,
+    )
+    expect(text.indexOf("registry-stale.mjs\n")).toBeLessThan(text.indexOf("- name: Check the design rules"))
+    expect(text).toContain("'scripts/registry-stale.mjs'")
   })
 
   // design-system#186: a consumer's `shadcn add ... design-check` must not undo the

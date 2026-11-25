@@ -2654,6 +2654,11 @@
           "target": "~/scripts/design-rules.mjs"
         },
         {
+          "path": "registry/design-check/registry-stale.mjs",
+          "type": "registry:file",
+          "target": "~/scripts/registry-stale.mjs"
+        },
+        {
           "path": "registry/design-check/design-detect.yml",
           "type": "registry:file",
           "target": "~/.github/workflows/design-detect.yml"
