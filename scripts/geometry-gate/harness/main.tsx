@@ -26,6 +26,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { Toggle } from "@/components/ui/toggle"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 // One page, one block per `?v=` value, so the gate drives each registry block in
 // its own context. The shell view is the AppShell with a representative page in it.
@@ -67,6 +68,14 @@ const Page = () => (
       <Badge>Badge</Badge>
       <Badge render={<a href="#badge" />} variant="outline">Link badge</Badge>
       <Toggle aria-label="Bold" variant="outline">B</Toggle>
+    </div>
+    <div className="flex flex-wrap gap-2">
+      {(["sm", "default", "lg"] as const).map((size) => (
+        <ToggleGroup key={size} size={size} variant="outline" defaultValue={["a"]} aria-label={`Mode ${size}`}>
+          <ToggleGroupItem value="a">A</ToggleGroupItem>
+          <ToggleGroupItem value="b">B</ToggleGroupItem>
+        </ToggleGroup>
+      ))}
     </div>
     <div className="flex flex-col gap-2">
       <Label htmlFor="name">Name</Label>

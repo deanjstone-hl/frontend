@@ -15,6 +15,15 @@
   - link "Link badge":
     - /url: "#badge"
   - button "Bold": B
+  - group "Mode sm":
+    - button "A" [pressed]
+    - button "B"
+  - group "Mode default":
+    - button "A" [pressed]
+    - button "B"
+  - group "Mode lg":
+    - button "A" [pressed]
+    - button "B"
   - text: Name
   - textbox "Name":
     - /placeholder: name

@@ -301,6 +301,7 @@ export const TOUCH_TARGET = {
     '[data-slot="textarea"]',
     '[data-slot="command-input"]',
     '[data-slot="toggle"]',
+    '[data-slot="toggle-group-item"]',
     '[data-slot="select-trigger"]',
     '[data-slot="tabs-trigger"]',
     'a[data-slot="badge"]',
