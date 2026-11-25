@@ -273,3 +273,82 @@ describe("generated outputs", () => {
     expect(builtItem.css).toEqual(registryTheme.css)
   })
 })
+
+describe("tinted washes", () => {
+  const ui = (name: string) => read(`../registry/base-nova/ui/${name}.tsx`)
+  const hex = (color: string) => [0, 2, 4].map((i) => Number.parseInt(color.slice(1 + i, 3 + i), 16))
+  const wash = (color: string, ground: string, opacity: number) =>
+    `#${hex(color)
+      .map((value, i) => Math.round(value * opacity + hex(ground)[i] * (1 - opacity)).toString(16).padStart(2, "0"))
+      .join("")}`
+  const grounds = ["--background", "--card", "--popover"]
+
+  // Every dark-mode `bg-destructive/NN` wash a source file sets, whatever variants sit between
+  // `dark:` and the utility (hover, a child selector). Destructive text sits on each of them.
+  const darkDestructiveWashes = (file: string) =>
+    [...ui(file).matchAll(/dark:[^\s"`]*\bbg-destructive\/(\d+)/g)].map(([cls, step]) => ({
+      cls,
+      opacity: Number(step) / 100,
+    }))
+
+  const washedFiles = ["button", "badge", "bubble", "dropdown-menu", "context-menu", "menubar"]
+
+  it("finds the dark destructive washes it is meant to hold", () => {
+    expect(darkDestructiveWashes("button").length).toBeGreaterThanOrEqual(2)
+    expect(darkDestructiveWashes("badge").length).toBeGreaterThanOrEqual(1)
+  })
+
+  describe.each(THEME_NAMES)("%s", (theme: string) => {
+    it("holds destructive text on every dark destructive wash at 4.5:1", () => {
+      const t = resolveTokens(cssRules, theme, true)
+      for (const file of washedFiles) {
+        for (const { cls, opacity } of darkDestructiveWashes(file)) {
+          for (const ground of grounds) {
+            const ratio = contrastRatio(t["--destructive"], wash(t["--destructive"], t[ground], opacity))
+            expect(ratio, `${file}: ${cls} on ${ground}`).toBeGreaterThanOrEqual(4.5)
+          }
+        }
+      }
+    })
+  })
+
+  describe("alert status variants", () => {
+    const source = ui("alert")
+    const variantClasses = (role: string) => {
+      const match = source.match(new RegExp(`\\b${role}:\\s*"([^"]+)"`))
+      expect(match, `alert has a ${role} variant`).not.toBeNull()
+      return match![1]
+    }
+    const step = (classes: string, prefix: string, role: string) => {
+      const match = classes.match(new RegExp(`(?:^|\\s)${prefix}bg-${role}/(\\d+)(?=\\s|$)`))
+      expect(match, `${prefix}bg-${role}/NN`).not.toBeNull()
+      return Number(match![1]) / 100
+    }
+
+    it.each(["success", "warning", "critical"])("%s reads its status token as text, with no opacity on it", (role) => {
+      const classes = variantClasses(role)
+      expect(classes).toMatch(new RegExp(`(?:^|\\s)text-${role}(?=\\s|$)`))
+      expect(classes).toMatch(new RegExp(`data-\\[slot=alert-description\\]:text-${role}(?=\\s|$)`))
+      expect(classes).not.toMatch(new RegExp(`text-${role}/`))
+    })
+
+    it.each(["success", "warning", "critical"])("%s uses the badge's wash steps", (role) => {
+      const classes = variantClasses(role)
+      expect(step(classes, "", role)).toBe(STATUS_WASH.light)
+      expect(step(classes, "dark:", role)).toBe(STATUS_WASH.dark)
+    })
+
+    describe.each(THEME_NAMES)("%s", (theme: string) => {
+      it.each(MODES)("holds each status as alert text, title and description, on its wash at 4.5:1 in %s mode", (mode: string) => {
+        const t = resolveTokens(cssRules, theme, mode === "dark")
+        for (const role of ["success", "warning", "critical"]) {
+          const opacity = step(variantClasses(role), mode === "dark" ? "dark:" : "", role)
+          for (const ground of grounds) {
+            const ratio = contrastRatio(t[`--${role}`], wash(t[`--${role}`], t[ground], opacity))
+            expect(ratio, `${role} on its wash over ${ground}`).toBeGreaterThanOrEqual(4.5)
+          }
+        }
+      })
+    })
+  })
+})
