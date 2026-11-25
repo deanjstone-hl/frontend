@@ -1953,6 +1953,16 @@
       ]
     },
     {
+      "name": "use-online",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/base-nova/hooks/use-online.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
       "name": "item",
       "type": "registry:ui",
       "registryDependencies": [
@@ -2365,6 +2375,23 @@
       "files": [
         {
           "path": "registry/base-nova/ui/notice.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "offline-banner",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "deanjstone/frontend/alert",
+        "deanjstone/frontend/use-online"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/offline-banner.tsx",
           "type": "registry:ui"
         }
       ]

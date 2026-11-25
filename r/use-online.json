@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-online",
+  "files": [
+    {
+      "path": "registry/base-nova/hooks/use-online.ts",
+      "content": "import * as React from \"react\"\n\n// The browser fires `online` and `offline` on window, and navigator.onLine is the value they announce.\nfunction subscribe(onChange: () => void) {\n  window.addEventListener(\"online\", onChange)\n  window.addEventListener(\"offline\", onChange)\n  return () => {\n    window.removeEventListener(\"online\", onChange)\n    window.removeEventListener(\"offline\", onChange)\n  }\n}\n\nconst getSnapshot = () => navigator.onLine\n\n// Nothing is known on the server, and a hydrating page must match it, so it reads as online.\nconst getServerSnapshot = () => true\n\n/**\n * Whether the browser reports a network connection: `const online = useOnline()`. It follows the window's\n * `online` and `offline` events and stops listening on unmount. `navigator.onLine` is only a hint: `true` means\n * a network interface is up, not that your server answers.\n */\nexport function useOnline(): boolean {\n  return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "type": "registry:hook"
+}

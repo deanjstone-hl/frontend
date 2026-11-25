@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "offline-banner",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "deanjstone/frontend/alert",
+    "deanjstone/frontend/use-online"
+  ],
+  "files": [
+    {
+      "path": "registry/base-nova/ui/offline-banner.tsx",
+      "content": "import * as React from \"react\"\nimport { WifiOffIcon } from \"lucide-react\"\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\nimport { useOnline } from \"@/hooks/use-online\"\n\ntype OfflineBannerProps = Omit<React.ComponentProps<typeof Alert>, \"variant\" | \"title\" | \"children\"> & {\n  /** What being offline means for this app, one short line: \"Offline\", \"Offline — reading from cache\". */\n  title?: React.ReactNode\n  /** The detail under the title: what still works, or what happens on reconnect. */\n  description?: React.ReactNode\n}\n\n// A warning alert shown only while the browser is offline, and nothing at all online. A status, not an\n// alert, so a screen reader reads it politely instead of interrupting. The place it sits (top of the page,\n// above a list) is the caller's: the banner is a block, not a fixed strip.\nfunction OfflineBanner({ title = \"You're offline\", description, icon, ...props }: OfflineBannerProps) {\n  const online = useOnline()\n  if (online) return null\n\n  return (\n    <Alert\n      variant=\"warning\"\n      role=\"status\"\n      aria-live=\"polite\"\n      icon={icon === undefined ? <WifiOffIcon aria-hidden=\"true\" /> : icon}\n      {...props}\n    >\n      <AlertTitle>{title}</AlertTitle>\n      {description ? <AlertDescription>{description}</AlertDescription> : null}\n    </Alert>\n  )\n}\n\nexport { OfflineBanner }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
