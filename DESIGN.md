@@ -1101,6 +1101,25 @@ at most two elements at it). So when a screen shows more than one tile:
 Sparky's home (four 26px numbers) and the bills list (six 21px ones) are the cases this is
 for: one `lead` tile above the rest takes each from no largest to one.
 
+### Notice
+
+The loading and error notice a screen shows in place of its data (`notice`: `LoadingNotice`
+and `ErrorNotice`), both built on `alert`. They replace the hand-built pair each app keeps.
+
+- **Loading** is the default alert variant with a spinning icon, a title ("Loading briefings")
+  and an optional description. It is a polite `role="status"`, not an alert: it must not
+  interrupt a screen reader. The spinner stops under `prefers-reduced-motion`, and the words
+  are what carry the state, so it is never an icon alone.
+- **Error** is the `critical` alert variant with its own icon (or one passed as `icon`), a title
+  that says what failed ("Couldn't load jobs") and a description that says why (the error's
+  message). It is `role="alert"`. Put the way out in `action` ("Try again", "Sign out"): one
+  row that wraps under the words. A hint or a link goes in `children`.
+- **Use it for the screen's own data.** A notice about the app's state (offline, a session
+  expired, a demo) is a plain `alert` in the nearest status variant, not an error notice.
+- **Colour.** Both hold 4.5:1 on every theme in light and dark: the loading notice on the card
+  surface, the error notice on the `critical` wash. The error's text is the `critical` token
+  with no opacity on it.
+
 ### Inputs
 
 - **Style:** Transparent ground with a 1px `input` border at 10px radius,
@@ -1169,7 +1188,7 @@ rest stay flat and lean on borders, per the two-mechanism depth rule.
 
 **Display and feedback** — `badge`, `avatar`, `progress`, `skeleton`,
 `separator`, `tabs`, `table`, `sonner`, `spinner`, `empty`, `tooltip`,
-`graph-3d`, `stat-tile`. Things that report rather than accept input.
+`graph-3d`, `stat-tile`, `notice`. Things that report rather than accept input.
 `table` is native `<table>` markup in a horizontally scrolling wrapper —
 `className` reaches the `<table>`, not the wrapper. Rows divide on `border`,
 heads and captions sit on `muted-foreground`/`foreground`, and a row marked

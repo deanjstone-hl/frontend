@@ -1739,6 +1739,36 @@ neither has a largest. `lead` is 1.43 times the default (`test/stat-tile.test.ts
 The geometry gate draws it as the `stat-tile` view: a lead tile over a grid in the AppShell, in every scenario, with an
 aria baseline in `scripts/geometry-gate/aria/stat-tile.yml`. App adoption is filed per app, not done here.
 
+## Notice
+
+`notice` ([frontend#218](https://github.com/deanjstone-hl/frontend/issues/218)) is the loading and error notice pair, built on
+`alert` and on its `critical` variant ([frontend#210](https://github.com/deanjstone-hl/frontend/issues/210)). It replaces the
+pair each app hand-builds, per the [primitives usage audit](docs/audits/2026-11-12-primitives-usage.md): briefings and jobs
+`components/Notice.tsx`, shell `plans/PlansNotice.tsx` and ops-hub `Loading` / `LoadError`. It declares `lucide-react` and
+pulls in `alert` (and `cn` through it). `npx shadcn add deanjstone/frontend/notice`.
+
+```tsx
+<LoadingNotice title="Loading briefings" description="This can take a few seconds." />
+
+<ErrorNotice
+  title="Couldn't load jobs"
+  description={error.message}
+  action={<Button variant="outline" onClick={retry}>Try again</Button>}
+/>
+```
+
+| Component | What it draws |
+|---|---|
+| `LoadingNotice` | The default `alert` with a spinning icon (`motion-reduce` stops it), `title` and an optional `description`. A polite `role="status"` with `aria-live="polite"`, so it never interrupts a screen reader. `icon` replaces the spinner |
+| `ErrorNotice` | The `critical` `alert` with its own icon (`icon` replaces it, `icon={null}` drops it), `title` and an optional `description`. A `role="alert"`. `action` is a row of buttons that wraps under the words; `children` is a hint or a link after the description |
+
+Both take the `alert`'s other props (`className`, `data-*`, `id`), and neither takes `variant`. A notice about the app's
+own state (offline, session expired) is a plain `alert`, not these. When to use it: [DESIGN.md](DESIGN.md#notice).
+
+`test/notice.test.tsx` holds both states, and `test/theme-tokens.test.ts` holds each at 4.5:1 on every theme, light and
+dark: the loading notice's title and description on the card surface, the error notice on the `critical` wash. App
+adoption is filed per app, not done here.
+
 ## Issue row
 
 `issue-row` is the dense list row for issues and PRs from [design-system#192](https://github.com/deanjstone/design-system/issues/192):
