@@ -1077,6 +1077,30 @@ the indicator. Applied on `focus-visible`, so pointer users never see it.
   `wrap-anywhere`; see [Wrap by default](#wrap-by-default). The `item`,
   `card-list` and `file-diff` blocks follow the same rule.
 
+### Stat tile
+
+A label over one big number, with an optional unit and delta (`stat-tile`). Label
+`text-xs` muted, number semibold in tabular figures, delta `text-xs` in `muted-foreground`,
+`success` or `critical`. The delta always carries an arrow and a word as well as its colour
+(`trend`), and its tone says whether the change is good news, not which way it went.
+
+**Make one tile lead.** A screen of equal tiles has no largest text: the eye has nowhere to
+start, and the one-largest rule fails (the largest size at least 1.2 times the next one down,
+at most two elements at it). So when a screen shows more than one tile:
+
+- Pick the one number the screen is for (what is left to spend, what needs attention, the
+  count the reader opened the app to see) and give it `size="lead"`: 30px against the
+  default 21px. A lead tile spans the grid's full width on a phone.
+- Make only one lead. Two leads, or a lead the same size as a title, put the problem back.
+- Leave the rest at the default. Do not shrink them to make the lead stand out: 21px is
+  already the smallest number that reads at a glance.
+- A screen with a single tile needs no `lead`; its number is already the largest.
+- A tile inside a card that already has a surface is `variant="plain"`, so the card does not
+  nest a border in a border.
+
+Sparky's home (four 26px numbers) and the bills list (six 21px ones) are the cases this is
+for: one `lead` tile above the rest takes each from no largest to one.
+
 ### Inputs
 
 - **Style:** Transparent ground with a 1px `input` border at 10px radius,
@@ -1145,7 +1169,7 @@ rest stay flat and lean on borders, per the two-mechanism depth rule.
 
 **Display and feedback** — `badge`, `avatar`, `progress`, `skeleton`,
 `separator`, `tabs`, `table`, `sonner`, `spinner`, `empty`, `tooltip`,
-`graph-3d`. Things that report rather than accept input.
+`graph-3d`, `stat-tile`. Things that report rather than accept input.
 `table` is native `<table>` markup in a horizontally scrolling wrapper —
 `className` reaches the `<table>`, not the wrapper. Rows divide on `border`,
 heads and captions sit on `muted-foreground`/`foreground`, and a row marked
