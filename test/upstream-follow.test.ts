@@ -116,3 +116,89 @@ describe("bumpPin", () => {
     expect(read("scripts/stamp/pins.mjs", tree)).toContain(`export const SHADCN_VERSION = "${ci}"`)
   })
 })
+
+// A fake `exec`: records every command with the env it was given, answers from `answer`.
+type Call = { line: string; cwd?: string; env?: Record<string, string | undefined> }
+type Result = { status: number; output: string }
+const fakeExec = (answer: (line: string) => Partial<Result> | undefined = () => undefined) => {
+  const calls: Call[] = []
+  const run = async (command: string, args: string[], options: { cwd?: string; env?: Record<string, string | undefined> } = {}): Promise<Result> => {
+    const line = [command, ...args].join(" ")
+    calls.push({ line, cwd: options.cwd, env: options.env })
+    return { status: 0, output: "", ...answer(line) }
+  }
+  return { calls, run, lines: () => calls.map((call) => call.line) }
+}
+
+const PASS_LOG = "RUN v5.0.3\n Test Files  120 passed (120)\ncheck: step 2/4 impeccable detect\ncheck: pass 61296b3\n"
+const GIT_STATUS = " M scripts/check.sh\n M .github/workflows/design.yml\n"
+const GIT_STAT = " 2 files changed, 2 insertions(+), 2 deletions(-)\n"
+
+const happy = (line: string): Partial<Result> | undefined => {
+  if (line === "bash scripts/check.sh") return { output: PASS_LOG }
+  if (line === "git status --short") return { output: GIT_STATUS }
+  if (line === "git diff --stat") return { output: GIT_STAT }
+  return undefined
+}
+
+describe("trial", () => {
+  const impeccable = () => ({ root: tree, pkg: "impeccable", from: pinsNow().impeccable, to: "4.11.0" })
+  const shadcn = () => ({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "4.23.0" })
+
+  it("is green when the check passes: bumps, runs the check, reports what changed", async () => {
+    const exec = fakeExec(happy)
+    const outcome = await follow.trial({ ...impeccable(), run: exec.run })
+    expect(outcome).toMatchObject({
+      ok: true,
+      pkg: "impeccable",
+      from: pinsNow().impeccable,
+      to: "4.11.0",
+      output: PASS_LOG,
+      changes: { status: GIT_STATUS.trim(), stat: GIT_STAT.trim() },
+    })
+    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=4\.11\.0$/m)
+    expect(exec.lines()).toEqual(["bash scripts/check.sh", "git status --short", "git diff --stat"])
+  })
+
+  it("regenerates r/ and its stamp with the new shadcn before it checks", async () => {
+    const exec = fakeExec(happy)
+    const outcome = await follow.trial({ ...shadcn(), run: exec.run })
+    expect(outcome.ok).toBe(true)
+    expect(exec.lines().slice(0, 2)).toEqual(["pnpm build:registry", "bash scripts/check.sh"])
+  })
+
+  it("is red when the regenerate fails, and never runs the check on a half-built r/", async () => {
+    const exec = fakeExec((line) => (line === "pnpm build:registry" ? { status: 1, output: "shadcn: unknown option --output" } : happy(line)))
+    const outcome = await follow.trial({ ...shadcn(), run: exec.run })
+    expect(outcome.ok).toBe(false)
+    expect(outcome.failingCheck).toContain("pnpm build:registry")
+    expect(outcome.output).toContain("unknown option --output")
+    expect(exec.lines()).not.toContain("bash scripts/check.sh")
+  })
+
+  it("is red when the check fails, and names the step check.sh reports", async () => {
+    const log = "check: step 3/4 registry output current\ncheck: FAIL at step 3/4 (r/ is out of date: run 'pnpm build:registry' and commit the result)\n"
+    const exec = fakeExec((line) => (line === "bash scripts/check.sh" ? { status: 1, output: log } : happy(line)))
+    const outcome = await follow.trial({ ...shadcn(), run: exec.run })
+    expect(outcome.ok).toBe(false)
+    expect(outcome.failingCheck).toBe("pnpm check, step 3/4 (r/ is out of date: run 'pnpm build:registry' and commit the result)")
+    expect(outcome.output).toBe(log)
+  })
+
+  it("is red, with the check's own words, when the check dies without naming a step", async () => {
+    const exec = fakeExec((line) => (line === "bash scripts/check.sh" ? { status: 137, output: "Killed" } : happy(line)))
+    const outcome = await follow.trial({ ...impeccable(), run: exec.run })
+    expect(outcome.ok).toBe(false)
+    expect(outcome.failingCheck).toBe("pnpm check (exit 137)")
+    expect(outcome.output).toBe("Killed")
+  })
+
+  it("is red, saying so, when the pin files no longer hold the pin to move", async () => {
+    const exec = fakeExec(happy)
+    const outcome = await follow.trial({ ...impeccable(), from: "1.0.0", run: exec.run })
+    expect(outcome.ok).toBe(false)
+    expect(outcome.failingCheck).toMatch(/bump the pin/i)
+    expect(outcome.output).toContain("scripts/check.sh")
+    expect(exec.calls).toEqual([])
+  })
+})

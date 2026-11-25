@@ -110,3 +110,46 @@ const versionedPattern = (site, version) => {
     .map(escapeRegExp)
     .join(versionPattern(version))
 }
+
+// ── One trial ────────────────────────────────────────────────────────────────────────────
+
+// What regenerates after a pin moves. A new shadcn writes different bytes into r/ and the
+// stamp records the pin; a new impeccable only changes what `pnpm check` accepts.
+const REGENERATE = Object.freeze({
+  shadcn: [{ command: "pnpm", args: ["build:registry"], label: "pnpm build:registry (regenerate r/ and its stamp)" }],
+  impeccable: [],
+})
+
+const CHECK = { command: "bash", args: ["scripts/check.sh"] }
+
+// check.sh names its failing step on the last lines: `check: FAIL at step 3/4 (shadcn build)`.
+const failingStep = (output, status) => {
+  const named = /check: FAIL at step (\S+) \(([^\n]*)\)\s*$/m.exec(output)
+  return named ? `pnpm check, step ${named[1]} (${named[2]})` : `pnpm check (exit ${status})`
+}
+
+const text = (result) => String(result.output ?? "")
+
+// Puts the new pin in `root`, regenerates, runs the check. `run(command, args)` runs a command
+// in `root`. Resolves one outcome: `ok` with what changed, or not `ok` with the failing check
+// and its output. A failure here is a finding, never an exception: the bump is what is on trial.
+export const trial = async ({ root, pkg, from, to, run }) => {
+  const base = { pkg, from, to }
+  try {
+    bumpPin({ root, pkg, from, to })
+  } catch (error) {
+    return { ...base, ok: false, failingCheck: "bump the pin (scripts/upstream-follow/follow.mjs)", output: error.message }
+  }
+
+  for (const step of REGENERATE[pkg] ?? []) {
+    const result = await run(step.command, step.args)
+    if (result.status !== 0) return { ...base, ok: false, failingCheck: step.label, output: text(result) }
+  }
+
+  const check = await run(CHECK.command, CHECK.args)
+  if (check.status !== 0) return { ...base, ok: false, failingCheck: failingStep(text(check), check.status), output: text(check) }
+
+  const status = await run("git", ["status", "--short"])
+  const stat = await run("git", ["diff", "--stat"])
+  return { ...base, ok: true, output: text(check), changes: { status: text(status).trim(), stat: text(stat).trim() } }
+}
