@@ -1406,6 +1406,14 @@ The token needs Zone > DNS > Read, Zone > Zone > Read, Cloudflare Tunnel > Read
 and Access: Apps and Policies > Read. Exit 0: no drift; 1: drift printed; 2:
 could not run.
 
+Access is read the way Cloudflare applies it. A wildcard app (`*.myargus.cc`)
+walls every host under it that has no app of its own, so a host `links.json`
+marks `access: false` needs a bypass app (an app whose every policy bypasses
+Access), and a host marked `access: true` is satisfied by the wildcard. Bypass
+apps are never reported on their own. A gated entry is probed for the Access
+login, so give it `probe: { "status": 302 }`: the watchtower collector reads a
+302 probe as a redirect to `cloudflareaccess.com`.
+
 To change the registry: edit `registry/links/links.json`, bump `revision`, run
 `node scripts/links/generate.mjs`, then `pnpm check`.
 

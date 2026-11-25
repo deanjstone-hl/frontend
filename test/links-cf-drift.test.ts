@@ -20,7 +20,12 @@ const cleanLive = () => ({
     "knowledge.myargus.cc", "api.myargus.cc", "mcp.myargus.cc", "memory.myargus.cc",
   ].map((name) => ({ type: "CNAME", name })),
   ingress: ["budget.myargus.cc", "api.myargus.cc", "ops.myargus.cc", "capture.myargus.cc", "taskview.myargus.cc"],
-  access: ["ops.myargus.cc", "mail.myargus.cc", "capture.myargus.cc", "taskview.myargus.cc"],
+  // 25 Nov 2026: an apex app and a wildcard app wall everything; bypass apps open the hosts that must stay public.
+  access: ["myargus.cc", "*.myargus.cc", "ops.myargus.cc", "mail.myargus.cc", "capture.myargus.cc", "taskview.myargus.cc"],
+  bypass: [
+    "api.myargus.cc", "api.read.myargus.cc", "mcp.myargus.cc", "memory.myargus.cc", "vault.myargus.cc",
+    "board.myargus.cc", "budget.myargus.cc", "stockade.myargus.cc",
+  ],
 })
 
 describe("diffDrift", () => {
@@ -66,10 +71,51 @@ describe("diffDrift", () => {
 
   it("reports an Access gap in either direction", () => {
     const live = cleanLive()
-    live.access = live.access.filter((host: string) => host !== "ops.myargus.cc").concat("budget.myargus.cc")
+    live.access = live.access.filter((host: string) => !["ops.myargus.cc", "*.myargus.cc"].includes(host)).concat("budget.myargus.cc")
     const drift = diffDrift(registry, live).join("\n")
     expect(drift).toMatch(/access: ops\.myargus\.cc .*no Access app/)
     expect(drift).toMatch(/access: budget\.myargus\.cc .*not Access-gated/)
+  })
+
+  it("reads the Access wildcard as covering every host under it, and the apex app as the apex", () => {
+    const live = cleanLive()
+    live.access = live.access.filter((host: string) => host !== "*.myargus.cc")
+    const drift = diffDrift(registry, live).join("\n")
+    expect(drift).toMatch(/access: knowledge\.myargus\.cc .*no Access app/)
+    expect(drift).toMatch(/access: watchtower\.myargus\.cc .*no Access app/)
+    expect(drift).not.toMatch(/access: myargus\.cc/)
+  })
+
+  it("reports an apex with no Access app", () => {
+    const live = cleanLive()
+    live.access = live.access.filter((host: string) => host !== "myargus.cc")
+    expect(diffDrift(registry, live)).toEqual([expect.stringMatching(/^access: myargus\.cc .*no Access app/)])
+  })
+
+  it("reports an open host the wildcard walls because its bypass app is gone", () => {
+    const live = cleanLive()
+    live.bypass = live.bypass.filter((host: string) => host !== "budget.myargus.cc")
+    expect(diffDrift(registry, live)).toEqual([expect.stringMatching(/^access: budget\.myargus\.cc .*Access wildcard.*not Access-gated/)])
+  })
+
+  it("does not report a bypass app, even on a host the registry retired or does not know", () => {
+    const live = cleanLive()
+    expect(live.bypass).toContain("vault.myargus.cc")
+    expect(live.bypass).toContain("api.read.myargus.cc")
+    expect(diffDrift(registry, live)).toEqual([])
+  })
+
+  it("treats a host as open when only a bypass app covers a gated entry", () => {
+    const live = cleanLive()
+    live.access = live.access.filter((host: string) => host !== "ops.myargus.cc")
+    live.bypass.push("ops.myargus.cc")
+    expect(diffDrift(registry, live)).toEqual([expect.stringMatching(/^access: ops\.myargus\.cc .*no Access app/)])
+  })
+
+  it("works when the live state has no bypass list", () => {
+    const { bypass, ...live } = cleanLive()
+    expect(bypass.length).toBeGreaterThan(0)
+    expect(diffDrift(registry, live).join("\n")).toMatch(/access: budget\.myargus\.cc .*Access wildcard/)
   })
 
   it("reads a path-scoped Access app (a bypass) as its host", () => {
@@ -100,7 +146,12 @@ describe("fetchLive", () => {
         return envelope({ config: { ingress: [{ hostname: "ops.myargus.cc", service: "http://127.0.0.1:3790" }, { service: "http_status:404" }] } })
       }
       if (path === "/client/v4/accounts/acct/access/apps") {
-        return envelope([{ domain: "ops.myargus.cc" }, { domain: "x.myargus.cc/p", self_hosted_domains: ["x.myargus.cc/p", "y.myargus.cc"] }], {
+        return envelope([
+          { domain: "ops.myargus.cc", policies: [{ decision: "allow" }] },
+          { domain: "x.myargus.cc/p", self_hosted_domains: ["x.myargus.cc/p", "y.myargus.cc"] },
+          { domain: "open.myargus.cc", policies: [{ decision: "bypass" }] },
+          { domain: "mixed.myargus.cc", policies: [{ decision: "bypass" }, { decision: "allow" }] },
+        ], {
           result_info: { total_pages: 1 },
         })
       }
@@ -114,7 +165,8 @@ describe("fetchLive", () => {
     const live = await fetchLive({ fetch, token: "t", accountId: "acct", domain: "myargus.cc" })
     expect(live.dns).toEqual([{ type: "CNAME", name: "a.myargus.cc" }, { type: "A", name: "b.myargus.cc" }])
     expect(live.ingress).toEqual(["ops.myargus.cc"])
-    expect(live.access.sort()).toEqual(["ops.myargus.cc", "x.myargus.cc/p", "y.myargus.cc"])
+    expect(live.access.sort()).toEqual(["mixed.myargus.cc", "ops.myargus.cc", "x.myargus.cc/p", "y.myargus.cc"])
+    expect(live.bypass).toEqual(["open.myargus.cc"])
     expect(calls.length).toBeGreaterThan(4)
     for (const call of calls) {
       expect(call.method).toBe("GET")

@@ -40,7 +40,7 @@ export function diffDrift(registry, live) {
     return "retired"
   }
   const tunnelled = (host) => (entriesByHost.get(host) ?? []).some((entry) => entry.hosting === "tunnel" && entry.status === "live")
-  const gated = (host) => (entriesByHost.get(host) ?? []).some((entry) => entry.access && entry.status === "live")
+  const gated = (host) => (entriesByHost.get(host) ?? []).some((entry) => entry.access && (entry.status === "live" || entry.status === "redirect"))
 
   const dnsHosts = new Set(
     live.dns
@@ -73,15 +73,26 @@ export function diffDrift(registry, live) {
     else if (!tunnelled(host)) drift.push(`tunnel: ${host} has tunnel ingress but is not a tunnel host in links.json`)
   }
 
+  // A bypass app opens its host, so it is no gate. A wildcard app (*.domain) walls every host under it
+  // that has no app of its own, which is why an open host in links.json needs a bypass app.
+  const bypass = new Set((live.bypass ?? []).map(hostOf))
   const access = new Set(live.access.map(hostOf).filter(isOurs))
+  const wildcards = [...access].filter((host) => host.startsWith("*."))
+  const walledByWildcard = (host) => !access.has(host) && !bypass.has(host) && wildcards.some((wildcard) => host.endsWith(wildcard.slice(1)))
   for (const host of [...entriesByHost.keys()].sort()) {
-    if (gated(host) && !access.has(host)) drift.push(`access: ${host} is Access-gated in links.json but has no Access app`)
+    if (gated(host) && !access.has(host) && !walledByWildcard(host)) drift.push(`access: ${host} is Access-gated in links.json but has no Access app`)
   }
-  for (const host of [...access].sort()) {
+  for (const host of [...access].filter((name) => !name.startsWith("*.")).sort()) {
     const status = statusOf(host)
     if (status === "unknown") drift.push(`access: ${host} has an Access app but is not in links.json`)
     else if (status === "retired") drift.push(`access: ${host} is retired in links.json but still has an Access app`)
     else if (!gated(host) && status !== "planned") drift.push(`access: ${host} has an Access app but links.json says it is not Access-gated`)
+  }
+  for (const host of [...entriesByHost.keys()].sort()) {
+    const status = statusOf(host)
+    if ((status === "live" || status === "redirect") && !gated(host) && !access.has(host) && walledByWildcard(host)) {
+      drift.push(`access: ${host} falls under the Access wildcard but links.json says it is not Access-gated (add a bypass app, or set access)`)
+    }
   }
   return drift
 }
@@ -126,8 +137,12 @@ export async function fetchLive({ fetch: fetchImpl = fetch, token, accountId, do
   const configuration = await get(`/accounts/${accountId}/cfd_tunnel/${tunnel}/configurations`)
   const ingress = (configuration.result?.config?.ingress ?? []).map((rule) => rule.hostname).filter(Boolean)
   const apps = await paged(`/accounts/${accountId}/access/apps`)
-  const access = apps.flatMap((app) => [app.domain, ...(app.self_hosted_domains ?? [])]).filter(Boolean)
-  return { dns, ingress, access: [...new Set(access)] }
+  const domainsOf = (app) => [app.domain, ...(app.self_hosted_domains ?? [])].filter(Boolean)
+  // An app whose every policy bypasses Access opens its host. An app that lists no policies counts as a gate.
+  const bypassing = (app) => Array.isArray(app.policies) && app.policies.length > 0 && app.policies.every((policy) => policy.decision === "bypass")
+  const access = apps.filter((app) => !bypassing(app)).flatMap(domainsOf)
+  const bypass = apps.filter(bypassing).flatMap(domainsOf)
+  return { dns, ingress, access: [...new Set(access)], bypass: [...new Set(bypass)] }
 }
 
 export async function runDrift({ registry, env, fetchLiveState, print = console.log, printError = console.error }) {
