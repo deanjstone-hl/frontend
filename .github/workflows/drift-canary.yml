@@ -16,10 +16,9 @@ on:
     - cron: "17 21 * * *"
   workflow_dispatch:
 
-# Read the repo, write issues (the Repair brief). Nothing else.
-permissions:
-  contents: read
-  issues: write
+# No token by default (frontend#236): the job reads the repo and writes issues (the Repair
+# brief). Nothing else.
+permissions: {}
 
 # A manual run and the scheduled one never overlap, and neither is cancelled halfway through
 # filing a brief.
@@ -32,10 +31,15 @@ jobs:
     name: Upstream drift canary
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
 
@@ -43,7 +47,7 @@ jobs:
       # already filed. The newest entry wins on restore. A lost cache only delays a filing by
       # one threshold; it never files twice, because the helper dedupes on the brief's title.
       - name: Restore the canary's streak
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: .drift-canary-state
           key: drift-canary-state-${{ github.run_id }}

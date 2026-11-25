@@ -870,10 +870,10 @@ checks this tree from any directory (another repo's pre-push gate calls it that 
   `.github/dependabot.yml` opens one weekly pull request that moves the SHAs and the tag comments together.
   To bump by hand, resolve the tag to its commit (`gh api repos/<owner>/<repo>/commits/<tag> --jq .sha`; dereference an annotated tag) and change every file that uses it.
 - **Least permissions.** Each workflow starts with `permissions: {}` and each job names what it needs: `contents: read`
-  everywhere, except the `Release` job, which also writes `contents`, `issues` and `pull-requests` for semantic-release.
+  everywhere, except the `Release` job, which also writes `contents`, `issues` and `pull-requests` for semantic-release, and the drift canary, which writes `issues` to file a Repair brief.
   A checkout sets `persist-credentials: false`, since nothing here pushes with its token.
 - **A hermetic push gate.** `test.yml` fetches nothing but its install (`pnpm install` and the pinned Chromium download) and compares against no
-  live upstream; it has no `curl`, `gh api` or `npx` step. A comparison against a live upstream or a remote page belongs in a scheduled workflow, not there.
+  live upstream; it has no `curl`, `gh api` or `npx` step. A comparison against a live upstream or a remote page belongs in a scheduled workflow, as the `Drift canary` does (`drift-canary.yml`: schedule and manual only, never a push or pull request).
 - **CODEOWNERS** (`.github/CODEOWNERS`) names the owner for `.github/` and `scripts/`.
 
 `test/workflow-hardening.test.ts` fails on an unpinned action, a missing `permissions`, a checkout that keeps its credentials, a push gate that

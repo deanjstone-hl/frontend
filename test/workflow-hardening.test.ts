@@ -44,7 +44,7 @@ describe("every third-party action is pinned to a full commit SHA", () => {
   const files = [...workflows.map(({ file }) => `.github/workflows/${file}`), ...actionFiles]
 
   it("finds the workflows and the composite action it checks", () => {
-    expect(workflowFiles).toEqual(["design.yml", "readme-guard.yml", "release.yml", "test.yml"])
+    expect(workflowFiles).toEqual(["design.yml", "drift-canary.yml", "readme-guard.yml", "release.yml", "test.yml"])
     expect(actionFiles).toEqual([".github/actions/host-pnpm/action.yml"])
   })
 
@@ -92,13 +92,14 @@ describe("least permissions", () => {
     })
   }
 
-  it("only the Release job writes, and only what semantic-release needs", () => {
+  it("only Release and the drift canary write, and only what each needs", () => {
     const writers = workflows.flatMap(({ file, text }) =>
       Object.entries(jobsOf(text)).flatMap(([id, body]) =>
         [...body.matchAll(/^ {6}([a-z-]+): write\s*$/gm)].map((match) => `${file}:${id}:${match[1]}`),
       ),
     )
     expect(writers.sort()).toEqual([
+      "drift-canary.yml:canary:issues",
       "release.yml:release:contents",
       "release.yml:release:issues",
       "release.yml:release:pull-requests",
@@ -142,6 +143,12 @@ describe("the push gate (test.yml) is hermetic", () => {
     expect(new Set(fetching)).toEqual(
       new Set(["pnpm install --frozen-lockfile", "pnpm exec playwright-core install chromium"]),
     )
+  })
+
+  it("leaves the live upstream probes to the scheduled drift canary, which never runs on a push or pull request", () => {
+    const canary = codeLines(read(".github/workflows/drift-canary.yml")).join("\n")
+    expect(canary).toMatch(/^on:\s*\n\s+schedule:/m)
+    expect(canary).not.toMatch(/^\s+(push|pull_request):/m)
   })
 
   it("compares nothing against a live upstream: no test or gate script reaches a remote host", () => {
