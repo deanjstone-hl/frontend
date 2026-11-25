@@ -4,10 +4,10 @@ import { existsSync, readFileSync } from "node:fs"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
 
-// The page-transition entries are held back from registry.json until the owner approves the look
-// (design-system#199): registry.json is the flag, and an unlisted item is not published. They are
-// staged in docs/page-transition/registry-entries.json, so listing is a copy, not a rewrite. This
-// pins that the staged entries are complete, and that if they are listed they are the staged ones.
+// The page-transition entries were held back from registry.json until the owner approved the look
+// (frontend#199), then listed (frontend#229). They stay in docs/page-transition/registry-entries.json
+// as the reference copy. This pins that the staged entries are complete and that registry.json lists
+// exactly those.
 
 const read = (path: string) => readFileSync(fileURLToPath(new URL(`../${path}`, import.meta.url)), "utf8")
 type Entry = { name: string; files: { path: string }[]; registryDependencies?: string[]; dependencies?: string[] }
@@ -40,10 +40,11 @@ describe("staged page-transition registry entries", () => {
     expect(ui?.dependencies).toEqual([`glimm@${devVersion}`])
   })
 
-  it("is either unlisted in registry.json or listed exactly as staged", () => {
+  it("is listed in registry.json exactly as staged", () => {
     for (const entry of staged) {
       const inRegistry = listed.find((item) => item.name === entry.name)
-      if (inRegistry) expect(inRegistry).toMatchObject(entry)
+      expect(inRegistry, `${entry.name} is not listed in registry.json`).toBeDefined()
+      expect(inRegistry).toMatchObject(entry)
     }
   })
 })
