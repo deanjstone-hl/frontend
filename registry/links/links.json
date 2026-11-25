@@ -1,7 +1,7 @@
 {
   "$comment": "link-check:vendored The myargus links registry (design-system ADR-0004). Edit it in deanjstone/design-system only; consumers vendor it with `shadcn add`. Bump `revision` on every change.",
   "$schema": "./links.schema.json",
-  "revision": 3,
+  "revision": 4,
   "domain": "myargus.cc",
   "cookieDomain": ".myargus.cc",
   "tailnetHost": "homelab.tail00500e.ts.net",
@@ -15,10 +15,10 @@
       "host": "myargus.cc",
       "path": "/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": ["/plans", "/plans/:slug"],
-      "probe": { "status": 200 }
+      "probe": { "status": 302 }
     },
     {
       "id": "reader",
@@ -29,10 +29,10 @@
       "host": "myargus.cc",
       "path": "/reader/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
-      "probe": { "status": 200 }
+      "probe": { "status": 302 }
     },
     {
       "id": "knowledge",
@@ -43,10 +43,10 @@
       "host": "myargus.cc",
       "path": "/knowledge/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
-      "probe": { "status": 200 }
+      "probe": { "status": 302 }
     },
     {
       "id": "briefings",
@@ -57,7 +57,7 @@
       "host": "myargus.cc",
       "path": "/briefings/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
       "probe": { "status": 302 }
@@ -71,10 +71,10 @@
       "host": "myargus.cc",
       "path": "/jobs/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
-      "probe": { "status": 200 }
+      "probe": { "status": 302 }
     },
     {
       "id": "budget",
@@ -141,10 +141,10 @@
       "host": "watchtower.myargus.cc",
       "path": "/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
-      "probe": { "status": 200 }
+      "probe": { "status": 302 }
     },
     {
       "id": "capture",
@@ -228,12 +228,12 @@
       "host": "knowledge.myargus.cc",
       "path": "/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": false,
       "redirect": "knowledge",
       "routes": [],
-      "probe": { "status": 200 },
-      "note": "Still answers 200 until myargus#221 lands; then 301."
+      "probe": { "status": 302 },
+      "note": "Access answers 302 first; the 301 follows once myargus#221 lands."
     },
     {
       "id": "read",

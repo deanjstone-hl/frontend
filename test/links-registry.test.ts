@@ -45,6 +45,23 @@ describe("registry/links/links.json", () => {
     expect(["t3", "atto1"].map(status)).toEqual(["planned", "planned"])
   })
 
+  // 25 Nov 2026: Cloudflare Access gained a wildcard app (*.myargus.cc) and an apex app (myargus.cc).
+  // Only the hosts with a bypass app stay open; every other live or redirect host now answers an
+  // anonymous request with a 302 to Cloudflare Access, which is what watchtower probes for.
+  it("marks the apex apps and the hosts under the Access wildcard as gated, probed for the Access 302", () => {
+    const byId = (id: string) => registry.entries.find((entry: Entry) => entry.id === id)
+    for (const id of ["shell", "reader", "knowledge", "briefings", "jobs", "knowledge-host", "watchtower"]) {
+      expect(byId(id), id).toMatchObject({ access: true, probe: { status: 302 } })
+    }
+  })
+
+  it("leaves the hosts with a bypass app open", () => {
+    const byId = (id: string) => registry.entries.find((entry: Entry) => entry.id === id)
+    for (const id of ["budget", "stockade", "board", "watchtower-api", "reader-api", "jobs-api", "budget-api", "email-mcp", "memory"]) {
+      expect(byId(id).access, id).toBe(false)
+    }
+  })
+
   it("keeps the schema's enums equal to the validator's", () => {
     const schema = readJson("registry/links/links.schema.json")
     const entry = schema.properties.entries.items.properties

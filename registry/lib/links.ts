@@ -6,7 +6,7 @@ import { createLinks } from "@/lib/links-core"
 export const VENDORED_BY = "link-check:vendored"
 
 export const REGISTRY = {
-  "revision": 3,
+  "revision": 4,
   "domain": "myargus.cc",
   "cookieDomain": ".myargus.cc",
   "tailnetHost": "homelab.tail00500e.ts.net",
@@ -20,14 +20,14 @@ export const REGISTRY = {
       "host": "myargus.cc",
       "path": "/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [
         "/plans",
         "/plans/:slug"
       ],
       "probe": {
-        "status": 200
+        "status": 302
       }
     },
     {
@@ -39,11 +39,11 @@ export const REGISTRY = {
       "host": "myargus.cc",
       "path": "/reader/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
       "probe": {
-        "status": 200
+        "status": 302
       }
     },
     {
@@ -55,11 +55,11 @@ export const REGISTRY = {
       "host": "myargus.cc",
       "path": "/knowledge/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
       "probe": {
-        "status": 200
+        "status": 302
       }
     },
     {
@@ -71,7 +71,7 @@ export const REGISTRY = {
       "host": "myargus.cc",
       "path": "/briefings/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
       "probe": {
@@ -87,11 +87,11 @@ export const REGISTRY = {
       "host": "myargus.cc",
       "path": "/jobs/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
       "probe": {
-        "status": 200
+        "status": 302
       }
     },
     {
@@ -169,11 +169,11 @@ export const REGISTRY = {
       "host": "watchtower.myargus.cc",
       "path": "/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": true,
       "routes": [],
       "probe": {
-        "status": 200
+        "status": 302
       }
     },
     {
@@ -264,14 +264,14 @@ export const REGISTRY = {
       "host": "knowledge.myargus.cc",
       "path": "/",
       "hosting": "pages",
-      "access": false,
+      "access": true,
       "switcher": false,
       "redirect": "knowledge",
       "routes": [],
       "probe": {
-        "status": 200
+        "status": 302
       },
-      "note": "Still answers 200 until myargus#221 lands; then 301."
+      "note": "Access answers 302 first; the 301 follows once myargus#221 lands."
     },
     {
       "id": "read",

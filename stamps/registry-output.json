@@ -7,7 +7,7 @@
     }
   },
   "input": {
-    "hash": "8d1970885d7de559d45d842509f8528c0a9edf45b2dd8c4f1ff5ea0ae005818e",
+    "hash": "c952c824b07cf43917f3305f69326d70eea7a4e4d93ef2c3e659bc1e2f6a4b24",
     "files": {
       "registry.json": "f6b9cccb1a3290ab15c443e2623ab24d8a1bf14196d070799fb83a676ef870ab",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
@@ -115,7 +115,7 @@
       "registry/lib/link-pill-html.ts": "993bc9545b18bb01a42c79174a8b6b2a642fa1a0608c739d0bc976ce4aca0fc9",
       "registry/lib/link-pill.css": "71c6f0022fb35505bb7b7818f58102f406b42698fb10d12d3b3f9d2abf75dbe7",
       "registry/lib/links-core.ts": "780d4a6ca9a001aa200a2b38abb51eaf74aa7a1d6605adce86d2b8c016b301c9",
-      "registry/lib/links.ts": "3b30c96daff451e8708085c7583f74617f67c58b828573fdc158255ccfb75266",
+      "registry/lib/links.ts": "79dbd263f4b59dc64d8049cc82a68615a3a251baa3b6debc4cd5a6db12d5671d",
       "registry/lib/list-group-core.ts": "77a14212012966a439274973575b376795ab183970ef33425c6b29f9b826fa35",
       "registry/lib/nav-link.tsx": "ece1c38a8cbb7fd2f21b5f549f0b4a4291987fbb692b13f2d15a64ce339aefe3",
       "registry/lib/theme-preference.ts": "0eebe8d9a7b74eb7cff3876e377d62e41cf69f507803eec75ffbcb948164cc1d",
@@ -124,12 +124,12 @@
       "registry/links/link-check-config.mjs": "9d2f77a5af966b56aa8bc4c659c85e262136f296e44a1eb04e4ffabd149b42e9",
       "registry/links/link-check.sh": "f6d6cf39803c36c1cd4e4f237332cf049faff9a25c73c3c7f0508ef2f8616c84",
       "registry/links/link-check.yml": "e7cac80ade667a278f7ad1f5fd45444ef0e5ee7b15abb5bc7d53454294ecbd28",
-      "registry/links/links.json": "88d9d37dd321d2cb765359663870733fe1f46a6ea67703579b6597a09bd18f59",
+      "registry/links/links.json": "f45d785d06968bcf859262846960604b7fe596be922b5e32c890aca29f7ef329",
       "registry/links/links.sh": "6921d630759c2bb4bdb71f711227385447fc57f88c2a882915032af21e255576"
     }
   },
   "output": {
-    "hash": "535482071e58bb283cb2d2a846aa5bbb3a94f5a47606e374a2df592d364390b2",
+    "hash": "9f15c8aca77b09941c044fcfabb7ff957daa46cde2efa7ec6635926a95a773db",
     "files": {
       "r/accordion.json": "0a6cb6cbce574b426a020944bcba3bea6fa8ae700300d7a5a1f09c330d954b14",
       "r/alert-dialog.json": "5f3784fa2527d82ebe23d1300f34a6880b2a7eccc19ef38bbd02e62e5efe383b",
@@ -190,9 +190,9 @@
       "r/link-pill-html.json": "f60e261bb34e158ad2972068272c943f0c356a080f8234c30b615a062db2508e",
       "r/link-pill.json": "e7bc92b11b74cd397bcf71a0928f789a1eac2349ba616ec8b41bd3499f91b62c",
       "r/links-core.json": "8eec2037938db74d52d44c92308343cdfe68b4f3a2e40d0d22635fd7f15dfcc5",
-      "r/links-data.json": "af5a89175030f6a3933706389dfed4fe62c4a40a99859cbb4a0b44aa275edb06",
+      "r/links-data.json": "a660c952ff8f972b6f21f667e0de3a92240395c6a886ad0b5b968c97b551087e",
       "r/links-sh.json": "1afb7a98d89ee5d7c3e1fa0f217bb0c1d9fffa5d5448ee0f88e9660e25b5cda9",
-      "r/links.json": "3b43d96de42a022ff9ea4b580617138b4873b1b2f3f9af56d382cb263000355d",
+      "r/links.json": "485a216ab80e77344893f2d215f9e6d9d35d7784ade3570b6d87f39694e03bbd",
       "r/list-group-core.json": "0faa57ad170a51d967be7deae5b3acf37af1cc4f03a259c98dd3318c87ade5dd",
       "r/login.json": "79f1922b0033b8927d9a55611a2e260840aec7b572ace91194a837f37b6919ec",
       "r/marker.json": "64e4501bd62c568f129074053f2f6e44dadf36b42bd7f620af0c3a3be1d41b3f",
