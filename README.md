@@ -406,8 +406,8 @@ registry/
   lib/filter-core.ts, url-state.ts  filter model and one-search-param URL state (filter-builder)
   lib/relative-time.ts      formatRelativeTime ("5m ago", "in 2h") and the useNow clock-tick hook
   lib/list-group-core.ts    grouping and display-settings model (grouped-list)
-  lib/page-transition-core.ts  theme tokens to glimm band colours (page-transition, staged: not in registry.json yet)
-  base-nova/ui/               70 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
+  lib/page-transition-core.ts  theme tokens to glimm band colours (page-transition)
+  base-nova/ui/               73 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table, page-transition)
   base-nova/hooks/            use-mobile (pulled by sidebar), use-online (pulled by offline-banner), use-highlighted-code (pulled by code-block), use-theme-preference, use-font-preference, use-filter-state, use-display-settings
   base-nova/blocks/           v3 layout blocks: app-shell, app-switcher, page-header, empty-page, settings-page, login, card-list, issue-row, filter-builder, grouped-list, file-diff
   design-check/             scripts and workflow of the design-check item (CI, not UI)
@@ -1629,15 +1629,16 @@ is pinned because that is the API the shadcn recipe and its examples use; v9 is 
 different, feature-composed API. For row selection, column visibility or server-side
 paging, call `useReactTable` yourself with the `table` item.
 
-## Page transition (staged, not yet listed)
+## Page transition
 
 `page-transition` wraps [glimm](https://glimm.dev) 0.4.1 (MIT): a WebGL band in the theme's colours
 crosses the screen and the new view appears behind it. Evaluation and verdict (adapt):
-[design-system#198](https://github.com/deanjstone/design-system/issues/198). The item is **not in
-`registry.json` yet**, so the shadcn CLI cannot install it: the owner checkpoint
-([design-system#199](https://github.com/deanjstone/design-system/issues/199)) approves the look first.
-Its two entries are staged in `docs/page-transition/registry-entries.json`; listing them is copying
-them into `registry.json` and running `pnpm build:theme`.
+[design-system#198](https://github.com/deanjstone/design-system/issues/198). **Listed** in `registry.json`
+([frontend#229](https://github.com/deanjstone-hl/frontend/issues/229)) after the owner approved the look
+([frontend#199](https://github.com/deanjstone-hl/frontend/issues/199), 13 Nov 2026):
+`npx shadcn add deanjstone/frontend/page-transition` installs it with `page-transition-core`.
+`docs/page-transition/registry-entries.json` keeps the two entries as the reference copy;
+`test/page-transition-registry.test.ts` fails when `registry.json` differs from them.
 
 ```tsx
 <PageTransitionProvider>{children}</PageTransitionProvider>
@@ -1657,8 +1658,8 @@ await transition(() => setView("billing"), { direction: "rtl", sweepMs: 700 })
   rest of the page's life); theme tokens missing. An error thrown by `navigate` reaches the caller on a cut.
 - **Cost:** `glimm` is pinned exactly (`glimm@0.4.1`). Its source is not public and 0.x changes defaults
   between minors. Tree-shaken it adds about 13 kB gzip (`GlimmProvider`, `useGlimm`, `accentChain`);
-  measured by `docs/page-transition/smoke-check.mjs`. `pnpm-workspace.yaml` excludes `glimm@0.4.1` from
-  pnpm's release-age gate because it was under a week old when added; remove the exclusion once it has aged.
+  measured by `docs/page-transition/smoke-check.mjs`. `glimm@0.4.1` has aged past pnpm's release-age gate, so
+  `pnpm-workspace.yaml` no longer excludes it.
 - **Try it:** `node docs/page-transition/serve.mjs [--port 4173]` builds the demo and serves it on
   `127.0.0.1`; add `tailscale serve --bg 4173` to open it from a phone (never `funnel`).
   `node docs/page-transition/smoke-check.mjs` drives it in one headless tab (sweep, reduced motion, no
