@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "0866146f3191d0e97d4ab6f1484154a9b92b4b176ce97c708e0eecfb41bbb043",
+    "hash": "3e85ccd9c3ca3a49c3d4b8b5983e16501fd78dfa554bd1baa3f9835c0a9b5417",
     "files": {
-      "registry.json": "daf514cac80a313ae83aa5513bcb3ea385833be8678bb969a0f622f61d2a5706",
+      "registry.json": "028f9b9df3d82fc684eed6d641f09d13ef50b0bc52c0515820bafdea833617ad",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "6db238ff94dfdfa70f5ba9f964ab0aa683bbf3939ce60c43ccbe8dfa7469ba72",
       "registry/base-nova/blocks/app-switcher.tsx": "4c580598f5b56f873dfae1dd418fdaf077c873f0ad7b69fa0d77a1180ffe20d6",
@@ -128,7 +128,7 @@
     }
   },
   "output": {
-    "hash": "9a2976f5329e17b7e77335ea9a4da48641c81af21807fae99f75069ebf3bef56",
+    "hash": "7975c816a09e0c945959aa9b2e617f89aadec1019ff1df9150865df0ff7168bf",
     "files": {
       "r/accordion.json": "0a6cb6cbce574b426a020944bcba3bea6fa8ae700300d7a5a1f09c330d954b14",
       "r/alert-dialog.json": "5f3784fa2527d82ebe23d1300f34a6880b2a7eccc19ef38bbd02e62e5efe383b",
@@ -207,7 +207,7 @@
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "913137e6d0a737272985eefad489eda4a40aab57da2cfaa40cd38bc221756f10",
-      "r/registry.json": "daf514cac80a313ae83aa5513bcb3ea385833be8678bb969a0f622f61d2a5706",
+      "r/registry.json": "028f9b9df3d82fc684eed6d641f09d13ef50b0bc52c0515820bafdea833617ad",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
       "r/select.json": "c36cad7b2663af64829694b0c5e03d057031fa3d76a8bee08688cddc29e5145f",
@@ -225,7 +225,7 @@
       "r/textarea.json": "73e3305c28809c8d1c8ec6e561f26c256061cc7669f75fdfa8cf45ca24bb8403",
       "r/theme-ds.json": "039ce268a45a216fff0a2bf081ffb7e12801fbe6661643694b135f2e1318cf1b",
       "r/theme-preference.json": "9140fdc766f5f69e62be27f150c7ca874b43f70828219a5f1dbb19420a3e93e1",
-      "r/theme.json": "3b97b95a67a3f4f7b0c0d501ab4f5b264f982db2145a4ccf0f6d2338fa325597",
+      "r/theme.json": "8f361c02269f075f67182bb73cab7cf79456afa4c210c216daa7ba6f2c7d58e4",
       "r/toggle-group.json": "d4e5c42746bdf4ad7c7b1f4446f10d9eaf1f17e34bec9dfe9e1fd9952f81319e",
       "r/toggle.json": "6127c1b02302de760ba56988f4c458512f92864f6c762a05b85e36eabeb118d7",
       "r/tooltip.json": "e6d945ad21e7ce639fde99056a351f53afa5204cc8ada75cdc591581c258b026",
