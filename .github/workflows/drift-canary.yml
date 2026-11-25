@@ -3,11 +3,17 @@ name: Drift canary
 # Notices when an upstream this registry copies from moves, and files one Repair brief
 # (frontend#237). Three probes: the pinned shadcn CLI and impeccable against npm's latest,
 # and shadcn's published base-nova items against scripts/drift-canary/upstream-baseline.json.
-# The logic and the threshold are scripts/drift-canary/canary.mjs; this file only schedules it.
+# The logic and the threshold are scripts/drift-canary/canary.mjs.
+#
+# A pin that moved is not filed as a plain brief: the upstream-follow job (frontend#238,
+# scripts/upstream-follow/follow.mjs) puts the new pin in this runner's throwaway checkout,
+# regenerates r/ and its stamp, runs `pnpm check` and files the outcome, a green issue naming
+# the bump or a Repair brief. Nothing is pushed.
 #
 # Why Actions and not a homelab timer: this repo is public, so a GitHub-hosted runner costs no
-# minutes (the billing note in argus-config's lint.yml is about private repos), the run is a few
-# seconds of Node with no install, and a timer would tie the canary to one host being up.
+# minutes (the billing note in argus-config's lint.yml is about private repos), a quiet day is
+# a few seconds of Node (the install and the check run only when a pin moved), and a timer
+# would tie the canary to one host being up.
 #
 # Schedule only, never on a push or pull request. 21:17 UTC is 08:17 AEDT (07:17 AEST), a
 # minute that is not on the hour, when the shared cron queue is busiest.
@@ -17,7 +23,7 @@ on:
   workflow_dispatch:
 
 # No token by default (frontend#236): the job reads the repo and writes issues (the Repair
-# brief). Nothing else.
+# brief, the follow issue). Nothing else.
 permissions: {}
 
 # A manual run and the scheduled one never overlap, and neither is cancelled halfway through
@@ -30,7 +36,8 @@ jobs:
   canary:
     name: Upstream drift canary
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # A quiet day takes seconds. A pin that moved adds an install and one full check per pin.
+    timeout-minutes: 60
     permissions:
       contents: read
       issues: write
@@ -38,6 +45,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
+
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
 
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
@@ -53,7 +62,23 @@ jobs:
           key: drift-canary-state-${{ github.run_id }}
           restore-keys: drift-canary-state-
 
+      # Files what needs no trial (a moved source, a broken probe) and writes the pins that
+      # reached the threshold to followups.json instead of filing them.
       - name: Probe the upstreams
-        run: node scripts/drift-canary/canary.mjs --state .drift-canary-state/state.json --repo "${GITHUB_REPOSITORY}"
+        run: node scripts/drift-canary/canary.mjs --state .drift-canary-state/state.json --followups .drift-canary-state/followups.json --repo "${GITHUB_REPOSITORY}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      # Tries each handed-over bump in this checkout: install, bump, regenerate, `pnpm check`.
+      # It runs the new upstream release's code, so it gets no token: this step has no GH_TOKEN,
+      # and the script also strips every token from the environment it passes on. It installs
+      # nothing on a quiet day, because followups.json is empty.
+      - name: Try the bumps
+        run: node scripts/upstream-follow/follow.mjs trial --followups .drift-canary-state/followups.json --out .drift-canary-state/outcomes.json
+
+      # Files each outcome (a green issue or a Repair brief) and marks the probe filed in the
+      # streak. A filing that fails leaves it unfiled, so the next run tries again.
+      - name: File what the bumps found
+        run: node scripts/upstream-follow/follow.mjs file --outcomes .drift-canary-state/outcomes.json --state .drift-canary-state/state.json --repo "${GITHUB_REPOSITORY}"
         env:
           GH_TOKEN: ${{ github.token }}

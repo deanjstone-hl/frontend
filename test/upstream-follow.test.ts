@@ -604,3 +604,54 @@ describe("the command lines", () => {
     expect(() => canary.parseCli(["--followups"])).toThrow(/needs a value/)
   })
 })
+
+describe("the workflow", () => {
+  const workflow = read(".github/workflows/drift-canary.yml")
+  // The steps of the one job, each as its own text, in order.
+  const steps = workflow
+    .slice(workflow.indexOf("    steps:\n") + "    steps:\n".length)
+    .split(/\n(?=      - )/)
+    .map((step) => step.replace(/^( {6}#.*\n)+/gm, ""))
+  const named = (name: string) => {
+    const step = steps.find((candidate) => candidate.includes(`name: ${name}`))
+    expect(step, name).toBeDefined()
+    return step as string
+  }
+
+  it("probes, then tries the bumps, then files what they found, in that order", () => {
+    const order = ["Probe the upstreams", "Try the bumps", "File what the bumps found"].map((name) => workflow.indexOf(`name: ${name}`))
+    expect(order.every((index) => index > 0)).toBe(true)
+    expect([...order].sort((a, b) => a - b)).toEqual(order)
+  })
+
+  it("hands the pins to the follow job through the state directory the cache keeps", () => {
+    expect(named("Probe the upstreams")).toContain("--followups .drift-canary-state/followups.json")
+    expect(named("Try the bumps")).toContain("trial --followups .drift-canary-state/followups.json --out .drift-canary-state/outcomes.json")
+    const filing = named("File what the bumps found")
+    expect(filing).toContain("file --outcomes .drift-canary-state/outcomes.json --state .drift-canary-state/state.json")
+  })
+
+  it("gives the token to the steps that file and never to the one that runs the new upstream", () => {
+    expect(named("Probe the upstreams")).toContain("GH_TOKEN: ${{ github.token }}")
+    expect(named("File what the bumps found")).toContain("GH_TOKEN: ${{ github.token }}")
+    const trying = named("Try the bumps")
+    expect(trying).not.toMatch(/GH_TOKEN|GITHUB_TOKEN|github\.token|secrets\./)
+    expect(trying).not.toMatch(/^\s+env:/m)
+  })
+
+  it("sets pnpm up for the trial, from the same pinned action test.yml uses", () => {
+    const sha = (text: string) => text.match(/pnpm\/action-setup@([0-9a-f]{40})/)?.[1]
+    expect(sha(workflow)).toBeDefined()
+    expect(sha(workflow)).toBe(sha(read(".github/workflows/test.yml")))
+  })
+
+  it("leaves time for an install and a full check per pin, and still ends", () => {
+    const minutes = Number(workflow.match(/^ {4}timeout-minutes: (\d+)$/m)?.[1])
+    expect(minutes).toBeGreaterThanOrEqual(30)
+    expect(minutes).toBeLessThanOrEqual(120)
+  })
+
+  it("pushes nothing and writes no issue except through the helper scripts", () => {
+    expect(workflow).not.toMatch(/git push|gh issue|gh pr/)
+  })
+})

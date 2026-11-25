@@ -406,7 +406,7 @@ describe("the baseline and the workflow", () => {
     expect(workflow).toMatch(/ {4}permissions:\n {6}contents: read\n {6}issues: write\n/)
   })
 
-  it("installs nothing (the canary uses Node built-ins and the vendored helper)", () => {
+  it("has no install step of its own: a quiet day runs Node built-ins only, and the follow job installs only when a pin moved (test/upstream-follow.test.ts)", () => {
     expect(workflow).not.toContain("pnpm install")
     expect(workflow).not.toContain("npm install")
   })
