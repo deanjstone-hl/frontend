@@ -1333,6 +1333,7 @@ Every line below is an automated test.
 **Over a modal dialog**
 
 - A toast shown from a modal dialog is visible, usable and above it.
+- A toast stays above a dialog opened after it, and leaves a page's own popover alone.
 
 **Updates after closing**
 

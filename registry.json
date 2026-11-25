@@ -1522,8 +1522,8 @@
         "deanjstone/frontend/button"
       ],
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "lucide-react",
         "cn@^0.5.0"
       ],
@@ -1539,8 +1539,8 @@
       "type": "registry:ui",
       "dependencies": [
         "class-variance-authority",
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -1585,8 +1585,8 @@
         "deanjstone/frontend/button"
       ],
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -1614,8 +1614,8 @@
       "name": "checkbox",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "lucide-react",
         "cn@^0.5.0"
       ],
@@ -1630,8 +1630,8 @@
       "name": "collapsible",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16"
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17"
       ],
       "files": [
         {
@@ -1662,8 +1662,8 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0",
         "lucide-react"
       ],
@@ -1678,8 +1678,8 @@
       "name": "popover",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -1721,8 +1721,8 @@
       "name": "select",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0",
         "lucide-react"
       ],
@@ -1754,8 +1754,8 @@
         "deanjstone/frontend/button"
       ],
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "lucide-react",
         "cn@^0.5.0"
       ],
@@ -1783,8 +1783,8 @@
       "name": "slider",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -1813,8 +1813,8 @@
       "name": "switch",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -1920,8 +1920,8 @@
       "name": "tooltip",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -2053,8 +2053,8 @@
       "name": "toggle",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "class-variance-authority",
         "cn@^0.5.0"
       ],
@@ -2144,8 +2144,8 @@
       "name": "radio-group",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -2192,8 +2192,8 @@
         "deanjstone/frontend/input-group"
       ],
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0",
         "lucide-react"
       ],
@@ -2208,8 +2208,8 @@
       "name": "context-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0",
         "lucide-react"
       ],
@@ -2224,8 +2224,8 @@
       "name": "hover-card",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0"
       ],
       "files": [
@@ -2242,8 +2242,8 @@
         "deanjstone/frontend/dropdown-menu"
       ],
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0",
         "lucide-react"
       ],
@@ -2258,8 +2258,8 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "class-variance-authority",
         "cn@^0.5.0",
         "lucide-react"
@@ -2275,8 +2275,8 @@
       "name": "accordion",
       "type": "registry:ui",
       "dependencies": [
-        "@ui-sdk/core@0.1.0-beta.16",
-        "@ui-sdk/react@0.1.0-beta.16",
+        "@ui-sdk/core@0.1.0-beta.17",
+        "@ui-sdk/react@0.1.0-beta.17",
         "cn@^0.5.0",
         "lucide-react"
       ],

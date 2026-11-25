@@ -1572,6 +1572,7 @@ Additional behaviors:
 - Without a title, the trigger names the popover.
 - Tab from the trigger of a popover opened by hover moves into it.
 - A controller opens the popover from anywhere and moves focus in.
+- With no trigger, Shift+Tab from the first field goes back to where it opened from.
 - A popover open from the start leaves focus alone.
 - Modal popovers make the rest of the page inert and restore it exactly.
 - Live regions keep announcing while a modal popover makes the page inert.

@@ -1198,6 +1198,7 @@ Also tested:
 - A swipe up snaps to the next snap point and reports the swipe.
 - A swipe up from the handle snaps to the next snap point.
 - It comes to rest when the scroll ends before the page hears the finger lift.
+- A swipe down closes it once it leaves the screen.
 - The handle moves it with a spring, like the pointer driver.
 
 Runs in React, Vue and web components.

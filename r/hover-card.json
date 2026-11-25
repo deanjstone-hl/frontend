@@ -2,8 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hover-card",
   "dependencies": [
-    "@ui-sdk/core@0.1.0-beta.16",
-    "@ui-sdk/react@0.1.0-beta.16",
+    "@ui-sdk/core@0.1.0-beta.17",
+    "@ui-sdk/react@0.1.0-beta.17",
     "cn@^0.5.0"
   ],
   "files": [
