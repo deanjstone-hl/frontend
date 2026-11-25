@@ -28,7 +28,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
 
-import { PROBES } from "../drift-canary/canary.mjs"
+import { PROBES, markFiled } from "../drift-canary/canary.mjs"
 import { defaultGh, fenced, fileRepairBrief, tail, withRepo } from "../repair-brief/repair-brief.mjs"
 
 // ── The pin sites ────────────────────────────────────────────────────────────────────────
@@ -300,3 +300,22 @@ export const fileOutcome = (outcome, { gh = defaultGh, repo, runUrl } = {}) =>
   outcome.ok
     ? fileFollowIssue(outcome, { gh, repo, runUrl })
     : fileRepairBrief(briefForRed(outcome, runUrl), { gh, repo })
+
+// Files every outcome the trial found and marks each filed probe in the canary's state, so the
+// canary stops handing it over. A filing that fails leaves its probe unfiled: the next run
+// hands it over again.
+export const fileOutcomes = async ({ outcomes, state, gh = defaultGh, repo, runUrl }) => {
+  let current = state
+  const filed = []
+  const failures = []
+  for (const outcome of outcomes) {
+    try {
+      const result = await fileOutcome(outcome, { gh, repo, runUrl })
+      current = markFiled(current, { id: outcome.id, status: "drift", fingerprint: outcome.fingerprint })
+      filed.push({ id: outcome.id, ...result })
+    } catch (error) {
+      failures.push({ id: outcome.id, error: error.message })
+    }
+  }
+  return { state: current, filed, failures }
+}

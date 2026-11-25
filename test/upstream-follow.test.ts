@@ -404,3 +404,142 @@ describe("the red Repair brief", () => {
     expect(result).toMatchObject({ action: "commented", number: 55 })
   })
 })
+
+// @ts-expect-error: a plain .mjs module with no type declarations
+import * as canary from "../scripts/drift-canary/canary.mjs"
+
+const NPM_SHADCN = "https://registry.npmjs.org/shadcn/latest"
+const NPM_IMPECCABLE = "https://registry.npmjs.org/impeccable/latest"
+const fixture = (name: string) => read(`test/fixtures/drift-canary/${name}`)
+
+describe("the canary's hand-off to the follow job", () => {
+  // The npm answers recorded on 25 Nov 2026: shadcn latest 4.23.0, impeccable latest 4.11.0.
+  const answers = (shadcn = fixture("npm-shadcn-latest.json")) => {
+    const bodies: Record<string, string> = { [NPM_SHADCN]: shadcn, [NPM_IMPECCABLE]: fixture("npm-impeccable-latest.json") }
+    const fetch = async (url: string) =>
+      bodies[url] === undefined
+        ? { ok: false, status: 404, json: async () => ({}) }
+        : { ok: true, status: 200, json: async () => JSON.parse(bodies[url]) }
+    return canary.createSources({ fetch })
+  }
+  const pins = { shadcn: "4.19.1", impeccable: "3.6.1" }
+  const baseline = {}
+
+  const filer = () => {
+    const keys: string[] = []
+    return { keys, file: async (brief: { key: string }) => (keys.push(brief.key), { action: "created", url: "u" }) }
+  }
+
+  it("says what moved from and to, so the follow job needs no parsing of prose", async () => {
+    const result = await canary.probePin({ id: "shadcn-pin", pkg: "shadcn", pinned: "4.19.1", sources: answers() })
+    expect(result).toMatchObject({ status: "drift", pkg: "shadcn", pinned: "4.19.1", latest: "4.23.0" })
+  })
+
+  it("hands a pin that reached the threshold to the follow job, files nothing, and does not mark it filed", async () => {
+    const { keys, file } = filer()
+    let state = {}
+    let deferred: unknown[] = []
+    for (let day = 0; day < 2; day += 1) {
+      const outcome = await canary.run({ state, pins, baseline, sources: answers(), file, threshold: 2, env: {}, deferPins: true })
+      state = outcome.state
+      deferred = outcome.deferred
+    }
+    expect(keys).toEqual([])
+    expect(deferred).toEqual([
+      { id: "shadcn-pin", pkg: "shadcn", from: "4.19.1", to: "4.23.0", fingerprint: "latest=4.23.0" },
+      { id: "impeccable-pin", pkg: "impeccable", from: "3.6.1", to: "4.11.0", fingerprint: "latest=4.11.0" },
+    ])
+    expect((state as Record<string, { filed: string | null }>)["shadcn-pin"].filed).toBeNull()
+  })
+
+  it("hands over nothing on the first sighting: the threshold still applies", async () => {
+    const { file } = filer()
+    const outcome = await canary.run({ state: {}, pins, baseline, sources: answers(), file, threshold: 2, env: {}, deferPins: true })
+    expect(outcome.deferred).toEqual([])
+  })
+
+  it("hands over again on the next run until the follow job has filed, so a lost run retries", async () => {
+    const { file } = filer()
+    let state = {}
+    let last: { deferred: unknown[] } = { deferred: [] }
+    for (let day = 0; day < 4; day += 1) {
+      last = await canary.run({ state, pins, baseline, sources: answers(), file, threshold: 2, env: {}, deferPins: true })
+      state = (last as unknown as { state: object }).state
+    }
+    expect(last.deferred).toHaveLength(2)
+  })
+
+  it("still files a broken pin probe through the plain helper: there is nothing to try", async () => {
+    const { keys, file } = filer()
+    const broken = canary.createSources({ fetch: async () => ({ ok: false, status: 503, json: async () => ({}) }) })
+    let state = {}
+    for (let day = 0; day < 2; day += 1) {
+      state = (await canary.run({ state, pins, baseline, sources: broken, file, threshold: 2, env: {}, deferPins: true })).state
+    }
+    expect(keys.sort()).toEqual(["impeccable pin probe broken", "shadcn pin probe broken"])
+  })
+
+  it("still files upstream source drift through the plain helper", async () => {
+    const { keys, file } = filer()
+    const item = JSON.parse(fixture("upstream-button.json"))
+    const sources = canary.createSources({
+      fetch: async (url: string) =>
+        url === "https://ui.shadcn.com/r/styles/base-nova/button.json"
+          ? { ok: true, status: 200, json: async () => ({ ...item, files: [{ ...item.files[0], content: "changed" }] }) }
+          : { ok: true, status: 200, json: async () => ({ version: pins.shadcn }) },
+    })
+    let state = {}
+    for (let day = 0; day < 2; day += 1) {
+      state = (
+        await canary.run({
+          state,
+          pins: { shadcn: pins.shadcn, impeccable: pins.shadcn },
+          baseline: { button: canary.hashUpstreamItem(item) },
+          sources,
+          file,
+          threshold: 2,
+          env: {},
+          deferPins: true,
+        })
+      ).state
+    }
+    expect(keys).toEqual(["upstream shadcn source drift"])
+  })
+
+  it("files pins the old way when no hand-off is asked for, so a local run is unchanged", async () => {
+    const { keys, file } = filer()
+    let state = {}
+    for (let day = 0; day < 2; day += 1) {
+      state = (await canary.run({ state, pins, baseline, sources: answers(), file, threshold: 2, env: {} })).state
+    }
+    expect(keys.sort()).toEqual(["impeccable pin drift", "shadcn pin drift"])
+  })
+})
+
+describe("fileOutcomes (the filing step after the trial)", () => {
+  const filedState = () => ({
+    "shadcn-pin": { key: "drift:latest=4.23.0", streak: 2, filed: null },
+    "impeccable-pin": { key: "drift:latest=4.11.0", streak: 2, filed: null },
+  })
+
+  it("files each outcome and marks exactly those probes filed, so the canary stops handing them over", async () => {
+    const gh = fakeGh([])
+    const outcome = await follow.fileOutcomes({ outcomes: [green, red], state: filedState(), gh: gh.run, runUrl: RUN_URL })
+    expect(outcome.failures).toEqual([])
+    expect(outcome.filed.map((entry: { id: string }) => entry.id)).toEqual(["shadcn-pin", "impeccable-pin"])
+    expect(outcome.state["shadcn-pin"].filed).toBe("drift:latest=4.23.0")
+    expect(outcome.state["impeccable-pin"].filed).toBe("drift:latest=4.11.0")
+  })
+
+  it("leaves a probe unfiled, and says why, when its filing fails; the others still file", async () => {
+    const gh = fakeGh([])
+    const flaky = async (args: string[]) => {
+      if (args[1] === "create" && args.includes("Upstream follow: bump shadcn 4.19.1 -> 4.23.0")) throw new Error("gh: HTTP 502")
+      return gh.run(args)
+    }
+    const outcome = await follow.fileOutcomes({ outcomes: [green, red], state: filedState(), gh: flaky, runUrl: RUN_URL })
+    expect(outcome.failures).toEqual([{ id: "shadcn-pin", error: "gh: HTTP 502" }])
+    expect(outcome.state["shadcn-pin"].filed).toBeNull()
+    expect(outcome.state["impeccable-pin"].filed).toBe("drift:latest=4.11.0")
+  })
+})

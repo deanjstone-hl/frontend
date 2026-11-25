@@ -130,6 +130,9 @@ export const probePin = async ({ id, pkg, pinned, sources }) => {
   return {
     id,
     status: "drift",
+    pkg,
+    pinned,
+    latest,
     fingerprint: `latest=${latest}`,
     changed: `${pkg} ${pinned} -> ${latest} (npm latest)`,
     detail: [
@@ -250,19 +253,28 @@ export const briefFor = (result, env = process.env) => {
 
 // ── One run ──────────────────────────────────────────────────────────────────────────────
 
-export const run = async ({ state, pins, baseline, sources, file, threshold, dryRun = false, env = process.env }) => {
+// `deferPins` hands a pin drift that reached the threshold to the upstream-follow job
+// (scripts/upstream-follow/follow.mjs) instead of filing a plain brief: the job tries the bump
+// and files what it found. A deferred drift is not marked filed; the follow job marks it once
+// it has filed, so a run that is lost in between hands it over again.
+export const run = async ({ state, pins, baseline, sources, file, threshold, dryRun = false, deferPins = false, env = process.env }) => {
   const results = [
     await probePin({ id: "shadcn-pin", pkg: "shadcn", pinned: pins.shadcn, sources }),
     await probePin({ id: "impeccable-pin", pkg: "impeccable", pinned: pins.impeccable, sources }),
     await probeUpstreamSources({ baseline, sources }),
   ]
-  if (dryRun) return { results, state, filed: [], failures: [] }
+  if (dryRun) return { results, state, filed: [], failures: [], deferred: [] }
 
   const next = nextState(state, results, { threshold })
   let current = next.state
   const filed = []
   const failures = []
+  const deferred = []
   for (const result of next.toFile) {
+    if (deferPins && result.status === "drift" && result.pkg) {
+      deferred.push({ id: result.id, pkg: result.pkg, from: result.pinned, to: result.latest, fingerprint: result.fingerprint })
+      continue
+    }
     try {
       const outcome = await file(briefFor(result, env))
       current = markFiled(current, result)
@@ -271,7 +283,7 @@ export const run = async ({ state, pins, baseline, sources, file, threshold, dry
       failures.push({ id: result.id, error: error.message })
     }
   }
-  return { results, state: current, filed, failures }
+  return { results, state: current, filed, failures, deferred }
 }
 
 // ── Baseline ─────────────────────────────────────────────────────────────────────────────
