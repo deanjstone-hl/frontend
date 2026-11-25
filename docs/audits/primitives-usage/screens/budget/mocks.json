@@ -1,0 +1,1217 @@
+[
+  {
+    "url": "http://127.0.0.1:59004/auth/v1/passkeys**",
+    "method": "GET",
+    "status": 200,
+    "json": [
+      {
+        "id": "pk-1",
+        "friendly_name": "Owner's phone",
+        "created_at": "2026-01-02T00:00:00Z",
+        "last_used_at": "2026-11-09T22:00:00Z"
+      }
+    ]
+  },
+  {
+    "url": "http://127.0.0.1:59004/auth/v1/user**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "aud": "authenticated",
+      "role": "authenticated",
+      "email": "owner@example.test",
+      "app_metadata": {},
+      "user_metadata": {
+        "name": "Owner"
+      },
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59004/realtime/**",
+    "status": 204,
+    "body": ""
+  },
+  {
+    "url": "http://127.0.0.1:59004/rest/v1/**",
+    "method": "GET",
+    "status": 200,
+    "json": []
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/bootstrap**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "user": {
+        "id": "00000000-0000-4000-8000-000000000001",
+        "email": "owner@example.test",
+        "display_name": "Owner",
+        "avatar_url": null
+      },
+      "profile": {
+        "id": "00000000-0000-4000-8000-000000000001",
+        "has_onboarded": true,
+        "theme_preference": "mint",
+        "display_name": "Owner"
+      },
+      "partnershipId": "00000000-0000-4000-8000-0000000000aa",
+      "accountCount": 2,
+      "hasAccounts": true,
+      "hasGoals": true,
+      "hasCompletedGoals": false,
+      "hasPayday": true,
+      "fireOnboarded": false,
+      "hasInvestments": false,
+      "hasNetWorthData": true
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/notifications**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "notifications": [],
+      "unread_count": 0
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/dashboard**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "hasAccounts": true,
+      "userName": "Owner",
+      "totalBalance": 1463432,
+      "accountCount": 2,
+      "lastSyncTime": "2026-11-10T01:40:00Z",
+      "monthlySpending": 269044,
+      "monthlyIncome": 486000,
+      "recentTransactions": [
+        {
+          "id": "00000000-0000-4000-8000-000000000100",
+          "description": "Corner Cafe",
+          "amount_cents": -1180,
+          "created_at": "2026-11-10T00:12:00Z",
+          "category_id": "restaurants-and-cafes",
+          "is_income": false
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000101",
+          "description": "Fresh Market Grocers",
+          "amount_cents": -8615,
+          "created_at": "2026-11-09T08:30:00Z",
+          "category_id": "groceries",
+          "is_income": false
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000102",
+          "description": "City Fuel",
+          "amount_cents": -7140,
+          "created_at": "2026-11-08T03:05:00Z",
+          "category_id": "fuel",
+          "is_income": false
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000103",
+          "description": "Riverside Bistro",
+          "amount_cents": -4850,
+          "created_at": "2026-11-07T10:45:00Z",
+          "category_id": "restaurants-and-cafes",
+          "is_income": false
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000104",
+          "description": "Metro Transit top-up",
+          "amount_cents": -3600,
+          "created_at": "2026-11-06T01:20:00Z",
+          "category_id": "public-transport",
+          "is_income": false
+        }
+      ],
+      "categoryMappings": [
+        {
+          "up_category_id": "groceries",
+          "new_parent_name": "Food & Drink",
+          "new_child_name": "Groceries",
+          "icon": "🛒"
+        },
+        {
+          "up_category_id": "restaurants-and-cafes",
+          "new_parent_name": "Food & Drink",
+          "new_child_name": "Eating out",
+          "icon": "🍽️"
+        },
+        {
+          "up_category_id": "hobbies",
+          "new_parent_name": "Fun",
+          "new_child_name": "Hobbies",
+          "icon": "🎨"
+        },
+        {
+          "up_category_id": "rent-and-mortgage",
+          "new_parent_name": "Home",
+          "new_child_name": "Rent",
+          "icon": "🏠"
+        },
+        {
+          "up_category_id": "utilities",
+          "new_parent_name": "Home",
+          "new_child_name": "Utilities",
+          "icon": "💡"
+        },
+        {
+          "up_category_id": "fuel",
+          "new_parent_name": "Transport",
+          "new_child_name": "Fuel",
+          "icon": "⛽"
+        },
+        {
+          "up_category_id": "public-transport",
+          "new_parent_name": "Transport",
+          "new_child_name": "Public transport",
+          "icon": "🚆"
+        }
+      ],
+      "topCategories": [
+        {
+          "categoryId": "rent-and-mortgage",
+          "amount": 210000,
+          "name": "Home",
+          "icon": "🏠"
+        },
+        {
+          "categoryId": "groceries",
+          "amount": 22875,
+          "name": "Food & Drink",
+          "icon": "🛒"
+        },
+        {
+          "categoryId": "utilities",
+          "amount": 12900,
+          "name": "Home",
+          "icon": "💡"
+        },
+        {
+          "categoryId": "fuel",
+          "amount": 7140,
+          "name": "Transport",
+          "icon": "⛽"
+        },
+        {
+          "categoryId": "hobbies",
+          "amount": 6499,
+          "name": "Fun",
+          "icon": "🎨"
+        }
+      ],
+      "upcomingBills": [
+        {
+          "id": "e-1",
+          "name": "Rent",
+          "emoji": "🏠",
+          "amount": 210000,
+          "dueDate": "2026-12-01",
+          "isPaid": false
+        },
+        {
+          "id": "e-2",
+          "name": "Electricity",
+          "emoji": "💡",
+          "amount": 12900,
+          "dueDate": "2026-12-02",
+          "isPaid": true
+        },
+        {
+          "id": "e-3",
+          "name": "Internet",
+          "emoji": "🌐",
+          "amount": 8900,
+          "dueDate": "2026-11-14",
+          "isPaid": false
+        },
+        {
+          "id": "e-4",
+          "name": "Streaming",
+          "emoji": "📺",
+          "amount": 1799,
+          "dueDate": "2026-11-18",
+          "isPaid": false
+        }
+      ],
+      "recurringExpenses": [
+        {
+          "id": "e-1",
+          "name": "Rent",
+          "emoji": "🏠",
+          "expected_amount_cents": 210000,
+          "next_due_date": "2026-12-01",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        },
+        {
+          "id": "e-2",
+          "name": "Electricity",
+          "emoji": "💡",
+          "expected_amount_cents": 12900,
+          "next_due_date": "2026-12-02",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        },
+        {
+          "id": "e-3",
+          "name": "Internet",
+          "emoji": "🌐",
+          "expected_amount_cents": 8900,
+          "next_due_date": "2026-11-14",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        },
+        {
+          "id": "e-4",
+          "name": "Streaming",
+          "emoji": "📺",
+          "expected_amount_cents": 1799,
+          "next_due_date": "2026-11-18",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        }
+      ],
+      "goals": [
+        {
+          "id": "g-1",
+          "name": "Summer holiday",
+          "icon": "plane",
+          "color": "blue",
+          "current_amount_cents": 320000,
+          "target_amount_cents": 500000,
+          "deadline": "2026-12-20"
+        },
+        {
+          "id": "g-2",
+          "name": "Emergency buffer",
+          "icon": "piggy-bank",
+          "color": "mint",
+          "current_amount_cents": 900000,
+          "target_amount_cents": 1000000,
+          "deadline": null
+        },
+        {
+          "id": "g-3",
+          "name": "New laptop",
+          "icon": "gift",
+          "color": "lavender",
+          "current_amount_cents": 45000,
+          "target_amount_cents": 220000,
+          "deadline": "2027-03-01"
+        }
+      ],
+      "daysUntilPay": 3,
+      "nextPayAmount": 243000,
+      "dailySpending": [
+        {
+          "day": 1,
+          "amount": 2100,
+          "label": "Day 1"
+        },
+        {
+          "day": 2,
+          "amount": 129,
+          "label": "Day 2"
+        },
+        {
+          "day": 3,
+          "amount": 65,
+          "label": "Day 3"
+        },
+        {
+          "day": 4,
+          "amount": 143,
+          "label": "Day 4"
+        },
+        {
+          "day": 5,
+          "amount": 0,
+          "label": "Day 5"
+        },
+        {
+          "day": 6,
+          "amount": 36,
+          "label": "Day 6"
+        },
+        {
+          "day": 7,
+          "amount": 49,
+          "label": "Day 7"
+        },
+        {
+          "day": 8,
+          "amount": 71,
+          "label": "Day 8"
+        },
+        {
+          "day": 9,
+          "amount": 86,
+          "label": "Day 9"
+        },
+        {
+          "day": 10,
+          "amount": 12,
+          "label": "Day 10"
+        }
+      ],
+      "monthlyNetFlow": [
+        {
+          "month": "Jun",
+          "income": 972000,
+          "spending": 655200,
+          "net": 316800
+        },
+        {
+          "month": "Jul",
+          "income": 972000,
+          "spending": 701400,
+          "net": 270600
+        },
+        {
+          "month": "Aug",
+          "income": 972000,
+          "spending": 688800,
+          "net": 283200
+        },
+        {
+          "month": "Sep",
+          "income": 972000,
+          "spending": 742300,
+          "net": 229700
+        },
+        {
+          "month": "Oct",
+          "income": 972000,
+          "spending": 693100,
+          "net": 278900
+        },
+        {
+          "month": "Nov",
+          "income": 486000,
+          "spending": 269044,
+          "net": 216956
+        }
+      ],
+      "insights": [],
+      "netWorthSnapshots": [
+        {
+          "snapshot_date": "2025-12-01",
+          "total_balance_cents": 1090000,
+          "investment_total_cents": 420000
+        },
+        {
+          "snapshot_date": "2026-01-01",
+          "total_balance_cents": 1126000,
+          "investment_total_cents": 441000
+        },
+        {
+          "snapshot_date": "2026-02-01",
+          "total_balance_cents": 1162000,
+          "investment_total_cents": 462000
+        },
+        {
+          "snapshot_date": "2026-03-01",
+          "total_balance_cents": 1198000,
+          "investment_total_cents": 483000
+        },
+        {
+          "snapshot_date": "2026-04-01",
+          "total_balance_cents": 1234000,
+          "investment_total_cents": 504000
+        },
+        {
+          "snapshot_date": "2026-05-01",
+          "total_balance_cents": 1270000,
+          "investment_total_cents": 525000
+        },
+        {
+          "snapshot_date": "2026-06-01",
+          "total_balance_cents": 1306000,
+          "investment_total_cents": 546000
+        },
+        {
+          "snapshot_date": "2026-07-01",
+          "total_balance_cents": 1342000,
+          "investment_total_cents": 567000
+        },
+        {
+          "snapshot_date": "2026-08-01",
+          "total_balance_cents": 1378000,
+          "investment_total_cents": 588000
+        },
+        {
+          "snapshot_date": "2026-09-01",
+          "total_balance_cents": 1414000,
+          "investment_total_cents": 609000
+        },
+        {
+          "snapshot_date": "2026-10-01",
+          "total_balance_cents": 1450000,
+          "investment_total_cents": 630000
+        },
+        {
+          "snapshot_date": "2026-11-01",
+          "total_balance_cents": 1486000,
+          "investment_total_cents": 651000
+        }
+      ],
+      "healthScore": 75,
+      "safeToSpend": 612000,
+      "monthlyBurnRate": 690000,
+      "yearEndProjection": 2023432
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/transactions**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "transactions": [
+        {
+          "id": "00000000-0000-4000-8000-000000000100",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Corner Cafe",
+          "amount_cents": -1180,
+          "status": "SETTLED",
+          "created_at": "2026-11-10T00:12:00Z",
+          "settled_at": "2026-11-10T00:12:00Z",
+          "category_id": "restaurants-and-cafes",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "restaurants-and-cafes",
+            "name": "Restaurants & Cafes"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000101",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Fresh Market Grocers",
+          "amount_cents": -8615,
+          "status": "SETTLED",
+          "created_at": "2026-11-09T08:30:00Z",
+          "settled_at": "2026-11-09T08:30:00Z",
+          "category_id": "groceries",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "groceries",
+            "name": "Groceries"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000102",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "City Fuel",
+          "amount_cents": -7140,
+          "status": "SETTLED",
+          "created_at": "2026-11-08T03:05:00Z",
+          "settled_at": "2026-11-08T03:05:00Z",
+          "category_id": "fuel",
+          "parent_category_id": "transport",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "fuel",
+            "name": "Fuel"
+          },
+          "parent_category": {
+            "id": "transport",
+            "name": "Transport"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000103",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Riverside Bistro",
+          "amount_cents": -4850,
+          "status": "SETTLED",
+          "created_at": "2026-11-07T10:45:00Z",
+          "settled_at": "2026-11-07T10:45:00Z",
+          "category_id": "restaurants-and-cafes",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "restaurants-and-cafes",
+            "name": "Restaurants & Cafes"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000104",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Metro Transit top-up",
+          "amount_cents": -3600,
+          "status": "SETTLED",
+          "created_at": "2026-11-06T01:20:00Z",
+          "settled_at": "2026-11-06T01:20:00Z",
+          "category_id": "public-transport",
+          "parent_category_id": "transport",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "public-transport",
+            "name": "Public Transport"
+          },
+          "parent_category": {
+            "id": "transport",
+            "name": "Transport"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000105",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Employer Pty Ltd salary",
+          "amount_cents": 486000,
+          "status": "SETTLED",
+          "created_at": "2026-11-05T21:00:00Z",
+          "settled_at": "2026-11-05T21:00:00Z",
+          "category_id": null,
+          "parent_category_id": null,
+          "is_income": true,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": null,
+          "parent_category": null,
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000106",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Fresh Market Grocers",
+          "amount_cents": -14260,
+          "status": "SETTLED",
+          "created_at": "2026-11-04T09:10:00Z",
+          "settled_at": "2026-11-04T09:10:00Z",
+          "category_id": "groceries",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "groceries",
+            "name": "Groceries"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000107",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Craft & Co Hobbies",
+          "amount_cents": -6499,
+          "status": "SETTLED",
+          "created_at": "2026-11-03T02:40:00Z",
+          "settled_at": "2026-11-03T02:40:00Z",
+          "category_id": "hobbies",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "hobbies",
+            "name": "Hobbies"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000108",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Bright Energy",
+          "amount_cents": -12900,
+          "status": "SETTLED",
+          "created_at": "2026-11-02T22:00:00Z",
+          "settled_at": "2026-11-02T22:00:00Z",
+          "category_id": "utilities",
+          "parent_category_id": "home",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "utilities",
+            "name": "Utilities"
+          },
+          "parent_category": {
+            "id": "home",
+            "name": "Home"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000109",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Harbour Realty rent",
+          "amount_cents": -210000,
+          "status": "SETTLED",
+          "created_at": "2026-11-01T21:00:00Z",
+          "settled_at": "2026-11-01T21:00:00Z",
+          "category_id": "rent-and-mortgage",
+          "parent_category_id": "home",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "rent-and-mortgage",
+            "name": "Rent & Mortgage"
+          },
+          "parent_category": {
+            "id": "home",
+            "name": "Home"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000110",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Fresh Market Grocers",
+          "amount_cents": -5890,
+          "status": "SETTLED",
+          "created_at": "2026-10-30T07:55:00Z",
+          "settled_at": "2026-10-30T07:55:00Z",
+          "category_id": "groceries",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "groceries",
+            "name": "Groceries"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000111",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Corner Cafe",
+          "amount_cents": -2380,
+          "status": "SETTLED",
+          "created_at": "2026-10-29T11:00:00Z",
+          "settled_at": "2026-10-29T11:00:00Z",
+          "category_id": "restaurants-and-cafes",
+          "parent_category_id": "good-life",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "restaurants-and-cafes",
+            "name": "Restaurants & Cafes"
+          },
+          "parent_category": {
+            "id": "good-life",
+            "name": "Good Life"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000112",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "Transfer to Savings",
+          "amount_cents": -50000,
+          "status": "SETTLED",
+          "created_at": "2026-10-27T23:00:00Z",
+          "settled_at": "2026-10-27T23:00:00Z",
+          "category_id": null,
+          "parent_category_id": null,
+          "is_income": false,
+          "is_internal_transfer": true,
+          "transfer_account_id": null,
+          "category": null,
+          "parent_category": null,
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000113",
+          "account_id": "00000000-0000-4000-8000-0000000000b1",
+          "description": "City Fuel",
+          "amount_cents": -6820,
+          "status": "SETTLED",
+          "created_at": "2026-10-22T05:30:00Z",
+          "settled_at": "2026-10-22T05:30:00Z",
+          "category_id": "fuel",
+          "parent_category_id": "transport",
+          "is_income": false,
+          "is_internal_transfer": false,
+          "transfer_account_id": null,
+          "category": {
+            "id": "fuel",
+            "name": "Fuel"
+          },
+          "parent_category": {
+            "id": "transport",
+            "name": "Transport"
+          },
+          "accounts": {
+            "display_name": "Spending"
+          },
+          "transaction_tags": [],
+          "user_tags": [],
+          "transaction_notes": []
+        }
+      ],
+      "total": 212,
+      "hasMore": true,
+      "summary": {
+        "spending": 14830000,
+        "income": 9720000,
+        "spendingCount": 181
+      },
+      "availableYears": [
+        2026,
+        2025
+      ]
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/tags**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "tags": [
+        {
+          "id": "tag-1",
+          "name": "Holiday",
+          "color": "#60a5fa",
+          "transaction_count": 4
+        },
+        {
+          "id": "tag-2",
+          "name": "Shared",
+          "color": "#4ade80",
+          "transaction_count": 9
+        }
+      ]
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/actions/accounts/get-accounts**",
+    "method": "POST",
+    "status": 200,
+    "json": {
+      "success": true,
+      "data": {
+        "accounts": [
+          {
+            "id": "00000000-0000-4000-8000-0000000000b1",
+            "user_id": "00000000-0000-4000-8000-000000000001",
+            "up_account_id": "up-spending",
+            "display_name": "Spending",
+            "account_type": "TRANSACTIONAL",
+            "ownership_type": "INDIVIDUAL",
+            "balance_cents": 218432,
+            "currency_code": "AUD",
+            "is_active": true,
+            "last_synced_at": "2026-11-10T01:40:00Z",
+            "created_at": "2026-01-02T00:00:00Z",
+            "updated_at": "2026-11-10T01:40:00Z"
+          },
+          {
+            "id": "00000000-0000-4000-8000-0000000000b2",
+            "user_id": "00000000-0000-4000-8000-000000000001",
+            "up_account_id": "up-savings",
+            "display_name": "Savings",
+            "account_type": "SAVER",
+            "ownership_type": "INDIVIDUAL",
+            "balance_cents": 1245000,
+            "currency_code": "AUD",
+            "is_active": true,
+            "last_synced_at": "2026-11-10T01:40:00Z",
+            "created_at": "2026-01-02T00:00:00Z",
+            "updated_at": "2026-11-10T01:40:00Z"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/actions/categories/get-categories**",
+    "method": "POST",
+    "status": 200,
+    "json": {
+      "success": true,
+      "data": {
+        "categories": [
+          {
+            "id": "good-life",
+            "name": "Good Life",
+            "parent_category_id": null,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "home",
+            "name": "Home",
+            "parent_category_id": null,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "transport",
+            "name": "Transport",
+            "parent_category_id": null,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "groceries",
+            "name": "Groceries",
+            "parent_category_id": "good-life",
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "restaurants-and-cafes",
+            "name": "Restaurants & Cafes",
+            "parent_category_id": "good-life",
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "hobbies",
+            "name": "Hobbies",
+            "parent_category_id": "good-life",
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "rent-and-mortgage",
+            "name": "Rent & Mortgage",
+            "parent_category_id": "home",
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "utilities",
+            "name": "Utilities",
+            "parent_category_id": "home",
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "fuel",
+            "name": "Fuel",
+            "parent_category_id": "transport",
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "public-transport",
+            "name": "Public Transport",
+            "parent_category_id": "transport",
+            "created_at": "2026-01-02T00:00:00Z"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/actions/category-mappings/get-category-mappings**",
+    "method": "POST",
+    "status": 200,
+    "json": {
+      "success": true,
+      "data": {
+        "mappings": [
+          {
+            "id": "m-1",
+            "up_category_id": "groceries",
+            "new_parent_name": "Food & Drink",
+            "new_child_name": "Groceries",
+            "icon": "🛒",
+            "display_order": 1,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "m-2",
+            "up_category_id": "restaurants-and-cafes",
+            "new_parent_name": "Food & Drink",
+            "new_child_name": "Eating out",
+            "icon": "🍽️",
+            "display_order": 2,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "m-3",
+            "up_category_id": "hobbies",
+            "new_parent_name": "Fun",
+            "new_child_name": "Hobbies",
+            "icon": "🎨",
+            "display_order": 3,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "m-4",
+            "up_category_id": "rent-and-mortgage",
+            "new_parent_name": "Home",
+            "new_child_name": "Rent",
+            "icon": "🏠",
+            "display_order": 4,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "m-5",
+            "up_category_id": "utilities",
+            "new_parent_name": "Home",
+            "new_child_name": "Utilities",
+            "icon": "💡",
+            "display_order": 5,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "m-6",
+            "up_category_id": "fuel",
+            "new_parent_name": "Transport",
+            "new_child_name": "Fuel",
+            "icon": "⛽",
+            "display_order": 6,
+            "created_at": "2026-01-02T00:00:00Z"
+          },
+          {
+            "id": "m-7",
+            "up_category_id": "public-transport",
+            "new_parent_name": "Transport",
+            "new_child_name": "Public transport",
+            "icon": "🚆",
+            "display_order": 7,
+            "created_at": "2026-01-02T00:00:00Z"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/actions/budgets/get-budgets**",
+    "method": "POST",
+    "status": 200,
+    "json": {
+      "data": [
+        {
+          "id": "00000000-0000-4000-8000-0000000000c1",
+          "partnership_id": "00000000-0000-4000-8000-0000000000aa",
+          "name": "Household",
+          "slug": "household",
+          "emoji": "🏡",
+          "budget_type": "household",
+          "methodology": "zero-based",
+          "budget_view": "shared",
+          "period_type": "monthly",
+          "is_active": true,
+          "is_default": true,
+          "color": null,
+          "template_source": null,
+          "category_filter": null,
+          "carryover_mode": "none",
+          "total_budget": null,
+          "start_date": null,
+          "end_date": null,
+          "created_by": "00000000-0000-4000-8000-000000000001",
+          "created_at": "2026-01-05T00:00:00Z",
+          "updated_at": "2026-11-01T00:00:00Z"
+        },
+        {
+          "id": "00000000-0000-4000-8000-0000000000c2",
+          "partnership_id": "00000000-0000-4000-8000-0000000000aa",
+          "name": "Spending money",
+          "slug": "spending-money",
+          "emoji": "💸",
+          "budget_type": "personal",
+          "methodology": "50-30-20",
+          "budget_view": "individual",
+          "period_type": "fortnightly",
+          "is_active": true,
+          "is_default": false,
+          "color": null,
+          "template_source": null,
+          "category_filter": null,
+          "carryover_mode": "none",
+          "total_budget": 120000,
+          "start_date": null,
+          "end_date": null,
+          "created_by": "00000000-0000-4000-8000-000000000001",
+          "created_at": "2026-02-05T00:00:00Z",
+          "updated_at": "2026-11-01T00:00:00Z"
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/budget/list-summary**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "hasExistingData": true,
+      "budgetStats": {
+        "00000000-0000-4000-8000-0000000000c1": {
+          "totalAssigned": 520000,
+          "totalSpent": 318450,
+          "categoryCount": 7
+        },
+        "00000000-0000-4000-8000-0000000000c2": {
+          "totalAssigned": 120000,
+          "totalSpent": 134200,
+          "categoryCount": 4
+        }
+      },
+      "currentMonth": "2026-11-01",
+      "listExpenses": [
+        {
+          "id": "e-1",
+          "name": "Rent",
+          "emoji": "🏠",
+          "category_name": "Home",
+          "expected_amount_cents": 210000,
+          "next_due_date": "2026-12-01",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        },
+        {
+          "id": "e-2",
+          "name": "Electricity",
+          "emoji": "💡",
+          "category_name": "Home",
+          "expected_amount_cents": 12900,
+          "next_due_date": "2026-12-02",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        },
+        {
+          "id": "e-3",
+          "name": "Internet",
+          "emoji": "🌐",
+          "category_name": "Home",
+          "expected_amount_cents": 8900,
+          "next_due_date": "2026-11-14",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        },
+        {
+          "id": "e-4",
+          "name": "Streaming",
+          "emoji": "📺",
+          "category_name": "Fun",
+          "expected_amount_cents": 1799,
+          "next_due_date": "2026-11-18",
+          "recurrence_type": "monthly",
+          "expense_matches": []
+        }
+      ],
+      "listCategories": [
+        "Groceries",
+        "Eating out",
+        "Hobbies",
+        "Rent",
+        "Utilities",
+        "Fuel",
+        "Public transport"
+      ]
+    }
+  },
+  {
+    "url": "http://127.0.0.1:59003/api/budget/approvals**",
+    "method": "GET",
+    "status": 200,
+    "json": {
+      "approval_required": false,
+      "has_partner": true,
+      "requests": []
+    }
+  }
+]
