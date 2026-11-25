@@ -2330,6 +2330,20 @@
       ]
     },
     {
+      "name": "stat-tile",
+      "type": "registry:ui",
+      "dependencies": [
+        "cn@^0.5.0",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/stat-tile.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": [

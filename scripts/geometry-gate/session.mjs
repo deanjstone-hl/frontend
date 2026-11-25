@@ -24,6 +24,7 @@ export const VIEWS = [
   { name: "alert-dialog", query: "v=alert-dialog" },
   { name: "drawer", query: "v=drawer" },
   { name: "states", query: "v=states" },
+  { name: "stat-tile", query: "v=stat-tile" },
   { name: "toast-bottom", query: "v=toast&position=bottom-center" },
   { name: "toast-top", query: "v=toast&position=top-center" },
 ]

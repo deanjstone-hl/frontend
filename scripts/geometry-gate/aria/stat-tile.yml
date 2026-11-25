@@ -1,0 +1,26 @@
+- banner: Shell
+- main:
+  - heading "Home" [level=1]
+  - term: Left to spend
+  - definition: $1,204AUD
+  - definition: Up +2.1%
+  - term: Open PRs
+  - definition: "12"
+  - definition: No change 0 this week
+  - term: Range
+  - definition: 342km
+  - definition: Down -18 km
+  - term: Bills due before the end of the month
+  - definition: "6"
+  - term: Uptime
+  - definition: 99.9%
+- navigation "Sections":
+  - link "Home":
+    - /url: "#a"
+  - link "Inbox":
+    - /url: "#b"
+  - link "Alerts":
+    - /url: "#c"
+  - link "Search":
+    - /url: "#d"
+  - button "More"

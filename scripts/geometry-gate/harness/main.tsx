@@ -21,6 +21,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "
 import { Toaster } from "@/components/ui/sonner"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Spinner } from "@/components/ui/spinner"
+import { StatTile } from "@/components/ui/stat-tile"
 import { Switch } from "@/components/ui/switch"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -155,6 +156,21 @@ const Banner = () => (
   </div>
 )
 
+// A home screen of stat tiles (frontend#216): one tile leads, wide, over a grid of default ones. A long label
+// wraps onto a second line, and the three deltas show the three trends.
+const Tiles = () => (
+  <div className="flex flex-col gap-4">
+    <PageHeader title="Home" />
+    <div className="grid grid-cols-2 gap-3">
+      <StatTile className="col-span-2" size="lead" label="Left to spend" value="$1,204" unit="AUD" delta="+2.1%" trend="up" tone="success" />
+      <StatTile label="Open PRs" value="12" delta="0 this week" trend="flat" />
+      <StatTile label="Range" value="342" unit="km" delta="-18 km" trend="down" tone="critical" />
+      <StatTile label="Bills due before the end of the month" value="6" />
+      <StatTile label="Uptime" value="99.9%" variant="plain" />
+    </div>
+  </div>
+)
+
 const SIDES = ["top", "right", "bottom", "left"] as const
 type Side = (typeof SIDES)[number]
 const side: Side = SIDES.includes(params.get("side") as Side) ? (params.get("side") as Side) : "right"
@@ -232,6 +248,13 @@ const App = () => {
         <div className="flex items-center gap-2"><Spinner /><span>Loading</span></div>
         <Skeleton className="h-4 w-40 max-w-full" />
       </div>
+    )
+  }
+  if (view === "stat-tile") {
+    return (
+      <AppShell appName="Shell" sections={sections} activeSectionId="a">
+        <Tiles />
+      </AppShell>
     )
   }
   if (view === "shell-focus") {

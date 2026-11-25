@@ -406,7 +406,7 @@ registry/
   lib/filter-core.ts, url-state.ts  filter model and one-search-param URL state (filter-builder)
   lib/list-group-core.ts    grouping and display-settings model (grouped-list)
   lib/page-transition-core.ts  theme tokens to glimm band colours (page-transition, staged: not in registry.json yet)
-  base-nova/ui/               66 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
+  base-nova/ui/               67 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
   base-nova/hooks/            use-mobile (pulled by sidebar), use-highlighted-code (pulled by code-block), use-theme-preference, use-font-preference, use-filter-state, use-display-settings
   base-nova/blocks/           v3 layout blocks: app-shell, app-switcher, page-header, empty-page, settings-page, login, card-list, issue-row, filter-builder, grouped-list, file-diff
   design-check/             scripts and workflow of the design-check item (CI, not UI)
@@ -1291,7 +1291,7 @@ VoiceOver, so turn it on for any drawer without another close control.
 controls clear of the display curves, the Dynamic Island and the home-indicator
 band ([design-system#143](https://github.com/deanjstone/design-system/issues/143)).
 It builds a harness page of the registry blocks (AppShell, login, sheet on four
-sides, dialog, alert dialog, drawer, toast), opens each in Playwright Chromium and
+sides, dialog, alert dialog, drawer, toast, stat tile), opens each in Playwright Chromium and
 sets the insets with the CDP method `Emulation.setSafeAreaInsetsOverride`, so
 `env(safe-area-inset-*)` resolves to the device values. Chromium draws no curves;
 the gate measures instead.
@@ -1702,6 +1702,41 @@ cards of two rows, the title, then status, branch, check and relative time. The 
   `docs/assets/card-list-<width>-<theme>.png` and `card-list-before-<width>-light.png` (the single-row list the
   cards replace). Screenshots: ![390 light](docs/assets/card-list-390-light.png)
   ![390 dark](docs/assets/card-list-390-dark.png) ![320 dark](docs/assets/card-list-320-dark.png)
+
+## Stat tile
+
+`stat-tile` ([frontend#216](https://github.com/deanjstone-hl/frontend/issues/216)) is a label over one big number, with an
+optional unit and delta. It replaces the four hand-built copies the
+[primitives usage audit](docs/audits/2026-11-12-primitives-usage.md) found: ops-hub `Tiles`, atto1 `Stat`, sparky `Tile`
+and budget `MetricCard` / `NumberStat`. It declares `cn` and `lucide-react` and pulls in no other item.
+`npx shadcn add deanjstone/frontend/stat-tile`.
+
+```tsx
+<div className="grid grid-cols-2 gap-3">
+  <StatTile className="col-span-2" size="lead" label="Left to spend" value="$1,204" unit="AUD" delta="+2.1%" trend="up" tone="success" />
+  <StatTile label="Open PRs" value="12" />
+  <StatTile label="Range" value="342" unit="km" delta="-18 km" trend="down" tone="critical" />
+</div>
+```
+
+| Prop | What it does |
+|---|---|
+| `label`, `value` | The tile. Pass `value` already formatted; it is set in tabular figures |
+| `unit` | Smaller and muted beside the number |
+| `delta` | The change, under the number. `trend` (`up`, `down`, `flat`) adds an arrow and a word for a screen reader, so a change never rests on colour alone. `tone` (`neutral`, `success`, `critical`) colours it from the status tokens: whether up is good news is the caller's call |
+| `size` | `default` sets the number at `text-xl` (21px); `lead` at `text-3xl` (30px). Give `lead` to one tile per screen |
+| `variant` | `tile` (default) draws the card surface; `plain` drops it, for a tile inside a card already |
+
+It is a `<dl>` of one (label `dt`, number and delta `dd`), so a screen reader hears "label, value". The grid of tiles is
+the caller's layout. `className` and other props reach the `<dl>`.
+
+**Why `size`.** The audit's `hierarchy.oneLargest` wants the largest text on a screen at least 1.2 times the next size
+down, and at most two elements at it. Sparky's home draws four 26px numbers and the bills list six 21px ones, so
+neither has a largest. `lead` is 1.43 times the default (`test/stat-tile.test.tsx` holds it against the audit's own
+`RULES.largestRatio`). When to use it: [DESIGN.md](DESIGN.md#stat-tile).
+
+The geometry gate draws it as the `stat-tile` view: a lead tile over a grid in the AppShell, in every scenario, with an
+aria baseline in `scripts/geometry-gate/aria/stat-tile.yml`. App adoption is filed per app, not done here.
 
 ## Issue row
 
