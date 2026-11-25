@@ -100,7 +100,7 @@ function DefaultLink({ href, className, children, ...props }: React.ComponentPro
   return (
     <a
       href={href}
-      className={cn("text-primary underline underline-offset-3 break-words", className)}
+      className={cn("text-primary-text underline underline-offset-3 break-words", className)}
       {...(opensNewTab ? { target: "_blank", rel: "noreferrer noopener" } : null)}
       {...props}
     >
