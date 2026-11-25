@@ -1,7 +1,8 @@
 # frontend
 
-Formerly `design-system` (the repo was renamed to `deanjstone/frontend`; GitHub redirects the old
-URLs, and issue and release links keep working). Shared shadcn/ui component registry and design tokens, consumed by `myargus`,
+Formerly `design-system` (the repo was renamed to `frontend`, then moved to the `deanjstone-hl`
+organisation: it is `deanjstone-hl/frontend` now. GitHub redirects the old `deanjstone/design-system` and
+`deanjstone/frontend` URLs, and issue and release links keep working). Shared shadcn/ui component registry and design tokens, consumed by `myargus`,
 `atto1`, `argus`, `homelab` and `quick-capture` via the shadcn CLI (`slate-reader`
 vendors LinkPill; `budget` is migrating — see [Consumers](#consumers)). This
 repo is not a
@@ -606,6 +607,22 @@ this repo, and the tags are unchanged. Rename the key to `@frontend` and the URL
 `deanjstone/frontend` the next time you edit it, and write `deanjstone/frontend/<item>`
 for direct adds. Items already vendored list `deanjstone/design-system/<item>` in their
 `registryDependencies`; the CLI resolves those through the same redirect.
+
+**The GitHub address and the version it needs.** `npx shadcn add <owner>/<repo>/<item>#<tag>` reads this
+repo's root `registry.json` as a source registry, so it needs no `r/` output and no alias. Two floors apply:
+
+| `shadcn` version | What it adds |
+|---|---|
+| `4.10.0` | GitHub registries: `owner/repo/item` from a public repository |
+| `4.19.0` | Private repositories: the CLI tries anonymous access, then reads through `gh` with your stored login, or with `GH_TOKEN` / `GITHUB_TOKEN` where `gh` is not installed |
+
+Checked on 25 Nov 2026 in a scratch app against this repo: `shadcn add deanjstone-hl/frontend/use-mobile#v3.28.0`
+installs `src/hooks/use-mobile.ts` on `4.10.0`, `4.19.0` and `4.23.0`; `deanjstone/frontend/use-mobile#v3.28.0`
+(the old owner, through the redirect) installs the same file; `use-theme-preference#v3.28.0` pulls its
+`registryDependencies` entry (`deanjstone/frontend/theme-preference`) through the redirect too; and
+`shadcn registry validate deanjstone-hl/frontend` reports `Registry is valid` for the root `registry.json` (107 items).
+The consumers pin `^4.19.1`, above both floors. This repo is public, so the private read path is not what those
+checks used; a token for CI needs Contents read-only on the repository.
 
 **Which to use.** The two forms pin the same thing: the named item, at the
 tag. Their dependency behaviour is identical. Use `#ref` by default. It is
