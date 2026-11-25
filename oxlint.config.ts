@@ -17,6 +17,11 @@ export default defineConfig({
     "anti-slop/no-chained-type-assertions": "error",
     "anti-slop/no-widen-then-assert": "error",
     "anti-slop/no-conditional-empty-object-spread": "error",
+    "anti-slop/no-reflect-apply": "error",
+    "anti-slop/no-reflect-get": "error",
+    "anti-slop/no-unknown-type-aliases": "error",
+    "anti-slop/no-reduce-accumulator-copy": "error",
+    "anti-slop/no-object-parameters": "warn",
   },
   overrides: [
     {
