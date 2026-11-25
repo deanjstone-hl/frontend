@@ -1,7 +1,9 @@
 // @vitest-environment node
 
 import { describe, expect, it } from "vitest"
+import { readFileSync } from "node:fs"
 import { KNOWN, classify } from "../scripts/geometry-gate/checks.mjs"
+import { VIEWS } from "../scripts/geometry-gate/session.mjs"
 
 // The KNOWN list of the geometry gate (design-system#143): a filed finding is
 // reported and passes, a new one fails, and an entry that stopped firing is stale.
@@ -44,5 +46,21 @@ describe("classify", () => {
 
   it("points every entry at an issue", () => {
     expect(KNOWN.every((entry: { issue: number }) => Number.isInteger(entry.issue))).toBe(true)
+  })
+})
+
+// The docked primary action (frontend#213) is only held to the thumb zone in a view that draws it.
+describe("the shell-action view", () => {
+  it("is a gate view that runs the thumb-zone check", () => {
+    expect(VIEWS.find((view: { name: string }) => view.name === "shell-action")).toMatchObject({ query: "v=shell&action=1", primaryAction: true })
+  })
+
+  it("draws a primary action in the harness, and the check runs for it in checks.mjs", () => {
+    expect(readFileSync("scripts/geometry-gate/harness/main.tsx", "utf8")).toContain('primaryAction={params.get("action")')
+    expect(readFileSync("scripts/geometry-gate/checks.mjs", "utf8")).toContain("if (view.primaryAction)")
+  })
+
+  it("has an aria baseline", () => {
+    expect(readFileSync("scripts/geometry-gate/aria/shell-action.yml", "utf8")).toContain("Add item")
   })
 })

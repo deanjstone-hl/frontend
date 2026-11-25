@@ -1,4 +1,4 @@
-import { Bell, Home, Inbox, Search, Settings } from "lucide-react"
+import { Bell, Home, Inbox, Plus, Search, Settings } from "lucide-react"
 import { createRoot } from "react-dom/client"
 import { toast } from "sonner"
 
@@ -254,6 +254,7 @@ const App = () => {
       pageTitle={view === "shell-titled" ? "Page title" : undefined}
       headerActions={<Button size="icon" variant="ghost" aria-label="Alerts"><Bell /></Button>}
       banner={params.get("banner") ? <Banner /> : undefined}
+      primaryAction={params.get("action") ? <Button><Plus />Add item</Button> : undefined}
     >
       <Page />
     </AppShell>

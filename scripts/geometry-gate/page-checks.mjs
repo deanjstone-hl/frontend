@@ -233,10 +233,12 @@ export const largeText = ({ height = innerHeight, ceiling }) => {
   const top = document.querySelector('[data-slot="app-shell-top"]')
   if (root && top && bar && shown(bar)) {
     const published = (name) => Number.parseFloat(getComputedStyle(root).getPropertyValue(name))
-    const bottom = bar.getBoundingClientRect()
+    // The strips that stack above the bar (the banner, the primary action) are chrome too: the
+    // bottom block runs from the viewport's foot up to the top of the highest of them.
+    const tops = [bar, ...document.querySelectorAll('[data-slot="app-shell-action"], [data-slot="app-shell-banner"]')].map((element) => element.getBoundingClientRect().top)
     const wanted = [
       ["--shell-top", top.getBoundingClientRect().bottom],
-      ["--shell-bottom", height - bottom.top],
+      ["--shell-bottom", height - Math.min(...tops)],
     ]
     for (const [name, pixels] of wanted) {
       if (!(Math.abs(published(name) - pixels) <= 1.5)) findings.push({ check: "shell-metrics", label: name, detail: `published ${getComputedStyle(root).getPropertyValue(name) || "nothing"}, the chrome measures ${pixels.toFixed(1)}px` })
@@ -375,4 +377,44 @@ export const sampleBackdrop = async ({ png, scale, rects }) => {
     }
     return samples
   })
+}
+
+// The shell's primary-action strip (frontend#213): under a coarse pointer an app's one primary action is
+// drawn in a glass strip above the tab bar, where a thumb reaches. The view that passes `primaryAction`
+// must show it there: each control's centre in the bottom `zone` of the viewport, at least 44 CSS px in
+// both directions, clear of the tab bar, and the end of the page clear of the strip. The curve gate
+// already holds the same controls out of the corners and the home-indicator band.
+export const THUMB_ZONE = 0.4
+
+export const primaryInThumbZone = ({ zone = 0.4, minimum = 44 } = {}) => {
+  const check = "primary-in-thumb-zone"
+  const strip = document.querySelector('[data-slot="app-shell-action"]')
+  if (!strip) return [{ check, label: "app-shell-action", detail: "the view passes primaryAction but no strip is drawn" }]
+  const findings = []
+  const controls = [...strip.querySelectorAll('a[href], button, [role=button], [role=link]')]
+  if (controls.length === 0) findings.push({ check, label: "app-shell-action", detail: "the strip holds no control" })
+  const floor = innerHeight * (1 - zone)
+  const bar = document.querySelector('[data-slot="app-shell-tabbar"]')?.getBoundingClientRect()
+  const overlaps = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top
+  for (const control of controls) {
+    const rect = control.getBoundingClientRect()
+    const name = control.getAttribute("aria-label") || control.textContent.trim().replace(/\s+/g, " ").slice(0, 32) || control.tagName.toLowerCase()
+    const label = `${control.tagName.toLowerCase()} "${name}"`
+    const centre = rect.top + rect.height / 2
+    if (centre < floor) findings.push({ check, label, detail: `centre at y=${centre.toFixed(1)}, above the bottom ${zone * 100}% (from y=${floor.toFixed(1)})` })
+    if (rect.width < minimum || rect.height < minimum) findings.push({ check, label, detail: `${rect.width.toFixed(1)}x${rect.height.toFixed(1)}, under ${minimum}x${minimum}` })
+    if (bar && overlaps(rect, bar)) findings.push({ check, label, detail: "overlaps the tab bar" })
+    if (document.querySelector('[data-slot="app-shell-header"]')?.contains(control)) findings.push({ check, label, detail: "is also in the header" })
+  }
+  const stripBox = strip.getBoundingClientRect()
+  if (bar && overlaps(stripBox, bar)) findings.push({ check, label: "app-shell-action", detail: "the strip overlaps the tab bar" })
+  const main = document.querySelector('[data-slot="app-shell-main"]')
+  const last = main?.lastElementChild
+  if (last) {
+    scrollTo(0, document.documentElement.scrollHeight)
+    const end = last.getBoundingClientRect().bottom
+    scrollTo(0, 0)
+    if (end > stripBox.top + 0.5) findings.push({ check, label: "app-shell-action", detail: `the end of the page (y=${end.toFixed(1)}) runs under the strip, which starts at y=${stripBox.top.toFixed(1)}` })
+  }
+  return findings
 }
