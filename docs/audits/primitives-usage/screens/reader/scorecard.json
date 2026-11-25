@@ -76,12 +76,12 @@
       "detail": "max 1"
      },
      "nothingCutOff": {
-      "pass": false,
-      "detail": "12 texts cut short, 12 of them in list rows"
+      "pass": true,
+      "detail": "0 texts cut short, 0 of them in list rows"
      },
      "interactiveCount": {
       "pass": false,
-      "detail": "27"
+      "detail": "24"
      },
      "alphaSteps": {
       "pass": true,
@@ -98,8 +98,8 @@
       "detail": "no primary action on this screen"
      },
      "tapTargets": {
-      "pass": false,
-      "detail": "1 of 33 under 44px"
+      "pass": true,
+      "detail": "0 of 33 under 44px"
      },
      "inputText": {
       "pass": true,
@@ -166,11 +166,11 @@
        },
        {
         "size": 14,
-        "chars": 494
+        "chars": 433
        },
        {
         "size": 13,
-        "chars": 282
+        "chars": 234
        },
        {
         "size": 12.8,
@@ -205,7 +205,7 @@
       "count": 8,
       "sample": [
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -218,7 +218,7 @@
         "titleText": "Why the long article is still "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -229,7 +229,7 @@
         "titleText": "A field guide to offline-first"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -240,7 +240,7 @@
         "titleText": "Notes on keeping a household i"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -251,7 +251,7 @@
         "titleText": "The quiet case for plain text,"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -262,7 +262,7 @@
         "titleText": "Light and dark themes are one "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -279,22 +279,15 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       85
+       104
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
+      "firstViewport": 24,
       "measured": 33,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -315,15 +308,15 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 293,
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
@@ -420,23 +413,23 @@
        "what": "Why the long article is still worth the ",
        "tag": "a",
        "top": 328.5,
-       "bottom": 346.5,
+       "bottom": 365.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 449,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 225.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -445,11 +438,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -458,21 +451,21 @@
       {
        "what": "A field guide to offline-first apps, wit",
        "tag": "a",
-       "top": 421.5,
-       "bottom": 439.5,
+       "top": 440.5,
+       "bottom": 477.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 546.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -484,8 +477,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -497,21 +490,21 @@
       {
        "what": "Notes on keeping a household inventory t",
        "tag": "a",
-       "top": 514.5,
-       "bottom": 532.5,
+       "top": 552.5,
+       "bottom": 589.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -523,8 +516,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -536,24 +529,24 @@
       {
        "what": "The quiet case for plain text, and why f",
        "tag": "a",
-       "top": 607.5,
-       "bottom": 625.5,
+       "top": 664.5,
+       "bottom": 701.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.7,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 232.8,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -562,11 +555,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -575,24 +568,24 @@
       {
        "what": "Light and dark themes are one design, no",
        "tag": "a",
-       "top": 700.5,
-       "bottom": 718.5,
+       "top": 776.5,
+       "bottom": 813.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 525.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 232.8,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -601,11 +594,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 298.1,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -614,24 +607,24 @@
       {
        "what": "Passkeys for people who never read the s",
        "tag": "a",
-       "top": 793.5,
-       "bottom": 811.5,
+       "top": 888.5,
+       "bottom": 925.5,
        "left": 29,
-       "inFirstViewport": true,
-       "centreAt": 1,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 405.6,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -640,11 +633,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -653,24 +646,24 @@
       {
        "what": "A finished read about gardening in small",
        "tag": "a",
-       "top": 886.5,
-       "bottom": 904.5,
+       "top": 1000.5,
+       "bottom": 1037.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 550.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 232.8,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -679,11 +672,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -692,24 +685,24 @@
       {
        "what": "Designing a budget tool that a household",
        "tag": "a",
-       "top": 979.5,
-       "bottom": 997.5,
+       "top": 1112.5,
+       "bottom": 1149.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 455.5,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -718,11 +711,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -764,18 +757,9 @@
      },
      "textRuns": 41,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Why the long article is still worth the evening it (74% shown)",
-       "notes.example.test · 4 min read (78% shown)",
-       "A field guide to offline-first apps, with notes on (61% shown)",
-       "sample.example.test · 14 min read · 35% (64% shown)",
-       "Notes on keeping a household inventory that does n (63% shown)",
-       "journal.example.test · 5 min read (76% shown)",
-       "The quiet case for plain text, and why files outla (63% shown)",
-       "plain.example.test · 6 min read (81% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -803,11 +787,11 @@
        },
        {
         "size": 14,
-        "chars": 494
+        "chars": 433
        },
        {
         "size": 13,
-        "chars": 282
+        "chars": 234
        },
        {
         "size": 12.8,
@@ -842,7 +826,7 @@
       "count": 8,
       "sample": [
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -855,7 +839,7 @@
         "titleText": "Why the long article is still "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -866,7 +850,7 @@
         "titleText": "A field guide to offline-first"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -877,7 +861,7 @@
         "titleText": "Notes on keeping a household i"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -888,7 +872,7 @@
         "titleText": "The quiet case for plain text,"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -899,7 +883,7 @@
         "titleText": "Light and dark themes are one "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -916,22 +900,15 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       85
+       104
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
+      "firstViewport": 24,
       "measured": 33,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -952,15 +929,15 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 293,
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
@@ -1057,23 +1034,23 @@
        "what": "Why the long article is still worth the ",
        "tag": "a",
        "top": 328.5,
-       "bottom": 346.5,
+       "bottom": 365.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 449,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 225.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -1082,11 +1059,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -1095,21 +1072,21 @@
       {
        "what": "A field guide to offline-first apps, wit",
        "tag": "a",
-       "top": 421.5,
-       "bottom": 439.5,
+       "top": 440.5,
+       "bottom": 477.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 546.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -1121,8 +1098,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -1134,21 +1111,21 @@
       {
        "what": "Notes on keeping a household inventory t",
        "tag": "a",
-       "top": 514.5,
-       "bottom": 532.5,
+       "top": 552.5,
+       "bottom": 589.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -1160,8 +1137,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -1173,24 +1150,24 @@
       {
        "what": "The quiet case for plain text, and why f",
        "tag": "a",
-       "top": 607.5,
-       "bottom": 625.5,
+       "top": 664.5,
+       "bottom": 701.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.7,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 232.8,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -1199,11 +1176,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -1212,24 +1189,24 @@
       {
        "what": "Light and dark themes are one design, no",
        "tag": "a",
-       "top": 700.5,
-       "bottom": 718.5,
+       "top": 776.5,
+       "bottom": 813.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 525.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 232.8,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -1238,11 +1215,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 298.1,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -1251,24 +1228,24 @@
       {
        "what": "Passkeys for people who never read the s",
        "tag": "a",
-       "top": 793.5,
-       "bottom": 811.5,
+       "top": 888.5,
+       "bottom": 925.5,
        "left": 29,
-       "inFirstViewport": true,
-       "centreAt": 1,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 405.6,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -1277,11 +1254,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -1290,24 +1267,24 @@
       {
        "what": "A finished read about gardening in small",
        "tag": "a",
-       "top": 886.5,
-       "bottom": 904.5,
+       "top": 1000.5,
+       "bottom": 1037.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 550.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 232.8,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -1316,11 +1293,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -1329,24 +1306,24 @@
       {
        "what": "Designing a budget tool that a household",
        "tag": "a",
-       "top": 979.5,
-       "bottom": 997.5,
+       "top": 1112.5,
+       "bottom": 1149.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 455.5,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -1355,11 +1332,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -1402,18 +1379,9 @@
      },
      "textRuns": 41,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Why the long article is still worth the evening it (74% shown)",
-       "notes.example.test · 4 min read (78% shown)",
-       "A field guide to offline-first apps, with notes on (61% shown)",
-       "sample.example.test · 14 min read · 35% (64% shown)",
-       "Notes on keeping a household inventory that does n (63% shown)",
-       "journal.example.test · 5 min read (76% shown)",
-       "The quiet case for plain text, and why files outla (63% shown)",
-       "plain.example.test · 6 min read (81% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -1561,25 +1529,13 @@
      "interactive": {
       "firstViewport": 34,
       "measured": 34,
-      "small": 25,
+      "small": 23,
       "smallSample": [
        {
         "what": "Library",
         "tag": "a",
         "width": 231,
         "height": 40
-       },
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       },
-       {
-        "what": "Sign out",
-        "tag": "button",
-        "width": 32,
-        "height": 32
        },
        {
         "what": "Save article",
@@ -1622,6 +1578,18 @@
         "tag": "button",
         "width": 69,
         "height": 24
+       },
+       {
+        "what": "Archive",
+        "tag": "button",
+        "width": 62.9,
+        "height": 24
+       },
+       {
+        "what": "☆ Save",
+        "tag": "button",
+        "width": 61.3,
+        "height": 24
        }
       ],
       "inputs": 1,
@@ -1663,28 +1631,28 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 1355,
+       "top": 10,
+       "bottom": 54,
+       "left": 1331,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
        "tag": "button",
-       "top": 16,
-       "bottom": 48,
-       "left": 1391,
+       "top": 10,
+       "bottom": 54,
+       "left": 1379,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Save article",
@@ -2262,25 +2230,13 @@
      "interactive": {
       "firstViewport": 34,
       "measured": 34,
-      "small": 25,
+      "small": 23,
       "smallSample": [
        {
         "what": "Library",
         "tag": "a",
         "width": 231,
         "height": 40
-       },
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       },
-       {
-        "what": "Sign out",
-        "tag": "button",
-        "width": 32,
-        "height": 32
        },
        {
         "what": "Save article",
@@ -2323,6 +2279,18 @@
         "tag": "button",
         "width": 69,
         "height": 24
+       },
+       {
+        "what": "Archive",
+        "tag": "button",
+        "width": 62.9,
+        "height": 24
+       },
+       {
+        "what": "☆ Save",
+        "tag": "button",
+        "width": 61.3,
+        "height": 24
        }
       ],
       "inputs": 1,
@@ -2364,28 +2332,28 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 1355,
+       "top": 10,
+       "bottom": 54,
+       "left": 1331,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
        "tag": "button",
-       "top": 16,
-       "bottom": 48,
-       "left": 1391,
+       "top": 10,
+       "bottom": 54,
+       "left": 1379,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Save article",
@@ -2844,11 +2812,11 @@
        },
        {
         "size": 14,
-        "chars": 494
+        "chars": 350
        },
        {
         "size": 13,
-        "chars": 282
+        "chars": 188
        },
        {
         "size": 12.8,
@@ -2883,7 +2851,7 @@
       "count": 8,
       "sample": [
        {
-        "height": 85,
+        "height": 111,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -2896,7 +2864,7 @@
         "titleText": "Why the long article is still "
        },
        {
-        "height": 85,
+        "height": 130,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -2907,7 +2875,7 @@
         "titleText": "A field guide to offline-first"
        },
        {
-        "height": 85,
+        "height": 130,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -2918,7 +2886,7 @@
         "titleText": "Notes on keeping a household i"
        },
        {
-        "height": 85,
+        "height": 123,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -2929,7 +2897,7 @@
         "titleText": "The quiet case for plain text,"
        },
        {
-        "height": 85,
+        "height": 130,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -2940,7 +2908,7 @@
         "titleText": "Light and dark themes are one "
        },
        {
-        "height": 85,
+        "height": 111,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -2957,22 +2925,17 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       85
+       111,
+       123,
+       130
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
+      "firstViewport": 21,
       "measured": 33,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -2993,15 +2956,15 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 223,
+       "top": 10,
+       "bottom": 54,
+       "left": 211,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
@@ -3098,23 +3061,23 @@
        "what": "Why the long article is still worth the ",
        "tag": "a",
        "top": 328.5,
-       "bottom": 346.5,
+       "bottom": 365.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 449,
-       "height": 83
+       "width": 286,
+       "height": 109
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 155.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -3123,11 +3086,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 228.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3136,21 +3099,21 @@
       {
        "what": "A field guide to offline-first apps, wit",
        "tag": "a",
-       "top": 421.5,
-       "bottom": 439.5,
+       "top": 447.5,
+       "bottom": 503.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.5,
+       "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 546.4,
-       "height": 83
+       "width": 286,
+       "height": 128
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 508,
+       "bottom": 552,
        "left": 162.8,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -3162,8 +3125,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 508,
+       "bottom": 552,
        "left": 228.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -3175,24 +3138,24 @@
       {
        "what": "Notes on keeping a household inventory t",
        "tag": "a",
-       "top": 514.5,
-       "bottom": 532.5,
+       "top": 585.5,
+       "bottom": 641.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.1,
-       "height": 83
+       "width": 286,
+       "height": 128
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 646,
+       "bottom": 690,
        "left": 162.8,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3201,11 +3164,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 646,
+       "bottom": 690,
        "left": 228.1,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3214,24 +3177,24 @@
       {
        "what": "The quiet case for plain text, and why f",
        "tag": "a",
-       "top": 607.5,
-       "bottom": 625.5,
+       "top": 723.5,
+       "bottom": 779.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.7,
-       "height": 83
+       "width": 286,
+       "height": 121
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 784,
+       "bottom": 828,
        "left": 162.8,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3240,11 +3203,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 784,
+       "bottom": 828,
        "left": 228.1,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3253,24 +3216,24 @@
       {
        "what": "Light and dark themes are one design, no",
        "tag": "a",
-       "top": 700.5,
-       "bottom": 718.5,
+       "top": 854.5,
+       "bottom": 910.5,
        "left": 29,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 525.1,
-       "height": 83
+       "width": 286,
+       "height": 128
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 915,
+       "bottom": 959,
        "left": 162.8,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3279,11 +3242,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 915,
+       "bottom": 959,
        "left": 228.1,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3292,24 +3255,24 @@
       {
        "what": "Passkeys for people who never read the s",
        "tag": "a",
-       "top": 793.5,
-       "bottom": 811.5,
+       "top": 992.5,
+       "bottom": 1029.5,
        "left": 29,
-       "inFirstViewport": true,
-       "centreAt": 1,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 405.6,
-       "height": 83
+       "width": 286,
+       "height": 109
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 1034,
+       "bottom": 1078,
        "left": 155.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -3318,11 +3281,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 1034,
+       "bottom": 1078,
        "left": 228.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3331,24 +3294,24 @@
       {
        "what": "A finished read about gardening in small",
        "tag": "a",
-       "top": 886.5,
-       "bottom": 904.5,
+       "top": 1111.5,
+       "bottom": 1167.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 550.4,
-       "height": 83
+       "width": 286,
+       "height": 121
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1172,
+       "bottom": 1216,
        "left": 162.8,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3357,11 +3320,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1172,
+       "bottom": 1216,
        "left": 228.1,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3370,24 +3333,24 @@
       {
        "what": "Designing a budget tool that a household",
        "tag": "a",
-       "top": 979.5,
-       "bottom": 997.5,
+       "top": 1242.5,
+       "bottom": 1279.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 455.5,
-       "height": 83
+       "width": 286,
+       "height": 109
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1284,
+       "bottom": 1328,
        "left": 155.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -3396,11 +3359,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1284,
+       "bottom": 1328,
        "left": 228.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3442,18 +3405,9 @@
      },
      "textRuns": 41,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Why the long article is still worth the evening it (58% shown)",
-       "notes.example.test · 4 min read (49% shown)",
-       "A field guide to offline-first apps, with notes on (48% shown)",
-       "sample.example.test · 14 min read · 35% (41% shown)",
-       "Notes on keeping a household inventory that does n (50% shown)",
-       "journal.example.test · 5 min read (49% shown)",
-       "The quiet case for plain text, and why files outla (50% shown)",
-       "plain.example.test · 6 min read (52% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -3481,11 +3435,11 @@
        },
        {
         "size": 14,
-        "chars": 494
+        "chars": 433
        },
        {
         "size": 13,
-        "chars": 282
+        "chars": 234
        },
        {
         "size": 12.8,
@@ -3520,7 +3474,7 @@
       "count": 8,
       "sample": [
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -3533,7 +3487,7 @@
         "titleText": "Why the long article is still "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -3544,7 +3498,7 @@
         "titleText": "A field guide to offline-first"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -3555,7 +3509,7 @@
         "titleText": "Notes on keeping a household i"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -3566,7 +3520,7 @@
         "titleText": "The quiet case for plain text,"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -3577,7 +3531,7 @@
         "titleText": "Light and dark themes are one "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -3594,22 +3548,15 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       85
+       104
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
+      "firstViewport": 24,
       "measured": 33,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -3630,15 +3577,15 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 293,
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
@@ -3735,23 +3682,23 @@
        "what": "Why the long article is still worth the ",
        "tag": "a",
        "top": 328.5,
-       "bottom": 346.5,
+       "bottom": 365.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 449,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 225.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -3760,11 +3707,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3773,21 +3720,21 @@
       {
        "what": "A field guide to offline-first apps, wit",
        "tag": "a",
-       "top": 421.5,
-       "bottom": 439.5,
+       "top": 440.5,
+       "bottom": 477.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 546.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -3799,8 +3746,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -3812,21 +3759,21 @@
       {
        "what": "Notes on keeping a household inventory t",
        "tag": "a",
-       "top": 514.5,
-       "bottom": 532.5,
+       "top": 552.5,
+       "bottom": 589.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -3838,8 +3785,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -3851,24 +3798,24 @@
       {
        "what": "The quiet case for plain text, and why f",
        "tag": "a",
-       "top": 607.5,
-       "bottom": 625.5,
+       "top": 664.5,
+       "bottom": 701.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.7,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 232.8,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3877,11 +3824,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3890,24 +3837,24 @@
       {
        "what": "Light and dark themes are one design, no",
        "tag": "a",
-       "top": 700.5,
-       "bottom": 718.5,
+       "top": 776.5,
+       "bottom": 813.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 525.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 232.8,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3916,11 +3863,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 298.1,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3929,24 +3876,24 @@
       {
        "what": "Passkeys for people who never read the s",
        "tag": "a",
-       "top": 793.5,
-       "bottom": 811.5,
+       "top": 888.5,
+       "bottom": 925.5,
        "left": 29,
-       "inFirstViewport": true,
-       "centreAt": 1,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 405.6,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -3955,11 +3902,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -3968,24 +3915,24 @@
       {
        "what": "A finished read about gardening in small",
        "tag": "a",
-       "top": 886.5,
-       "bottom": 904.5,
+       "top": 1000.5,
+       "bottom": 1037.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 550.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 232.8,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -3994,11 +3941,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4007,24 +3954,24 @@
       {
        "what": "Designing a budget tool that a household",
        "tag": "a",
-       "top": 979.5,
-       "bottom": 997.5,
+       "top": 1112.5,
+       "bottom": 1149.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 455.5,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -4033,11 +3980,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4079,18 +4026,9 @@
      },
      "textRuns": 41,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Why the long article is still worth the evening it (74% shown)",
-       "notes.example.test · 4 min read (78% shown)",
-       "A field guide to offline-first apps, with notes on (61% shown)",
-       "sample.example.test · 14 min read · 35% (64% shown)",
-       "Notes on keeping a household inventory that does n (63% shown)",
-       "journal.example.test · 5 min read (76% shown)",
-       "The quiet case for plain text, and why files outla (63% shown)",
-       "plain.example.test · 6 min read (81% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -4118,11 +4056,11 @@
        },
        {
         "size": 14,
-        "chars": 494
+        "chars": 433
        },
        {
         "size": 13,
-        "chars": 282
+        "chars": 234
        },
        {
         "size": 12.8,
@@ -4157,7 +4095,7 @@
       "count": 8,
       "sample": [
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -4170,7 +4108,7 @@
         "titleText": "Why the long article is still "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -4181,7 +4119,7 @@
         "titleText": "A field guide to offline-first"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -4192,7 +4130,7 @@
         "titleText": "Notes on keeping a household i"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -4203,7 +4141,7 @@
         "titleText": "The quiet case for plain text,"
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -4214,7 +4152,7 @@
         "titleText": "Light and dark themes are one "
        },
        {
-        "height": 85,
+        "height": 104,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -4231,22 +4169,15 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       85
+       104
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
+      "firstViewport": 24,
       "measured": 33,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Settings",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -4267,15 +4198,15 @@
       {
        "what": "Settings",
        "tag": "a",
-       "top": 16,
-       "bottom": 48,
-       "left": 293,
+       "top": 10,
+       "bottom": 54,
+       "left": 281,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Sign out",
@@ -4372,23 +4303,23 @@
        "what": "Why the long article is still worth the ",
        "tag": "a",
        "top": 328.5,
-       "bottom": 346.5,
+       "bottom": 365.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 449,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 225.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -4397,11 +4328,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 351,
-       "bottom": 395,
+       "top": 370,
+       "bottom": 414,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.4,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4410,21 +4341,21 @@
       {
        "what": "A field guide to offline-first apps, wit",
        "tag": "a",
-       "top": 421.5,
-       "bottom": 439.5,
+       "top": 440.5,
+       "bottom": 477.5,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 546.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -4436,8 +4367,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 444,
-       "bottom": 488,
+       "top": 482,
+       "bottom": 526,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -4449,21 +4380,21 @@
       {
        "what": "Notes on keeping a household inventory t",
        "tag": "a",
-       "top": 514.5,
-       "bottom": 532.5,
+       "top": 552.5,
+       "bottom": 589.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 232.8,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -4475,8 +4406,8 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 537,
-       "bottom": 581,
+       "top": 594,
+       "bottom": 638,
        "left": 298.1,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -4488,24 +4419,24 @@
       {
        "what": "The quiet case for plain text, and why f",
        "tag": "a",
-       "top": 607.5,
-       "bottom": 625.5,
+       "top": 664.5,
+       "bottom": 701.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 523.7,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 232.8,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -4514,11 +4445,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 630,
-       "bottom": 674,
+       "top": 706,
+       "bottom": 750,
        "left": 298.1,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4527,24 +4458,24 @@
       {
        "what": "Light and dark themes are one design, no",
        "tag": "a",
-       "top": 700.5,
-       "bottom": 718.5,
+       "top": 776.5,
+       "bottom": 813.5,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 525.1,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 232.8,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -4553,11 +4484,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 723,
-       "bottom": 767,
+       "top": 818,
+       "bottom": 862,
        "left": 298.1,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
+       "inFirstViewport": false,
+       "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4566,24 +4497,24 @@
       {
        "what": "Passkeys for people who never read the s",
        "tag": "a",
-       "top": 793.5,
-       "bottom": 811.5,
+       "top": 888.5,
+       "bottom": 925.5,
        "left": 29,
-       "inFirstViewport": true,
-       "centreAt": 1,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 405.6,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -4592,11 +4523,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 816,
-       "bottom": 860,
+       "top": 930,
+       "bottom": 974,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1,
+       "centreAt": 1.1,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4605,24 +4536,24 @@
       {
        "what": "A finished read about gardening in small",
        "tag": "a",
-       "top": 886.5,
-       "bottom": 904.5,
+       "top": 1000.5,
+       "bottom": 1037.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 550.4,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "☆ Save",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 232.8,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 61.3,
@@ -4631,11 +4562,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 909,
-       "bottom": 953,
+       "top": 1042,
+       "bottom": 1086,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.1,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4644,24 +4575,24 @@
       {
        "what": "Designing a budget tool that a household",
        "tag": "a",
-       "top": 979.5,
-       "bottom": 997.5,
+       "top": 1112.5,
+       "bottom": 1149.5,
        "left": 29,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 455.5,
-       "height": 83
+       "width": 356,
+       "height": 102
       },
       {
        "what": "★ Saved",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 225.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 69,
@@ -4670,11 +4601,11 @@
       {
        "what": "Archive",
        "tag": "button",
-       "top": 1002,
-       "bottom": 1046,
+       "top": 1154,
+       "bottom": 1198,
        "left": 298.1,
        "inFirstViewport": false,
-       "centreAt": 1.2,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 62.9,
@@ -4716,18 +4647,9 @@
      },
      "textRuns": 41,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Why the long article is still worth the evening it (74% shown)",
-       "notes.example.test · 4 min read (78% shown)",
-       "A field guide to offline-first apps, with notes on (61% shown)",
-       "sample.example.test · 14 min read · 35% (64% shown)",
-       "Notes on keeping a household inventory that does n (63% shown)",
-       "journal.example.test · 5 min read (76% shown)",
-       "The quiet case for plain text, and why files outla (63% shown)",
-       "plain.example.test · 6 min read (81% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -4740,8 +4662,8 @@
       "Read",
       "Settings",
       "Sign out",
-      "Passkeys for people who never ",
-      "★ Saved",
+      "Light and dark themes are one ",
+      "☆ Save",
       "Archive"
      ]
     }
@@ -4824,8 +4746,8 @@
       "detail": "no primary action on this screen"
      },
      "tapTargets": {
-      "pass": false,
-      "detail": "1 of 3 under 44px"
+      "pass": true,
+      "detail": "0 of 3 under 44px"
      },
      "inputText": {
       "pass": null,
@@ -4982,15 +4904,8 @@
      "interactive": {
       "firstViewport": 3,
       "measured": 3,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Open original",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 0,
       "smallInputs": []
      },
@@ -5024,15 +4939,15 @@
       {
        "what": "Open original",
        "tag": "a",
-       "top": 185,
-       "bottom": 217,
+       "top": 179,
+       "bottom": 223,
        "left": 64,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -5250,15 +5165,8 @@
      "interactive": {
       "firstViewport": 3,
       "measured": 3,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Open original",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 0,
       "smallInputs": []
      },
@@ -5292,15 +5200,15 @@
       {
        "what": "Open original",
        "tag": "a",
-       "top": 185,
-       "bottom": 217,
+       "top": 179,
+       "bottom": 223,
        "left": 64,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -5455,7 +5363,7 @@
         "text": "Keeping the reason attached",
         "size": 24,
         "weight": 700,
-        "top": 723
+        "top": 735
        }
       ]
      },
@@ -5544,21 +5452,8 @@
      "interactive": {
       "firstViewport": 3,
       "measured": 3,
-      "small": 2,
-      "smallSample": [
-       {
-        "what": "Remove from favorites",
-        "tag": "button",
-        "width": 32,
-        "height": 32
-       },
-       {
-        "what": "Open original",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 0,
       "smallInputs": []
      },
@@ -5580,27 +5475,27 @@
        "what": "Remove from favorites",
        "tag": "button",
        "top": 187,
-       "bottom": 219,
+       "bottom": 231,
        "left": 380,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Open original",
        "tag": "a",
        "top": 187,
-       "bottom": 219,
-       "left": 416,
+       "bottom": 231,
+       "left": 428,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -5755,7 +5650,7 @@
         "text": "Keeping the reason attached",
         "size": 24,
         "weight": 700,
-        "top": 723
+        "top": 735
        }
       ]
      },
@@ -5844,21 +5739,8 @@
      "interactive": {
       "firstViewport": 3,
       "measured": 3,
-      "small": 2,
-      "smallSample": [
-       {
-        "what": "Remove from favorites",
-        "tag": "button",
-        "width": 32,
-        "height": 32
-       },
-       {
-        "what": "Open original",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 0,
       "smallInputs": []
      },
@@ -5880,27 +5762,27 @@
        "what": "Remove from favorites",
        "tag": "button",
        "top": 187,
-       "bottom": 219,
+       "bottom": 231,
        "left": 380,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Open original",
        "tag": "a",
        "top": 187,
-       "bottom": 219,
-       "left": 416,
+       "bottom": 231,
+       "left": 428,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -6118,15 +6000,8 @@
      "interactive": {
       "firstViewport": 3,
       "measured": 3,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Open original",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 0,
       "smallInputs": []
      },
@@ -6160,15 +6035,15 @@
       {
        "what": "Open original",
        "tag": "a",
-       "top": 236,
-       "bottom": 268,
+       "top": 230,
+       "bottom": 274,
        "left": 64,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -6386,15 +6261,8 @@
      "interactive": {
       "firstViewport": 3,
       "measured": 3,
-      "small": 1,
-      "smallSample": [
-       {
-        "what": "Open original",
-        "tag": "a",
-        "width": 32,
-        "height": 32
-       }
-      ],
+      "small": 0,
+      "smallSample": [],
       "inputs": 0,
       "smallInputs": []
      },
@@ -6428,15 +6296,15 @@
       {
        "what": "Open original",
        "tag": "a",
-       "top": 185,
-       "bottom": 217,
+       "top": 179,
+       "bottom": 223,
        "left": 64,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 32,
-       "height": 32
+       "width": 44,
+       "height": 44
       }
      ],
      "alphaSteps": [

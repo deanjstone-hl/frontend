@@ -19,7 +19,7 @@
     "body": ""
   },
   {
-    "url": "http://127.0.0.1:59002/roles**",
+    "url": "http://127.0.0.1:59002/jobs/roles**",
     "method": "GET",
     "status": 200,
     "json": {

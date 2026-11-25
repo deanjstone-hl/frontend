@@ -57,7 +57,7 @@
     "clutter": {
      "chipsPerRow": {
       "pass": true,
-      "detail": "max 1 in 14 rows"
+      "detail": "max 1 in 13 rows"
      },
      "coloursPerRow": {
       "pass": true,
@@ -76,12 +76,12 @@
       "detail": "max 2"
      },
      "nothingCutOff": {
-      "pass": false,
-      "detail": "7 texts cut short, 7 of them in list rows"
+      "pass": true,
+      "detail": "0 texts cut short, 0 of them in list rows"
      },
      "interactiveCount": {
-      "pass": false,
-      "detail": "22"
+      "pass": true,
+      "detail": "14"
      },
      "alphaSteps": {
       "pass": true,
@@ -99,7 +99,7 @@
      },
      "tapTargets": {
       "pass": true,
-      "detail": "0 of 36 under 44px"
+      "detail": "0 of 20 under 44px"
      },
      "inputText": {
       "pass": null,
@@ -109,7 +109,7 @@
     "state": {
      "moreThanColour": {
       "pass": true,
-      "detail": "0 of 14 carry colour alone"
+      "detail": "0 of 6 carry colour alone"
      },
      "statusFromTokens": {
       "pass": true,
@@ -166,11 +166,11 @@
        },
        {
         "size": 14,
-        "chars": 226
+        "chars": 119
        },
        {
         "size": 13,
-        "chars": 669
+        "chars": 242
        },
        {
         "size": 12,
@@ -202,26 +202,10 @@
       ]
      },
      "rows": {
-      "count": 14,
+      "count": 13,
       "sample": [
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Robot vacuum with the spare br"
-       },
-       {
-        "height": 90,
+        "height": 148,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -237,55 +221,7 @@
         "titleText": "Electric kettle, 1.7 L"
        },
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Laptop charger, 65 W USB-C"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Air fryer with two drawers"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Smoke alarm with ten-year seal"
-       },
-       {
-        "height": 90,
+        "height": 199,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -299,19 +235,89 @@
         "titleWeight": 500,
         "titleSize": 14,
         "titleText": "Stand mixer with the dough hoo"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Cordless drill with two batter"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Pressure washer, electric, 180"
+       },
+       {
+        "height": 150,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Garden hose, 30 metres, with f"
+       },
+       {
+        "height": 90,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Step ladder, six treads, alumi"
        }
       ],
       "maxChips": 1,
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       90
+       43,
+       90,
+       97,
+       148,
+       150,
+       187,
+       199
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 22,
-      "measured": 36,
+      "firstViewport": 14,
+      "measured": 20,
       "small": 0,
       "smallSample": [],
       "inputs": 0,
@@ -360,8 +366,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -373,8 +379,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -386,60 +392,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -451,8 +405,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -464,34 +418,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -503,8 +431,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -516,60 +444,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -581,8 +457,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -594,34 +470,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -633,8 +483,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -646,60 +496,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -711,8 +509,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -801,7 +599,7 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 14,
+      "statusColoured": 6,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
@@ -814,7 +612,7 @@
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 91,
+      "contrastChecked": 47,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
@@ -823,22 +621,14 @@
      },
      "textRuns": 91,
      "truncated": {
-      "count": 7,
-      "inRows": 7,
-      "sample": [
-       "Robot vacuum with the spare brush roll and chargin (82% shown)",
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (9% shown)",
-       "Kitchen · Bought: 2026-06-02 · Descaled in Septemb (21% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (12% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (10% shown)",
-       "House · Bought: 2025-02-02 · Warranty: 2035-02-02  (13% shown)",
-       "Kitchen · S/N: SM-7741-B · Bought: 2024-11-29 · Wa (15% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 1,
       "sample": [
-       "Cordless drill with two batter (14px at 806)"
+       "House · S/N: USB65-0931 · Boug (13px at 729)"
       ]
      },
      "waitForSeen": true,
@@ -863,11 +653,11 @@
        },
        {
         "size": 14,
-        "chars": 226
+        "chars": 119
        },
        {
         "size": 13,
-        "chars": 669
+        "chars": 242
        },
        {
         "size": 12,
@@ -899,26 +689,10 @@
       ]
      },
      "rows": {
-      "count": 14,
+      "count": 13,
       "sample": [
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#5bd0d6",
-         "#ff6467"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Robot vacuum with the spare br"
-       },
-       {
-        "height": 90,
+        "height": 148,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -934,55 +708,7 @@
         "titleText": "Electric kettle, 1.7 L"
        },
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#5bd0d6",
-         "#ff6467"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Laptop charger, 65 W USB-C"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#5bd0d6",
-         "#ff6467"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Air fryer with two drawers"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#5bd0d6",
-         "#ff6467"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Smoke alarm with ten-year seal"
-       },
-       {
-        "height": 90,
+        "height": 199,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -996,19 +722,89 @@
         "titleWeight": 500,
         "titleSize": 14,
         "titleText": "Stand mixer with the dough hoo"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#5bd0d6",
+         "#ff6467"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Cordless drill with two batter"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#5bd0d6",
+         "#ff6467"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Pressure washer, electric, 180"
+       },
+       {
+        "height": 150,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#5bd0d6",
+         "#ff6467"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Garden hose, 30 metres, with f"
+       },
+       {
+        "height": 90,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#5bd0d6",
+         "#ff6467"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Step ladder, six treads, alumi"
        }
       ],
       "maxChips": 1,
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       90
+       43,
+       90,
+       97,
+       148,
+       150,
+       187,
+       199
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 22,
-      "measured": 36,
+      "firstViewport": 14,
+      "measured": 20,
       "small": 0,
       "smallSample": [],
       "inputs": 0,
@@ -1057,8 +853,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -1070,8 +866,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -1083,60 +879,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -1148,8 +892,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -1161,34 +905,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -1200,8 +918,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -1213,60 +931,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -1278,8 +944,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -1291,34 +957,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -1330,8 +970,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -1343,60 +983,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -1408,8 +996,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -1498,7 +1086,7 @@
        "--unreachable #fb923c",
        "--destructive #ff6467"
       ],
-      "statusColoured": 14,
+      "statusColoured": 6,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
@@ -1511,7 +1099,7 @@
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 91,
+      "contrastChecked": 47,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
@@ -1520,22 +1108,14 @@
      },
      "textRuns": 91,
      "truncated": {
-      "count": 7,
-      "inRows": 7,
-      "sample": [
-       "Robot vacuum with the spare brush roll and chargin (82% shown)",
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (9% shown)",
-       "Kitchen · Bought: 2026-06-02 · Descaled in Septemb (21% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (12% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (10% shown)",
-       "House · Bought: 2025-02-02 · Warranty: 2035-02-02  (13% shown)",
-       "Kitchen · S/N: SM-7741-B · Bought: 2024-11-29 · Wa (15% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 1,
       "sample": [
-       "Cordless drill with two batter (14px at 806)"
+       "House · S/N: USB65-0931 · Boug (13px at 729)"
       ]
      },
      "waitForSeen": true,
@@ -1560,11 +1140,11 @@
        },
        {
         "size": 14,
-        "chars": 451
+        "chars": 417
        },
        {
         "size": 13,
-        "chars": 1004
+        "chars": 983
        }
       ],
       "largest": {
@@ -1595,7 +1175,7 @@
       "count": 14,
       "sample": [
        {
-        "height": 70,
+        "height": 80,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -1627,7 +1207,7 @@
         "titleText": "Electric kettle, 1.7 L"
        },
        {
-        "height": 70,
+        "height": 80,
         "chips": 1,
         "chipTexts": [
          "Electronics"
@@ -1643,7 +1223,7 @@
         "titleText": "Laptop charger, 65 W USB-C"
        },
        {
-        "height": 70,
+        "height": 80,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -1695,12 +1275,13 @@
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       70
+       70,
+       80
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 30,
+      "firstViewport": 28,
       "measured": 38,
       "small": 37,
       "smallSample": [
@@ -1928,8 +1509,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 270,
-       "bottom": 294,
+       "top": 280,
+       "bottom": 304,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -1941,8 +1522,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 270,
-       "bottom": 294,
+       "top": 280,
+       "bottom": 304,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -1954,8 +1535,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 348,
-       "bottom": 372,
+       "top": 358,
+       "bottom": 382,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -1967,8 +1548,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 348,
-       "bottom": 372,
+       "top": 358,
+       "bottom": 382,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -1980,8 +1561,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 426,
-       "bottom": 450,
+       "top": 446,
+       "bottom": 470,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -1993,8 +1574,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 426,
-       "bottom": 450,
+       "top": 446,
+       "bottom": 470,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -2006,8 +1587,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 504,
-       "bottom": 528,
+       "top": 534,
+       "bottom": 558,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -2019,8 +1600,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 504,
-       "bottom": 528,
+       "top": 534,
+       "bottom": 558,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -2032,8 +1613,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 582,
-       "bottom": 606,
+       "top": 612,
+       "bottom": 636,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -2045,8 +1626,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 582,
-       "bottom": 606,
+       "top": 612,
+       "bottom": 636,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -2058,34 +1639,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 660,
-       "bottom": 684,
-       "left": 1244.6,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 25.5,
-       "height": 24
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 660,
-       "bottom": 684,
-       "left": 1278.1,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 40.9,
-       "height": 24
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 738,
-       "bottom": 762,
+       "top": 690,
+       "bottom": 714,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.8,
@@ -2097,8 +1652,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 738,
-       "bottom": 762,
+       "top": 690,
+       "bottom": 714,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.8,
@@ -2110,8 +1665,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 816,
-       "bottom": 840,
+       "top": 778,
+       "bottom": 802,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -2123,8 +1678,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 816,
-       "bottom": 840,
+       "top": 778,
+       "bottom": 802,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -2136,10 +1691,10 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 894,
-       "bottom": 918,
+       "top": 856,
+       "bottom": 880,
        "left": 1244.6,
-       "inFirstViewport": false,
+       "inFirstViewport": true,
        "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
@@ -2149,10 +1704,10 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 894,
-       "bottom": 918,
+       "top": 856,
+       "bottom": 880,
        "left": 1278.1,
-       "inFirstViewport": false,
+       "inFirstViewport": true,
        "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
@@ -2162,8 +1717,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 972,
-       "bottom": 996,
+       "top": 934,
+       "bottom": 958,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -2175,8 +1730,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 972,
-       "bottom": 996,
+       "top": 934,
+       "bottom": 958,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -2188,8 +1743,34 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1050,
-       "bottom": 1074,
+       "top": 1012,
+       "bottom": 1036,
+       "left": 1244.6,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 25.5,
+       "height": 24
+      },
+      {
+       "what": "Delete",
+       "tag": "button",
+       "top": 1012,
+       "bottom": 1036,
+       "left": 1278.1,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 40.9,
+       "height": 24
+      },
+      {
+       "what": "Edit",
+       "tag": "button",
+       "top": 1090,
+       "bottom": 1114,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -2201,8 +1782,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1050,
-       "bottom": 1074,
+       "top": 1090,
+       "bottom": 1114,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -2214,8 +1795,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1128,
-       "bottom": 1152,
+       "top": 1168,
+       "bottom": 1192,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.3,
@@ -2227,8 +1808,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1128,
-       "bottom": 1152,
+       "top": 1168,
+       "bottom": 1192,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.3,
@@ -2240,8 +1821,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1206,
-       "bottom": 1230,
+       "top": 1246,
+       "bottom": 1270,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.4,
@@ -2253,8 +1834,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1206,
-       "bottom": 1230,
+       "top": 1246,
+       "bottom": 1270,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.4,
@@ -2300,14 +1881,9 @@
      },
      "textRuns": 93,
      "truncated": {
-      "count": 4,
-      "inRows": 4,
-      "sample": [
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (85% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (99% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (95% shown)",
-       "Garage · S/N: DR-20481 · Bought: 2025-03-14 · Warr (97% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -2335,11 +1911,11 @@
        },
        {
         "size": 14,
-        "chars": 451
+        "chars": 417
        },
        {
         "size": 13,
-        "chars": 1004
+        "chars": 983
        }
       ],
       "largest": {
@@ -2370,7 +1946,7 @@
       "count": 14,
       "sample": [
        {
-        "height": 70,
+        "height": 80,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -2402,7 +1978,7 @@
         "titleText": "Electric kettle, 1.7 L"
        },
        {
-        "height": 70,
+        "height": 80,
         "chips": 1,
         "chipTexts": [
          "Electronics"
@@ -2418,7 +1994,7 @@
         "titleText": "Laptop charger, 65 W USB-C"
        },
        {
-        "height": 70,
+        "height": 80,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -2470,12 +2046,13 @@
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       70
+       70,
+       80
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 30,
+      "firstViewport": 28,
       "measured": 38,
       "small": 37,
       "smallSample": [
@@ -2703,8 +2280,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 270,
-       "bottom": 294,
+       "top": 280,
+       "bottom": 304,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -2716,8 +2293,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 270,
-       "bottom": 294,
+       "top": 280,
+       "bottom": 304,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -2729,8 +2306,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 348,
-       "bottom": 372,
+       "top": 358,
+       "bottom": 382,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -2742,8 +2319,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 348,
-       "bottom": 372,
+       "top": 358,
+       "bottom": 382,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -2755,8 +2332,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 426,
-       "bottom": 450,
+       "top": 446,
+       "bottom": 470,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -2768,8 +2345,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 426,
-       "bottom": 450,
+       "top": 446,
+       "bottom": 470,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -2781,8 +2358,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 504,
-       "bottom": 528,
+       "top": 534,
+       "bottom": 558,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -2794,8 +2371,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 504,
-       "bottom": 528,
+       "top": 534,
+       "bottom": 558,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -2807,8 +2384,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 582,
-       "bottom": 606,
+       "top": 612,
+       "bottom": 636,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -2820,8 +2397,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 582,
-       "bottom": 606,
+       "top": 612,
+       "bottom": 636,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -2833,34 +2410,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 660,
-       "bottom": 684,
-       "left": 1244.6,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 25.5,
-       "height": 24
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 660,
-       "bottom": 684,
-       "left": 1278.1,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 40.9,
-       "height": 24
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 738,
-       "bottom": 762,
+       "top": 690,
+       "bottom": 714,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.8,
@@ -2872,8 +2423,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 738,
-       "bottom": 762,
+       "top": 690,
+       "bottom": 714,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.8,
@@ -2885,8 +2436,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 816,
-       "bottom": 840,
+       "top": 778,
+       "bottom": 802,
        "left": 1244.6,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -2898,8 +2449,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 816,
-       "bottom": 840,
+       "top": 778,
+       "bottom": 802,
        "left": 1278.1,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -2911,10 +2462,10 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 894,
-       "bottom": 918,
+       "top": 856,
+       "bottom": 880,
        "left": 1244.6,
-       "inFirstViewport": false,
+       "inFirstViewport": true,
        "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
@@ -2924,10 +2475,10 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 894,
-       "bottom": 918,
+       "top": 856,
+       "bottom": 880,
        "left": 1278.1,
-       "inFirstViewport": false,
+       "inFirstViewport": true,
        "centreAt": 1,
        "pinnedToBottom": false,
        "primaryFill": false,
@@ -2937,8 +2488,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 972,
-       "bottom": 996,
+       "top": 934,
+       "bottom": 958,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -2950,8 +2501,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 972,
-       "bottom": 996,
+       "top": 934,
+       "bottom": 958,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -2963,8 +2514,34 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1050,
-       "bottom": 1074,
+       "top": 1012,
+       "bottom": 1036,
+       "left": 1244.6,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 25.5,
+       "height": 24
+      },
+      {
+       "what": "Delete",
+       "tag": "button",
+       "top": 1012,
+       "bottom": 1036,
+       "left": 1278.1,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 40.9,
+       "height": 24
+      },
+      {
+       "what": "Edit",
+       "tag": "button",
+       "top": 1090,
+       "bottom": 1114,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -2976,8 +2553,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1050,
-       "bottom": 1074,
+       "top": 1090,
+       "bottom": 1114,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -2989,8 +2566,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1128,
-       "bottom": 1152,
+       "top": 1168,
+       "bottom": 1192,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.3,
@@ -3002,8 +2579,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1128,
-       "bottom": 1152,
+       "top": 1168,
+       "bottom": 1192,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.3,
@@ -3015,8 +2592,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1206,
-       "bottom": 1230,
+       "top": 1246,
+       "bottom": 1270,
        "left": 1244.6,
        "inFirstViewport": false,
        "centreAt": 1.4,
@@ -3028,8 +2605,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1206,
-       "bottom": 1230,
+       "top": 1246,
+       "bottom": 1270,
        "left": 1278.1,
        "inFirstViewport": false,
        "centreAt": 1.4,
@@ -3075,14 +2652,9 @@
      },
      "textRuns": 93,
      "truncated": {
-      "count": 4,
-      "inRows": 4,
-      "sample": [
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (85% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (99% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (95% shown)",
-       "Garage · S/N: DR-20481 · Bought: 2025-03-14 · Warr (97% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -3110,11 +2682,11 @@
        },
        {
         "size": 14,
-        "chars": 226
+        "chars": 71
        },
        {
         "size": 13,
-        "chars": 669
+        "chars": 137
        },
        {
         "size": 12,
@@ -3146,99 +2718,82 @@
       ]
      },
      "rows": {
-      "count": 14,
+      "count": 9,
       "sample": [
        {
         "height": 90,
         "chips": 1,
         "chipTexts": [
-         "Appliances"
+         "Tools"
         ],
         "colours": 2,
         "colourValues": [
          "#0a6f75",
          "#c10007"
         ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Step ladder, six treads, alumi"
+       },
+       {
+        "height": 148,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Bicycle pump with pressure gau"
+       },
+       {
+        "height": 109,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Spare keys for the back gate a"
+       },
+       {
+        "height": 43,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
         "titleText": "Robot vacuum with the spare br"
        },
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Electric kettle, 1.7 L"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Laptop charger, 65 W USB-C"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Air fryer with two drawers"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
+        "height": 43,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
         "titleText": "Smoke alarm with ten-year seal"
        },
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
+        "height": 43,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
@@ -3249,13 +2804,17 @@
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       90
+       43,
+       90,
+       109,
+       148,
+       187
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 22,
-      "measured": 36,
+      "firstViewport": 10,
+      "measured": 10,
       "small": 0,
       "smallSample": [],
       "inputs": 0,
@@ -3304,8 +2863,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 195,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -3317,349 +2876,11 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 247,
        "inFirstViewport": true,
        "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 195,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 247,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 195,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 247,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 538,
-       "bottom": 582,
-       "left": 195,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 538,
-       "bottom": 582,
-       "left": 247,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 195,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 247,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 734,
-       "bottom": 778,
-       "left": 195,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 734,
-       "bottom": 778,
-       "left": 247,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
-       "left": 195,
-       "inFirstViewport": false,
-       "centreAt": 1.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
-       "left": 247,
-       "inFirstViewport": false,
-       "centreAt": 1.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -3668,66 +2889,66 @@
       {
        "what": "Items",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
+       "top": 773,
+       "bottom": 823,
        "left": 25.8,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 50.5,
+       "width": 48.9,
        "height": 50
       },
       {
        "what": "Products",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 80.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 78.7,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 50.5,
+       "width": 48.9,
        "height": 50
       },
       {
        "what": "Low Stock",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 134.8,
+       "top": 773,
+       "bottom": 823,
+       "left": 131.5,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 50.5,
+       "width": 48.9,
        "height": 50
       },
       {
        "what": "Shopping",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 189.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 184.4,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 50.5,
+       "width": 48.9,
        "height": 50
       },
       {
        "what": "More",
        "tag": "button",
-       "top": 781,
-       "bottom": 831,
-       "left": 243.7,
+       "top": 773,
+       "bottom": 823,
+       "left": 237.3,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 50.5,
+       "width": 48.9,
        "height": 50
       }
      ],
@@ -3745,7 +2966,7 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 14,
+      "statusColoured": 1,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
@@ -3758,7 +2979,7 @@
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 91,
+      "contrastChecked": 16,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
@@ -3767,24 +2988,17 @@
      },
      "textRuns": 91,
      "truncated": {
-      "count": 12,
-      "inRows": 9,
+      "count": 3,
+      "inRows": 0,
       "sample": [
-       "Robot vacuum with the spare brush roll and chargin (65% shown)",
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (1% shown)",
-       "Kitchen · Bought: 2026-06-02 · Descaled in Septemb (4% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (2% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (1% shown)",
-       "Smoke alarm with ten-year sealed battery (87% shown)",
-       "House · Bought: 2025-02-02 · Warranty: 2035-02-02  (2% shown)",
-       "Stand mixer with the dough hook and whisk (84% shown)"
+       "Products (84% shown)",
+       "Low Stock (73% shown)",
+       "Shopping (79% shown)"
       ]
      },
      "covered": {
-      "runs": 1,
-      "sample": [
-       "Cordless drill with two batter (14px at 806)"
-      ]
+      "runs": 0,
+      "sample": []
      },
      "waitForSeen": true,
      "pageErrors": [],
@@ -3808,11 +3022,11 @@
        },
        {
         "size": 14,
-        "chars": 226
+        "chars": 119
        },
        {
         "size": 13,
-        "chars": 669
+        "chars": 242
        },
        {
         "size": 12,
@@ -3844,26 +3058,10 @@
       ]
      },
      "rows": {
-      "count": 14,
+      "count": 13,
       "sample": [
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Robot vacuum with the spare br"
-       },
-       {
-        "height": 90,
+        "height": 148,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -3879,55 +3077,7 @@
         "titleText": "Electric kettle, 1.7 L"
        },
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Laptop charger, 65 W USB-C"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Air fryer with two drawers"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Smoke alarm with ten-year seal"
-       },
-       {
-        "height": 90,
+        "height": 199,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -3941,19 +3091,89 @@
         "titleWeight": 500,
         "titleSize": 14,
         "titleText": "Stand mixer with the dough hoo"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Cordless drill with two batter"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Pressure washer, electric, 180"
+       },
+       {
+        "height": 150,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Garden hose, 30 metres, with f"
+       },
+       {
+        "height": 90,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Step ladder, six treads, alumi"
        }
       ],
       "maxChips": 1,
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       90
+       43,
+       90,
+       97,
+       148,
+       150,
+       187,
+       199
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 22,
-      "measured": 36,
+      "firstViewport": 14,
+      "measured": 20,
       "small": 0,
       "smallSample": [],
       "inputs": 0,
@@ -4002,8 +3222,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -4015,8 +3235,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -4028,60 +3248,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -4093,8 +3261,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -4106,34 +3274,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -4145,8 +3287,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -4158,60 +3300,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -4223,8 +3313,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -4236,34 +3326,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -4275,8 +3339,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -4288,60 +3352,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -4353,8 +3365,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -4366,66 +3378,66 @@
       {
        "what": "Items",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
+       "top": 773,
+       "bottom": 823,
        "left": 25.8,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Products",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 94.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Low Stock",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 162.8,
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Shopping",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 231.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "More",
        "tag": "button",
-       "top": 781,
-       "bottom": 831,
-       "left": 299.7,
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       }
      ],
@@ -4443,7 +3455,7 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 14,
+      "statusColoured": 6,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
@@ -4456,7 +3468,7 @@
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 91,
+      "contrastChecked": 47,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
@@ -4465,22 +3477,14 @@
      },
      "textRuns": 91,
      "truncated": {
-      "count": 7,
-      "inRows": 7,
-      "sample": [
-       "Robot vacuum with the spare brush roll and chargin (82% shown)",
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (9% shown)",
-       "Kitchen · Bought: 2026-06-02 · Descaled in Septemb (21% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (12% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (10% shown)",
-       "House · Bought: 2025-02-02 · Warranty: 2035-02-02  (13% shown)",
-       "Kitchen · S/N: SM-7741-B · Bought: 2024-11-29 · Wa (15% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 1,
       "sample": [
-       "Cordless drill with two batter (14px at 806)"
+       "House · S/N: USB65-0931 · Boug (13px at 729)"
       ]
      },
      "waitForSeen": true,
@@ -4505,11 +3509,11 @@
        },
        {
         "size": 14,
-        "chars": 226
+        "chars": 119
        },
        {
         "size": 13,
-        "chars": 669
+        "chars": 242
        },
        {
         "size": 12,
@@ -4541,26 +3545,10 @@
       ]
      },
      "rows": {
-      "count": 14,
+      "count": 13,
       "sample": [
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Robot vacuum with the spare br"
-       },
-       {
-        "height": 90,
+        "height": 148,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -4576,55 +3564,7 @@
         "titleText": "Electric kettle, 1.7 L"
        },
        {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Laptop charger, 65 W USB-C"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Appliances"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Air fryer with two drawers"
-       },
-       {
-        "height": 90,
-        "chips": 1,
-        "chipTexts": [
-         "Electronics"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#0a6f75",
-         "#c10007"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Smoke alarm with ten-year seal"
-       },
-       {
-        "height": 90,
+        "height": 199,
         "chips": 1,
         "chipTexts": [
          "Appliances"
@@ -4638,19 +3578,89 @@
         "titleWeight": 500,
         "titleSize": 14,
         "titleText": "Stand mixer with the dough hoo"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Cordless drill with two batter"
+       },
+       {
+        "height": 199,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Pressure washer, electric, 180"
+       },
+       {
+        "height": 150,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Garden hose, 30 metres, with f"
+       },
+       {
+        "height": 90,
+        "chips": 1,
+        "chipTexts": [
+         "Tools"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#c10007"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Step ladder, six treads, alumi"
        }
       ],
       "maxChips": 1,
       "maxColours": 2,
       "nested": 0,
       "heights": [
-       90
+       43,
+       90,
+       97,
+       148,
+       150,
+       187,
+       199
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 22,
-      "measured": 36,
+      "firstViewport": 14,
+      "measured": 20,
       "small": 0,
       "smallSample": [],
       "inputs": 0,
@@ -4699,8 +3709,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -4712,8 +3722,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 244,
-       "bottom": 288,
+       "top": 263,
+       "bottom": 307,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -4725,60 +3735,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 342,
-       "bottom": 386,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 440,
-       "bottom": 484,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -4790,8 +3748,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 538,
-       "bottom": 582,
+       "top": 572,
+       "bottom": 616,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -4803,34 +3761,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 265,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 636,
-       "bottom": 680,
-       "left": 317,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 265,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -4842,8 +3774,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 734,
-       "bottom": 778,
+       "top": 728,
+       "bottom": 772,
        "left": 317,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -4855,60 +3787,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 832,
-       "bottom": 876,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 930,
-       "bottom": 974,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -4920,8 +3800,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1028,
-       "bottom": 1072,
+       "top": 969,
+       "bottom": 1013,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -4933,34 +3813,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1126,
-       "bottom": 1170,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -4972,8 +3826,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1224,
-       "bottom": 1268,
+       "top": 1244,
+       "bottom": 1288,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.5,
@@ -4985,60 +3839,8 @@
       {
        "what": "Edit",
        "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1322,
-       "bottom": 1366,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 265,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Delete",
-       "tag": "button",
-       "top": 1420,
-       "bottom": 1464,
-       "left": 317,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 44,
-       "height": 44
-      },
-      {
-       "what": "Edit",
-       "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 265,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -5050,8 +3852,8 @@
       {
        "what": "Delete",
        "tag": "button",
-       "top": 1518,
-       "bottom": 1562,
+       "top": 1485,
+       "bottom": 1529,
        "left": 317,
        "inFirstViewport": false,
        "centreAt": 1.8,
@@ -5140,7 +3942,7 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 14,
+      "statusColoured": 6,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
@@ -5153,7 +3955,7 @@
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 91,
+      "contrastChecked": 47,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
@@ -5162,22 +3964,14 @@
      },
      "textRuns": 91,
      "truncated": {
-      "count": 7,
-      "inRows": 7,
-      "sample": [
-       "Robot vacuum with the spare brush roll and chargin (82% shown)",
-       "House · S/N: RV-88014 · Bought: 2026-05-16 · Warra (9% shown)",
-       "Kitchen · Bought: 2026-06-02 · Descaled in Septemb (21% shown)",
-       "House · S/N: USB65-0931 · Bought: 2025-08-20 · War (12% shown)",
-       "Kitchen · S/N: AF-22083 · Bought: 2025-12-01 · War (10% shown)",
-       "House · Bought: 2025-02-02 · Warranty: 2035-02-02  (13% shown)",
-       "Kitchen · S/N: SM-7741-B · Bought: 2024-11-29 · Wa (15% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 1,
       "sample": [
-       "Cordless drill with two batter (14px at 806)"
+       "House · S/N: USB65-0931 · Boug (13px at 729)"
       ]
      },
      "waitForSeen": true,
@@ -5186,8 +3980,6 @@
      "underInsets": [
       "Stockade",
       "Sign out",
-      "Edit",
-      "Delete",
       "Items",
       "Products",
       "Low Stock",
@@ -7303,7 +6095,7 @@
        },
        {
         "size": 18,
-        "chars": 5
+        "chars": 6
        },
        {
         "size": 16,
@@ -7455,8 +6247,8 @@
       {
        "what": "Mark Jasmine rice complete",
        "tag": "span",
-       "top": 251,
-       "bottom": 271,
+       "top": 239,
+       "bottom": 259,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -7494,8 +6286,8 @@
       {
        "what": "Mark AA batteries, pack of 8 complete",
        "tag": "span",
-       "top": 344,
-       "bottom": 364,
+       "top": 332,
+       "bottom": 352,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -7533,8 +6325,8 @@
       {
        "what": "Mark Long-life milk, full cream complete",
        "tag": "span",
-       "top": 437,
-       "bottom": 457,
+       "top": 425,
+       "bottom": 445,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -7572,8 +6364,8 @@
       {
        "what": "Mark LED bulbs, warm white, E27 complete",
        "tag": "span",
-       "top": 530,
-       "bottom": 550,
+       "top": 518,
+       "bottom": 538,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -7611,11 +6403,11 @@
       {
        "what": "Mark Dried spaghetti, 500 g complete",
        "tag": "span",
-       "top": 623,
-       "bottom": 643,
+       "top": 611,
+       "bottom": 631,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -7663,8 +6455,8 @@
       {
        "what": "Mark Olive oil, extra virgin pending",
        "tag": "span",
-       "top": 819,
-       "bottom": 839,
+       "top": 807,
+       "bottom": 827,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 1,
@@ -7689,8 +6481,8 @@
       {
        "what": "Mark Hand soap refill pending",
        "tag": "span",
-       "top": 912,
-       "bottom": 932,
+       "top": 900,
+       "bottom": 920,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -7715,8 +6507,8 @@
       {
        "what": "Mark Ground coffee, medium roast pending",
        "tag": "span",
-       "top": 1005,
-       "bottom": 1025,
+       "top": 993,
+       "bottom": 1013,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -7741,66 +6533,66 @@
       {
        "what": "Items",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
+       "top": 773,
+       "bottom": 823,
        "left": 25.8,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Products",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 94.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Low Stock",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 162.8,
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Shopping",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 231.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "More",
        "tag": "button",
-       "top": 781,
-       "bottom": 831,
-       "left": 299.7,
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       }
      ],
@@ -7847,12 +6639,11 @@
       "sample": []
      },
      "covered": {
-      "runs": 4,
+      "runs": 3,
       "sample": [
        "Olive oil, extra virgin (14px at 785)",
-       "1 (13px at 821)",
-       "bottle (13px at 821)",
-       "× (18px at 818)"
+       "1 (13px at 807)",
+       "bottle (13px at 807)"
       ]
      },
      "waitForSeen": true,
@@ -7873,7 +6664,7 @@
        },
        {
         "size": 18,
-        "chars": 5
+        "chars": 6
        },
        {
         "size": 16,
@@ -8025,8 +6816,8 @@
       {
        "what": "Mark Jasmine rice complete",
        "tag": "span",
-       "top": 251,
-       "bottom": 271,
+       "top": 239,
+       "bottom": 259,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -8064,8 +6855,8 @@
       {
        "what": "Mark AA batteries, pack of 8 complete",
        "tag": "span",
-       "top": 344,
-       "bottom": 364,
+       "top": 332,
+       "bottom": 352,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -8103,8 +6894,8 @@
       {
        "what": "Mark Long-life milk, full cream complete",
        "tag": "span",
-       "top": 437,
-       "bottom": 457,
+       "top": 425,
+       "bottom": 445,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -8142,8 +6933,8 @@
       {
        "what": "Mark LED bulbs, warm white, E27 complete",
        "tag": "span",
-       "top": 530,
-       "bottom": 550,
+       "top": 518,
+       "bottom": 538,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -8181,11 +6972,11 @@
       {
        "what": "Mark Dried spaghetti, 500 g complete",
        "tag": "span",
-       "top": 623,
-       "bottom": 643,
+       "top": 611,
+       "bottom": 631,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -8233,8 +7024,8 @@
       {
        "what": "Mark Olive oil, extra virgin pending",
        "tag": "span",
-       "top": 819,
-       "bottom": 839,
+       "top": 807,
+       "bottom": 827,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 1,
@@ -8259,8 +7050,8 @@
       {
        "what": "Mark Hand soap refill pending",
        "tag": "span",
-       "top": 912,
-       "bottom": 932,
+       "top": 900,
+       "bottom": 920,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -8285,8 +7076,8 @@
       {
        "what": "Mark Ground coffee, medium roast pending",
        "tag": "span",
-       "top": 1005,
-       "bottom": 1025,
+       "top": 993,
+       "bottom": 1013,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -8311,66 +7102,66 @@
       {
        "what": "Items",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
+       "top": 773,
+       "bottom": 823,
        "left": 25.8,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Products",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 94.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Low Stock",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 162.8,
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Shopping",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 231.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "More",
        "tag": "button",
-       "top": 781,
-       "bottom": 831,
-       "left": 299.7,
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       }
      ],
@@ -8425,12 +7216,11 @@
       "sample": []
      },
      "covered": {
-      "runs": 4,
+      "runs": 3,
       "sample": [
        "Olive oil, extra virgin (14px at 785)",
-       "1 (13px at 821)",
-       "bottle (13px at 821)",
-       "× (18px at 818)"
+       "1 (13px at 807)",
+       "bottle (13px at 807)"
       ]
      },
      "waitForSeen": true,
@@ -8777,8 +7567,8 @@
       {
        "what": "Mark Jasmine rice complete",
        "tag": "span",
-       "top": 191,
-       "bottom": 211,
+       "top": 187,
+       "bottom": 207,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.2,
@@ -8816,8 +7606,8 @@
       {
        "what": "Mark AA batteries, pack of 8 complete",
        "tag": "span",
-       "top": 268,
-       "bottom": 288,
+       "top": 264,
+       "bottom": 284,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -8855,8 +7645,8 @@
       {
        "what": "Mark Long-life milk, full cream complete",
        "tag": "span",
-       "top": 345,
-       "bottom": 365,
+       "top": 341,
+       "bottom": 361,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -8894,8 +7684,8 @@
       {
        "what": "Mark LED bulbs, warm white, E27 complete",
        "tag": "span",
-       "top": 422,
-       "bottom": 442,
+       "top": 418,
+       "bottom": 438,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -8933,8 +7723,8 @@
       {
        "what": "Mark Dried spaghetti, 500 g complete",
        "tag": "span",
-       "top": 499,
-       "bottom": 519,
+       "top": 495,
+       "bottom": 515,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -8985,8 +7775,8 @@
       {
        "what": "Mark Olive oil, extra virgin pending",
        "tag": "span",
-       "top": 659,
-       "bottom": 679,
+       "top": 655,
+       "bottom": 675,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -9011,8 +7801,8 @@
       {
        "what": "Mark Hand soap refill pending",
        "tag": "span",
-       "top": 736,
-       "bottom": 756,
+       "top": 732,
+       "bottom": 752,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.8,
@@ -9037,8 +7827,8 @@
       {
        "what": "Mark Ground coffee, medium roast pending",
        "tag": "span",
-       "top": 813,
-       "bottom": 833,
+       "top": 809,
+       "bottom": 829,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -9451,8 +8241,8 @@
       {
        "what": "Mark Jasmine rice complete",
        "tag": "span",
-       "top": 191,
-       "bottom": 211,
+       "top": 187,
+       "bottom": 207,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.2,
@@ -9490,8 +8280,8 @@
       {
        "what": "Mark AA batteries, pack of 8 complete",
        "tag": "span",
-       "top": 268,
-       "bottom": 288,
+       "top": 264,
+       "bottom": 284,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -9529,8 +8319,8 @@
       {
        "what": "Mark Long-life milk, full cream complete",
        "tag": "span",
-       "top": 345,
-       "bottom": 365,
+       "top": 341,
+       "bottom": 361,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -9568,8 +8358,8 @@
       {
        "what": "Mark LED bulbs, warm white, E27 complete",
        "tag": "span",
-       "top": 422,
-       "bottom": 442,
+       "top": 418,
+       "bottom": 438,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -9607,8 +8397,8 @@
       {
        "what": "Mark Dried spaghetti, 500 g complete",
        "tag": "span",
-       "top": 499,
-       "bottom": 519,
+       "top": 495,
+       "bottom": 515,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -9659,8 +8449,8 @@
       {
        "what": "Mark Olive oil, extra virgin pending",
        "tag": "span",
-       "top": 659,
-       "bottom": 679,
+       "top": 655,
+       "bottom": 675,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.7,
@@ -9685,8 +8475,8 @@
       {
        "what": "Mark Hand soap refill pending",
        "tag": "span",
-       "top": 736,
-       "bottom": 756,
+       "top": 732,
+       "bottom": 752,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.8,
@@ -9711,8 +8501,8 @@
       {
        "what": "Mark Ground coffee, medium roast pending",
        "tag": "span",
-       "top": 813,
-       "bottom": 833,
+       "top": 809,
+       "bottom": 829,
        "left": 373,
        "inFirstViewport": true,
        "centreAt": 0.9,
@@ -9959,8 +8749,8 @@
       {
        "what": "Mark Jasmine rice complete",
        "tag": "span",
-       "top": 251,
-       "bottom": 271,
+       "top": 239,
+       "bottom": 259,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -9998,8 +8788,8 @@
       {
        "what": "Mark AA batteries, pack of 8 complete",
        "tag": "span",
-       "top": 344,
-       "bottom": 364,
+       "top": 332,
+       "bottom": 352,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -10037,8 +8827,8 @@
       {
        "what": "Mark Long-life milk, full cream complete",
        "tag": "span",
-       "top": 437,
-       "bottom": 457,
+       "top": 425,
+       "bottom": 445,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -10076,8 +8866,8 @@
       {
        "what": "Mark LED bulbs, warm white, E27 complete",
        "tag": "span",
-       "top": 530,
-       "bottom": 550,
+       "top": 518,
+       "bottom": 538,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -10115,11 +8905,11 @@
       {
        "what": "Mark Dried spaghetti, 500 g complete",
        "tag": "span",
-       "top": 623,
-       "bottom": 643,
+       "top": 611,
+       "bottom": 631,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -10167,8 +8957,8 @@
       {
        "what": "Mark Olive oil, extra virgin pending",
        "tag": "span",
-       "top": 819,
-       "bottom": 839,
+       "top": 807,
+       "bottom": 827,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 1,
@@ -10193,8 +8983,8 @@
       {
        "what": "Mark Hand soap refill pending",
        "tag": "span",
-       "top": 912,
-       "bottom": 932,
+       "top": 900,
+       "bottom": 920,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -10219,8 +9009,8 @@
       {
        "what": "Mark Ground coffee, medium roast pending",
        "tag": "span",
-       "top": 1005,
-       "bottom": 1025,
+       "top": 993,
+       "bottom": 1013,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -10358,8 +9148,8 @@
       "runs": 4,
       "sample": [
        "Olive oil, extra virgin (14px at 785)",
-       "1 (13px at 821)",
-       "bottle (13px at 821)",
+       "1 (13px at 807)",
+       "bottle (13px at 807)",
        "× (18px at 818)"
       ]
      },
@@ -10533,8 +9323,8 @@
       {
        "what": "Mark Jasmine rice complete",
        "tag": "span",
-       "top": 251,
-       "bottom": 271,
+       "top": 239,
+       "bottom": 259,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.3,
@@ -10572,8 +9362,8 @@
       {
        "what": "Mark AA batteries, pack of 8 complete",
        "tag": "span",
-       "top": 344,
-       "bottom": 364,
+       "top": 332,
+       "bottom": 352,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.4,
@@ -10611,8 +9401,8 @@
       {
        "what": "Mark Long-life milk, full cream complete",
        "tag": "span",
-       "top": 437,
-       "bottom": 457,
+       "top": 425,
+       "bottom": 445,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.5,
@@ -10650,8 +9440,8 @@
       {
        "what": "Mark LED bulbs, warm white, E27 complete",
        "tag": "span",
-       "top": 530,
-       "bottom": 550,
+       "top": 518,
+       "bottom": 538,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 0.6,
@@ -10689,11 +9479,11 @@
       {
        "what": "Mark Dried spaghetti, 500 g complete",
        "tag": "span",
-       "top": 623,
-       "bottom": 643,
+       "top": 611,
+       "bottom": 631,
        "left": 29,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -10741,8 +9531,8 @@
       {
        "what": "Mark Olive oil, extra virgin pending",
        "tag": "span",
-       "top": 819,
-       "bottom": 839,
+       "top": 807,
+       "bottom": 827,
        "left": 29,
        "inFirstViewport": true,
        "centreAt": 1,
@@ -10767,8 +9557,8 @@
       {
        "what": "Mark Hand soap refill pending",
        "tag": "span",
-       "top": 912,
-       "bottom": 932,
+       "top": 900,
+       "bottom": 920,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.1,
@@ -10793,8 +9583,8 @@
       {
        "what": "Mark Ground coffee, medium roast pending",
        "tag": "span",
-       "top": 1005,
-       "bottom": 1025,
+       "top": 993,
+       "bottom": 1013,
        "left": 29,
        "inFirstViewport": false,
        "centreAt": 1.2,
@@ -10928,8 +9718,8 @@
       "runs": 4,
       "sample": [
        "Olive oil, extra virgin (14px at 785)",
-       "1 (13px at 821)",
-       "bottle (13px at 821)",
+       "1 (13px at 807)",
+       "bottle (13px at 807)",
        "× (18px at 818)"
       ]
      },

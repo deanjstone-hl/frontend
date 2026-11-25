@@ -57,7 +57,7 @@
     "clutter": {
      "chipsPerRow": {
       "pass": true,
-      "detail": "max 0 in 9 rows"
+      "detail": "max 0 in 11 rows"
      },
      "coloursPerRow": {
       "pass": true,
@@ -69,7 +69,7 @@
      },
      "chipsPerRowDesktop": {
       "pass": true,
-      "detail": "max 0 in 9 rows"
+      "detail": "max 0 in 11 rows"
      },
      "coloursPerRowDesktop": {
       "pass": true,
@@ -99,7 +99,7 @@
      },
      "tapTargets": {
       "pass": false,
-      "detail": "1 of 18 under 44px"
+      "detail": "1 of 20 under 44px"
      },
      "inputText": {
       "pass": null,
@@ -205,42 +205,42 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 304
        },
        {
         "tag": "h3",
-        "text": "Stockade",
+        "text": "Knowledge",
         "size": 14,
         "weight": 600,
         "top": 394
        },
        {
         "tag": "h3",
-        "text": "Knowledge",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 484
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Jobs",
         "size": 14,
         "weight": 600,
         "top": 574
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 664
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 754
@@ -248,7 +248,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -259,18 +259,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -292,29 +281,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -327,7 +327,7 @@
      },
      "interactive": {
       "firstViewport": 15,
-      "measured": 18,
+      "measured": 20,
       "small": 1,
       "smallSample": [
        {
@@ -381,7 +381,7 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 288,
        "bottom": 362,
@@ -394,7 +394,7 @@
        "height": 74
       },
       {
-       "what": "StockadeHousehold inventory",
+       "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
        "top": 378,
        "bottom": 452,
@@ -407,7 +407,7 @@
        "height": 74
       },
       {
-       "what": "KnowledgeSemantic AI knowledge graph",
+       "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
        "top": 468,
        "bottom": 542,
@@ -420,7 +420,7 @@
        "height": 74
       },
       {
-       "what": "ReadRead-later & article library",
+       "what": "JobsAPS roles open for review",
        "tag": "a",
        "top": 558,
        "bottom": 632,
@@ -433,7 +433,7 @@
        "height": 74
       },
       {
-       "what": "Ops hubIssues, PRs, waves and the notice",
+       "what": "BudgetPersonal finance",
        "tag": "a",
        "top": 648,
        "bottom": 722,
@@ -446,7 +446,7 @@
        "height": 74
       },
       {
-       "what": "BriefingsDaily ops briefing and memory r",
+       "what": "StockadeHousehold inventory",
        "tag": "a",
        "top": 738,
        "bottom": 812,
@@ -459,7 +459,7 @@
        "height": 74
       },
       {
-       "what": "JobsAPS roles open for review",
+       "what": "Ops hubIssues, PRs, waves and the notice",
        "tag": "a",
        "top": 828,
        "bottom": 902,
@@ -472,7 +472,7 @@
        "height": 74
       },
       {
-       "what": "PlansImplementation plans with cross-dev",
+       "what": "MailThe shared agent inbox",
        "tag": "a",
        "top": 918,
        "bottom": 992,
@@ -485,7 +485,7 @@
        "height": 74
       },
       {
-       "what": "System MapMap of every project, applicat",
+       "what": "WatchtowerInfra health, live from the co",
        "tag": "a",
        "top": 1008,
        "bottom": 1082,
@@ -498,13 +498,39 @@
        "height": 74
       },
       {
-       "what": "+ Add",
-       "tag": "button",
-       "top": 1114,
-       "bottom": 1158,
-       "left": 330,
+       "what": "PlansImplementation plans with cross-dev",
+       "tag": "a",
+       "top": 1098,
+       "bottom": 1172,
+       "left": 16,
        "inFirstViewport": false,
        "centreAt": 1.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "System MapMap of every project, applicat",
+       "tag": "a",
+       "top": 1188,
+       "bottom": 1262,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "+ Add",
+       "tag": "button",
+       "top": 1294,
+       "bottom": 1338,
+       "left": 330,
+       "inFirstViewport": false,
+       "centreAt": 1.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -602,7 +628,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 35,
+      "contrastChecked": 39,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -617,7 +643,7 @@
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 35,
+     "textRuns": 39,
      "truncated": {
       "count": 1,
       "inRows": 0,
@@ -628,7 +654,7 @@
      "covered": {
       "runs": 1,
       "sample": [
-       "Daily ops briefing and memory  (14px at 778)"
+       "Household inventory (14px at 778)"
       ]
      },
      "waitForSeen": true,
@@ -692,42 +718,42 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 304
        },
        {
         "tag": "h3",
-        "text": "Stockade",
+        "text": "Knowledge",
         "size": 14,
         "weight": 600,
         "top": 394
        },
        {
         "tag": "h3",
-        "text": "Knowledge",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 484
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Jobs",
         "size": 14,
         "weight": 600,
         "top": 574
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 664
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 754
@@ -735,7 +761,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -746,18 +772,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -779,29 +794,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -814,7 +840,7 @@
      },
      "interactive": {
       "firstViewport": 15,
-      "measured": 18,
+      "measured": 20,
       "small": 1,
       "smallSample": [
        {
@@ -868,7 +894,7 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 288,
        "bottom": 362,
@@ -881,7 +907,7 @@
        "height": 74
       },
       {
-       "what": "StockadeHousehold inventory",
+       "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
        "top": 378,
        "bottom": 452,
@@ -894,7 +920,7 @@
        "height": 74
       },
       {
-       "what": "KnowledgeSemantic AI knowledge graph",
+       "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
        "top": 468,
        "bottom": 542,
@@ -907,7 +933,7 @@
        "height": 74
       },
       {
-       "what": "ReadRead-later & article library",
+       "what": "JobsAPS roles open for review",
        "tag": "a",
        "top": 558,
        "bottom": 632,
@@ -920,7 +946,7 @@
        "height": 74
       },
       {
-       "what": "Ops hubIssues, PRs, waves and the notice",
+       "what": "BudgetPersonal finance",
        "tag": "a",
        "top": 648,
        "bottom": 722,
@@ -933,7 +959,7 @@
        "height": 74
       },
       {
-       "what": "BriefingsDaily ops briefing and memory r",
+       "what": "StockadeHousehold inventory",
        "tag": "a",
        "top": 738,
        "bottom": 812,
@@ -946,7 +972,7 @@
        "height": 74
       },
       {
-       "what": "JobsAPS roles open for review",
+       "what": "Ops hubIssues, PRs, waves and the notice",
        "tag": "a",
        "top": 828,
        "bottom": 902,
@@ -959,7 +985,7 @@
        "height": 74
       },
       {
-       "what": "PlansImplementation plans with cross-dev",
+       "what": "MailThe shared agent inbox",
        "tag": "a",
        "top": 918,
        "bottom": 992,
@@ -972,7 +998,7 @@
        "height": 74
       },
       {
-       "what": "System MapMap of every project, applicat",
+       "what": "WatchtowerInfra health, live from the co",
        "tag": "a",
        "top": 1008,
        "bottom": 1082,
@@ -985,13 +1011,39 @@
        "height": 74
       },
       {
-       "what": "+ Add",
-       "tag": "button",
-       "top": 1114,
-       "bottom": 1158,
-       "left": 330,
+       "what": "PlansImplementation plans with cross-dev",
+       "tag": "a",
+       "top": 1098,
+       "bottom": 1172,
+       "left": 16,
        "inFirstViewport": false,
        "centreAt": 1.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "System MapMap of every project, applicat",
+       "tag": "a",
+       "top": 1188,
+       "bottom": 1262,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "+ Add",
+       "tag": "button",
+       "top": 1294,
+       "bottom": 1338,
+       "left": 330,
+       "inFirstViewport": false,
+       "centreAt": 1.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -1089,7 +1141,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 35,
+      "contrastChecked": 39,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -1104,7 +1156,7 @@
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 35,
+     "textRuns": 39,
      "truncated": {
       "count": 1,
       "inRows": 0,
@@ -1115,7 +1167,7 @@
      "covered": {
       "runs": 1,
       "sample": [
-       "Daily ops briefing and memory  (14px at 778)"
+       "Household inventory (14px at 778)"
       ]
      },
      "waitForSeen": true,
@@ -1144,7 +1196,7 @@
        },
        {
         "size": 14,
-        "chars": 478
+        "chars": 551
        },
        {
         "size": 13,
@@ -1175,14 +1227,7 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
-        "size": 14,
-        "weight": 600,
-        "top": 297
-       },
-       {
-        "tag": "h3",
-        "text": "Stockade",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 297
@@ -1192,25 +1237,32 @@
         "text": "Knowledge",
         "size": 14,
         "weight": 600,
-        "top": 387
+        "top": 297
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 387
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Jobs",
+        "size": 14,
+        "weight": 600,
+        "top": 387
+       },
+       {
+        "tag": "h3",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 477
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 477
@@ -1218,7 +1270,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -1229,18 +1281,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -1262,29 +1303,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -1296,8 +1348,8 @@
       "titleWeightMax": 600
      },
      "interactive": {
-      "firstViewport": 19,
-      "measured": 19,
+      "firstViewport": 21,
+      "measured": 21,
       "small": 9,
       "smallSample": [
        {
@@ -1455,7 +1507,7 @@
        "tag": "button",
        "top": 16,
        "bottom": 48,
-       "left": 1391,
+       "left": 1383,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
@@ -1468,7 +1520,7 @@
        "tag": "a",
        "top": 167.5,
        "bottom": 184.5,
-       "left": 1297.2,
+       "left": 1293.2,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1477,24 +1529,11 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 281,
        "bottom": 355,
-       "left": 360,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 480,
-       "height": 74
-      },
-      {
-       "what": "StockadeHousehold inventory",
-       "tag": "a",
-       "top": 281,
-       "bottom": 355,
-       "left": 856,
+       "left": 356,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
@@ -1505,37 +1544,11 @@
       {
        "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
-       "top": 371,
-       "bottom": 445,
-       "left": 360,
+       "top": 281,
+       "bottom": 355,
+       "left": 852,
        "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 480,
-       "height": 74
-      },
-      {
-       "what": "ReadRead-later & article library",
-       "tag": "a",
-       "top": 371,
-       "bottom": 445,
-       "left": 856,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 480,
-       "height": 74
-      },
-      {
-       "what": "Ops hubIssues, PRs, waves and the notice",
-       "tag": "a",
-       "top": 461,
-       "bottom": 535,
-       "left": 360,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -1544,11 +1557,11 @@
       {
        "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
-       "top": 461,
-       "bottom": 535,
-       "left": 856,
+       "top": 371,
+       "bottom": 445,
+       "left": 356,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -1557,11 +1570,76 @@
       {
        "what": "JobsAPS roles open for review",
        "tag": "a",
+       "top": 371,
+       "bottom": 445,
+       "left": 852,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "BudgetPersonal finance",
+       "tag": "a",
+       "top": 461,
+       "bottom": 535,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "StockadeHousehold inventory",
+       "tag": "a",
+       "top": 461,
+       "bottom": 535,
+       "left": 852,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "Ops hubIssues, PRs, waves and the notice",
+       "tag": "a",
        "top": 551,
        "bottom": 625,
-       "left": 360,
+       "left": 356,
        "inFirstViewport": true,
        "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "MailThe shared agent inbox",
+       "tag": "a",
+       "top": 551,
+       "bottom": 625,
+       "left": 852,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "WatchtowerInfra health, live from the co",
+       "tag": "a",
+       "top": 641,
+       "bottom": 715,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -1570,11 +1648,11 @@
       {
        "what": "PlansImplementation plans with cross-dev",
        "tag": "a",
-       "top": 551,
-       "bottom": 625,
-       "left": 856,
+       "top": 641,
+       "bottom": 715,
+       "left": 852,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -1583,11 +1661,11 @@
       {
        "what": "System MapMap of every project, applicat",
        "tag": "a",
-       "top": 641,
-       "bottom": 715,
-       "left": 360,
+       "top": 731,
+       "bottom": 805,
+       "left": 356,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -1596,11 +1674,11 @@
       {
        "what": "+ Add",
        "tag": "button",
-       "top": 747,
-       "bottom": 766,
-       "left": 1299.2,
+       "top": 837,
+       "bottom": 856,
+       "left": 1295.2,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 36.8,
@@ -1634,7 +1712,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 36,
+      "contrastChecked": 40,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -1646,10 +1724,10 @@
        }
       ],
       "contrastFailCount": 1,
-      "overflowX": 0,
+      "overflowX": -8,
       "runningAnimations": 0
      },
-     "textRuns": 36,
+     "textRuns": 40,
      "truncated": {
       "count": 0,
       "inRows": 0,
@@ -1685,7 +1763,7 @@
        },
        {
         "size": 14,
-        "chars": 478
+        "chars": 551
        },
        {
         "size": 13,
@@ -1716,14 +1794,7 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
-        "size": 14,
-        "weight": 600,
-        "top": 297
-       },
-       {
-        "tag": "h3",
-        "text": "Stockade",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 297
@@ -1733,25 +1804,32 @@
         "text": "Knowledge",
         "size": 14,
         "weight": 600,
-        "top": 387
+        "top": 297
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 387
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Jobs",
+        "size": 14,
+        "weight": 600,
+        "top": 387
+       },
+       {
+        "tag": "h3",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 477
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 477
@@ -1759,7 +1837,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -1770,18 +1848,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -1803,29 +1870,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -1837,8 +1915,8 @@
       "titleWeightMax": 600
      },
      "interactive": {
-      "firstViewport": 19,
-      "measured": 19,
+      "firstViewport": 21,
+      "measured": 21,
       "small": 9,
       "smallSample": [
        {
@@ -1996,7 +2074,7 @@
        "tag": "button",
        "top": 16,
        "bottom": 48,
-       "left": 1391,
+       "left": 1383,
        "inFirstViewport": true,
        "centreAt": 0,
        "pinnedToBottom": false,
@@ -2009,7 +2087,7 @@
        "tag": "a",
        "top": 167.5,
        "bottom": 184.5,
-       "left": 1297.2,
+       "left": 1293.2,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2018,24 +2096,11 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 281,
        "bottom": 355,
-       "left": 360,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 480,
-       "height": 74
-      },
-      {
-       "what": "StockadeHousehold inventory",
-       "tag": "a",
-       "top": 281,
-       "bottom": 355,
-       "left": 856,
+       "left": 356,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
@@ -2046,37 +2111,11 @@
       {
        "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
-       "top": 371,
-       "bottom": 445,
-       "left": 360,
+       "top": 281,
+       "bottom": 355,
+       "left": 852,
        "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 480,
-       "height": 74
-      },
-      {
-       "what": "ReadRead-later & article library",
-       "tag": "a",
-       "top": 371,
-       "bottom": 445,
-       "left": 856,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 480,
-       "height": 74
-      },
-      {
-       "what": "Ops hubIssues, PRs, waves and the notice",
-       "tag": "a",
-       "top": 461,
-       "bottom": 535,
-       "left": 360,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -2085,11 +2124,11 @@
       {
        "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
-       "top": 461,
-       "bottom": 535,
-       "left": 856,
+       "top": 371,
+       "bottom": 445,
+       "left": 356,
        "inFirstViewport": true,
-       "centreAt": 0.6,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -2098,11 +2137,76 @@
       {
        "what": "JobsAPS roles open for review",
        "tag": "a",
+       "top": 371,
+       "bottom": 445,
+       "left": 852,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "BudgetPersonal finance",
+       "tag": "a",
+       "top": 461,
+       "bottom": 535,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "StockadeHousehold inventory",
+       "tag": "a",
+       "top": 461,
+       "bottom": 535,
+       "left": 852,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "Ops hubIssues, PRs, waves and the notice",
+       "tag": "a",
        "top": 551,
        "bottom": 625,
-       "left": 360,
+       "left": 356,
        "inFirstViewport": true,
        "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "MailThe shared agent inbox",
+       "tag": "a",
+       "top": 551,
+       "bottom": 625,
+       "left": 852,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 480,
+       "height": 74
+      },
+      {
+       "what": "WatchtowerInfra health, live from the co",
+       "tag": "a",
+       "top": 641,
+       "bottom": 715,
+       "left": 356,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -2111,11 +2215,11 @@
       {
        "what": "PlansImplementation plans with cross-dev",
        "tag": "a",
-       "top": 551,
-       "bottom": 625,
-       "left": 856,
+       "top": 641,
+       "bottom": 715,
+       "left": 852,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -2124,11 +2228,11 @@
       {
        "what": "System MapMap of every project, applicat",
        "tag": "a",
-       "top": 641,
-       "bottom": 715,
-       "left": 360,
+       "top": 731,
+       "bottom": 805,
+       "left": 356,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 480,
@@ -2137,11 +2241,11 @@
       {
        "what": "+ Add",
        "tag": "button",
-       "top": 747,
-       "bottom": 766,
-       "left": 1299.2,
+       "top": 837,
+       "bottom": 856,
+       "left": 1295.2,
        "inFirstViewport": true,
-       "centreAt": 0.8,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 36.8,
@@ -2175,7 +2279,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 36,
+      "contrastChecked": 40,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -2187,10 +2291,10 @@
        }
       ],
       "contrastFailCount": 1,
-      "overflowX": 0,
+      "overflowX": -8,
       "runningAnimations": 0
      },
-     "textRuns": 36,
+     "textRuns": 40,
      "truncated": {
       "count": 0,
       "inRows": 0,
@@ -2261,42 +2365,42 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 304
        },
        {
         "tag": "h3",
-        "text": "Stockade",
+        "text": "Knowledge",
         "size": 14,
         "weight": 600,
         "top": 394
        },
        {
         "tag": "h3",
-        "text": "Knowledge",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 484
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Jobs",
         "size": 14,
         "weight": 600,
         "top": 574
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 664
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 754
@@ -2304,7 +2408,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -2315,18 +2419,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -2348,29 +2441,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -2384,7 +2488,7 @@
      },
      "interactive": {
       "firstViewport": 15,
-      "measured": 18,
+      "measured": 20,
       "small": 1,
       "smallSample": [
        {
@@ -2438,7 +2542,7 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 288,
        "bottom": 362,
@@ -2451,7 +2555,7 @@
        "height": 74
       },
       {
-       "what": "StockadeHousehold inventory",
+       "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
        "top": 378,
        "bottom": 452,
@@ -2464,7 +2568,7 @@
        "height": 74
       },
       {
-       "what": "KnowledgeSemantic AI knowledge graph",
+       "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
        "top": 468,
        "bottom": 542,
@@ -2477,7 +2581,7 @@
        "height": 74
       },
       {
-       "what": "ReadRead-later & article library",
+       "what": "JobsAPS roles open for review",
        "tag": "a",
        "top": 558,
        "bottom": 632,
@@ -2490,7 +2594,7 @@
        "height": 74
       },
       {
-       "what": "Ops hubIssues, PRs, waves and the notice",
+       "what": "BudgetPersonal finance",
        "tag": "a",
        "top": 648,
        "bottom": 722,
@@ -2503,7 +2607,7 @@
        "height": 74
       },
       {
-       "what": "BriefingsDaily ops briefing and memory r",
+       "what": "StockadeHousehold inventory",
        "tag": "a",
        "top": 738,
        "bottom": 812,
@@ -2516,7 +2620,7 @@
        "height": 74
       },
       {
-       "what": "JobsAPS roles open for review",
+       "what": "Ops hubIssues, PRs, waves and the notice",
        "tag": "a",
        "top": 828,
        "bottom": 902,
@@ -2529,13 +2633,39 @@
        "height": 74
       },
       {
-       "what": "PlansImplementation plans with cross-dev",
+       "what": "MailThe shared agent inbox",
        "tag": "a",
        "top": 918,
-       "bottom": 1011,
+       "bottom": 992,
        "left": 16,
        "inFirstViewport": false,
        "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 74
+      },
+      {
+       "what": "WatchtowerInfra health, live from the co",
+       "tag": "a",
+       "top": 1008,
+       "bottom": 1082,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 74
+      },
+      {
+       "what": "PlansImplementation plans with cross-dev",
+       "tag": "a",
+       "top": 1098,
+       "bottom": 1191,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 288,
@@ -2544,11 +2674,11 @@
       {
        "what": "System MapMap of every project, applicat",
        "tag": "a",
-       "top": 1027,
-       "bottom": 1120,
+       "top": 1207,
+       "bottom": 1300,
        "left": 16,
        "inFirstViewport": false,
-       "centreAt": 1.3,
+       "centreAt": 1.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 288,
@@ -2557,11 +2687,11 @@
       {
        "what": "+ Add",
        "tag": "button",
-       "top": 1152,
-       "bottom": 1196,
+       "top": 1332,
+       "bottom": 1376,
        "left": 260,
        "inFirstViewport": false,
-       "centreAt": 1.4,
+       "centreAt": 1.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -2659,7 +2789,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 35,
+      "contrastChecked": 39,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -2674,7 +2804,7 @@
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 35,
+     "textRuns": 39,
      "truncated": {
       "count": 1,
       "inRows": 0,
@@ -2685,7 +2815,7 @@
      "covered": {
       "runs": 1,
       "sample": [
-       "Daily ops briefing and memory  (14px at 778)"
+       "Household inventory (14px at 778)"
       ]
      },
      "waitForSeen": true,
@@ -2749,42 +2879,42 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 304
        },
        {
         "tag": "h3",
-        "text": "Stockade",
+        "text": "Knowledge",
         "size": 14,
         "weight": 600,
         "top": 394
        },
        {
         "tag": "h3",
-        "text": "Knowledge",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 484
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Jobs",
         "size": 14,
         "weight": 600,
         "top": 574
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 664
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 754
@@ -2792,7 +2922,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -2803,18 +2933,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -2836,29 +2955,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -2871,7 +3001,7 @@
      },
      "interactive": {
       "firstViewport": 15,
-      "measured": 18,
+      "measured": 20,
       "small": 1,
       "smallSample": [
        {
@@ -2925,7 +3055,7 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 288,
        "bottom": 362,
@@ -2938,7 +3068,7 @@
        "height": 74
       },
       {
-       "what": "StockadeHousehold inventory",
+       "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
        "top": 378,
        "bottom": 452,
@@ -2951,7 +3081,7 @@
        "height": 74
       },
       {
-       "what": "KnowledgeSemantic AI knowledge graph",
+       "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
        "top": 468,
        "bottom": 542,
@@ -2964,7 +3094,7 @@
        "height": 74
       },
       {
-       "what": "ReadRead-later & article library",
+       "what": "JobsAPS roles open for review",
        "tag": "a",
        "top": 558,
        "bottom": 632,
@@ -2977,7 +3107,7 @@
        "height": 74
       },
       {
-       "what": "Ops hubIssues, PRs, waves and the notice",
+       "what": "BudgetPersonal finance",
        "tag": "a",
        "top": 648,
        "bottom": 722,
@@ -2990,7 +3120,7 @@
        "height": 74
       },
       {
-       "what": "BriefingsDaily ops briefing and memory r",
+       "what": "StockadeHousehold inventory",
        "tag": "a",
        "top": 738,
        "bottom": 812,
@@ -3003,7 +3133,7 @@
        "height": 74
       },
       {
-       "what": "JobsAPS roles open for review",
+       "what": "Ops hubIssues, PRs, waves and the notice",
        "tag": "a",
        "top": 828,
        "bottom": 902,
@@ -3016,7 +3146,7 @@
        "height": 74
       },
       {
-       "what": "PlansImplementation plans with cross-dev",
+       "what": "MailThe shared agent inbox",
        "tag": "a",
        "top": 918,
        "bottom": 992,
@@ -3029,7 +3159,7 @@
        "height": 74
       },
       {
-       "what": "System MapMap of every project, applicat",
+       "what": "WatchtowerInfra health, live from the co",
        "tag": "a",
        "top": 1008,
        "bottom": 1082,
@@ -3042,13 +3172,39 @@
        "height": 74
       },
       {
-       "what": "+ Add",
-       "tag": "button",
-       "top": 1114,
-       "bottom": 1158,
-       "left": 330,
+       "what": "PlansImplementation plans with cross-dev",
+       "tag": "a",
+       "top": 1098,
+       "bottom": 1172,
+       "left": 16,
        "inFirstViewport": false,
        "centreAt": 1.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "System MapMap of every project, applicat",
+       "tag": "a",
+       "top": 1188,
+       "bottom": 1262,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "+ Add",
+       "tag": "button",
+       "top": 1294,
+       "bottom": 1338,
+       "left": 330,
+       "inFirstViewport": false,
+       "centreAt": 1.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -3146,7 +3302,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 35,
+      "contrastChecked": 39,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -3161,7 +3317,7 @@
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 35,
+     "textRuns": 39,
      "truncated": {
       "count": 1,
       "inRows": 0,
@@ -3172,7 +3328,7 @@
      "covered": {
       "runs": 1,
       "sample": [
-       "Daily ops briefing and memory  (14px at 778)"
+       "Household inventory (14px at 778)"
       ]
      },
      "waitForSeen": true,
@@ -3236,42 +3392,42 @@
        },
        {
         "tag": "h3",
-        "text": "Budget",
+        "text": "Read",
         "size": 14,
         "weight": 600,
         "top": 304
        },
        {
         "tag": "h3",
-        "text": "Stockade",
+        "text": "Knowledge",
         "size": 14,
         "weight": 600,
         "top": 394
        },
        {
         "tag": "h3",
-        "text": "Knowledge",
+        "text": "Briefings",
         "size": 14,
         "weight": 600,
         "top": 484
        },
        {
         "tag": "h3",
-        "text": "Read",
+        "text": "Jobs",
         "size": 14,
         "weight": 600,
         "top": 574
        },
        {
         "tag": "h3",
-        "text": "Ops hub",
+        "text": "Budget",
         "size": 14,
         "weight": 600,
         "top": 664
        },
        {
         "tag": "h3",
-        "text": "Briefings",
+        "text": "Stockade",
         "size": 14,
         "weight": 600,
         "top": 754
@@ -3279,7 +3435,7 @@
       ]
      },
      "rows": {
-      "count": 9,
+      "count": 11,
       "sample": [
        {
         "height": 74,
@@ -3290,18 +3446,7 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Budget"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Stockade"
+        "titleText": "Read"
        },
        {
         "height": 74,
@@ -3323,29 +3468,40 @@
         "nested": 0,
         "titleWeight": 600,
         "titleSize": 14,
-        "titleText": "Read"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
-        "titleText": "Ops hub"
-       },
-       {
-        "height": 74,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 600,
-        "titleSize": 14,
         "titleText": "Briefings"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Jobs"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Budget"
+       },
+       {
+        "height": 74,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 0,
+        "colourValues": [],
+        "nested": 0,
+        "titleWeight": 600,
+        "titleSize": 14,
+        "titleText": "Stockade"
        }
       ],
       "maxChips": 0,
@@ -3358,7 +3514,7 @@
      },
      "interactive": {
       "firstViewport": 15,
-      "measured": 18,
+      "measured": 20,
       "small": 1,
       "smallSample": [
        {
@@ -3412,7 +3568,7 @@
        "height": 17
       },
       {
-       "what": "BudgetPersonal finance",
+       "what": "ReadRead-later & article library",
        "tag": "a",
        "top": 288,
        "bottom": 362,
@@ -3425,7 +3581,7 @@
        "height": 74
       },
       {
-       "what": "StockadeHousehold inventory",
+       "what": "KnowledgeSemantic AI knowledge graph",
        "tag": "a",
        "top": 378,
        "bottom": 452,
@@ -3438,7 +3594,7 @@
        "height": 74
       },
       {
-       "what": "KnowledgeSemantic AI knowledge graph",
+       "what": "BriefingsDaily ops briefing and memory r",
        "tag": "a",
        "top": 468,
        "bottom": 542,
@@ -3451,7 +3607,7 @@
        "height": 74
       },
       {
-       "what": "ReadRead-later & article library",
+       "what": "JobsAPS roles open for review",
        "tag": "a",
        "top": 558,
        "bottom": 632,
@@ -3464,7 +3620,7 @@
        "height": 74
       },
       {
-       "what": "Ops hubIssues, PRs, waves and the notice",
+       "what": "BudgetPersonal finance",
        "tag": "a",
        "top": 648,
        "bottom": 722,
@@ -3477,7 +3633,7 @@
        "height": 74
       },
       {
-       "what": "BriefingsDaily ops briefing and memory r",
+       "what": "StockadeHousehold inventory",
        "tag": "a",
        "top": 738,
        "bottom": 812,
@@ -3490,7 +3646,7 @@
        "height": 74
       },
       {
-       "what": "JobsAPS roles open for review",
+       "what": "Ops hubIssues, PRs, waves and the notice",
        "tag": "a",
        "top": 828,
        "bottom": 902,
@@ -3503,7 +3659,7 @@
        "height": 74
       },
       {
-       "what": "PlansImplementation plans with cross-dev",
+       "what": "MailThe shared agent inbox",
        "tag": "a",
        "top": 918,
        "bottom": 992,
@@ -3516,7 +3672,7 @@
        "height": 74
       },
       {
-       "what": "System MapMap of every project, applicat",
+       "what": "WatchtowerInfra health, live from the co",
        "tag": "a",
        "top": 1008,
        "bottom": 1082,
@@ -3529,13 +3685,39 @@
        "height": 74
       },
       {
-       "what": "+ Add",
-       "tag": "button",
-       "top": 1114,
-       "bottom": 1158,
-       "left": 330,
+       "what": "PlansImplementation plans with cross-dev",
+       "tag": "a",
+       "top": 1098,
+       "bottom": 1172,
+       "left": 16,
        "inFirstViewport": false,
        "centreAt": 1.3,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "System MapMap of every project, applicat",
+       "tag": "a",
+       "top": 1188,
+       "bottom": 1262,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.5,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 74
+      },
+      {
+       "what": "+ Add",
+       "tag": "button",
+       "top": 1294,
+       "bottom": 1338,
+       "left": 330,
+       "inFirstViewport": false,
+       "centreAt": 1.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 44,
@@ -3633,7 +3815,7 @@
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 35,
+      "contrastChecked": 39,
       "contrastUnknown": 0,
       "contrastFails": [
        {
@@ -3648,7 +3830,7 @@
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 35,
+     "textRuns": 39,
      "truncated": {
       "count": 1,
       "inRows": 0,
@@ -3659,7 +3841,7 @@
      "covered": {
       "runs": 1,
       "sample": [
-       "Daily ops briefing and memory  (14px at 778)"
+       "Household inventory (14px at 778)"
       ]
      },
      "waitForSeen": true,
@@ -3668,8 +3850,8 @@
      "underInsets": [
       "myargus",
       "Sign out",
-      "BriefingsDaily ops briefing an",
-      "JobsAPS roles open for review",
+      "StockadeHousehold inventory",
+      "Ops hubIssues, PRs, waves and ",
       "Home",
       "Plans",
       "Workflows",
@@ -3735,7 +3917,7 @@
      },
      "nothingCutOff": {
       "pass": false,
-      "detail": "12 texts cut short, 11 of them in list rows"
+      "detail": "1 texts cut short, 0 of them in list rows"
      },
      "interactiveCount": {
       "pass": true,
@@ -3863,7 +4045,7 @@
       "count": 6,
       "sample": [
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -3876,7 +4058,7 @@
         "titleText": "Follow up the primitives usage"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -3889,7 +4071,7 @@
         "titleText": "Filter APS job roles by review"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -3900,7 +4082,7 @@
         "titleText": "Add barcode lookup to the Stoc"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -3913,7 +4095,7 @@
         "titleText": "Move category rules into the s"
        },
        {
-        "height": 58,
+        "height": 75,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -3924,7 +4106,7 @@
         "titleText": "Expire read notice-board messa"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -3941,7 +4123,8 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       58
+       75,
+       94
       ],
       "titleWeightMax": 500
      },
@@ -3984,143 +4167,143 @@
        "what": "Follow up the primitives usage audit bef",
        "tag": "a",
        "top": 193,
-       "bottom": 251,
+       "bottom": 287,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
        "what": "Filter APS job roles by review status an",
        "tag": "a",
-       "top": 259,
-       "bottom": 317,
-       "left": 16,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 358,
-       "height": 58
-      },
-      {
-       "what": "Add barcode lookup to the Stockade intak",
-       "tag": "a",
-       "top": 325,
-       "bottom": 383,
+       "top": 295,
+       "bottom": 389,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
-       "what": "Move category rules into the shared ledg",
+       "what": "Add barcode lookup to the Stockade intak",
        "tag": "a",
-       "top": 391,
-       "bottom": 449,
+       "top": 397,
+       "bottom": 491,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
-       "what": "Expire read notice-board messages after ",
+       "what": "Move category rules into the shared ledg",
        "tag": "a",
-       "top": 457,
-       "bottom": 515,
+       "top": 499,
+       "bottom": 593,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
+      },
+      {
+       "what": "Expire read notice-board messages after ",
+       "tag": "a",
+       "top": 601,
+       "bottom": 676,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 75
       },
       {
        "what": "Show the reader's saved article queue on",
        "tag": "a",
-       "top": 523,
-       "bottom": 581,
+       "top": 684,
+       "bottom": 778,
        "left": 16,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
        "what": "Home",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
+       "top": 773,
+       "bottom": 823,
        "left": 25.8,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Plans",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 94.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Workflows",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 162.8,
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Map",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 231.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "More",
        "tag": "button",
-       "top": 781,
-       "bottom": 831,
-       "left": 299.7,
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       }
      ],
@@ -4160,17 +4343,10 @@
      },
      "textRuns": 52,
      "truncated": {
-      "count": 12,
-      "inRows": 11,
+      "count": 1,
+      "inRows": 0,
       "sample": [
-       "Follow up the primitives usage audit before the ne (70% shown)",
-       "audit-follow-ups (87% shown)",
-       "Filter APS job roles by review status and by the d (76% shown)",
-       "jobs-role-review-filters (63% shown)",
-       "Add barcode lookup to the Stockade intake form so  (69% shown)",
-       "stockade-barcode-intake (65% shown)",
-       "Move category rules into the shared ledger schema  (69% shown)",
-       "budget-category-rules (76% shown)"
+       "Workflows (95% shown)"
       ]
      },
      "covered": {
@@ -4238,7 +4414,7 @@
       "count": 6,
       "sample": [
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -4251,7 +4427,7 @@
         "titleText": "Follow up the primitives usage"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -4264,7 +4440,7 @@
         "titleText": "Filter APS job roles by review"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -4275,7 +4451,7 @@
         "titleText": "Add barcode lookup to the Stoc"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -4288,7 +4464,7 @@
         "titleText": "Move category rules into the s"
        },
        {
-        "height": 58,
+        "height": 75,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -4299,7 +4475,7 @@
         "titleText": "Expire read notice-board messa"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -4316,7 +4492,8 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       58
+       75,
+       94
       ],
       "titleWeightMax": 500
      },
@@ -4359,79 +4536,79 @@
        "what": "Follow up the primitives usage audit bef",
        "tag": "a",
        "top": 193,
-       "bottom": 251,
+       "bottom": 287,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
        "what": "Filter APS job roles by review status an",
        "tag": "a",
-       "top": 259,
-       "bottom": 317,
-       "left": 16,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 358,
-       "height": 58
-      },
-      {
-       "what": "Add barcode lookup to the Stockade intak",
-       "tag": "a",
-       "top": 325,
-       "bottom": 383,
+       "top": 295,
+       "bottom": 389,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
-       "what": "Move category rules into the shared ledg",
+       "what": "Add barcode lookup to the Stockade intak",
        "tag": "a",
-       "top": 391,
-       "bottom": 449,
+       "top": 397,
+       "bottom": 491,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
-       "what": "Expire read notice-board messages after ",
+       "what": "Move category rules into the shared ledg",
        "tag": "a",
-       "top": 457,
-       "bottom": 515,
+       "top": 499,
+       "bottom": 593,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
+      },
+      {
+       "what": "Expire read notice-board messages after ",
+       "tag": "a",
+       "top": 601,
+       "bottom": 676,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 75
       },
       {
        "what": "Show the reader's saved article queue on",
        "tag": "a",
-       "top": 523,
-       "bottom": 581,
+       "top": 684,
+       "bottom": 778,
        "left": 16,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
        "what": "Home",
@@ -4535,17 +4712,10 @@
      },
      "textRuns": 52,
      "truncated": {
-      "count": 12,
-      "inRows": 11,
+      "count": 1,
+      "inRows": 0,
       "sample": [
-       "Follow up the primitives usage audit before the ne (70% shown)",
-       "audit-follow-ups (87% shown)",
-       "Filter APS job roles by review status and by the d (76% shown)",
-       "jobs-role-review-filters (63% shown)",
-       "Add barcode lookup to the Stockade intake form so  (69% shown)",
-       "stockade-barcode-intake (65% shown)",
-       "Move category rules into the shared ledger schema  (69% shown)",
-       "budget-category-rules (76% shown)"
+       "Workflows (97% shown)"
       ]
      },
      "covered": {
@@ -5410,11 +5580,11 @@
        },
        {
         "size": 14,
-        "chars": 482
+        "chars": 376
        },
        {
         "size": 13,
-        "chars": 253
+        "chars": 193
        },
        {
         "size": 12,
@@ -5449,7 +5619,7 @@
       "count": 6,
       "sample": [
        {
-        "height": 58,
+        "height": 128,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5462,7 +5632,7 @@
         "titleText": "Follow up the primitives usage"
        },
        {
-        "height": 58,
+        "height": 162,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5475,7 +5645,7 @@
         "titleText": "Filter APS job roles by review"
        },
        {
-        "height": 58,
+        "height": 145,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -5486,7 +5656,7 @@
         "titleText": "Add barcode lookup to the Stoc"
        },
        {
-        "height": 58,
+        "height": 111,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5499,7 +5669,7 @@
         "titleText": "Move category rules into the s"
        },
        {
-        "height": 58,
+        "height": 128,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -5510,7 +5680,7 @@
         "titleText": "Expire read notice-board messa"
        },
        {
-        "height": 58,
+        "height": 111,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5527,12 +5697,15 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       58
+       111,
+       128,
+       145,
+       162
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 13,
+      "firstViewport": 12,
       "measured": 13,
       "small": 0,
       "smallSample": [],
@@ -5570,79 +5743,79 @@
        "what": "Follow up the primitives usage audit bef",
        "tag": "a",
        "top": 193,
-       "bottom": 251,
+       "bottom": 321,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 288,
-       "height": 58
+       "height": 128
       },
       {
        "what": "Filter APS job roles by review status an",
        "tag": "a",
-       "top": 259,
-       "bottom": 317,
-       "left": 16,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 288,
-       "height": 58
-      },
-      {
-       "what": "Add barcode lookup to the Stockade intak",
-       "tag": "a",
-       "top": 325,
-       "bottom": 383,
-       "left": 16,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 288,
-       "height": 58
-      },
-      {
-       "what": "Move category rules into the shared ledg",
-       "tag": "a",
-       "top": 391,
-       "bottom": 449,
+       "top": 329,
+       "bottom": 491,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 288,
-       "height": 58
+       "height": 162
       },
       {
-       "what": "Expire read notice-board messages after ",
+       "what": "Add barcode lookup to the Stockade intak",
        "tag": "a",
-       "top": 457,
-       "bottom": 515,
-       "left": 16,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 288,
-       "height": 58
-      },
-      {
-       "what": "Show the reader's saved article queue on",
-       "tag": "a",
-       "top": 523,
-       "bottom": 581,
+       "top": 499,
+       "bottom": 644,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 288,
-       "height": 58
+       "height": 145
+      },
+      {
+       "what": "Move category rules into the shared ledg",
+       "tag": "a",
+       "top": 652,
+       "bottom": 763,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 111
+      },
+      {
+       "what": "Expire read notice-board messages after ",
+       "tag": "a",
+       "top": 771,
+       "bottom": 899,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 128
+      },
+      {
+       "what": "Show the reader's saved article queue on",
+       "tag": "a",
+       "top": 907,
+       "bottom": 1018,
+       "left": 16,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 288,
+       "height": 111
       },
       {
        "what": "Home",
@@ -5746,22 +5919,22 @@
      },
      "textRuns": 52,
      "truncated": {
-      "count": 13,
-      "inRows": 12,
+      "count": 1,
+      "inRows": 0,
       "sample": [
-       "Follow up the primitives usage audit before the ne (55% shown)",
-       "audit-follow-ups (31% shown)",
-       "Filter APS job roles by review status and by the d (60% shown)",
-       "jobs-role-review-filters (25% shown)",
-       "Add barcode lookup to the Stockade intake form so  (55% shown)",
-       "stockade-barcode-intake (26% shown)",
-       "Move category rules into the shared ledger schema  (54% shown)",
-       "budget-category-rules (34% shown)"
+       "Workflows (72% shown)"
       ]
      },
      "covered": {
-      "runs": 0,
-      "sample": []
+      "runs": 6,
+      "sample": [
+       "Expire read notice-board messa (14px at 781)",
+       "0 (13px at 822)",
+       "/ (13px at 822)",
+       "3 (13px at 822)",
+       "Updated (13px at 822)",
+       "Nov 6, 2026 (13px at 822)"
+      ]
      },
      "waitForSeen": true,
      "pageErrors": [],
@@ -5824,7 +5997,7 @@
       "count": 6,
       "sample": [
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5837,7 +6010,7 @@
         "titleText": "Follow up the primitives usage"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5850,7 +6023,7 @@
         "titleText": "Filter APS job roles by review"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -5861,7 +6034,7 @@
         "titleText": "Add barcode lookup to the Stoc"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5874,7 +6047,7 @@
         "titleText": "Move category rules into the s"
        },
        {
-        "height": 58,
+        "height": 75,
         "chips": 0,
         "chipTexts": [],
         "colours": 0,
@@ -5885,7 +6058,7 @@
         "titleText": "Expire read notice-board messa"
        },
        {
-        "height": 58,
+        "height": 94,
         "chips": 0,
         "chipTexts": [],
         "colours": 1,
@@ -5902,7 +6075,8 @@
       "maxColours": 1,
       "nested": 0,
       "heights": [
-       58
+       75,
+       94
       ],
       "titleWeightMax": 500
      },
@@ -5945,79 +6119,79 @@
        "what": "Follow up the primitives usage audit bef",
        "tag": "a",
        "top": 193,
-       "bottom": 251,
+       "bottom": 287,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
        "what": "Filter APS job roles by review status an",
        "tag": "a",
-       "top": 259,
-       "bottom": 317,
-       "left": 16,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 358,
-       "height": 58
-      },
-      {
-       "what": "Add barcode lookup to the Stockade intak",
-       "tag": "a",
-       "top": 325,
-       "bottom": 383,
+       "top": 295,
+       "bottom": 389,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
-       "what": "Move category rules into the shared ledg",
+       "what": "Add barcode lookup to the Stockade intak",
        "tag": "a",
-       "top": 391,
-       "bottom": 449,
+       "top": 397,
+       "bottom": 491,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
-       "what": "Expire read notice-board messages after ",
+       "what": "Move category rules into the shared ledg",
        "tag": "a",
-       "top": 457,
-       "bottom": 515,
+       "top": 499,
+       "bottom": 593,
        "left": 16,
        "inFirstViewport": true,
        "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
+      },
+      {
+       "what": "Expire read notice-board messages after ",
+       "tag": "a",
+       "top": 601,
+       "bottom": 676,
+       "left": 16,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 358,
+       "height": 75
       },
       {
        "what": "Show the reader's saved article queue on",
        "tag": "a",
-       "top": 523,
-       "bottom": 581,
+       "top": 684,
+       "bottom": 778,
        "left": 16,
        "inFirstViewport": true,
-       "centreAt": 0.7,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 358,
-       "height": 58
+       "height": 94
       },
       {
        "what": "Home",
@@ -6121,17 +6295,10 @@
      },
      "textRuns": 52,
      "truncated": {
-      "count": 12,
-      "inRows": 11,
+      "count": 1,
+      "inRows": 0,
       "sample": [
-       "Follow up the primitives usage audit before the ne (70% shown)",
-       "audit-follow-ups (87% shown)",
-       "Filter APS job roles by review status and by the d (76% shown)",
-       "jobs-role-review-filters (63% shown)",
-       "Add barcode lookup to the Stockade intake form so  (69% shown)",
-       "stockade-barcode-intake (65% shown)",
-       "Move category rules into the shared ledger schema  (69% shown)",
-       "budget-category-rules (76% shown)"
+       "Workflows (97% shown)"
       ]
      },
      "covered": {
@@ -9106,66 +9273,66 @@
       {
        "what": "Home",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
+       "top": 773,
+       "bottom": 823,
        "left": 25.8,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Plans",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 94.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 92.7,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Workflows",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 162.8,
+       "top": 773,
+       "bottom": 823,
+       "left": 159.5,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "Map",
        "tag": "a",
-       "top": 781,
-       "bottom": 831,
-       "left": 231.3,
+       "top": 773,
+       "bottom": 823,
+       "left": 226.4,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       },
       {
        "what": "More",
        "tag": "button",
-       "top": 781,
-       "bottom": 831,
-       "left": 299.7,
+       "top": 773,
+       "bottom": 823,
+       "left": 293.3,
        "inFirstViewport": true,
-       "centreAt": 1,
+       "centreAt": 0.9,
        "pinnedToBottom": true,
        "primaryFill": false,
-       "width": 64.5,
+       "width": 62.9,
        "height": 50
       }
      ],
@@ -9312,7 +9479,7 @@
       "count": 1,
       "inRows": 0,
       "sample": [
-       "Workflows (97% shown)"
+       "Workflows (95% shown)"
       ]
      },
      "covered": {

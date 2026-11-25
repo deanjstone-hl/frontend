@@ -43,7 +43,7 @@
      },
      "headingVisible": {
       "pass": true,
-      "detail": "h2 \"Open roles12\" at 253px"
+      "detail": "h2 \"Open roles3\" at 253px"
      },
      "headingOutweighsRows": {
       "pass": true,
@@ -57,11 +57,11 @@
     "clutter": {
      "chipsPerRow": {
       "pass": true,
-      "detail": "max 1 in 12 rows"
+      "detail": "max 1 in 3 rows"
      },
      "coloursPerRow": {
       "pass": true,
-      "detail": "max 1"
+      "detail": "max 2"
      },
      "noNestedBorders": {
       "pass": true,
@@ -69,19 +69,19 @@
      },
      "chipsPerRowDesktop": {
       "pass": false,
-      "detail": "max 2 in 12 rows"
+      "detail": "max 2 in 3 rows"
      },
      "coloursPerRowDesktop": {
-      "pass": true,
-      "detail": "max 2"
+      "pass": false,
+      "detail": "max 3"
      },
      "nothingCutOff": {
-      "pass": false,
-      "detail": "12 texts cut short, 12 of them in list rows"
+      "pass": true,
+      "detail": "0 texts cut short, 0 of them in list rows"
      },
      "interactiveCount": {
-      "pass": false,
-      "detail": "16"
+      "pass": true,
+      "detail": "10"
      },
      "alphaSteps": {
       "pass": true,
@@ -98,8 +98,8 @@
       "detail": "no primary action on this screen"
      },
      "tapTargets": {
-      "pass": false,
-      "detail": "12 of 28 under 44px"
+      "pass": true,
+      "detail": "0 of 11 under 44px"
      },
      "inputText": {
       "pass": true,
@@ -109,19 +109,19 @@
     "state": {
      "moreThanColour": {
       "pass": true,
-      "detail": "0 of 8 carry colour alone"
+      "detail": "0 of 7 carry colour alone"
      },
      "statusFromTokens": {
-      "pass": false,
-      "detail": "#894e00×2"
+      "pass": true,
+      "detail": "all from tokens"
      },
      "progressShown": {
       "pass": true,
-      "detail": "2 counted headings, 0 progress elements, 0 \"n of m\" or percent texts"
+      "detail": "4 counted headings, 0 progress elements, 0 \"n of m\" or percent texts"
      },
      "emptySaysNext": {
-      "pass": false,
-      "detail": "\"Pick a roleChoose a role to read its ful\": 0 actions"
+      "pass": true,
+      "detail": "\"Pick a roleChoose a role to read its ful\": 1 actions"
      }
     },
     "reading": {
@@ -162,11 +162,11 @@
        },
        {
         "size": 14,
-        "chars": 476
+        "chars": 245
        },
        {
         "size": 13,
-        "chars": 730
+        "chars": 369
        }
       ],
       "largest": {
@@ -179,7 +179,7 @@
       "headings": [
        {
         "tag": "h2",
-        "text": "Open roles12",
+        "text": "Open roles3",
         "size": 14,
         "weight": 500,
         "top": 253
@@ -187,13 +187,26 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
-        "height": 88,
+        "height": 153,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 1,
+        "colourValues": [
+         "#8a5300"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "3/5"
+         "1/5"
         ],
         "colours": 1,
         "colourValues": [
@@ -202,150 +215,38 @@
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
+        "titleText": "Senior Hydrographic Survey Ana"
        },
        {
-        "height": 88,
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "2/5"
+         "4/5"
         ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#137333"
+         "#137333",
+         "#8a5300"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "2/5"
-        ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#137333"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 88,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 1,
-      "maxColours": 1,
+      "maxColours": 2,
       "nested": 0,
       "heights": [
-       88
+       153
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 16,
-      "measured": 28,
-      "small": 12,
-      "smallSample": [
-       {
-        "what": "Open the listing for Policy Officer, rem",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Communications Advi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Service Desk Team L",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Administrative Offi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Senior ICT Security",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Legal Officer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Forecast Systems De",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Cloud Infrastructur",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Data Engineer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Project Manager for",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       }
-      ],
+      "firstViewport": 10,
+      "measured": 11,
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -403,7 +304,7 @@
        "height": 44
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 289,
        "bottom": 333,
@@ -413,306 +314,85 @@
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Policy Officer, rem",
-       "tag": "a",
-       "top": 333,
-       "bottom": 361,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 385,
-       "bottom": 429,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 429,
-       "bottom": 457,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
-       "tag": "button",
-       "top": 481,
-       "bottom": 525,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Service Desk Team L",
-       "tag": "a",
-       "top": 525,
-       "bottom": 553,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 577,
-       "bottom": 621,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 621,
-       "bottom": 649,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
-       "tag": "button",
-       "top": 673,
-       "bottom": 717,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 717,
-       "bottom": 745,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 769,
-       "bottom": 813,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 813,
-       "bottom": 841,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 865,
-       "bottom": 909,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 909,
-       "bottom": 937,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1005,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 1005,
-       "bottom": 1033,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 1057,
-       "bottom": 1101,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 1101,
-       "bottom": 1129,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 1153,
-       "bottom": 1197,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 1197,
-       "bottom": 1225,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
+       "top": 384,
+       "bottom": 428,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 1249,
-       "bottom": 1293,
+       "top": 450,
+       "bottom": 494,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 1293,
-       "bottom": 1321,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "top": 545,
+       "bottom": 589,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 1345,
-       "bottom": 1389,
+       "top": 611,
+       "bottom": 655,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1389,
-       "bottom": 1417,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
+       "top": 706,
+       "bottom": 750,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 929.8,
+       "bottom": 973.8,
+       "left": 126.2,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -729,52 +409,36 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 8,
-      "offToken": [
-       {
-        "colour": "#894e00",
-        "family": "amber",
-        "count": 2,
-        "sample": "Fit 3 out of 5"
-       }
-      ],
+      "statusColoured": 7,
+      "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
-      "countsInHeadings": 2,
+      "countsInHeadings": 4,
       "progressText": 0,
       "usesSafeTokens": true,
       "progressElements": 0,
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 89,
+      "contrastChecked": 28,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 89,
+     "textRuns": 28,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Policy Officer, remote area health workforce strat (71% shown)",
-       "APS5 · Department of Health and Aged Care · discov (9% shown)",
-       "Communications Adviser for veterans' health servic (66% shown)",
-       "APS5 · Department of Veterans' Affairs · discovere (9% shown)",
-       "Service Desk Team Leader for a 60-seat regional su (75% shown)",
-       "APS6 · Services Australia · discovered · Parramatt (10% shown)",
-       "Administrative Officer supporting Indigenous procu (57% shown)",
-       "APS4 · National Indigenous Australians Agency · di (9% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -798,11 +462,11 @@
        },
        {
         "size": 14,
-        "chars": 476
+        "chars": 245
        },
        {
         "size": 13,
-        "chars": 730
+        "chars": 369
        }
       ],
       "largest": {
@@ -815,7 +479,7 @@
       "headings": [
        {
         "tag": "h2",
-        "text": "Open roles12",
+        "text": "Open roles3",
         "size": 14,
         "weight": 500,
         "top": 253
@@ -823,13 +487,26 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
-        "height": 88,
+        "height": 153,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 1,
+        "colourValues": [
+         "#fbbf24"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "3/5"
+         "1/5"
         ],
         "colours": 1,
         "colourValues": [
@@ -838,150 +515,38 @@
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
+        "titleText": "Senior Hydrographic Survey Ana"
        },
        {
-        "height": 88,
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "2/5"
+         "4/5"
         ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#4ade80"
+         "#4ade80",
+         "#fbbf24"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "2/5"
-        ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#4ade80"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 88,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 1,
-      "maxColours": 1,
+      "maxColours": 2,
       "nested": 0,
       "heights": [
-       88
+       153
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 16,
-      "measured": 28,
-      "small": 12,
-      "smallSample": [
-       {
-        "what": "Open the listing for Policy Officer, rem",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Communications Advi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Service Desk Team L",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Administrative Offi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Senior ICT Security",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Legal Officer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Forecast Systems De",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Cloud Infrastructur",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Data Engineer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Project Manager for",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       }
-      ],
+      "firstViewport": 10,
+      "measured": 11,
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -1039,7 +604,7 @@
        "height": 44
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 289,
        "bottom": 333,
@@ -1049,306 +614,85 @@
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Policy Officer, rem",
-       "tag": "a",
-       "top": 333,
-       "bottom": 361,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 385,
-       "bottom": 429,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 429,
-       "bottom": 457,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
-       "tag": "button",
-       "top": 481,
-       "bottom": 525,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Service Desk Team L",
-       "tag": "a",
-       "top": 525,
-       "bottom": 553,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 577,
-       "bottom": 621,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 621,
-       "bottom": 649,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
-       "tag": "button",
-       "top": 673,
-       "bottom": 717,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 717,
-       "bottom": 745,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 769,
-       "bottom": 813,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 813,
-       "bottom": 841,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 865,
-       "bottom": 909,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 909,
-       "bottom": 937,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1005,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 1005,
-       "bottom": 1033,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 1057,
-       "bottom": 1101,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 1101,
-       "bottom": 1129,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 1153,
-       "bottom": 1197,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 1197,
-       "bottom": 1225,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
+       "top": 384,
+       "bottom": 428,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 1249,
-       "bottom": 1293,
+       "top": 450,
+       "bottom": 494,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 1293,
-       "bottom": 1321,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "top": 545,
+       "bottom": 589,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 1345,
-       "bottom": 1389,
+       "top": 611,
+       "bottom": 655,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1389,
-       "bottom": 1417,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
+       "top": 706,
+       "bottom": 750,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 929.8,
+       "bottom": 973.8,
+       "left": 126.2,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -1366,45 +710,36 @@
        "--unreachable #fb923c",
        "--destructive #ff6467"
       ],
-      "statusColoured": 8,
+      "statusColoured": 7,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
-      "countsInHeadings": 2,
+      "countsInHeadings": 4,
       "progressText": 0,
       "usesSafeTokens": true,
       "progressElements": 0,
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 89,
+      "contrastChecked": 28,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 89,
+     "textRuns": 28,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Policy Officer, remote area health workforce strat (71% shown)",
-       "APS5 · Department of Health and Aged Care · discov (9% shown)",
-       "Communications Adviser for veterans' health servic (66% shown)",
-       "APS5 · Department of Veterans' Affairs · discovere (9% shown)",
-       "Service Desk Team Leader for a 60-seat regional su (75% shown)",
-       "APS6 · Services Australia · discovered · Parramatt (10% shown)",
-       "Administrative Officer supporting Indigenous procu (57% shown)",
-       "APS4 · National Indigenous Australians Agency · di (9% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -1432,11 +767,11 @@
        },
        {
         "size": 14,
-        "chars": 1417
+        "chars": 587
        },
        {
         "size": 13,
-        "chars": 251
+        "chars": 87
        },
        {
         "size": 12.8,
@@ -1461,109 +796,62 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
         "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "3/5",
-         "discovered"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#8a5300",
-         "#0a6f75"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
-       },
-       {
-        "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "2/5",
-         "discovered"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#0a6f75"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "5/5",
-         "discovered"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#137333",
-         "#0a6f75"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 95,
-        "chips": 2,
-        "chipTexts": [
-         "2/5",
-         "discovered"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#0a6f75"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "5/5",
-         "applied"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#137333",
-         "#0a6f75"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 95,
         "chips": 1,
         "chipTexts": [
          "discovered"
         ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#0a6f75"
+         "#0a6f75",
+         "#8a5300"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 76,
+        "chips": 2,
+        "chipTexts": [
+         "1/5",
+         "discovered"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#0a6f75",
+         "#8a5300"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Senior Hydrographic Survey Ana"
+       },
+       {
+        "height": 95,
+        "chips": 2,
+        "chipTexts": [
+         "4/5",
+         "discovered"
+        ],
+        "colours": 3,
+        "colourValues": [
+         "#137333",
+         "#0a6f75",
+         "#8a5300"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 2,
-      "maxColours": 2,
+      "maxColours": 3,
       "nested": 0,
       "heights": [
        76,
@@ -1572,9 +860,9 @@
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
-      "measured": 33,
-      "small": 20,
+      "firstViewport": 16,
+      "measured": 16,
+      "small": 12,
       "smallSample": [
        {
         "what": "Roles",
@@ -1625,13 +913,13 @@
         "height": 28
        },
        {
-        "what": "Open the listing for Policy Officer, rem",
+        "what": "Open the listing for Project Manager for",
         "tag": "a",
         "width": 28,
         "height": 28
        },
        {
-        "what": "Open the listing for Communications Advi",
+        "what": "Open the listing for Senior Hydrographic",
         "tag": "a",
         "width": 28,
         "height": 28
@@ -1672,7 +960,7 @@
        "tag": "button",
        "top": 72,
        "bottom": 104,
-       "left": 1240.4,
+       "left": 1244.4,
        "inFirstViewport": true,
        "centreAt": 0.1,
        "pinnedToBottom": false,
@@ -1685,7 +973,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 365,
+       "left": 369,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1698,7 +986,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 567.3,
+       "left": 574.5,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1711,7 +999,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 649.9,
+       "left": 657.1,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1724,7 +1012,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 799.4,
+       "left": 811.5,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1737,7 +1025,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 1111.7,
+       "left": 1115.7,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1750,7 +1038,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 1196.1,
+       "left": 1200.1,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -1759,260 +1047,26 @@
        "height": 28
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 201,
        "bottom": 260,
-       "left": 365,
+       "left": 369,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Policy Officer, rem",
-       "tag": "a",
-       "top": 216.5,
-       "bottom": 244.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 277,
-       "bottom": 336,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 292.5,
-       "bottom": 320.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
-       "tag": "button",
-       "top": 353,
-       "bottom": 412,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Service Desk Team L",
-       "tag": "a",
-       "top": 368.5,
-       "bottom": 396.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 429,
-       "bottom": 507,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 454,
-       "bottom": 482,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
-       "tag": "button",
-       "top": 524,
-       "bottom": 583,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 539.5,
-       "bottom": 567.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 600,
-       "bottom": 678,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 625,
-       "bottom": 653,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 695,
-       "bottom": 754,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 710.5,
-       "bottom": 738.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 771,
-       "bottom": 849,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 796,
-       "bottom": 824,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 866,
-       "bottom": 944,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 891,
-       "bottom": 919,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1020,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
+       "width": 189.5,
        "height": 59
       },
       {
        "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 976.5,
-       "bottom": 1004.5,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
+       "top": 216.5,
+       "bottom": 244.5,
+       "left": 1299,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 28,
@@ -2021,24 +1075,24 @@
       {
        "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 1037,
-       "bottom": 1096,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
+       "top": 277,
+       "bottom": 336,
+       "left": 369,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 186.3,
+       "width": 189.5,
        "height": 59
       },
       {
        "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 1052.5,
-       "bottom": 1080.5,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
+       "top": 292.5,
+       "bottom": 320.5,
+       "left": 1299,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 28,
@@ -2047,28 +1101,41 @@
       {
        "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 1113,
-       "bottom": 1191,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
+       "top": 353,
+       "bottom": 431,
+       "left": 369,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 186.3,
+       "width": 189.5,
        "height": 78
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1138,
-       "bottom": 1166,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
+       "top": 378,
+       "bottom": 406,
+       "left": 1299,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 28,
        "height": 28
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 601.8,
+       "bottom": 633.8,
+       "left": 779.2,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 32
       }
      ],
      "alphaSteps": [
@@ -2084,15 +1151,8 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 7,
-      "offToken": [
-       {
-        "colour": "#894e00",
-        "family": "amber",
-        "count": 2,
-        "sample": "Fit 3 out of 5"
-       }
-      ],
+      "statusColoured": 4,
+      "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
       "countsInHeadings": 0,
@@ -2102,21 +1162,21 @@
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 145,
+      "contrastChecked": 48,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
-      "overflowX": -8,
+      "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 145,
+     "textRuns": 48,
      "truncated": {
       "count": 0,
       "inRows": 0,
@@ -2148,11 +1208,11 @@
        },
        {
         "size": 14,
-        "chars": 1417
+        "chars": 587
        },
        {
         "size": 13,
-        "chars": 251
+        "chars": 87
        },
        {
         "size": 12.8,
@@ -2177,109 +1237,62 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
         "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "3/5",
-         "discovered"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#fbbf24",
-         "#5bd0d6"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
-       },
-       {
-        "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "2/5",
-         "discovered"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#5bd0d6"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "5/5",
-         "discovered"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#4ade80",
-         "#5bd0d6"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 95,
-        "chips": 2,
-        "chipTexts": [
-         "2/5",
-         "discovered"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#5bd0d6"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 76,
-        "chips": 2,
-        "chipTexts": [
-         "5/5",
-         "applied"
-        ],
-        "colours": 2,
-        "colourValues": [
-         "#4ade80",
-         "#5bd0d6"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 95,
         "chips": 1,
         "chipTexts": [
          "discovered"
         ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#5bd0d6"
+         "#5bd0d6",
+         "#fbbf24"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 76,
+        "chips": 2,
+        "chipTexts": [
+         "1/5",
+         "discovered"
+        ],
+        "colours": 2,
+        "colourValues": [
+         "#5bd0d6",
+         "#fbbf24"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Senior Hydrographic Survey Ana"
+       },
+       {
+        "height": 95,
+        "chips": 2,
+        "chipTexts": [
+         "4/5",
+         "discovered"
+        ],
+        "colours": 3,
+        "colourValues": [
+         "#4ade80",
+         "#5bd0d6",
+         "#fbbf24"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 2,
-      "maxColours": 2,
+      "maxColours": 3,
       "nested": 0,
       "heights": [
        76,
@@ -2288,9 +1301,9 @@
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 27,
-      "measured": 33,
-      "small": 20,
+      "firstViewport": 16,
+      "measured": 16,
+      "small": 12,
       "smallSample": [
        {
         "what": "Roles",
@@ -2341,13 +1354,13 @@
         "height": 28
        },
        {
-        "what": "Open the listing for Policy Officer, rem",
+        "what": "Open the listing for Project Manager for",
         "tag": "a",
         "width": 28,
         "height": 28
        },
        {
-        "what": "Open the listing for Communications Advi",
+        "what": "Open the listing for Senior Hydrographic",
         "tag": "a",
         "width": 28,
         "height": 28
@@ -2388,7 +1401,7 @@
        "tag": "button",
        "top": 72,
        "bottom": 104,
-       "left": 1240.4,
+       "left": 1244.4,
        "inFirstViewport": true,
        "centreAt": 0.1,
        "pinnedToBottom": false,
@@ -2401,7 +1414,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 365,
+       "left": 369,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2414,7 +1427,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 567.3,
+       "left": 574.5,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2427,7 +1440,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 649.9,
+       "left": 657.1,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2440,7 +1453,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 799.4,
+       "left": 811.5,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2453,7 +1466,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 1111.7,
+       "left": 1115.7,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2466,7 +1479,7 @@
        "tag": "button",
        "top": 158,
        "bottom": 186,
-       "left": 1196.1,
+       "left": 1200.1,
        "inFirstViewport": true,
        "centreAt": 0.2,
        "pinnedToBottom": false,
@@ -2475,260 +1488,26 @@
        "height": 28
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 201,
        "bottom": 260,
-       "left": 365,
+       "left": 369,
        "inFirstViewport": true,
        "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Policy Officer, rem",
-       "tag": "a",
-       "top": 216.5,
-       "bottom": 244.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 277,
-       "bottom": 336,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 292.5,
-       "bottom": 320.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
-       "tag": "button",
-       "top": 353,
-       "bottom": 412,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Service Desk Team L",
-       "tag": "a",
-       "top": 368.5,
-       "bottom": 396.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 429,
-       "bottom": 507,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 454,
-       "bottom": 482,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
-       "tag": "button",
-       "top": 524,
-       "bottom": 583,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 539.5,
-       "bottom": 567.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 600,
-       "bottom": 678,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 625,
-       "bottom": 653,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 695,
-       "bottom": 754,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 59
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 710.5,
-       "bottom": 738.5,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 771,
-       "bottom": 849,
-       "left": 365,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 796,
-       "bottom": 824,
-       "left": 1295,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 866,
-       "bottom": 944,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
-       "height": 78
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 891,
-       "bottom": 919,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1020,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 186.3,
+       "width": 189.5,
        "height": 59
       },
       {
        "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 976.5,
-       "bottom": 1004.5,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
+       "top": 216.5,
+       "bottom": 244.5,
+       "left": 1299,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 28,
@@ -2737,24 +1516,24 @@
       {
        "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 1037,
-       "bottom": 1096,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
+       "top": 277,
+       "bottom": 336,
+       "left": 369,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 186.3,
+       "width": 189.5,
        "height": 59
       },
       {
        "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 1052.5,
-       "bottom": 1080.5,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
+       "top": 292.5,
+       "bottom": 320.5,
+       "left": 1299,
+       "inFirstViewport": true,
+       "centreAt": 0.3,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 28,
@@ -2763,28 +1542,41 @@
       {
        "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 1113,
-       "bottom": 1191,
-       "left": 365,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
+       "top": 353,
+       "bottom": 431,
+       "left": 369,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 186.3,
+       "width": 189.5,
        "height": 78
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1138,
-       "bottom": 1166,
-       "left": 1295,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
+       "top": 378,
+       "bottom": 406,
+       "left": 1299,
+       "inFirstViewport": true,
+       "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 28,
        "height": 28
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 601.8,
+       "bottom": 633.8,
+       "left": 779.2,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 32
       }
      ],
      "alphaSteps": [
@@ -2801,7 +1593,7 @@
        "--unreachable #fb923c",
        "--destructive #ff6467"
       ],
-      "statusColoured": 7,
+      "statusColoured": 4,
       "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
@@ -2812,21 +1604,21 @@
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 14,
       "lines": [],
-      "contrastChecked": 145,
+      "contrastChecked": 48,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
-      "overflowX": -8,
+      "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 145,
+     "textRuns": 48,
      "truncated": {
       "count": 0,
       "inRows": 0,
@@ -2854,11 +1646,11 @@
        },
        {
         "size": 14,
-        "chars": 476
+        "chars": 245
        },
        {
         "size": 13,
-        "chars": 658
+        "chars": 333
        }
       ],
       "largest": {
@@ -2871,7 +1663,7 @@
       "headings": [
        {
         "tag": "h2",
-        "text": "Open roles12",
+        "text": "Open roles3",
         "size": 14,
         "weight": 500,
         "top": 253
@@ -2879,13 +1671,26 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
-        "height": 88,
+        "height": 185,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 1,
+        "colourValues": [
+         "#8a5300"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 168,
         "chips": 1,
         "chipTexts": [
-         "3/5"
+         "1/5"
         ],
         "colours": 1,
         "colourValues": [
@@ -2894,150 +1699,39 @@
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
+        "titleText": "Senior Hydrographic Survey Ana"
        },
        {
-        "height": 88,
+        "height": 168,
         "chips": 1,
         "chipTexts": [
-         "2/5"
+         "4/5"
         ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#137333"
+         "#137333",
+         "#8a5300"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "2/5"
-        ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#137333"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 88,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 1,
-      "maxColours": 1,
+      "maxColours": 2,
       "nested": 0,
       "heights": [
-       88
+       168,
+       185
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 16,
-      "measured": 28,
-      "small": 12,
-      "smallSample": [
-       {
-        "what": "Open the listing for Policy Officer, rem",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Communications Advi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Service Desk Team L",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Administrative Offi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Senior ICT Security",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Legal Officer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Forecast Systems De",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Cloud Infrastructur",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Data Engineer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Project Manager for",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       }
-      ],
+      "firstViewport": 10,
+      "measured": 11,
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -3095,113 +1789,61 @@
        "height": 44
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 289,
-       "bottom": 333,
+       "bottom": 348,
        "left": 42,
        "inFirstViewport": true,
        "centreAt": 0.4,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 260,
-       "height": 86
+       "height": 183
       },
       {
-       "what": "Open the listing for Policy Officer, rem",
+       "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 333,
-       "bottom": 361,
-       "left": 250,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 385,
-       "bottom": 429,
-       "left": 42,
+       "top": 416,
+       "bottom": 460,
+       "left": 234,
        "inFirstViewport": true,
        "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 260,
-       "height": 86
+       "width": 44,
+       "height": 44
       },
       {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 429,
-       "bottom": 457,
-       "left": 250,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
+       "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 481,
-       "bottom": 525,
+       "top": 482,
+       "bottom": 541,
        "left": 42,
        "inFirstViewport": true,
        "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 260,
-       "height": 86
+       "height": 166
       },
       {
-       "what": "Open the listing for Service Desk Team L",
+       "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 525,
-       "bottom": 553,
-       "left": 250,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 577,
-       "bottom": 621,
-       "left": 42,
+       "top": 592,
+       "bottom": 636,
+       "left": 234,
        "inFirstViewport": true,
        "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 260,
-       "height": 86
+       "width": 44,
+       "height": 44
       },
       {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 621,
-       "bottom": 649,
-       "left": 250,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
+       "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 673,
+       "top": 658,
        "bottom": 717,
        "left": 42,
        "inFirstViewport": true,
@@ -3209,202 +1851,33 @@
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 717,
-       "bottom": 745,
-       "left": 250,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 769,
-       "bottom": 813,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 813,
-       "bottom": 841,
-       "left": 250,
-       "inFirstViewport": true,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 865,
-       "bottom": 909,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 909,
-       "bottom": 937,
-       "left": 250,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1005,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 1005,
-       "bottom": 1033,
-       "left": 250,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 1057,
-       "bottom": 1101,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 1101,
-       "bottom": 1129,
-       "left": 250,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 1153,
-       "bottom": 1197,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Project Manager for",
-       "tag": "a",
-       "top": 1197,
-       "bottom": 1225,
-       "left": 250,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior Hydrographic Survey Analyst for t",
-       "tag": "button",
-       "top": 1249,
-       "bottom": 1293,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Senior Hydrographic",
-       "tag": "a",
-       "top": 1293,
-       "bottom": 1321,
-       "left": 250,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Assistant Director, procurement policy a",
-       "tag": "button",
-       "top": 1345,
-       "bottom": 1389,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 260,
-       "height": 86
+       "height": 166
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1389,
-       "bottom": 1417,
-       "left": 250,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
+       "top": 768,
+       "bottom": 812,
+       "left": 234,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 991.8,
+       "bottom": 1035.8,
+       "left": 91.2,
+       "inFirstViewport": false,
+       "centreAt": 1.2,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -3421,52 +1894,36 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 7,
-      "offToken": [
-       {
-        "colour": "#894e00",
-        "family": "amber",
-        "count": 2,
-        "sample": "Fit 3 out of 5"
-       }
-      ],
+      "statusColoured": 4,
+      "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
-      "countsInHeadings": 2,
+      "countsInHeadings": 4,
       "progressText": 0,
       "usesSafeTokens": true,
       "progressElements": 0,
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 65,
+      "contrastChecked": 22,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 65,
+     "textRuns": 22,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Policy Officer, remote area health workforce strat (55% shown)",
-       "APS5 · Department of Health and Aged Care · discov (10% shown)",
-       "Communications Adviser for veterans' health servic (51% shown)",
-       "APS5 · Department of Veterans' Affairs · discovere (10% shown)",
-       "Service Desk Team Leader for a 60-seat regional su (58% shown)",
-       "APS6 · Services Australia · discovered · Parramatt (10% shown)",
-       "Administrative Officer supporting Indigenous procu (44% shown)",
-       "APS4 · National Indigenous Australians Agency · di (10% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -3490,11 +1947,11 @@
        },
        {
         "size": 14,
-        "chars": 476
+        "chars": 245
        },
        {
         "size": 13,
-        "chars": 730
+        "chars": 369
        }
       ],
       "largest": {
@@ -3507,7 +1964,7 @@
       "headings": [
        {
         "tag": "h2",
-        "text": "Open roles12",
+        "text": "Open roles3",
         "size": 14,
         "weight": 500,
         "top": 253
@@ -3515,13 +1972,26 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
-        "height": 88,
+        "height": 153,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 1,
+        "colourValues": [
+         "#8a5300"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "3/5"
+         "1/5"
         ],
         "colours": 1,
         "colourValues": [
@@ -3530,150 +2000,38 @@
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
+        "titleText": "Senior Hydrographic Survey Ana"
        },
        {
-        "height": 88,
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "2/5"
+         "4/5"
         ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#137333"
+         "#137333",
+         "#8a5300"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "2/5"
-        ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#137333"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 88,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 1,
-      "maxColours": 1,
+      "maxColours": 2,
       "nested": 0,
       "heights": [
-       88
+       153
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 16,
-      "measured": 28,
-      "small": 12,
-      "smallSample": [
-       {
-        "what": "Open the listing for Policy Officer, rem",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Communications Advi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Service Desk Team L",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Administrative Offi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Senior ICT Security",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Legal Officer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Forecast Systems De",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Cloud Infrastructur",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Data Engineer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Project Manager for",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       }
-      ],
+      "firstViewport": 10,
+      "measured": 11,
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -3731,7 +2089,7 @@
        "height": 44
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 289,
        "bottom": 333,
@@ -3741,306 +2099,85 @@
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Policy Officer, rem",
-       "tag": "a",
-       "top": 333,
-       "bottom": 361,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 385,
-       "bottom": 429,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 429,
-       "bottom": 457,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
-       "tag": "button",
-       "top": 481,
-       "bottom": 525,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Service Desk Team L",
-       "tag": "a",
-       "top": 525,
-       "bottom": 553,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 577,
-       "bottom": 621,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 621,
-       "bottom": 649,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
-       "tag": "button",
-       "top": 673,
-       "bottom": 717,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 717,
-       "bottom": 745,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 769,
-       "bottom": 813,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 813,
-       "bottom": 841,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 865,
-       "bottom": 909,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 909,
-       "bottom": 937,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1005,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 1005,
-       "bottom": 1033,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 1057,
-       "bottom": 1101,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 1101,
-       "bottom": 1129,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 1153,
-       "bottom": 1197,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 1197,
-       "bottom": 1225,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
+       "top": 384,
+       "bottom": 428,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 1249,
-       "bottom": 1293,
+       "top": 450,
+       "bottom": 494,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 1293,
-       "bottom": 1321,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "top": 545,
+       "bottom": 589,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 1345,
-       "bottom": 1389,
+       "top": 611,
+       "bottom": 655,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1389,
-       "bottom": 1417,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
+       "top": 706,
+       "bottom": 750,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 929.8,
+       "bottom": 973.8,
+       "left": 126.2,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -4057,52 +2194,36 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 8,
-      "offToken": [
-       {
-        "colour": "#894e00",
-        "family": "amber",
-        "count": 2,
-        "sample": "Fit 3 out of 5"
-       }
-      ],
+      "statusColoured": 7,
+      "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
-      "countsInHeadings": 2,
+      "countsInHeadings": 4,
       "progressText": 0,
       "usesSafeTokens": true,
       "progressElements": 0,
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 89,
+      "contrastChecked": 28,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 89,
+     "textRuns": 28,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Policy Officer, remote area health workforce strat (71% shown)",
-       "APS5 · Department of Health and Aged Care · discov (9% shown)",
-       "Communications Adviser for veterans' health servic (66% shown)",
-       "APS5 · Department of Veterans' Affairs · discovere (9% shown)",
-       "Service Desk Team Leader for a 60-seat regional su (75% shown)",
-       "APS6 · Services Australia · discovered · Parramatt (10% shown)",
-       "Administrative Officer supporting Indigenous procu (57% shown)",
-       "APS4 · National Indigenous Australians Agency · di (9% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -4126,11 +2247,11 @@
        },
        {
         "size": 14,
-        "chars": 476
+        "chars": 245
        },
        {
         "size": 13,
-        "chars": 730
+        "chars": 369
        }
       ],
       "largest": {
@@ -4143,7 +2264,7 @@
       "headings": [
        {
         "tag": "h2",
-        "text": "Open roles12",
+        "text": "Open roles3",
         "size": 14,
         "weight": 500,
         "top": 253
@@ -4151,13 +2272,26 @@
       ]
      },
      "rows": {
-      "count": 12,
+      "count": 3,
       "sample": [
        {
-        "height": 88,
+        "height": 153,
+        "chips": 0,
+        "chipTexts": [],
+        "colours": 1,
+        "colourValues": [
+         "#8a5300"
+        ],
+        "nested": 0,
+        "titleWeight": 500,
+        "titleSize": 14,
+        "titleText": "Project Manager for digital id"
+       },
+       {
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "3/5"
+         "1/5"
         ],
         "colours": 1,
         "colourValues": [
@@ -4166,150 +2300,38 @@
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Policy Officer, remote area he"
+        "titleText": "Senior Hydrographic Survey Ana"
        },
        {
-        "height": 88,
+        "height": 153,
         "chips": 1,
         "chipTexts": [
-         "2/5"
+         "4/5"
         ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Communications Adviser for vet"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
+        "colours": 2,
         "colourValues": [
-         "#137333"
+         "#137333",
+         "#8a5300"
         ],
         "nested": 0,
         "titleWeight": 500,
         "titleSize": 14,
-        "titleText": "Service Desk Team Leader for a"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "2/5"
-        ],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Administrative Officer support"
-       },
-       {
-        "height": 88,
-        "chips": 1,
-        "chipTexts": [
-         "5/5"
-        ],
-        "colours": 1,
-        "colourValues": [
-         "#137333"
-        ],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Senior ICT Security Adviser fo"
-       },
-       {
-        "height": 88,
-        "chips": 0,
-        "chipTexts": [],
-        "colours": 0,
-        "colourValues": [],
-        "nested": 0,
-        "titleWeight": 500,
-        "titleSize": 14,
-        "titleText": "Legal Officer for the freedom "
+        "titleText": "Assistant Director, procuremen"
        }
       ],
       "maxChips": 1,
-      "maxColours": 1,
+      "maxColours": 2,
       "nested": 0,
       "heights": [
-       88
+       153
       ],
       "titleWeightMax": 500
      },
      "interactive": {
-      "firstViewport": 16,
-      "measured": 28,
-      "small": 12,
-      "smallSample": [
-       {
-        "what": "Open the listing for Policy Officer, rem",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Communications Advi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Service Desk Team L",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Administrative Offi",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Senior ICT Security",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Legal Officer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Forecast Systems De",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Cloud Infrastructur",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Data Engineer for t",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       },
-       {
-        "what": "Open the listing for Project Manager for",
-        "tag": "a",
-        "width": 28,
-        "height": 28
-       }
-      ],
+      "firstViewport": 10,
+      "measured": 11,
+      "small": 0,
+      "smallSample": [],
       "inputs": 1,
       "smallInputs": []
      },
@@ -4367,7 +2389,7 @@
        "height": 44
       },
       {
-       "what": "Policy Officer, remote area health workf",
+       "what": "Project Manager for digital identity onb",
        "tag": "button",
        "top": 289,
        "bottom": 333,
@@ -4377,306 +2399,85 @@
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Policy Officer, rem",
-       "tag": "a",
-       "top": 333,
-       "bottom": 361,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Communications Adviser for veterans' hea",
-       "tag": "button",
-       "top": 385,
-       "bottom": 429,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Communications Advi",
-       "tag": "a",
-       "top": 429,
-       "bottom": 457,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.5,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Service Desk Team Leader for a 60-seat r",
-       "tag": "button",
-       "top": 481,
-       "bottom": 525,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Service Desk Team L",
-       "tag": "a",
-       "top": 525,
-       "bottom": 553,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.6,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Administrative Officer supporting Indige",
-       "tag": "button",
-       "top": 577,
-       "bottom": 621,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.7,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Administrative Offi",
-       "tag": "a",
-       "top": 621,
-       "bottom": 649,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Senior ICT Security Adviser for the agen",
-       "tag": "button",
-       "top": 673,
-       "bottom": 717,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.8,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Senior ICT Security",
-       "tag": "a",
-       "top": 717,
-       "bottom": 745,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Legal Officer for the freedom of informa",
-       "tag": "button",
-       "top": 769,
-       "bottom": 813,
-       "left": 42,
-       "inFirstViewport": true,
-       "centreAt": 0.9,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Legal Officer for t",
-       "tag": "a",
-       "top": 813,
-       "bottom": 841,
-       "left": 320,
-       "inFirstViewport": true,
-       "centreAt": 1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Forecast Systems Developer for the sever",
-       "tag": "button",
-       "top": 865,
-       "bottom": 909,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Forecast Systems De",
-       "tag": "a",
-       "top": 909,
-       "bottom": 937,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.1,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Cloud Infrastructure Engineer for Kubern",
-       "tag": "button",
-       "top": 961,
-       "bottom": 1005,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Cloud Infrastructur",
-       "tag": "a",
-       "top": 1005,
-       "bottom": 1033,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.2,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Data Engineer for the analytics platform",
-       "tag": "button",
-       "top": 1057,
-       "bottom": 1101,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
-      },
-      {
-       "what": "Open the listing for Data Engineer for t",
-       "tag": "a",
-       "top": 1101,
-       "bottom": 1129,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.3,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 28,
-       "height": 28
-      },
-      {
-       "what": "Project Manager for digital identity onb",
-       "tag": "button",
-       "top": 1153,
-       "bottom": 1197,
-       "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
-       "pinnedToBottom": false,
-       "primaryFill": false,
-       "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Project Manager for",
        "tag": "a",
-       "top": 1197,
-       "bottom": 1225,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.4,
+       "top": 384,
+       "bottom": 428,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.5,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Senior Hydrographic Survey Analyst for t",
        "tag": "button",
-       "top": 1249,
-       "bottom": 1293,
+       "top": 450,
+       "bottom": 494,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "inFirstViewport": true,
+       "centreAt": 0.6,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Senior Hydrographic",
        "tag": "a",
-       "top": 1293,
-       "bottom": 1321,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.5,
+       "top": 545,
+       "bottom": 589,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.7,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
       },
       {
        "what": "Assistant Director, procurement policy a",
        "tag": "button",
-       "top": 1345,
-       "bottom": 1389,
+       "top": 611,
+       "bottom": 655,
        "left": 42,
-       "inFirstViewport": false,
-       "centreAt": 1.6,
+       "inFirstViewport": true,
+       "centreAt": 0.8,
        "pinnedToBottom": false,
        "primaryFill": false,
        "width": 330,
-       "height": 86
+       "height": 151
       },
       {
        "what": "Open the listing for Assistant Director,",
        "tag": "a",
-       "top": 1389,
-       "bottom": 1417,
-       "left": 320,
-       "inFirstViewport": false,
-       "centreAt": 1.7,
+       "top": 706,
+       "bottom": 750,
+       "left": 304,
+       "inFirstViewport": true,
+       "centreAt": 0.9,
        "pinnedToBottom": false,
        "primaryFill": false,
-       "width": 28,
-       "height": 28
+       "width": 44,
+       "height": 44
+      },
+      {
+       "what": "Open the first role",
+       "tag": "button",
+       "top": 929.8,
+       "bottom": 973.8,
+       "left": 126.2,
+       "inFirstViewport": false,
+       "centreAt": 1.1,
+       "pinnedToBottom": false,
+       "primaryFill": false,
+       "width": 137.7,
+       "height": 44
       }
      ],
      "alphaSteps": [
@@ -4693,52 +2494,36 @@
        "--unreachable #b04400",
        "--destructive #c10007"
       ],
-      "statusColoured": 8,
-      "offToken": [
-       {
-        "colour": "#894e00",
-        "family": "amber",
-        "count": 2,
-        "sample": "Fit 3 out of 5"
-       }
-      ],
+      "statusColoured": 7,
+      "offToken": [],
       "colourOnly": 0,
       "colourOnlySamples": [],
-      "countsInHeadings": 2,
+      "countsInHeadings": 4,
       "progressText": 0,
       "usesSafeTokens": true,
       "progressElements": 0,
       "empties": [
        {
         "text": "Pick a roleChoose a role to read its ful",
-        "actions": 0
+        "actions": 1
        }
       ]
      },
      "reading": {
       "bodySize": 13,
       "lines": [],
-      "contrastChecked": 89,
+      "contrastChecked": 28,
       "contrastUnknown": 0,
       "contrastFails": [],
       "contrastFailCount": 0,
       "overflowX": 0,
       "runningAnimations": 0
      },
-     "textRuns": 89,
+     "textRuns": 28,
      "truncated": {
-      "count": 12,
-      "inRows": 12,
-      "sample": [
-       "Policy Officer, remote area health workforce strat (71% shown)",
-       "APS5 · Department of Health and Aged Care · discov (9% shown)",
-       "Communications Adviser for veterans' health servic (66% shown)",
-       "APS5 · Department of Veterans' Affairs · discovere (9% shown)",
-       "Service Desk Team Leader for a 60-seat regional su (75% shown)",
-       "APS6 · Services Australia · discovered · Parramatt (10% shown)",
-       "Administrative Officer supporting Indigenous procu (57% shown)",
-       "APS4 · National Indigenous Australians Agency · di (9% shown)"
-      ]
+      "count": 0,
+      "inRows": 0,
+      "sample": []
      },
      "covered": {
       "runs": 0,
@@ -4748,9 +2533,7 @@
      "pageErrors": [],
      "url": "/jobs/",
      "underInsets": [
-      "Jobs",
-      "Legal Officer for the freedom ",
-      "Open the listing for Legal Off"
+      "Jobs"
      ]
     }
    }
@@ -4768,7 +2551,7 @@
    "hits": 0
   },
   {
-   "url": "http://127.0.0.1:59002/roles**",
+   "url": "http://127.0.0.1:59002/jobs/roles**",
    "method": "GET",
    "hits": 7
   }
