@@ -656,3 +656,32 @@ describe("the workflow", () => {
     expect(workflow).not.toMatch(/git push|gh issue|gh pr/)
   })
 })
+
+describe("recorded trials (real runs of follow.mjs trial on 25 Nov 2026)", () => {
+  // shadcn 4.19.1 -> 4.23.0 and impeccable 3.6.1 -> 4.11.0, each with the real check output
+  // and the real `git status` of the bump. Both were green.
+  const recorded = (name: string) => JSON.parse(read(`test/fixtures/upstream-follow/${name}`))
+
+  it("files the real shadcn 4.23.0 trial as a green issue: the pin files and the re-stamped r/ output", async () => {
+    const outcome = recorded("trial-shadcn-4.23.0-green.json")
+    expect(outcome.ok).toBe(true)
+    const gh = fakeGh([])
+    await follow.fileOutcome({ id: "shadcn-pin", fingerprint: "latest=4.23.0", ...outcome }, { gh: gh.run, runUrl: RUN_URL })
+    const body = gh.bodies[0]
+    expect(body).toContain("shadcn 4.19.1 -> 4.23.0")
+    expect(body).toContain("M stamps/registry-output.json")
+    expect(body).toContain("M scripts/stamp/pins.mjs")
+    expect(body).toMatch(/check: pass [0-9a-f]{7}/)
+    expect(body.length).toBeLessThan(65_536)
+  })
+
+  it("files the real impeccable 4.11.0 trial as a green issue touching the three pin files only", async () => {
+    const outcome = recorded("trial-impeccable-4.11.0-green.json")
+    const gh = fakeGh([])
+    await follow.fileOutcome({ id: "impeccable-pin", fingerprint: "latest=4.11.0", ...outcome }, { gh: gh.run, runUrl: RUN_URL })
+    const body = gh.bodies[0]
+    expect(body).toContain("impeccable 3.6.1 -> 4.11.0")
+    expect(outcome.changes.status.split("\n")).toHaveLength(3)
+    expect(body).toMatch(/check: pass [0-9a-f]{7}/)
+  })
+})

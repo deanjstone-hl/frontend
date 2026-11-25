@@ -46,6 +46,7 @@ pnpm install --frozen-lockfile
 | `node scripts/links/generate.mjs` | Regenerates `registry/lib/links.ts` and its stamp from `links.json` |
 | `pnpm update:snapshots` | Rewrites the link-pill snapshot and its stamp; see [Stamps](#stamps-generated-output-and-goldens) |
 | `node scripts/drift-canary/canary.mjs --dry-run` | Reads npm and shadcn's published items now and prints any upstream drift; files nothing. See [Drift canary](#drift-canary-upstream-changes-filed-as-repair-briefs) |
+| `node scripts/upstream-follow/follow.mjs apply <shadcn\|impeccable> <version>` | Moves a pin in every file that writes it and regenerates `r/` and its stamp; what an upstream-follow issue tells a worker to run. See [Upstream follow](#upstream-follow-trying-a-moved-pin-before-anyone-lands-it) |
 | `pnpm gate:geometry` | Browser check of safe areas and curves; see [Curve-geometry gate](#curve-geometry-gate) |
 | `node docs/<demo>/smoke-check.mjs` | Builds a demo and checks it in headless Chromium: `data`, `form-inputs`, `layout`, `page-transition`; `docs/card-list/screenshots.mjs`, `docs/issue-row/screenshots.mjs`, `docs/filter-builder/screenshots.mjs`, `docs/grouped-list/screenshots.mjs` and `docs/ds-theme/screenshots.mjs` do the same in headless WebKit; `docs/menus/keyboard-check.mjs` and `docs/graph-3d/{measure,inspect}.mjs` likewise |
 
@@ -929,7 +930,7 @@ svg appends it as a stray text node. Give these parts an explicit child,
 ### Repair briefs: the issue shape for automated failures
 
 Every automated failure this repo files (the [drift canary](#drift-canary-upstream-changes-filed-as-repair-briefs),
-[#237](https://github.com/deanjstone/frontend/issues/237), and the upstream-follow job, still to come:
+[#237](https://github.com/deanjstone/frontend/issues/237), and the [upstream-follow job](#upstream-follow-trying-a-moved-pin-before-anyone-lands-it),
 [#238](https://github.com/deanjstone/frontend/issues/238)) goes through one helper, so a worker
 gets everything from the issue alone. It also backs `.github/ISSUE_TEMPLATE/repair-brief.md`
 for a brief filed by hand.
@@ -980,6 +981,10 @@ node scripts/drift-canary/canary.mjs record      # re-baseline the upstream hash
   `shadcn`, another item changing) comments on the open brief, because the key holds no version.
   The streak is a small JSON file the workflow keeps in the Actions cache; a lost cache delays a
   filing by one threshold and never files twice (the helper dedupes on the title).
+- **Pins go to the follow job.** A `shadcn-pin` or `impeccable-pin` drift that reaches the
+  threshold is not filed as a plain brief: `--followups <file>` hands it to the
+  [upstream-follow job](#upstream-follow-trying-a-moved-pin-before-anyone-lands-it), which tries
+  the bump first. Without `--followups` (a local run) a pin drift is filed as before.
 - **Broken probe.** A probe that cannot reach its upstream (an `error`, not a drift) files its own
   brief, `<probe> probe broken`, after the same threshold, so a silent canary is noticed.
 - **Baseline.** `upstream-baseline.json` is "upstream as last reviewed", a sha256 over each item's
@@ -992,10 +997,59 @@ node scripts/drift-canary/canary.mjs record      # re-baseline the upstream hash
   GitHub-hosted runner costs no minutes (the billing note in argus-config's `lint.yml` is about
   private repos), the run is a few seconds of Node with no install, and a timer would tie the
   canary to one host being up. It runs on `schedule` and `workflow_dispatch` only, with
-  `contents: read` and `issues: write`.
+  `contents: read` and `issues: write`. A quiet day is a few seconds of Node; the install and the
+  check below run only on a day a pin moved.
 - **Tests.** `test/drift-canary.test.ts` runs the probes, the threshold and the brief offline,
   against npm and upstream responses recorded on 25 Nov 2026 in `test/fixtures/drift-canary/`.
   Nothing in `pnpm check` touches the network for this.
+
+### Upstream follow: trying a moved pin before anyone lands it
+
+When the [drift canary](#drift-canary-upstream-changes-filed-as-repair-briefs) sees `shadcn` or
+`impeccable` move past its pin, a job in the same workflow
+([frontend#238](https://github.com/deanjstone-hl/frontend/issues/238),
+`scripts/upstream-follow/follow.mjs`) tries the bump in the runner's throwaway checkout and files
+what it found. It pushes nothing.
+
+1. **Bump.** The new version replaces the pin in every file that writes it: `scripts/check.sh`,
+   `.github/workflows/design.yml` and `release.yml`, and for shadcn `scripts/stamp/pins.mjs` and
+   the README's regenerate line. It is all or nothing, and it fails if a file no longer holds the
+   pin, so a half bump never reaches the check. The target must be a plain version.
+2. **Regenerate.** A new shadcn runs `pnpm build:registry` (`r/` and `stamps/registry-output.json`);
+   a new impeccable writes no output, so nothing is regenerated.
+3. **Check.** `pnpm check` runs against the result.
+4. **File.**
+   - **Green:** an issue `Upstream follow: bump <pkg> <from> -> <to>`, labelled `mode:afk` and
+     `type:build`, with the run link, what the bump changes (`git status`), the check output and
+     the command that lands it. A newer version of the same package files its own issue; the same
+     bump again comments on the open one.
+   - **Red:** a [Repair brief](#repair-briefs-the-issue-shape-for-automated-failures) under the
+     probe's key (`shadcn pin drift`, `impeccable pin drift`), with the failing step and its
+     output. A regenerate or bump that fails is red too; a failed `pnpm install` is the runner's
+     fault, so it fails the run and the canary hands the bump over again next time.
+
+Neither issue has a `wave:` label; the orchestrator's wave check places it.
+
+```sh
+node scripts/upstream-follow/follow.mjs apply shadcn 4.23.0   # what a worker runs to land a green issue
+pnpm check
+```
+
+- **No auto-push.** Under trunk rules 3 reds in a day pause the repo (`trunk-health.sh`), and an
+  upstream release that broke the check would put that risk on the repo it came from. Landing a
+  bump is a worker's commit with `pnpm check` and `Refs`; auto-push stays a later decision for the owner.
+- **No token near the new release.** The workflow runs three steps: the canary (with the token),
+  the trial (no `GH_TOKEN`, and the script strips every token from the environment it passes on), then
+  the filing (with the token). The new upstream's code runs only in the middle one.
+- **The trial rewrites the tree, then discards it** (`git checkout`, `git clean` of `r/` and `stamps/`),
+  so `trial` refuses outside CI unless you pass `--in-place`. Use `apply` locally, never `trial`.
+- **Tests.** `test/upstream-follow.test.ts` runs everything offline: a fake `exec`, a fake `gh`, and
+  the npm answers from `test/fixtures/drift-canary/`. `test/fixtures/upstream-follow/` holds the
+  outcomes of two real local trials on 25 Nov 2026 (shadcn 4.19.1 -> 4.23.0 and impeccable 3.6.1 ->
+  4.11.0, both green). Its pin tests use versions no real pin can reach: the first real trial failed
+  step 1 because they hard-coded the live targets.
+- The idea is from [rauchg/xeet](https://github.com/rauchg/xeet)'s `sync.yml`, a reference and not a
+  dependency. Nothing is copied from it; the job is written for this repo.
 
 ## Text size
 
