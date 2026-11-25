@@ -543,3 +543,64 @@ describe("fileOutcomes (the filing step after the trial)", () => {
     expect(outcome.state["impeccable-pin"].filed).toBe("drift:latest=4.11.0")
   })
 })
+
+describe("applyPin (what a worker runs to land a bump)", () => {
+  it("reads the current pin from the tree, moves it, and regenerates with the new shadcn", async () => {
+    const exec = fakeExec()
+    const result = await follow.applyPin({ root: tree, pkg: "shadcn", to: "9.9.9", run: exec.run })
+    expect(result).toMatchObject({ pkg: "shadcn", from: pinsNow().shadcn, to: "9.9.9" })
+    expect(read("scripts/check.sh", tree)).toMatch(/^SHADCN_VERSION=9\.9\.9$/m)
+    expect(exec.lines()).toEqual(["pnpm build:registry"])
+  })
+
+  it("regenerates nothing for impeccable, which writes no output", async () => {
+    const exec = fakeExec()
+    await follow.applyPin({ root: tree, pkg: "impeccable", to: "4.11.0", run: exec.run })
+    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=4\.11\.0$/m)
+    expect(exec.calls).toEqual([])
+  })
+
+  it("throws, naming the step, when the regenerate fails, so the worker does not run the check on a half-built r/", async () => {
+    const exec = fakeExec((line) => (line === "pnpm build:registry" ? { status: 2, output: "boom" } : undefined))
+    await expect(follow.applyPin({ root: tree, pkg: "shadcn", to: "4.23.0", run: exec.run })).rejects.toThrow(/pnpm build:registry.*exit 2/s)
+  })
+
+  it("does nothing when the pin is already at the target", async () => {
+    const exec = fakeExec()
+    await expect(follow.applyPin({ root: tree, pkg: "impeccable", to: pinsNow().impeccable, run: exec.run })).rejects.toThrow(/already/i)
+    expect(exec.calls).toEqual([])
+  })
+})
+
+describe("the command lines", () => {
+  it("follow.mjs: apply, trial and file, each with what it needs", () => {
+    expect(follow.parseCli(["apply", "shadcn", "4.23.0"])).toMatchObject({ command: "apply", pkg: "shadcn", to: "4.23.0" })
+    expect(follow.parseCli(["trial", "--followups", "f.json", "--out", "o.json"])).toMatchObject({
+      command: "trial",
+      followups: "f.json",
+      out: "o.json",
+      inPlace: false,
+    })
+    expect(follow.parseCli(["trial", "--followups", "f.json", "--out", "o.json", "--in-place"]).inPlace).toBe(true)
+    expect(follow.parseCli(["file", "--outcomes", "o.json", "--state", "s.json", "--repo", "a/b"])).toMatchObject({
+      command: "file",
+      outcomes: "o.json",
+      state: "s.json",
+      repo: "a/b",
+    })
+  })
+
+  it("rejects what it cannot run, naming the problem", () => {
+    expect(() => follow.parseCli([])).toThrow(/command/i)
+    expect(() => follow.parseCli(["apply", "shadcn"])).toThrow(/version/i)
+    expect(() => follow.parseCli(["trial", "--out", "o.json"])).toThrow(/--followups/)
+    expect(() => follow.parseCli(["file", "--outcomes", "o.json"])).toThrow(/--state/)
+    expect(() => follow.parseCli(["trial", "--bogus"])).toThrow(/--bogus/)
+  })
+
+  it("canary.mjs: --followups turns the hand-off on", () => {
+    expect(canary.parseCli(["--state", "s.json", "--followups", "f.json"]).followupsPath).toBe("f.json")
+    expect(canary.parseCli(["--state", "s.json"]).followupsPath).toBeUndefined()
+    expect(() => canary.parseCli(["--followups"])).toThrow(/needs a value/)
+  })
+})

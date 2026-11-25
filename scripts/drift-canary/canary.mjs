@@ -21,6 +21,9 @@
 //
 //   node scripts/drift-canary/canary.mjs --dry-run                  print what each probe sees
 //   node scripts/drift-canary/canary.mjs --state .state/state.json  the scheduled run
+//   ... --followups .state/followups.json   hand a pin drift to the upstream-follow job
+//                                           (scripts/upstream-follow/follow.mjs, frontend#238)
+//                                           instead of filing a plain brief for it
 //   node scripts/drift-canary/canary.mjs record                     re-baseline the upstream hashes
 //
 // Re-baseline only after a worker has looked at what moved: the baseline is "upstream as
@@ -329,12 +332,14 @@ export const parseCli = (argv) => {
         options.dryRun = true
         break
       case "--state":
+      case "--followups":
       case "--threshold":
       case "--repo": {
         const value = argv[i + 1]
         if (value === undefined) throw new Error(`${arg} needs a value`)
         i += 1
         if (arg === "--state") options.statePath = value
+        else if (arg === "--followups") options.followupsPath = value
         else if (arg === "--repo") options.repo = value
         else {
           options.threshold = Number(value)
@@ -371,6 +376,7 @@ const main = async () => {
     file: (brief) => fileRepairBrief(brief, { repo: options.repo }),
     threshold: options.threshold,
     dryRun: options.dryRun,
+    deferPins: options.followupsPath !== undefined,
   })
 
   for (const result of outcome.results) {
@@ -380,6 +386,13 @@ const main = async () => {
     if (options.dryRun && result.status !== "ok") console.log(`${result.changed}\n${result.detail}`)
   }
   for (const filed of outcome.filed) console.log(`drift-canary: filed ${filed.id}: ${filed.action} ${filed.url ?? `#${filed.number}`}`)
+
+  // The hand-off file is written even when empty, so the next workflow step always has one.
+  if (options.followupsPath !== undefined && !options.dryRun) {
+    mkdirSync(dirname(options.followupsPath), { recursive: true })
+    writeFileSync(options.followupsPath, `${JSON.stringify(outcome.deferred, null, 2)}\n`)
+    for (const item of outcome.deferred) console.log(`drift-canary: ${item.id} handed to the follow job: ${item.pkg} ${item.from} -> ${item.to}`)
+  }
 
   if (options.statePath && !options.dryRun) {
     mkdirSync(dirname(options.statePath), { recursive: true })

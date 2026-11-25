@@ -27,8 +27,9 @@ import { spawn } from "node:child_process"
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
+import { fileURLToPath, pathToFileURL } from "node:url"
 
-import { PROBES, markFiled } from "../drift-canary/canary.mjs"
+import { PROBES, markFiled, runUrlOf } from "../drift-canary/canary.mjs"
 import { defaultGh, fenced, fileRepairBrief, tail, withRepo } from "../repair-brief/repair-brief.mjs"
 
 // ── The pin sites ────────────────────────────────────────────────────────────────────────
@@ -318,4 +319,114 @@ export const fileOutcomes = async ({ outcomes, state, gh = defaultGh, repo, runU
     }
   }
   return { state: current, filed, failures }
+}
+
+// ── Landing a bump ───────────────────────────────────────────────────────────────────────
+
+const currentPin = (root, pkg) => {
+  const [file, pattern] =
+    pkg === "shadcn"
+      ? ["scripts/stamp/pins.mjs", /SHADCN_VERSION = "([^"]+)"/]
+      : pkg === "impeccable"
+        ? ["scripts/check.sh", /^IMPECCABLE_VERSION=(\S+)$/m]
+        : [null, null]
+  if (!file) throw new Error(`upstream-follow: no pin sites known for "${pkg}" (known: ${Object.keys(PIN_SITES).join(", ")})`)
+  const found = pattern.exec(readFileSync(join(root, file), "utf8"))?.[1]
+  if (!found) throw new Error(`upstream-follow: ${file} holds no ${pkg} pin`)
+  return found
+}
+
+// What a worker runs to land a bump an issue described: the same bump and regeneration the
+// trial did, in the worker's own worktree. It does not run the check; the worker does.
+export const applyPin = async ({ root, pkg, to, run }) => {
+  const from = currentPin(root, pkg)
+  if (from === to) throw new Error(`upstream-follow: ${pkg} is already pinned at ${to}`)
+  bumpPin({ root, pkg, from, to })
+  for (const step of REGENERATE[pkg] ?? []) {
+    const result = await run(step.command, step.args)
+    if (result.status !== 0) throw new Error(`upstream-follow: ${step.label} failed (exit ${result.status})`)
+  }
+  return { pkg, from, to }
+}
+
+// ── CLI ──────────────────────────────────────────────────────────────────────────────────
+
+const USAGE = "usage: follow.mjs apply <shadcn|impeccable> <version> | trial --followups <file> --out <file> [--in-place] | file --outcomes <file> --state <file> [--repo owner/name]"
+
+export const parseCli = (argv) => {
+  const [command, ...rest] = argv
+  if (!["apply", "trial", "file"].includes(command)) throw new Error(`upstream-follow: needs a command. ${USAGE}`)
+  const options = { command, inPlace: false }
+
+  if (command === "apply") {
+    const [pkg, to, ...extra] = rest
+    if (!pkg || !to || extra.length > 0) throw new Error(`upstream-follow: apply needs a package and a version. ${USAGE}`)
+    return { ...options, pkg, to }
+  }
+
+  const flags = command === "trial" ? ["--followups", "--out"] : ["--outcomes", "--state", "--repo"]
+  for (let i = 0; i < rest.length; i += 1) {
+    const flag = rest[i]
+    if (flag === "--in-place" && command === "trial") {
+      options.inPlace = true
+      continue
+    }
+    if (!flags.includes(flag)) throw new Error(`upstream-follow: unknown argument ${flag}. ${USAGE}`)
+    const value = rest[i + 1]
+    if (value === undefined) throw new Error(`upstream-follow: ${flag} needs a value`)
+    options[flag.slice(2)] = value
+    i += 1
+  }
+  const required = command === "trial" ? ["--followups", "--out"] : ["--outcomes", "--state"]
+  for (const flag of required) {
+    if (options[flag.slice(2)] === undefined) throw new Error(`upstream-follow: ${command} needs ${flag}. ${USAGE}`)
+  }
+  return options
+}
+
+const readJson = (path) => JSON.parse(readFileSync(path, "utf8"))
+const ROOT = fileURLToPath(new URL("../../", import.meta.url))
+
+const main = async () => {
+  const options = parseCli(process.argv.slice(2))
+
+  if (options.command === "apply") {
+    const run = (command, args) =>
+      new Promise((resolve) => {
+        const child = spawn(command, args, { cwd: ROOT, stdio: "inherit" })
+        child.on("error", () => resolve({ status: 127 }))
+        child.on("close", (code) => resolve({ status: code ?? 1 }))
+      })
+    const result = await applyPin({ root: ROOT, pkg: options.pkg, to: options.to, run })
+    console.log(`upstream-follow: ${result.pkg} ${result.from} -> ${result.to}; now run pnpm check`)
+    return
+  }
+
+  if (options.command === "trial") {
+    const outcomes = await trialAll({ root: ROOT, followups: readJson(options.followups), inPlace: options.inPlace })
+    writeFileSync(options.out, `${JSON.stringify(outcomes, null, 2)}\n`)
+    for (const outcome of outcomes) {
+      console.log(`upstream-follow: ${outcome.pkg} ${outcome.from} -> ${outcome.to}: ${outcome.ok ? "check passes" : `red at ${outcome.failingCheck}`}`)
+    }
+    if (outcomes.length === 0) console.log("upstream-follow: nothing to follow")
+    return
+  }
+
+  const outcome = await fileOutcomes({
+    outcomes: readJson(options.outcomes),
+    state: readJson(options.state),
+    repo: options.repo,
+    runUrl: runUrlOf(),
+  })
+  writeFileSync(options.state, `${JSON.stringify(outcome.state, null, 2)}\n`)
+  for (const filed of outcome.filed) console.log(`upstream-follow: filed ${filed.id}: ${filed.action} ${filed.url ?? `#${filed.number}`}`)
+  for (const failure of outcome.failures) console.error(`upstream-follow: could not file ${failure.id}: ${failure.error}`)
+  if (outcome.failures.length > 0) process.exit(1)
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(`upstream-follow: ${error.message}`)
+    process.exit(1)
+  })
 }
