@@ -1,0 +1,18 @@
+# Keeps the SHA pins in .github/workflows/ and the composite actions current
+# (frontend#236). The pin comment (`# v4.4.0`) is updated with the SHA.
+# test/workflow-hardening.test.ts fails on an action that is not pinned to a commit.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directories:
+      - "/"
+      - "/.github/actions/*"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"
+    # One pull request per week, not one per action.
+    groups:
+      github-actions:
+        patterns:
+          - "*"

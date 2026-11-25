@@ -1,0 +1,4 @@
+# Workflows and the scripts they run decide what ships and what a token can do
+# (frontend#236). A change to either asks the owner for review.
+/.github/   @deanjstone
+/scripts/   @deanjstone
