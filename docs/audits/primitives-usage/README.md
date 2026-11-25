@@ -29,7 +29,7 @@ One app at a time, one browser page at a time. Nothing here starts in the backgr
    git -C ~/repos/<repo> worktree remove --force ~/.t3/worktrees/<repo>/audit-render
    ```
 
-2. **Describe its screens** in `screens/<app>/config.json` (see the header of `render.mjs`), with fixtures in `mocks.json` and, for a signed-in session, `init.js`.
+2. **Describe its screens** in `screens/<app>/config.json` (see the header of `render.mjs`), with fixtures in `mocks.json` and, for a signed-in session, `init.js`. A mock URL must match what the built app requests (check `blocked` and `unmockedLocal` in `scorecard.json`, and that the list is not empty). An app that filters by today's date pins the page clock in `init.js` (`screens/jobs/init.js`), so the screenshots do not change as the days pass.
 
 3. **Render it:**
 
