@@ -417,23 +417,6 @@ export function componentsOf(source) {
   return found
 }
 
-// What the shadcn CLI changes on install, undone so a consumer copy can be compared with
-// the registry source: the "use client" directive (dropped when rsc is false), a leading
-// comment block, and the cn-* marker classes and font-heading (removed by the style
-// transform, which also reflows the cn() call they sat in).
-// The comment is only stripped from the registry side: a comment a consumer added is an edit.
-export function normaliseSource(source, { stripLeadingComment = false } = {}) {
-  const body = source.replaceAll("\r\n", "\n").replace(/^\s*["']use client["'];?\s*\n+/, "")
-  const uncommented = stripLeadingComment ? body.replace(/^(?:\s*\/\/[^\n]*\n)+/, "").replace(/^\s*\/\*[\s\S]*?\*\/\s*\n/, "") : body
-  return uncommented
-    .replace(/\s?\b(?:cn-[a-z-]+|font-heading)\b/g, "")
-    .split("\n")
-    .map((line) => line.trimEnd())
-    .join("\n")
-    .trim()
-}
-
-// Two copies with the same fingerprint differ only in whitespace and the transforms above.
-export function fingerprint(source, options) {
-  return normaliseSource(source, options).replace(/\s+/g, "")
-}
+// The fingerprint is the design-check item's (registry/design-check/registry-stale.mjs): the audit and the
+// shipped stale-copy check must read a consumer copy the same way.
+export { fingerprint, normaliseSource } from "../../../registry/design-check/registry-stale.mjs"
