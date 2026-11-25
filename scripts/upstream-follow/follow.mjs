@@ -23,6 +23,7 @@
 // new upstream release never executes beside a token that can write issues.
 // The idea comes from rauchg/xeet's sync.yml (Apache-2.0); this code is written for this
 // repo and copies none of it.
+import { spawn } from "node:child_process"
 import { readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 
@@ -152,4 +153,57 @@ export const trial = async ({ root, pkg, from, to, run }) => {
   const status = await run("git", ["status", "--short"])
   const stat = await run("git", ["diff", "--stat"])
   return { ...base, ok: true, output: text(check), changes: { status: text(status).trim(), stat: text(stat).trim() } }
+}
+
+// ── Every bump the canary handed over ────────────────────────────────────────────────────
+
+const SECRET_ENV = /^(GH_TOKEN|GITHUB_TOKEN|ACTIONS_RUNTIME_TOKEN|ACTIONS_ID_TOKEN_REQUEST_TOKEN|ACTIONS_ID_TOKEN_REQUEST_URL)$/
+
+// The environment a bumped upstream runs in: the caller's, minus every token. A release this
+// job has not read yet runs `pnpm check` here, so it must find nothing that can write issues.
+export const withoutTokens = (env) => Object.fromEntries(Object.entries(env).filter(([name]) => !SECRET_ENV.test(name)))
+
+const MAX_CAPTURE = 4 * 1024 * 1024
+const COMMAND_TIMEOUT_MS = 40 * 60 * 1000
+
+// Runs one command, resolves { status, output } with stdout and stderr interleaved and the
+// tail kept if it is huge. Never rejects: a command that cannot start is a status of 127.
+export const spawnExec = (command, args, { cwd, env } = {}) =>
+  new Promise((resolve) => {
+    let output = ""
+    const child = spawn(command, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], timeout: COMMAND_TIMEOUT_MS })
+    const collect = (chunk) => {
+      output += chunk
+      if (output.length > MAX_CAPTURE) output = output.slice(output.length - MAX_CAPTURE)
+    }
+    child.stdout.on("data", collect)
+    child.stderr.on("data", collect)
+    child.on("error", (error) => resolve({ status: 127, output: `${output}${error.message}\n` }))
+    child.on("close", (code, signal) => resolve({ status: code ?? (signal ? 128 : 1), output }))
+  })
+
+// Tries each bump in turn, each from a clean tree. `followups` are the canary's drifts:
+// { id, pkg, from, to, fingerprint }. Rewrites and then discards the working tree, so it runs
+// only in CI (or with `inPlace`, which says the caller accepts that).
+export const trialAll = async ({ root, followups, exec = spawnExec, env = process.env, inPlace = false }) => {
+  if (followups.length === 0) return []
+  if (!inPlace && env.CI !== "true") {
+    throw new Error("upstream-follow: trial rewrites the working tree and then discards it; run it in CI, or pass --in-place to accept that here")
+  }
+  const cleanEnv = withoutTokens(env)
+  const run = (command, args) => exec(command, args, { cwd: root, env: cleanEnv })
+
+  const installed = await run("pnpm", ["install", "--frozen-lockfile"])
+  if (installed.status !== 0) {
+    throw new Error(`upstream-follow: pnpm install --frozen-lockfile failed (exit ${installed.status}):\n${text(installed).slice(-4000)}`)
+  }
+
+  const outcomes = []
+  for (const followup of followups) {
+    const outcome = await trial({ root, pkg: followup.pkg, from: followup.from, to: followup.to, run })
+    outcomes.push({ id: followup.id, fingerprint: followup.fingerprint, ...outcome })
+    await run("git", ["checkout", "--", "."])
+    await run("git", ["clean", "-fdq", "--", "r", "stamps"])
+  }
+  return outcomes
 }

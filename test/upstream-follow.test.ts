@@ -202,3 +202,84 @@ describe("trial", () => {
     expect(exec.calls).toEqual([])
   })
 })
+
+describe("trialAll", () => {
+  const drift = (pkg: string, from: string, to: string) => ({ id: `${pkg}-pin`, pkg, from, to, fingerprint: `latest=${to}` })
+  const ciEnv = { CI: "true", PATH: "/usr/bin", GH_TOKEN: "ghs_secret", GITHUB_TOKEN: "ghs_secret2", ACTIONS_RUNTIME_TOKEN: "rt" }
+
+  it("does nothing, not even an install, when there is nothing to follow", async () => {
+    const exec = fakeExec(happy)
+    expect(await follow.trialAll({ root: tree, followups: [], exec: exec.run, env: ciEnv })).toEqual([])
+    expect(exec.calls).toEqual([])
+  })
+
+  it("installs once, then tries each bump from a clean tree and restores the tree after each", async () => {
+    const exec = fakeExec(happy)
+    const outcomes = await follow.trialAll({
+      root: tree,
+      followups: [drift("shadcn", pinsNow().shadcn, "4.23.0"), drift("impeccable", pinsNow().impeccable, "4.11.0")],
+      exec: exec.run,
+      env: ciEnv,
+    })
+    expect(outcomes.map((outcome: { pkg: string; ok: boolean }) => [outcome.pkg, outcome.ok])).toEqual([
+      ["shadcn", true],
+      ["impeccable", true],
+    ])
+    expect(exec.lines()).toEqual([
+      "pnpm install --frozen-lockfile",
+      "pnpm build:registry",
+      "bash scripts/check.sh",
+      "git status --short",
+      "git diff --stat",
+      "git checkout -- .",
+      "git clean -fdq -- r stamps",
+      "bash scripts/check.sh",
+      "git status --short",
+      "git diff --stat",
+      "git checkout -- .",
+      "git clean -fdq -- r stamps",
+    ])
+  })
+
+  it("keeps going after a red bump, and the red one carries its failing check", async () => {
+    const exec = fakeExec((line) => (line === "pnpm build:registry" ? { status: 1, output: "boom" } : happy(line)))
+    const outcomes = await follow.trialAll({
+      root: tree,
+      followups: [drift("shadcn", pinsNow().shadcn, "4.23.0"), drift("impeccable", pinsNow().impeccable, "4.11.0")],
+      exec: exec.run,
+      env: ciEnv,
+    })
+    expect(outcomes.map((outcome: { ok: boolean }) => outcome.ok)).toEqual([false, true])
+    expect(outcomes[0].failingCheck).toContain("pnpm build:registry")
+  })
+
+  it("never hands a token to a command: the new upstream's code runs without one", async () => {
+    const exec = fakeExec(happy)
+    await follow.trialAll({ root: tree, followups: [drift("impeccable", pinsNow().impeccable, "4.11.0")], exec: exec.run, env: ciEnv })
+    expect(exec.calls.length).toBeGreaterThan(0)
+    for (const call of exec.calls) {
+      expect(call.cwd, call.line).toBe(tree)
+      expect(Object.keys(call.env ?? {}), call.line).not.toContain("GH_TOKEN")
+      expect(Object.keys(call.env ?? {}), call.line).not.toContain("GITHUB_TOKEN")
+      expect(Object.keys(call.env ?? {}), call.line).not.toContain("ACTIONS_RUNTIME_TOKEN")
+      expect(call.env?.PATH, call.line).toBe("/usr/bin")
+    }
+  })
+
+  it("throws, running nothing, when the install fails: that is the runner's fault, not the bump's", async () => {
+    const exec = fakeExec((line) => (line.startsWith("pnpm install") ? { status: 1, output: "ERR_PNPM_FETCH_502" } : happy(line)))
+    await expect(
+      follow.trialAll({ root: tree, followups: [drift("impeccable", pinsNow().impeccable, "4.11.0")], exec: exec.run, env: ciEnv }),
+    ).rejects.toThrow(/pnpm install.*ERR_PNPM_FETCH_502/s)
+    expect(exec.lines()).toEqual(["pnpm install --frozen-lockfile"])
+  })
+
+  it("refuses outside CI, because it rewrites the working tree and then discards it", async () => {
+    const exec = fakeExec(happy)
+    const followups = [drift("impeccable", pinsNow().impeccable, "4.11.0")]
+    await expect(follow.trialAll({ root: tree, followups, exec: exec.run, env: { PATH: "/usr/bin" } })).rejects.toThrow(/CI|--in-place/)
+    expect(exec.calls).toEqual([])
+    const allowed = await follow.trialAll({ root: tree, followups, exec: exec.run, env: { PATH: "/usr/bin" }, inPlace: true })
+    expect(allowed).toHaveLength(1)
+  })
+})
