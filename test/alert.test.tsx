@@ -20,3 +20,63 @@ describe("Alert", () => {
     expect(alert.getAttribute("data-slot")).toBe("alert")
   })
 })
+
+describe("Alert status variants", () => {
+  it.each(["success", "warning", "critical"] as const)("%s draws an icon beside the words", (variant) => {
+    render(
+      <Alert variant={variant}>
+        <AlertTitle>Saved</AlertTitle>
+        <AlertDescription>All changes are stored.</AlertDescription>
+      </Alert>,
+    )
+
+    const alert = screen.getByRole("alert")
+    const icon = alert.querySelector(":scope > svg")
+    expect(icon).not.toBeNull()
+    expect(icon!.getAttribute("aria-hidden")).toBe("true")
+    expect(alert.textContent).toContain("Saved")
+  })
+
+  it("takes a custom icon in place of the default", () => {
+    render(
+      <Alert variant="warning" icon={<svg data-testid="mine" />}>
+        <AlertTitle>Offline</AlertTitle>
+      </Alert>,
+    )
+
+    const alert = screen.getByRole("alert")
+    expect(alert.querySelectorAll(":scope > svg")).toHaveLength(1)
+    expect(screen.getByTestId("mine")).not.toBeNull()
+  })
+
+  it("lets a notice opt out of the icon with icon={null}", () => {
+    render(
+      <Alert variant="success" icon={null}>
+        <AlertTitle>Saved</AlertTitle>
+      </Alert>,
+    )
+
+    expect(screen.getByRole("alert").querySelector("svg")).toBeNull()
+  })
+
+  it("leaves default and destructive without an icon of their own", () => {
+    render(
+      <>
+        <Alert data-testid="a">
+          <AlertTitle>Note</AlertTitle>
+        </Alert>
+        <Alert variant="destructive" data-testid="b">
+          <AlertTitle>Failed</AlertTitle>
+        </Alert>
+      </>,
+    )
+
+    expect(screen.getByTestId("a").querySelector("svg")).toBeNull()
+    expect(screen.getByTestId("b").querySelector("svg")).toBeNull()
+  })
+
+  it("marks the variant on the element", () => {
+    render(<Alert variant="critical">Down</Alert>)
+    expect(screen.getByRole("alert").getAttribute("data-variant")).toBe("critical")
+  })
+})
