@@ -1155,6 +1155,24 @@ button in ops-hub's promotion card and email's `CopyField`.
   it: let the row wrap and do not put it in a fixed-height row.
 - **`code-block` keeps its own.** `CodeBlockCopyButton` stays the copy control inside a code panel.
 
+### Markdown
+
+The renderer for text that arrives as Markdown (`markdown`): an issue body, a briefing, an agent's reply. It replaces the copies in
+ops-hub and briefings.
+
+- **Prose, not a document.** It sits inside a card, a row or a message, at `text-sm`, with `gap-3` between blocks. Headings step down
+  two levels, so the page keeps `h1` and `h2`; set `headingOffset` when the text sits deeper or higher.
+- **Wrap, never scroll the page.** Long words break (`wrap-anywhere`), a code block and a table scroll inside their own box, and an
+  image never grows past it.
+- **Links are links.** Underlined, in `primary-text`, new tab for an absolute URL. For a pill in chat, pass `link={LinkPill}`; use the
+  `chip` variant there, not the default.
+- **A link that is not safe is text.** `javascript:`, `data:` and raw HTML are dropped, and what was meant as a link is shown as its
+  words, never as an anchor that does nothing.
+- **A reply that is still arriving says so with `streaming`.** Unfinished emphasis closes itself, an unfinished link is plain text
+  until its URL closes, an unfinished image is absent. Do not set it on text that is complete.
+- **Highlighting is a choice.** The item draws code in a muted block and does not highlight; give `pre` a `code-block` when the text is
+  code the reader runs.
+
 ### Inputs
 
 - **Style:** Transparent ground with a 1px `input` border at 10px radius,
@@ -1223,7 +1241,7 @@ rest stay flat and lean on borders, per the two-mechanism depth rule.
 
 **Display and feedback** — `badge`, `avatar`, `progress`, `skeleton`,
 `separator`, `tabs`, `table`, `sonner`, `spinner`, `empty`, `tooltip`,
-`graph-3d`, `stat-tile`, `notice`, `offline-banner`. Things that report rather than accept input.
+`graph-3d`, `stat-tile`, `notice`, `offline-banner`, `markdown`. Things that report rather than accept input.
 `table` is native `<table>` markup in a horizontally scrolling wrapper —
 `className` reaches the `<table>`, not the wrapper. Rows divide on `border`,
 heads and captions sit on `muted-foreground`/`foreground`, and a row marked

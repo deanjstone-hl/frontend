@@ -2056,6 +2056,66 @@ flex row, not in a fixed-height one. `code-block` keeps its own `CodeBlockCopyBu
 labelled button at the end of a wrapping value, in the AppShell), measures both against the 44×44 touch floor in every scenario, and keeps an aria baseline in
 `scripts/geometry-gate/aria/copy-button.yml`. App adoption is filed per app, not done here.
 
+## Markdown
+
+`markdown` ([frontend#221](https://github.com/deanjstone-hl/frontend/issues/221)) is the one copy of what ops-hub
+(`components/markdown.tsx`, react-markdown) and briefings (`lib/markdown.tsx`, a hand-rolled parser) each wrote for themselves,
+per the [primitives usage audit](docs/audits/2026-11-12-primitives-usage.md). slate-reader's server keeps `marked`: its notes are
+rendered to HTML on the server, so the iPad never parses Markdown ([frontend#73](https://github.com/deanjstone-hl/frontend/issues/73)).
+It declares `react-markdown`, `remark-gfm`, `remend` and `cn`, each pinned to its minor, and pulls in `link-pill-core`.
+`npx shadcn add deanjstone/frontend/markdown`.
+
+```tsx
+<Markdown>{issue.body}</Markdown>
+<Markdown streaming link={LinkPill}>{message.text}</Markdown>   // an agent reply that is still arriving, links as pills
+```
+
+| Prop | What it does |
+|---|---|
+| `children` | The Markdown source, a string |
+| `streaming` | The reply is still arriving. remend finishes half-written syntax (`**bold`, a code span) in the last block, a link whose URL has not closed is drawn as its text, an image whose URL has not closed is left out, and only the block being written is parsed again per chunk |
+| `link` | The component every link is drawn with, `LinkPill` for pills. It gets `href`, the children and the anchor props, never `node`, and never a URL that failed the safe-scheme check. With a `link`, `mention:` and `geo:` links (the two schemes a pill reads) reach it; the default link never sees them |
+| `headingOffset` | How many levels a heading moves down (default 2, because the page owns `h1` and `h2`; it stops at `h6`) |
+| `components` | Overrides for single elements, merged over the defaults: `pre` or `code` for a highlighter, `table` for a different table. Keep the object stable between renders |
+| `remarkPlugins` | Plugins that run after `remark-gfm`: ops-hub keeps its `#N` reference plugin here. Keep the array stable between renders |
+| `urlTransform` | Rewrites a URL that has already passed the safe-scheme check: ops-hub maps a GitHub issue URL to its hub page here. Never called with a rejected URL or the pending placeholder |
+| `className`, other `div` props | On the root `div[data-slot="markdown"]`, a flex column that wraps long words |
+
+The default link opens an absolute URL in a new tab with `noreferrer noopener` and leaves a relative or in-page one in the tab.
+It does not use `LinkPill` itself, so an app that wants no pills pays for none: pass `link={LinkPill}`.
+
+**Why react-markdown.** Measured on 26 Nov 2026 (esbuild, minified, React external; the probe is 26 GFM and safety cases):
+
+| | react-markdown + remark-gfm + remend | zero-dependency parser (briefings) | T3 Code's Words (`@pierre/words` 0.3.0) |
+|---|---|---|---|
+| gzip | 58.9 kB (49.6 kB without remend) | 1.1 kB | 49.5 kB the core with its WebAssembly, 84.8 kB with its React component |
+| GFM and safety probe | 26 of 26 | 8 of 26: no tables, task lists, autolinks, footnotes, nested lists, blockquotes or images | 24 of 26: the core keeps `javascript:` and `data:` hrefs |
+| render of 20 kB | 121 ms, so a stream cuts it into blocks (about 1.3 ms for the live one) | 6 ms | 0.5 ms |
+| link hook | `components.a`, a React element: LinkPill drops in | none | hooks take and return HTML strings, so LinkPill's React shell, with its enricher context, cannot mount in one |
+| unfinished link | remend's `streamdown:incomplete-link`, kept by this item's URL transform | none | an `a` with no `href` and a `data-markdown-incomplete` attribute |
+| raw HTML | dropped by `skipHtml` | text | kept unless `skipHtml` or `allowedHtml` |
+
+Words is the fastest by far, but T3 does not ship it as a package: its chat renders Words' HTML through 1,342 lines of its own
+(`wordsHast.ts`, plus `@t3tools/shared` sanitising) into hast and then React, and it pins a patched tarball of an older release.
+Words also takes no remark plugin, so ops-hub's `#N` plugin would have to be rewritten. The briefings parser is small and
+safe, but it draws 8 of the 26 cases an issue body or an agent reply needs. The full comparison is on
+[frontend#221](https://github.com/deanjstone-hl/frontend/issues/221).
+
+**Things to know.**
+
+- The item pins to the minor of three packages. A bump is `package.json` and `registry.json` together
+  (`test/markdown-registry.test.ts` fails when they differ), then `pnpm build:registry`.
+- There is no syntax highlighting in it. Pass a `pre` or `code` in `components`, built on `code-block` or `use-highlighted-code`.
+- Footnote ids are fixed (`footnote-label`, `user-content-fn-1`), so two messages with footnotes on one page share them.
+- A `streaming` text that holds a link reference definition, a footnote or raw HTML is parsed whole every chunk, because those tie
+  blocks together. That is the same speed as no cut, not a wrong answer.
+- `remark-gfm` uses a regex lookbehind, which Safari 9 cannot parse (checked by emulation in frontend#73, not on a device). That is why slate-reader's iPad build stays server-side.
+
+When to use it: [DESIGN.md](DESIGN.md#markdown). `test/markdown.test.tsx` holds GFM, the safe-scheme and raw-HTML cases, the link hook
+with `LinkPill`, the pending placeholder, the block cut (a streamed message renders the same as the finished one, and only the live
+block is parsed again) and the consumer hooks, and `test/markdown-registry.test.ts` holds the entry. The geometry gate does not draw it:
+it holds no control of its own, and a link in prose is not a touch target. App adoption is filed per app, not done here.
+
 ## Style
 
 - `base-nova` shadcn style, OKLCH color tokens, Tailwind v4 (`@theme inline`,
