@@ -4,7 +4,7 @@
 //
 // A test file that renders an SDK popup calls installUiSdkStubs() once at its top. It is not a
 // global setup file because the getAnimations stub changes how the Base UI items that have not
-// moved yet (the drawer, the toggle-group) close.
+// moved yet (the toggle-group) close.
 declare global {
   var __UI_SDK_STRICT__: boolean | undefined
 }
@@ -16,6 +16,12 @@ export const installUiSdkStubs = () => {
   Element.prototype.getAnimations ??= () => []
   // A menu or a select scrolls the highlighted item into view; jsdom has no layout to scroll.
   Element.prototype.scrollIntoView ??= function () {}
+  // A drawer measures its sheet and re-measures when the content changes size; jsdom has no layout.
+  globalThis.ResizeObserver ??= class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
   document.head.append(
     Object.assign(document.createElement("style"), { textContent: "[popover] { display: block !important }" }),
   )

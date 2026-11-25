@@ -10,7 +10,7 @@ import { describe, expect, it } from "vitest"
 // Reduced motion (design-system#147). Each component's classes are run through the
 // real Tailwind compiler, so these assert on the CSS a consumer receives: under
 // `prefers-reduced-motion: reduce` the looping spinner and skeleton stop, the
-// sheet stops moving and fading, and the drawer fades instead of sliding. The rendered proof is
+// sheet stops moving and fading, and the drawer, which the SDK moves, adds nothing of its own to turn off. The rendered proof is
 // scripts/verify-reduced-motion.mjs (document.getAnimations() under emulateMedia).
 
 const require = createRequire(import.meta.url)
@@ -71,11 +71,15 @@ describe("sheet and drawer", () => {
     expect(read("../registry/base-nova/ui/sheet.tsx")).toContain("data-starting-style:opacity-0")
   })
 
-  it("replaces the drawer slide with a fade under reduce", async () => {
-    const reduced = reduceBlock(await compileUtilities("../registry/base-nova/ui/drawer.tsx"))
-    expect(reduced).toMatch(/data-starting-style[\s\S]*?transform: none !important/)
-    expect(reduced).toMatch(/data-ending-style[\s\S]*?transform: none !important/)
-    expect(reduced).toMatch(/data-starting-style[\s\S]*?opacity: 0% !important/)
-    expect(reduced).toMatch(/data-ending-style[\s\S]*?opacity: 0% !important/)
+  it("leaves the drawer's slide, and its fade under reduce, to the SDK", async () => {
+    // The SDK moves a drawer with its own spring on translate and fades it in place when the reader
+    // asks for reduced motion (its tested behaviour), so the drawer carries no slide to turn off.
+    const source = read("../registry/base-nova/ui/drawer.tsx")
+    const css = await compileUtilities("../registry/base-nova/ui/drawer.tsx")
+
+    for (const own of ["transition", "animate-", "duration-", "translate", "transform", "data-starting-style", "data-ending-style"]) {
+      expect(source, own).not.toContain(own)
+    }
+    expect(css).not.toContain("transition-property")
   })
 })

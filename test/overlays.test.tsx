@@ -180,7 +180,7 @@ function renderDrawer(props: { showCloseButton?: boolean; snapPoints?: number[] 
       </DrawerContent>
     </Drawer>,
   )
-  return document.querySelector('[data-slot="drawer-popup"]')
+  return document.querySelector('[data-slot="drawer-content"]')
 }
 
 describe("DrawerContent insets", () => {
