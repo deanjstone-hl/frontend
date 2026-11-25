@@ -461,12 +461,13 @@ describe("the canary's hand-off to the follow job", () => {
   it("hands over again on the next run until the follow job has filed, so a lost run retries", async () => {
     const { file } = filer()
     let state = {}
-    let last: { deferred: unknown[] } = { deferred: [] }
+    let deferred: unknown[] = []
     for (let day = 0; day < 4; day += 1) {
-      last = await canary.run({ state, pins, baseline, sources: answers(), file, threshold: 2, env: {}, deferPins: true })
-      state = (last as unknown as { state: object }).state
+      const outcome = await canary.run({ state, pins, baseline, sources: answers(), file, threshold: 2, env: {}, deferPins: true })
+      state = outcome.state
+      deferred = outcome.deferred
     }
-    expect(last.deferred).toHaveLength(2)
+    expect(deferred).toHaveLength(2)
   })
 
   it("still files a broken pin probe through the plain helper: there is nothing to try", async () => {

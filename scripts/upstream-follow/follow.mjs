@@ -257,12 +257,12 @@ export const renderFollowIssue = ({ pkg, from, to, output, changes }, runUrl) =>
   return body.length > MAX_BODY_CHARS ? `${body.slice(0, MAX_BODY_CHARS)}\n\n(body truncated)\n\nMode: AFK` : body
 }
 
-const withBodyFile = async (body, use) => {
+const withBodyFile = async (body, callback) => {
   const dir = mkdtempSync(join(tmpdir(), "upstream-follow-"))
   const bodyFile = join(dir, "body.md")
   writeFileSync(bodyFile, body)
   try {
-    return await use(bodyFile)
+    return await callback(bodyFile)
   } finally {
     rmSync(dir, { recursive: true, force: true })
   }
