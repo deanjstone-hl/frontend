@@ -24,7 +24,7 @@ const cuts = (file: string) => readFileSync(`${root}${file}`, "utf8").match(CUT)
 
 // file -> how many cuts it keeps, and why each is navigation or chrome.
 const KEPT: Record<string, { count: number; why: string }> = {
-  "blocks/app-shell.tsx": { count: 2, why: "tab bar labels and the More tab: one-line navigation, icon-only past 200%" },
+  "blocks/app-shell.tsx": { count: 3, why: "tab bar labels and the More tab (one-line navigation, icon-only past 200%), and the phone header's page title: a one-line chrome bar beside its controls" },
   "blocks/app-switcher.tsx": { count: 4, why: "the app name in the header, the trigger and each app's name and description in the switcher menu" },
   "blocks/filter-builder.tsx": { count: 2, why: "the value button's summary (a select trigger) and the active-filter chip's label (a fixed-height button)" },
   "ui/code-block.tsx": { count: 1, why: "the header's title: the one-line chrome bar above the code, beside its action buttons" },
