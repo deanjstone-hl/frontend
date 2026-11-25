@@ -44,6 +44,16 @@ One app at a time, one browser page at a time. Nothing here starts in the backgr
 
 To change a threshold or a screen's `primaryAction` without rendering again: edit `scorecard.mjs` or the config, then `node docs/audits/primitives-usage/render.mjs screens/<app>/config.json --rescore`.
 
+### budget/web: a session in a cookie and an API on another origin
+
+`screens/budget` renders `/home`, `/activity` and `/budget` of [budget](https://github.com/deanjstone-hl/budget)'s SPA (`web/`, pnpm workspace: `pnpm install --frozen-lockfile --filter web`, then `pnpm --dir web exec vite build`). Three things differ from the other apps:
+
+- **Build env.** `web/.env.production.local` takes dummy values: `VITE_SUPABASE_URL=http://127.0.0.1:59004`, `VITE_API_BASE_URL=http://127.0.0.1:59003`, `VITE_COOKIE_DOMAIN=` (empty, so the session cookie is host-only; the production default is `.myargus.cc`, which a 127.0.0.1 page cannot set), `VITE_DEMO_MODE=false`.
+- **Session.** `@supabase/ssr` keeps the session in the `sb-127-auth-token` cookie, not localStorage. `init.js` writes it (`base64-` plus base64url JSON) and pins the page clock to 10 Nov 2026.
+- **Data.** Both origins are cross-origin to the page, so `mocks.json` matches full URLs. Auth: `/auth/v1/user` and `/auth/v1/passkeys` (the route guard sends a user with no passkey to `/passkey-setup`). API: `/api/bootstrap`, `/api/dashboard`, `/api/transactions`, `/api/notifications`, `/api/tags`, `/api/budget/list-summary`, `/api/budget/approvals` and the `POST /api/actions/<module>/<fn>` calls for accounts, categories, category mappings and budgets. Money is in cents. The fixtures are invented (Owner, a Spending and a Savings account, two budgets).
+
+`/budget` is the budgets list; a single budget's page (`/budget?id=<id>`) needs `/api/budget/summary` and the layout, column and sharing endpoints, and is not captured. The activity totals are a counting animation, so the screenshot catches them part-way (`$148,286.33` for a mock of `$148,300.00`).
+
 ### WebKit on this host
 
 `npx playwright-core install webkit` downloads the browser, but Ubuntu 24.04 lacks four libraries it needs (`libavif16`, `libflite1`, `libwoff1`, `libgstreamer-plugins-bad1.0-0`). Without root: `apt-get download` them and their dependencies, unpack with `dpkg -x` into `~/.cache/pw-webkit-libs/root`, and link the `.so` files into `~/.cache/ms-playwright/webkit-<build>/minibrowser-wpe/sys/lib/`. With root, `sudo npx playwright-core install-deps webkit` does the same.

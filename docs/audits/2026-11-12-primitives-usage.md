@@ -18,7 +18,7 @@ Run it: [`primitives-usage/README.md`](primitives-usage/README.md).
 
 **Limits.**
 
-- 13 apps were rendered (26 screens). `budget/web` and `slate-reader` were not ([design-system/215](https://github.com/deanjstone/design-system/issues/215)); `argus/apps/email` is the same app as `email/apps/email` and was not rendered twice. Their Part A data is complete.
+- 13 apps were rendered (26 screens). `budget/web` and `slate-reader` were not ([design-system/215](https://github.com/deanjstone/design-system/issues/215)); `argus/apps/email` is the same app as `email/apps/email` and was not rendered twice. Their Part A data is complete. `budget/web`'s home, activity and budget screens were rendered afterwards ([frontend/215](https://github.com/deanjstone-hl/frontend/issues/215)) and are in `output/scorecard.md`; the counts in this document are the 26 screens above and do not include them.
 - Screens are drawn from fixtures, not the owner's data. Row counts and title lengths are plausible, not real.
 - Headless WebKit is not an iPhone. It reports zero for `env(safe-area-inset-*)` and cannot show an installed PWA; the harness simulates the insets by setting the registry's `--safe-*` tokens (`*-iphone-insets-light.png`). The device findings stay with the owner's retests, [design-system/166](https://github.com/deanjstone/design-system/issues/166) and [design-system/168](https://github.com/deanjstone/design-system/issues/168).
 - Part A counts what the source declares, not what a browser drew. Part B measures what was drawn, on the chosen screens only.
