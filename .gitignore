@@ -12,3 +12,6 @@ dist/
 
 # Curve-geometry gate evidence (design-system#143)
 geometry-gate-out/
+
+# Drift canary streak (frontend#237): restored from the Actions cache, never committed
+.drift-canary-state/

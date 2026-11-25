@@ -1,0 +1,55 @@
+name: Drift canary
+
+# Notices when an upstream this registry copies from moves, and files one Repair brief
+# (frontend#237). Three probes: the pinned shadcn CLI and impeccable against npm's latest,
+# and shadcn's published base-nova items against scripts/drift-canary/upstream-baseline.json.
+# The logic and the threshold are scripts/drift-canary/canary.mjs; this file only schedules it.
+#
+# Why Actions and not a homelab timer: this repo is public, so a GitHub-hosted runner costs no
+# minutes (the billing note in argus-config's lint.yml is about private repos), the run is a few
+# seconds of Node with no install, and a timer would tie the canary to one host being up.
+#
+# Schedule only, never on a push or pull request. 21:17 UTC is 08:17 AEDT (07:17 AEST), a
+# minute that is not on the hour, when the shared cron queue is busiest.
+on:
+  schedule:
+    - cron: "17 21 * * *"
+  workflow_dispatch:
+
+# Read the repo, write issues (the Repair brief). Nothing else.
+permissions:
+  contents: read
+  issues: write
+
+# A manual run and the scheduled one never overlap, and neither is cancelled halfway through
+# filing a brief.
+concurrency:
+  group: drift-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    name: Upstream drift canary
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # The streak: how many runs in a row each probe has seen the same drift, and what was
+      # already filed. The newest entry wins on restore. A lost cache only delays a filing by
+      # one threshold; it never files twice, because the helper dedupes on the brief's title.
+      - name: Restore the canary's streak
+        uses: actions/cache@v4
+        with:
+          path: .drift-canary-state
+          key: drift-canary-state-${{ github.run_id }}
+          restore-keys: drift-canary-state-
+
+      - name: Probe the upstreams
+        run: node scripts/drift-canary/canary.mjs --state .drift-canary-state/state.json --repo "${GITHUB_REPOSITORY}"
+        env:
+          GH_TOKEN: ${{ github.token }}
