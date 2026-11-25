@@ -49,7 +49,7 @@ const pinsNow = () => ({ shadcn: read("scripts/stamp/pins.mjs").match(/SHADCN_VE
 describe("bumpPin", () => {
   it("moves the shadcn pin in every file that writes it, and nowhere else", () => {
     const from = pinsNow().shadcn
-    const touched = follow.bumpPin({ root: tree, pkg: "shadcn", from, to: "4.23.0" })
+    const touched = follow.bumpPin({ root: tree, pkg: "shadcn", from, to: "9.9.9" })
     expect([...touched].sort()).toEqual([
       ".github/workflows/design.yml",
       ".github/workflows/release.yml",
@@ -57,12 +57,12 @@ describe("bumpPin", () => {
       "scripts/check.sh",
       "scripts/stamp/pins.mjs",
     ])
-    expect(read("scripts/check.sh", tree)).toMatch(/^SHADCN_VERSION=4\.23\.0$/m)
-    expect(read("scripts/stamp/pins.mjs", tree)).toContain('export const SHADCN_VERSION = "4.23.0"')
-    expect(read(".github/workflows/design.yml", tree)).toContain("npx --yes shadcn@4.23.0 build --output ./r")
+    expect(read("scripts/check.sh", tree)).toMatch(/^SHADCN_VERSION=9\.9\.9$/m)
+    expect(read("scripts/stamp/pins.mjs", tree)).toContain('export const SHADCN_VERSION = "9.9.9"')
+    expect(read(".github/workflows/design.yml", tree)).toContain("npx --yes shadcn@9.9.9 build --output ./r")
     const release = read(".github/workflows/release.yml", tree)
-    expect(release).toContain("npx --yes shadcn@4.23.0 build --output ./r")
-    expect(release).toContain("Run 'npx shadcn@4.23.0 build --output ./r'")
+    expect(release).toContain("npx --yes shadcn@9.9.9 build --output ./r")
+    expect(release).toContain("Run 'npx shadcn@9.9.9 build --output ./r'")
     expect(release).not.toContain(`shadcn@${from}`)
     // The impeccable pin is a different tool and does not move.
     expect(read("scripts/check.sh", tree)).toMatch(new RegExp(`^IMPECCABLE_VERSION=${pinsNow().impeccable.replace(/\./g, "\\.")}$`, "m"))
@@ -70,24 +70,24 @@ describe("bumpPin", () => {
 
   it("moves the impeccable pin in check.sh, design.yml and release.yml only", () => {
     const from = pinsNow().impeccable
-    const touched = follow.bumpPin({ root: tree, pkg: "impeccable", from, to: "4.11.0" })
+    const touched = follow.bumpPin({ root: tree, pkg: "impeccable", from, to: "9.8.7" })
     expect([...touched].sort()).toEqual([".github/workflows/design.yml", ".github/workflows/release.yml", "scripts/check.sh"])
-    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=4\.11\.0$/m)
-    expect(read(".github/workflows/design.yml", tree)).toContain("npx --yes impeccable@4.11.0 detect registry/ theme/")
-    expect(read(".github/workflows/release.yml", tree)).toContain("npx --yes impeccable@4.11.0 detect registry/ theme/")
+    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=9\.8\.7$/m)
+    expect(read(".github/workflows/design.yml", tree)).toContain("npx --yes impeccable@9.8.7 detect registry/ theme/")
+    expect(read(".github/workflows/release.yml", tree)).toContain("npx --yes impeccable@9.8.7 detect registry/ theme/")
     expect(read("scripts/stamp/pins.mjs", tree)).toBe(read("scripts/stamp/pins.mjs"))
   })
 
   it("does not touch a longer version that merely starts with the pin", () => {
     const check = join(tree, "scripts/check.sh")
     writeFileSync(check, `${read("scripts/check.sh", tree)}# other: shadcn@${pinsNow().shadcn}0 stays\n`)
-    follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "4.23.0" })
+    follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "9.9.9" })
     expect(read("scripts/check.sh", tree)).toContain(`shadcn@${pinsNow().shadcn}0 stays`)
   })
 
   it("throws, and writes nothing, when a required file does not hold the pin it was told to move", () => {
     const before = read("scripts/check.sh", tree)
-    expect(() => follow.bumpPin({ root: tree, pkg: "shadcn", from: "3.0.0", to: "4.23.0" })).toThrow(/scripts\/check\.sh/)
+    expect(() => follow.bumpPin({ root: tree, pkg: "shadcn", from: "3.0.0", to: "9.9.9" })).toThrow(/scripts\/check\.sh/)
     expect(read("scripts/check.sh", tree)).toBe(before)
   })
 
@@ -95,12 +95,12 @@ describe("bumpPin", () => {
     const design = join(tree, ".github/workflows/design.yml")
     writeFileSync(design, read(".github/workflows/design.yml", tree).replaceAll(`shadcn@${pinsNow().shadcn}`, "shadcn@latest"))
     const before = read("scripts/check.sh", tree)
-    expect(() => follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "4.23.0" })).toThrow(/design\.yml/)
+    expect(() => follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "9.9.9" })).toThrow(/design\.yml/)
     expect(read("scripts/check.sh", tree)).toBe(before)
   })
 
   it("refuses a target that is not a plain version, since it is written into files and run by npx", () => {
-    for (const to of ["latest", "4.23", "4.23.0; rm -rf /", "$(id)", "4.23.0\n", "../4.23.0"]) {
+    for (const to of ["latest", "4.23", "9.9.9; rm -rf /", "$(id)", "9.9.9\n", "../9.9.9"]) {
       expect(() => follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to }), to).toThrow(/version/i)
     }
   })
@@ -110,7 +110,7 @@ describe("bumpPin", () => {
   })
 
   it("leaves a tree where the repo's own pin tests would still agree with each other", () => {
-    follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "4.23.0" })
+    follow.bumpPin({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "9.9.9" })
     const ci = read(".github/workflows/design.yml", tree).match(/npx --yes shadcn@(\S+) build --output \.\/r/)?.[1]
     expect(read("scripts/check.sh", tree)).toMatch(new RegExp(`^SHADCN_VERSION=${ci}$`, "m"))
     expect(read("scripts/stamp/pins.mjs", tree)).toContain(`export const SHADCN_VERSION = "${ci}"`)
@@ -142,8 +142,8 @@ const happy = (line: string): Partial<Result> | undefined => {
 }
 
 describe("trial", () => {
-  const impeccable = () => ({ root: tree, pkg: "impeccable", from: pinsNow().impeccable, to: "4.11.0" })
-  const shadcn = () => ({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "4.23.0" })
+  const impeccable = () => ({ root: tree, pkg: "impeccable", from: pinsNow().impeccable, to: "9.8.7" })
+  const shadcn = () => ({ root: tree, pkg: "shadcn", from: pinsNow().shadcn, to: "9.9.9" })
 
   it("is green when the check passes: bumps, runs the check, reports what changed", async () => {
     const exec = fakeExec(happy)
@@ -152,11 +152,11 @@ describe("trial", () => {
       ok: true,
       pkg: "impeccable",
       from: pinsNow().impeccable,
-      to: "4.11.0",
+      to: "9.8.7",
       output: PASS_LOG,
       changes: { status: GIT_STATUS.trim(), stat: GIT_STAT.trim() },
     })
-    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=4\.11\.0$/m)
+    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=9\.8\.7$/m)
     expect(exec.lines()).toEqual(["bash scripts/check.sh", "git status --short", "git diff --stat"])
   })
 
@@ -217,7 +217,7 @@ describe("trialAll", () => {
     const exec = fakeExec(happy)
     const outcomes = await follow.trialAll({
       root: tree,
-      followups: [drift("shadcn", pinsNow().shadcn, "4.23.0"), drift("impeccable", pinsNow().impeccable, "4.11.0")],
+      followups: [drift("shadcn", pinsNow().shadcn, "9.9.9"), drift("impeccable", pinsNow().impeccable, "9.8.7")],
       exec: exec.run,
       env: ciEnv,
     })
@@ -245,7 +245,7 @@ describe("trialAll", () => {
     const exec = fakeExec((line) => (line === "pnpm build:registry" ? { status: 1, output: "boom" } : happy(line)))
     const outcomes = await follow.trialAll({
       root: tree,
-      followups: [drift("shadcn", pinsNow().shadcn, "4.23.0"), drift("impeccable", pinsNow().impeccable, "4.11.0")],
+      followups: [drift("shadcn", pinsNow().shadcn, "9.9.9"), drift("impeccable", pinsNow().impeccable, "9.8.7")],
       exec: exec.run,
       env: ciEnv,
     })
@@ -255,7 +255,7 @@ describe("trialAll", () => {
 
   it("never hands a token to a command: the new upstream's code runs without one", async () => {
     const exec = fakeExec(happy)
-    await follow.trialAll({ root: tree, followups: [drift("impeccable", pinsNow().impeccable, "4.11.0")], exec: exec.run, env: ciEnv })
+    await follow.trialAll({ root: tree, followups: [drift("impeccable", pinsNow().impeccable, "9.8.7")], exec: exec.run, env: ciEnv })
     expect(exec.calls.length).toBeGreaterThan(0)
     for (const call of exec.calls) {
       expect(call.cwd, call.line).toBe(tree)
@@ -269,14 +269,14 @@ describe("trialAll", () => {
   it("throws, running nothing, when the install fails: that is the runner's fault, not the bump's", async () => {
     const exec = fakeExec((line) => (line.startsWith("pnpm install") ? { status: 1, output: "ERR_PNPM_FETCH_502" } : happy(line)))
     await expect(
-      follow.trialAll({ root: tree, followups: [drift("impeccable", pinsNow().impeccable, "4.11.0")], exec: exec.run, env: ciEnv }),
+      follow.trialAll({ root: tree, followups: [drift("impeccable", pinsNow().impeccable, "9.8.7")], exec: exec.run, env: ciEnv }),
     ).rejects.toThrow(/pnpm install.*ERR_PNPM_FETCH_502/s)
     expect(exec.lines()).toEqual(["pnpm install --frozen-lockfile"])
   })
 
   it("refuses outside CI, because it rewrites the working tree and then discards it", async () => {
     const exec = fakeExec(happy)
-    const followups = [drift("impeccable", pinsNow().impeccable, "4.11.0")]
+    const followups = [drift("impeccable", pinsNow().impeccable, "9.8.7")]
     await expect(follow.trialAll({ root: tree, followups, exec: exec.run, env: { PATH: "/usr/bin" } })).rejects.toThrow(/CI|--in-place/)
     expect(exec.calls).toEqual([])
     const allowed = await follow.trialAll({ root: tree, followups, exec: exec.run, env: { PATH: "/usr/bin" }, inPlace: true })
@@ -555,14 +555,14 @@ describe("applyPin (what a worker runs to land a bump)", () => {
 
   it("regenerates nothing for impeccable, which writes no output", async () => {
     const exec = fakeExec()
-    await follow.applyPin({ root: tree, pkg: "impeccable", to: "4.11.0", run: exec.run })
-    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=4\.11\.0$/m)
+    await follow.applyPin({ root: tree, pkg: "impeccable", to: "9.8.7", run: exec.run })
+    expect(read("scripts/check.sh", tree)).toMatch(/^IMPECCABLE_VERSION=9\.8\.7$/m)
     expect(exec.calls).toEqual([])
   })
 
   it("throws, naming the step, when the regenerate fails, so the worker does not run the check on a half-built r/", async () => {
     const exec = fakeExec((line) => (line === "pnpm build:registry" ? { status: 2, output: "boom" } : undefined))
-    await expect(follow.applyPin({ root: tree, pkg: "shadcn", to: "4.23.0", run: exec.run })).rejects.toThrow(/pnpm build:registry.*exit 2/s)
+    await expect(follow.applyPin({ root: tree, pkg: "shadcn", to: "9.9.9", run: exec.run })).rejects.toThrow(/pnpm build:registry.*exit 2/s)
   })
 
   it("does nothing when the pin is already at the target", async () => {
