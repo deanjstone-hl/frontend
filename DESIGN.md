@@ -1120,6 +1120,22 @@ and `ErrorNotice`), both built on `alert`. They replace the hand-built pair each
   surface, the error notice on the `critical` wash. The error's text is the `critical` token
   with no opacity on it.
 
+### Offline banner
+
+The notice a screen shows while the browser is offline (`offline-banner`), built on `alert` in the
+`warning` variant, with the `use-online` hook it reads. It replaces the banner knowledge and reader
+each keep.
+
+- **Say what it means.** The default title is "You're offline"; give the app's own words as `title`,
+  and what still works or what happens on reconnect as `description` ("Reading from cache").
+- **A status, not an alert.** It is a polite `role="status"`: losing the network must not interrupt
+  a screen reader. The words carry the state, and the wifi-off icon is hidden from assistive tech.
+- **It draws nothing online.** It is a block, not a fixed strip: put it at the top of the page or
+  above the list it concerns, and let the layout move.
+- **A hint, not a guarantee.** The browser reports a network interface, not that your server
+  answers. A failed request is still an error notice.
+- **Colour.** The `warning` token on its wash, as every `warning` alert.
+
 ### Inputs
 
 - **Style:** Transparent ground with a 1px `input` border at 10px radius,
@@ -1188,7 +1204,7 @@ rest stay flat and lean on borders, per the two-mechanism depth rule.
 
 **Display and feedback** — `badge`, `avatar`, `progress`, `skeleton`,
 `separator`, `tabs`, `table`, `sonner`, `spinner`, `empty`, `tooltip`,
-`graph-3d`, `stat-tile`, `notice`. Things that report rather than accept input.
+`graph-3d`, `stat-tile`, `notice`, `offline-banner`. Things that report rather than accept input.
 `table` is native `<table>` markup in a horizontally scrolling wrapper —
 `className` reaches the `<table>`, not the wrapper. Rows divide on `border`,
 heads and captions sit on `muted-foreground`/`foreground`, and a row marked

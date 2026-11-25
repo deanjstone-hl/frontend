@@ -407,8 +407,8 @@ registry/
   lib/relative-time.ts      formatRelativeTime ("5m ago", "in 2h") and the useNow clock-tick hook
   lib/list-group-core.ts    grouping and display-settings model (grouped-list)
   lib/page-transition-core.ts  theme tokens to glimm band colours (page-transition, staged: not in registry.json yet)
-  base-nova/ui/               67 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
-  base-nova/hooks/            use-mobile (pulled by sidebar), use-highlighted-code (pulled by code-block), use-theme-preference, use-font-preference, use-filter-state, use-display-settings
+  base-nova/ui/               69 listed base-nova components (Base UI, plus link-pill, graph-3d, chart, data-table) and the unlisted page-transition
+  base-nova/hooks/            use-mobile (pulled by sidebar), use-online (pulled by offline-banner), use-highlighted-code (pulled by code-block), use-theme-preference, use-font-preference, use-filter-state, use-display-settings
   base-nova/blocks/           v3 layout blocks: app-shell, app-switcher, page-header, empty-page, settings-page, login, card-list, issue-row, filter-builder, grouped-list, file-diff
   design-check/             scripts and workflow of the design-check item (CI, not UI)
   app-html-head/            iPhone <head> tags snippet (app-html-head item)
@@ -1998,6 +1998,31 @@ formatRelativeTime(note.syncedAt, now, "never")       // "never" when there is n
 - **`now` is yours.** It defaults to the clock. Pass the value from `useNow` to keep a label true, or a fixed one in a test.
 - **`useNow(intervalMs = 30_000)`** returns the current time and re-renders on that interval; the timer stops on unmount.
   Each caller runs its own timer, so call it once in a list's parent and pass `now` down.
+
+## Offline banner
+
+`offline-banner` and the `use-online` hook it reads ([frontend#219](https://github.com/deanjstone-hl/frontend/issues/219)) are the
+one copy of what knowledge and reader (`OfflineBanner.tsx`) and sparky (`useOnline`) each wrote for themselves, per the
+[primitives usage audit](docs/audits/2026-11-12-primitives-usage.md). The banner is built on `alert` and its `warning`
+variant ([frontend#210](https://github.com/deanjstone-hl/frontend/issues/210)). It declares `lucide-react` and pulls in `alert`
+and `use-online`. `npx shadcn add deanjstone/frontend/offline-banner`, or `deanjstone/frontend/use-online` for the hook alone.
+
+```tsx
+<OfflineBanner />                                                 // "You're offline"
+<OfflineBanner title="Offline" description="Reading from cache" />
+const online = useOnline()                                        // false while the browser reports no network
+```
+
+| Export | What it does |
+|---|---|
+| `OfflineBanner` | Draws nothing while online. Offline it draws the `warning` `alert` with a wifi-off icon (`icon` replaces it, `icon={null}` drops it), a `title` (default "You're offline") and an optional `description`. A polite `role="status"` with `aria-live="polite"`, so it never interrupts a screen reader. It is a block: where it sits (top of the page, above a list) is yours, and it takes the `alert`'s other props (`className`, `data-*`, `id`) but not `variant` |
+| `useOnline()` | `true` while the browser reports a network. It follows the window's `online` and `offline` events and stops on unmount. Several callers stay in step. On the server it reads `true`, so a hydrating page matches |
+
+`navigator.onLine` is a hint: `true` means a network interface is up, not that your server answers, so a failed request is still
+an `ErrorNotice`. When to use it: [DESIGN.md](DESIGN.md#offline-banner).
+
+`test/use-online.test.tsx` and `test/offline-banner.test.tsx` fire the `online` and `offline` events, and
+`test/offline-banner-registry.test.ts` holds the two entries. App adoption is filed per app, not done here.
 
 ## Style
 
