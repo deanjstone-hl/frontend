@@ -621,8 +621,10 @@ installs `src/hooks/use-mobile.ts` on `4.10.0`, `4.19.0` and `4.23.0`; `deanjsto
 (the old owner, through the redirect) installs the same file; `use-theme-preference#v3.28.0` pulls its
 `registryDependencies` entry (`deanjstone/frontend/theme-preference`) through the redirect too; and
 `shadcn registry validate deanjstone-hl/frontend` reports `Registry is valid` for the root `registry.json` (107 items).
-The consumers pin `^4.19.1`, above both floors. This repo is public, so the private read path is not what those
-checks used; a token for CI needs Contents read-only on the repository.
+The consumers pin `^4.19.1`, above both floors. This repo is public, so those checks read it anonymously. The private
+path was checked on a private scratch registry the same day: on `4.19.0` and `4.23.0` with `gh` logged in the CLI printed
+`Using gh credentials.` and created the file; with no `gh` and no `GH_TOKEN`, or on `4.18.0`, it refused. A token for CI
+needs Contents read-only on the repository.
 
 **Which to use.** The two forms pin the same thing: the named item, at the
 tag. Their dependency behaviour is identical. Use `#ref` by default. It is
