@@ -57,9 +57,9 @@ describe("StatTile", () => {
     })
 
     it("leads by at least the ratio the one-largest rule asks for", () => {
-      const themeItem = registry.items.find((item) => item.name === "theme") as unknown as { cssVars: { theme: Record<string, string> } }
-      const theme = themeItem.cssVars.theme
-      const rem = (name: string) => parseFloat(theme[name])
+      const themeItem = registry.items.find((item) => item.name === "theme")
+      const theme = themeItem && "cssVars" in themeItem ? themeItem.cssVars.theme : undefined
+      const rem = (name: "text-xl" | "text-3xl") => parseFloat(theme?.[name] ?? "NaN")
 
       expect(rem("text-3xl") / rem("text-xl")).toBeGreaterThanOrEqual(RULES.largestRatio)
     })
