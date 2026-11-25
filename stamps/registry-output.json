@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "f2c6da9eb8bf65ea168f2cb25eb9c82f69a37c01dbec5302f612ecdf5af7ea52",
+    "hash": "0b5f303ee656f7d3761ed8bef63330d2ea4e28cfee5c3e79242254c4464d99c2",
     "files": {
-      "registry.json": "069b7fa97a5176440466800b458ef911185b9bbba93f5d7674d778f8c64cdde1",
+      "registry.json": "ab99c412c44f4fca88e9041598abb8a509f3b1353cd8b999db6cc00ee078875f",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "c7d666bc38f225ee389ee2d359c634201d52fd0da9187ccd3d1495e815c2d658",
       "registry/base-nova/blocks/app-switcher.tsx": "4c580598f5b56f873dfae1dd418fdaf077c873f0ad7b69fa0d77a1180ffe20d6",
@@ -77,6 +77,7 @@
       "registry/base-nova/ui/navigation-menu.tsx": "ac5500cb7d52bec249e6b6a98e665c8778b7302a21290458d068fed8cdd95563",
       "registry/base-nova/ui/notice.tsx": "823c346cb28cd2ce2171346580f08507b7dd7093629a70921a05f5f7403fd4a3",
       "registry/base-nova/ui/offline-banner.tsx": "708787b09908c9953b1fec3942d2a551bcae6fd1ffec15a184b32e46a95c1cd3",
+      "registry/base-nova/ui/page-transition.tsx": "cb14177aa06f49fa4cd9a68473fbac3ae33a6b96217d4c4fc742fd6fe4dda33e",
       "registry/base-nova/ui/pagination.tsx": "7d88c6f8d73b89528dd2eb88b5c5202c44bd62560fe8953f6114d8fee143655f",
       "registry/base-nova/ui/popover.tsx": "a1f27ec3d646047b659ff097c4382b63fcb5bb5a78e38536c4193d0e6f1fc072",
       "registry/base-nova/ui/progress.tsx": "3cd9d89f2c9ea7a80cd3336389b06d9325f8b99e5c28ddbfa2a0fafb49f694e5",
@@ -124,6 +125,7 @@
       "registry/lib/links.ts": "79dbd263f4b59dc64d8049cc82a68615a3a251baa3b6debc4cd5a6db12d5671d",
       "registry/lib/list-group-core.ts": "77a14212012966a439274973575b376795ab183970ef33425c6b29f9b826fa35",
       "registry/lib/nav-link.tsx": "ece1c38a8cbb7fd2f21b5f549f0b4a4291987fbb692b13f2d15a64ce339aefe3",
+      "registry/lib/page-transition-core.ts": "8840ec7a5a2757fa3f3066dd823113416f8e76e82762204885002da04bd2995e",
       "registry/lib/relative-time.ts": "8fff5f6e21c2941239e9759aa8a4ce38929cb003e7fcce4359a594804b9a9c85",
       "registry/lib/theme-preference.ts": "0eebe8d9a7b74eb7cff3876e377d62e41cf69f507803eec75ffbcb948164cc1d",
       "registry/lib/url-state.ts": "b72398b02a75e4a3b502f970ac03368b4b1cb99723406ba0314f3ae0dd28a3d6",
@@ -136,7 +138,7 @@
     }
   },
   "output": {
-    "hash": "37bc58f2f7f0ca75b6bc51820cdbadabd6dc9d249b843e849798e927fb584189",
+    "hash": "e7165ec3a1a3482426611e3231b79c937eaadd1dd455213b7256e7d80251f6c2",
     "files": {
       "r/accordion.json": "520dc8d11031fbc0f6064a4d40f51f0c4989c5a27cb7b62c3d02b923f9fae897",
       "r/alert-dialog.json": "19842157d20aecc58b2af6df11ab993c78f1c0c04ef5bba82bca00ceac0d5069",
@@ -214,12 +216,14 @@
       "r/notice.json": "3487376eab5999ab4805fbc4ca472eb35dcba7a34eca1249988482d2c047ec93",
       "r/offline-banner.json": "2a9efa1f006042b19c947b2d3dd9ad7267922828ba3c41e4ca9ef75fa215c8bf",
       "r/page-header.json": "d81004b47593ee3a7a320530725088e0c114e8839dbe2fe70487fecad73b81f1",
+      "r/page-transition-core.json": "aea6571c71cf1b0787325b3395aed6e074150d012d9e27580642292e8bff4487",
+      "r/page-transition.json": "26661266d3bc64d1e166c1e0077765ffed5b53e14b4e6d9fa92c0b7c8896f134",
       "r/pagination.json": "bd2be92206fcd03bb2c679a945ff52e516969f02acfa45eb4e958775db03d977",
       "r/popover.json": "7d2a9d04b997db4cbcf39940f97c7d26e7272047b5f32b2367b0a4e95e47c597",
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "f2922d6c15f4ef0d2cce72e9f54a24bae003a1e2d7bc8428a906343ab4dc12e1",
-      "r/registry.json": "069b7fa97a5176440466800b458ef911185b9bbba93f5d7674d778f8c64cdde1",
+      "r/registry.json": "ab99c412c44f4fca88e9041598abb8a509f3b1353cd8b999db6cc00ee078875f",
       "r/relative-time.json": "8c3d27e4b7adbe7792ae5d2bd6c6e4ee404bdcc32599155072619b044b71cd75",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",
