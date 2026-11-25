@@ -7,9 +7,9 @@
     }
   },
   "input": {
-    "hash": "d95bcfc89d53474eb71bc26179fc67d16587db5f20673397ccd77edc289460cf",
+    "hash": "6747b64fb67a023c23dbee056fd3dfa37e57b5d2a105160c141a93822311bbc7",
     "files": {
-      "registry.json": "8deaa065ca654edd06e7393623b00cc2cb5fe0df81614cc9519e74fbed1bfc41",
+      "registry.json": "069b7fa97a5176440466800b458ef911185b9bbba93f5d7674d778f8c64cdde1",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
       "registry/base-nova/blocks/app-shell.tsx": "c7d666bc38f225ee389ee2d359c634201d52fd0da9187ccd3d1495e815c2d658",
       "registry/base-nova/blocks/app-switcher.tsx": "4c580598f5b56f873dfae1dd418fdaf077c873f0ad7b69fa0d77a1180ffe20d6",
@@ -68,6 +68,7 @@
       "registry/base-nova/ui/kbd.tsx": "d17724eb15923ea4f0432cd1cf22538addb14a386f4f9326661efcce7f97e33b",
       "registry/base-nova/ui/label.tsx": "0a7ad9a0221b6a6a822289f146f91826374cedcd9f11c7b3525a5b41a86d9d0b",
       "registry/base-nova/ui/link-pill.tsx": "33a7f715ff5fcc3ee11be7490d0e8e2927151c1635a4c33c7384c70294576fad",
+      "registry/base-nova/ui/markdown.tsx": "aa187404ac5cbafbeef93a1cf29be3db1e23c64e01c36ad55c21fb4fd26b5277",
       "registry/base-nova/ui/marker.tsx": "6b0a6a0f510ac210bbc71808e2efa9195947db91e9962685e9674f5e802e30ed",
       "registry/base-nova/ui/menubar.tsx": "700366a922867a277ec692806005c69734ce885b6f537381a49b3f22a636dff2",
       "registry/base-nova/ui/message-scroller.tsx": "653012cfeefe555badfb7b7f2079bd758c21fbfc7123140cf0d0bdcb7d6ca349",
@@ -135,7 +136,7 @@
     }
   },
   "output": {
-    "hash": "5cbfcb68b63c4c1922d3adc2eed64ad0fb2e4856930aed2f4fb638e3202bb31f",
+    "hash": "5fa463a4e701062d5cd58cb12f85bef48a11c81c0c9b408aa162f18efea45bca",
     "files": {
       "r/accordion.json": "520dc8d11031fbc0f6064a4d40f51f0c4989c5a27cb7b62c3d02b923f9fae897",
       "r/alert-dialog.json": "19842157d20aecc58b2af6df11ab993c78f1c0c04ef5bba82bca00ceac0d5069",
@@ -202,6 +203,7 @@
       "r/links.json": "485a216ab80e77344893f2d215f9e6d9d35d7784ade3570b6d87f39694e03bbd",
       "r/list-group-core.json": "0faa57ad170a51d967be7deae5b3acf37af1cc4f03a259c98dd3318c87ade5dd",
       "r/login.json": "79f1922b0033b8927d9a55611a2e260840aec7b572ace91194a837f37b6919ec",
+      "r/markdown.json": "274dcd3f0696ed6a9f3dc827d62309e06ceb6646af3d909be07b48fdf508a4a0",
       "r/marker.json": "64e4501bd62c568f129074053f2f6e44dadf36b42bd7f620af0c3a3be1d41b3f",
       "r/menubar.json": "9bd32cb0ef24044090a197c5a91bbb43eaf1c6f06426a2052c2ca36aa07773c2",
       "r/message-scroller.json": "eee444b4d7c02d942b2806e5aa85420de919be372f0d1104c41222b6f71b81d8",
@@ -217,7 +219,7 @@
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",
       "r/questionnaire.json": "27ec82609e88adc9dc779f1cedb5daeb43c6f97ed5287460456bc1bdcca09e2d",
       "r/radio-group.json": "f2922d6c15f4ef0d2cce72e9f54a24bae003a1e2d7bc8428a906343ab4dc12e1",
-      "r/registry.json": "8deaa065ca654edd06e7393623b00cc2cb5fe0df81614cc9519e74fbed1bfc41",
+      "r/registry.json": "069b7fa97a5176440466800b458ef911185b9bbba93f5d7674d778f8c64cdde1",
       "r/relative-time.json": "8c3d27e4b7adbe7792ae5d2bd6c6e4ee404bdcc32599155072619b044b71cd75",
       "r/resizable.json": "fc1573d9252be9858da1ed20283335430eebaed678e2ee3d12a30c4d32e0d1d6",
       "r/scroll-area.json": "efd67a64124fe47d323e5cef71e2cb96e617ebca2ea501228c0897ca4e4fecd3",

@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it } from "vitest"
 
 import { PENDING_HREF } from "../registry/lib/link-pill-core"
 import { LinkPill } from "../registry/base-nova/ui/link-pill"
-import { INCOMPLETE_LINK_HREF, Markdown, splitMarkdownBlocks } from "../registry/base-nova/ui/markdown"
+import { Markdown, splitMarkdownBlocks } from "../registry/base-nova/ui/markdown"
 
 // The renderer behind `markdown` is react-markdown with remark-gfm, and remend to finish a half-written reply
 // (frontend#221 compares it with the zero-dependency parser in briefings and with T3 Code's). These tests hold
@@ -13,7 +13,9 @@ import { INCOMPLETE_LINK_HREF, Markdown, splitMarkdownBlocks } from "../registry
 
 afterEach(cleanup)
 
-const html = (container: HTMLElement) => container.querySelector('[data-slot="markdown"]')?.innerHTML ?? ""
+// The newline text nodes react-markdown leaves between block elements differ when the text is cut into blocks;
+// the root is a flex column, which ignores them.
+const html = (container: HTMLElement) => (container.querySelector('[data-slot="markdown"]')?.innerHTML ?? "").replace(/>\s+</g, "><")
 
 describe("Markdown: GitHub-flavoured Markdown", () => {
   it("draws a table inside a box that scrolls sideways, so a wide table cannot widen the page", () => {
@@ -169,8 +171,18 @@ describe("Markdown: the link hook", () => {
     expect(container.querySelector("a")).toBeNull()
   })
 
-  it("uses the same pending href as LinkPill, so the two cannot drift", () => {
-    expect(INCOMPLETE_LINK_HREF).toBe(PENDING_HREF)
+  it("keeps the mention and geo schemes for a custom link only: the default link has nothing to do with them", () => {
+    const source = "[Tex](mention:agent/tex) [here](geo:-33.86,151.21) [x](mention:nothing/else)"
+    const plain = render(<Markdown>{source}</Markdown>)
+    expect(plain.container.querySelector("a")).toBeNull()
+    cleanup()
+    const pills = render(<Markdown link={LinkPill}>{source}</Markdown>)
+    expect([...pills.container.querySelectorAll("a")].map((link) => link.getAttribute("href"))).toEqual(["mention:agent/tex", "geo:-33.86,151.21"])
+  })
+
+  it("does not keep a pending href that was written, not streamed", () => {
+    const { container } = render(<Markdown>{`[a](${PENDING_HREF})`}</Markdown>)
+    expect(container.querySelector("a")).toBeNull()
   })
 })
 
