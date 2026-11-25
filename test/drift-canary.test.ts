@@ -402,7 +402,8 @@ describe("the baseline and the workflow", () => {
   })
 
   it("holds only the permissions it uses: read the repo, write issues", () => {
-    expect(workflow).toMatch(/permissions:\n {2}contents: read\n {2}issues: write\n/)
+    expect(workflow).toMatch(/^permissions: \{\}$/m)
+    expect(workflow).toMatch(/ {4}permissions:\n {6}contents: read\n {6}issues: write\n/)
   })
 
   it("installs nothing (the canary uses Node built-ins and the vendored helper)", () => {
@@ -411,7 +412,7 @@ describe("the baseline and the workflow", () => {
   })
 
   it("keeps the streak between runs in a cache, and files with the helper through gh", () => {
-    expect(workflow).toContain("actions/cache@v4")
+    expect(workflow).toMatch(/actions\/cache@[0-9a-f]{40} # v4/)
     expect(workflow).toContain("node scripts/drift-canary/canary.mjs")
     expect(workflow).toContain("GH_TOKEN: ${{ github.token }}")
   })
