@@ -7,12 +7,12 @@
     }
   },
   "input": {
-    "hash": "2cc042899049729700e71dd9dff0f3fae4d82e589f31e33793723d3ad63b812b",
+    "hash": "7f214e264d27b468f11e57a2144d5defce63752aa3c22069aa863d15afe9cfae",
     "files": {
       "registry.json": "f4fd2bafb42fcd378016ae2d6f4b94ac9649f372bdd27c65f9c52f62c21b96cc",
       "registry/app-html-head/app-html-head.html": "d0a957059db004b4926d8aea3d7cfa4ff71912d6af71da2132971b449b6d8fa6",
-      "registry/base-nova/blocks/app-shell.tsx": "074b2360049b581f370f81b58baeca2353846a4c8f5f32f776dd12d1892d125c",
-      "registry/base-nova/blocks/app-switcher.tsx": "baa16fe8b9d0ae8155d55655dbc8791dd74634fe53988f249756f3dc4d4cfaab",
+      "registry/base-nova/blocks/app-shell.tsx": "6db238ff94dfdfa70f5ba9f964ab0aa683bbf3939ce60c43ccbe8dfa7469ba72",
+      "registry/base-nova/blocks/app-switcher.tsx": "4c580598f5b56f873dfae1dd418fdaf077c873f0ad7b69fa0d77a1180ffe20d6",
       "registry/base-nova/blocks/card-list.tsx": "21c71b856b6cfca46fdbb29539cc166a729da7795d2cf616b6171bd1b9d38f3c",
       "registry/base-nova/blocks/empty-page.tsx": "1d2c6c4d76e83b9109ee49b1dca7cb2ffc5b3a1049cbfc5a5441380378676969",
       "registry/base-nova/blocks/file-diff.tsx": "a0162d89f0115d4aa84e55bee75f5c705a435c30d532b9196c293b07af1a01e5",
@@ -20,7 +20,7 @@
       "registry/base-nova/blocks/grouped-list.tsx": "e2ad706ed515f66f0938c054bce9c0c4a427de051af99f3117eeba632b8e24ca",
       "registry/base-nova/blocks/issue-row.tsx": "4f2f2c7db6e4693fa11c28a28fa439ca0b7b0daaf5f10435673ce0579d497491",
       "registry/base-nova/blocks/login.tsx": "1435ee7adbf9ecce7b71924b07f08aad2c3e0c3e5fea9a7164baadb8cd10131e",
-      "registry/base-nova/blocks/page-header.tsx": "9b897c9f8aa31edf95e867dbce03e5c1e505afe3ad3a0418baa5328dc5dcc85a",
+      "registry/base-nova/blocks/page-header.tsx": "3cedcc29239903ada209866d67f6d28177f703b1e226c2d7ef44bce89134149c",
       "registry/base-nova/blocks/settings-page.tsx": "f0adab1d0a81baa00fd87a35eef762e73465413036e446bd50c8e8147c08edc5",
       "registry/base-nova/hooks/use-display-settings.ts": "55f8c42656eb6632f11f2e9c773b787c2f5c5613cd4137bedbea2cc9edf6f6c2",
       "registry/base-nova/hooks/use-filter-state.ts": "32b12c067a87357553ffffd4719885deb80c321b957fa1057f8df9b958ad0a81",
@@ -128,14 +128,14 @@
     }
   },
   "output": {
-    "hash": "0c04840f8f7598fc13850aea906645b9c28c2c1790c21254b7a2de830be7e64c",
+    "hash": "369b4ba13342ba8eb680ea9820ff1835ac9d48107059caebab8e79e4dfdd6576",
     "files": {
       "r/accordion.json": "0a6cb6cbce574b426a020944bcba3bea6fa8ae700300d7a5a1f09c330d954b14",
       "r/alert-dialog.json": "5f3784fa2527d82ebe23d1300f34a6880b2a7eccc19ef38bbd02e62e5efe383b",
       "r/alert.json": "282e506ef98e312f6165a6c9cd64d22939899db2341c958290b6a773d1244194",
       "r/app-html-head.json": "c47e72f9b9abbfa3bce4e893ebdd038e09e28e29a044cd84dcbbcf89ca1f665f",
-      "r/app-shell.json": "a7c0953b4cf9589ee965fb15ace7505d1144d6070cd38669d489c53546860c84",
-      "r/app-switcher.json": "54413c67318f734993aff20192609ba77f06b8ad679af35c2f83729c1b31c205",
+      "r/app-shell.json": "7983fb16ed3c2b465f8ecc25b1f6ab905c1c516cdad8c24dc9ad5596a8273c7a",
+      "r/app-switcher.json": "6d177ca4ae8efd267c182300f6ed83fb925fcfb256dbba3d74612dc157cef2cf",
       "r/aspect-ratio.json": "8703089408eb43664ebb11e1f01d2c38362832f16ff2d32344725e5fb097e654",
       "r/attachment.json": "7165889e30f854b7e2c020a4520290640d6090916be5380c0756cf11de5c8f86",
       "r/avatar.json": "54d806ac679693527082708990e12cd89dd7a9f480b789e9ac60984467182ee2",
@@ -201,7 +201,7 @@
       "r/native-select.json": "7e972ff4bc401e4d2df4444974289840ec33655688c23e3289420d295f189f22",
       "r/nav-link.json": "0bb9057243017f8ca532831ee83b4033094e2445eb9d279e9d34c882ab4ca3a8",
       "r/navigation-menu.json": "9a3129569b43f6195abe16a9da86779660b2aac20c3f461a850e974dd5a323f6",
-      "r/page-header.json": "f76211d2fb6ae433e8ab3f2d9f9c7c3aedf7f56904ce2c6bf28e901119add81c",
+      "r/page-header.json": "d81004b47593ee3a7a320530725088e0c114e8839dbe2fe70487fecad73b81f1",
       "r/pagination.json": "bd2be92206fcd03bb2c679a945ff52e516969f02acfa45eb4e958775db03d977",
       "r/popover.json": "5d68834307a962dbc2c0172d28d457b416a26e2d59d98da4624e83a104889510",
       "r/progress.json": "8d8d699b62b87e2e5124ea685c2018aec742fd21c474cfcb16d2bb3fe26829a5",

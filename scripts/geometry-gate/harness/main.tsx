@@ -46,9 +46,19 @@ const apps = [
   { id: "y", name: "Jobs", href: "#y" },
 ]
 
+// shell-titled is the opt-in phone header (AppShell `pageTitle`, frontend#208): the shell draws the h1 on a
+// phone and the page's own steps aside. shell-hidden is the same page without the opt-in, where a phone shows
+// no title at all; only the primitives usage audit renders it, as the "before".
+const hidePageTitleOnPhone = view === "shell-titled" || view === "shell-hidden"
+
 const Page = () => (
   <div className="flex flex-col gap-4">
-    <PageHeader title="Page title" description="A description that is long enough to wrap onto a second line on a phone." actions={<Button>Act</Button>} />
+    <PageHeader
+      title="Page title"
+      description="A description that is long enough to wrap onto a second line on a phone."
+      actions={<Button>Act</Button>}
+      hideOnPhone={hidePageTitleOnPhone}
+    />
     <div className="flex flex-wrap gap-2">
       <Button>Default</Button>
       <Button size="sm">Small</Button>
@@ -232,6 +242,7 @@ const App = () => {
       mode="system"
       onModeChange={() => {}}
       back={{ href: "#" }}
+      pageTitle={view === "shell-titled" ? "Page title" : undefined}
       headerActions={<Button size="icon" variant="ghost" aria-label="Alerts"><Bell /></Button>}
       banner={params.get("banner") ? <Banner /> : undefined}
     >

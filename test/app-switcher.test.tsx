@@ -50,6 +50,48 @@ describe("AppSwitcher", () => {
     expect(screen.getByRole("dialog", { name: "Switch app" })).toBeTruthy()
   })
 
+  describe("compactOnPhone", () => {
+    it("swaps the name for an apps icon on a phone, and gives a screen reader a label in its place", () => {
+      render(<AppSwitcher appName="Reader" apps={apps} currentAppId="reader" compactOnPhone />)
+
+      const trigger = screen.getByRole("button", { name: /Reader/ })
+      expect(trigger.getAttribute("data-compact-on-phone")).toBe("true")
+      expect(within(trigger).getByText("Reader").className).toContain("max-sm:hidden")
+      expect(within(trigger).getByText("Switch app, now in Reader").className).toMatch(/sr-only.*sm:hidden/)
+      expect(trigger.getAttribute("aria-haspopup")).toBeTruthy()
+      expect(trigger.querySelector("[data-slot=app-switcher-grid-icon]")!.getAttribute("class")).toContain("sm:hidden")
+      expect(trigger.querySelector("[data-slot=app-switcher-chevron]")!.getAttribute("class")).toContain("max-sm:hidden")
+    })
+
+    it("tells a screen reader what the trigger does, since the name alone does not", () => {
+      render(<AppSwitcher appName="Reader" apps={apps} currentAppId="reader" compactOnPhone />)
+
+      // jsdom applies no CSS, so the visible name, hidden on a phone, is read too.
+      expect(screen.getByRole("button", { name: /^Switch app, now in Reader/ })).toBeTruthy()
+    })
+
+    it("still opens the switcher", () => {
+      render(<AppSwitcher appName="Reader" apps={apps} currentAppId="reader" compactOnPhone />)
+      fireEvent.click(screen.getByRole("button", { name: /Reader/ }))
+
+      expect(screen.getByRole("dialog", { name: "Switch app" })).toBeTruthy()
+    })
+
+    it("is off by default: the name and chevron stay as they were", () => {
+      render(<AppSwitcher appName="Reader" apps={apps} currentAppId="reader" />)
+
+      const trigger = screen.getByRole("button", { name: "Reader" })
+      expect(trigger.getAttribute("data-compact-on-phone")).toBeNull()
+      expect(trigger.querySelector("[data-slot=app-switcher-grid-icon]")).toBeNull()
+    })
+
+    it("hides a plain name on a phone when there are no apps", () => {
+      const { container } = render(<AppSwitcher appName="Reader" apps={[]} compactOnPhone />)
+
+      expect(container.querySelector("[data-slot=app-switcher-name]")!.className).toContain("max-sm:sr-only")
+    })
+  })
+
   it("lists every app as a link to its address", () => {
     render(<AppSwitcher appName="Reader" apps={apps} currentAppId="reader" />)
     open()

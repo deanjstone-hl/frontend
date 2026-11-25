@@ -38,6 +38,14 @@ type AppShellProps = Pick<AppSwitcherProps, "mode" | "onModeChange" | "currentAp
   autoHideHeader?: boolean
   /** Set on a drill-down page: the header gets a back button to the parent (in focus mode, a floating one). */
   back?: { href: string; label?: string }
+  /**
+   * Opt in to a titled phone header. On a phone (below 640px) the header shows this as the page's `h1`, and
+   * the app name moves into the switcher, which collapses to an apps icon. From 640px the header is as it
+   * was. Pair it with `<PageHeader hideOnPhone>`, whose own h1 then drops out of the tree on a phone, so
+   * the page has one h1 and a title is on show. Without it the phone header shows the app name alone.
+   * Not drawn in focus mode (`chrome="none"`), which has no header.
+   */
+  pageTitle?: string
   /** Controls at the end of the header. */
   headerActions?: React.ReactNode
   /**
@@ -271,6 +279,7 @@ function AppShell({
   onModeChange,
   chrome = "full",
   autoHideHeader = false,
+  pageTitle,
   back,
   headerActions,
   banner,
@@ -288,6 +297,7 @@ function AppShell({
   const backRef = React.useRef<HTMLDivElement>(null)
   const bannerRef = React.useRef<HTMLDivElement>(null)
   const focus = chrome === "none"
+  const phoneTitle = !focus && Boolean(pageTitle)
   const rail = useMediaQuery(RAIL_QUERY)
   useShellMetrics(rootRef, topRef, barRef, backRef, bannerRef, showTabBar, focus, rail, Boolean(banner))
   usePointerModality(rootRef)
@@ -314,6 +324,7 @@ function AppShell({
     <div
       ref={rootRef}
       data-slot="app-shell"
+      data-phone-title={phoneTitle ? "" : undefined}
       className={cn("group/shell min-h-dvh bg-background text-foreground", workspaceFallback(showTabBar, focus), className)}
     >
       {focus ? null : (
@@ -378,8 +389,17 @@ function AppShell({
                     children: <ChevronLeftIcon aria-hidden="true" />,
                   })
                 : null}
+              {phoneTitle ? (
+                <h1
+                  data-slot="app-shell-title"
+                  className="min-w-0 flex-1 truncate ps-[min(0.5rem,8px)] font-heading text-[min(1.25rem,30px)] leading-tight font-semibold sm:hidden"
+                >
+                  {pageTitle}
+                </h1>
+              ) : null}
               <AppSwitcher
                 appName={appName}
+                compactOnPhone={phoneTitle}
                 apps={apps}
                 currentAppId={currentAppId}
                 mode={mode}

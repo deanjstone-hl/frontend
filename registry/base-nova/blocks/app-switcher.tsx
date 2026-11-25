@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ChevronDownIcon, MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
+import { CheckIcon, ChevronDownIcon, LayoutGridIcon, MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
@@ -28,6 +28,12 @@ type AppSwitcherProps = {
   /** The chosen Light / Dark / System. The quick toggle appears when `onModeChange` is given. */
   mode?: ModePreference
   onModeChange?: (mode: ModePreference) => void
+  /**
+   * On a phone (below 640px) show an apps icon in place of the name and chevron, so the name stops
+   * competing with the page title beside it. The name stays for screen readers, and from 640px the
+   * trigger is as it was. AppShell sets it when it is given a `pageTitle`.
+   */
+  compactOnPhone?: boolean
   renderLink?: RenderLink
   className?: string
 }
@@ -63,6 +69,7 @@ function AppSwitcher({
   currentAppId,
   mode,
   onModeChange,
+  compactOnPhone = false,
   renderLink = renderAnchor,
   className,
 }: AppSwitcherProps) {
@@ -71,7 +78,10 @@ function AppSwitcher({
 
   if (apps.length === 0) {
     return (
-      <span data-slot="app-switcher-name" className={cn("min-w-0 truncate font-heading text-[min(1rem,24px)] font-semibold", className)}>
+      <span
+        data-slot="app-switcher-name"
+        className={cn("min-w-0 truncate font-heading text-[min(1rem,24px)] font-semibold", compactOnPhone && "max-sm:sr-only", className)}
+      >
         {appName}
       </span>
     )
@@ -80,14 +90,23 @@ function AppSwitcher({
   const trigger = (
     <Button
       data-slot="app-switcher-trigger"
+      data-compact-on-phone={compactOnPhone ? "true" : undefined}
       variant="ghost"
-      className={cn("max-h-[66px] min-h-[clamp(44px,2.75rem,66px)] min-w-0 shrink gap-1 px-2 font-heading text-[min(1rem,24px)] font-semibold [&_svg]:size-[min(1rem,24px)]", className)}
+      className={cn(
+        "max-h-[66px] min-h-[clamp(44px,2.75rem,66px)] min-w-0 shrink gap-1 px-2 font-heading text-[min(1rem,24px)] font-semibold [&_svg]:size-[min(1rem,24px)]",
+        compactOnPhone && "max-sm:min-w-[clamp(44px,2.75rem,66px)] max-sm:justify-center max-sm:px-0",
+        className
+      )}
     />
   )
+  // Compact on a phone, the visible name gives way to a screen-reader-only label that says what the button
+  // does: "Switch app, now in Reader". From 640px that label is gone and the name is shown, as before.
   const triggerContent = (
     <>
-      <span className="min-w-0 truncate">{appName}</span>
-      <ChevronDownIcon aria-hidden="true" />
+      {compactOnPhone ? <span className="sr-only sm:hidden">Switch app, now in {appName}</span> : null}
+      <span className={cn("min-w-0 truncate", compactOnPhone && "max-sm:hidden")}>{appName}</span>
+      {compactOnPhone ? <LayoutGridIcon data-slot="app-switcher-grid-icon" aria-hidden="true" className="sm:hidden" /> : null}
+      <ChevronDownIcon data-slot="app-switcher-chevron" aria-hidden="true" className={cn(compactOnPhone && "max-sm:hidden")} />
     </>
   )
 

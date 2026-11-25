@@ -6,7 +6,11 @@ type PageHeaderProps = Omit<React.ComponentProps<"header">, "title"> & {
   description?: React.ReactNode
   /** Buttons for the page's main actions. They sit beside the title from `sm`, under it on a phone. */
   actions?: React.ReactNode
-  /** Hide the title and description on a phone, where the shell header already names the page. The h1 stays for screen readers. */
+  /**
+   * Hide the title and description on a phone, where the shell header already names the page. The h1 stays
+   * for screen readers, unless the shell shows the page title itself (AppShell `pageTitle`): then that is the
+   * page's h1 on a phone, and this one drops out of the tree there so the page keeps one.
+   */
   hideOnPhone?: boolean
 }
 
@@ -19,7 +23,13 @@ function PageHeader({ title, description, actions, hideOnPhone = false, classNam
       {...props}
     >
       <div className={cn("flex min-w-0 flex-col gap-1", hideOnPhone && "max-sm:sr-only")}>
-        <h1 data-slot="page-header-title" className="font-heading text-xl font-semibold tracking-tight text-balance sm:text-2xl">
+        <h1
+          data-slot="page-header-title"
+          className={cn(
+            "font-heading text-xl font-semibold tracking-tight text-balance sm:text-2xl",
+            hideOnPhone && "max-sm:group-data-[phone-title]/shell:hidden"
+          )}
+        >
           {title}
         </h1>
         {description ? (

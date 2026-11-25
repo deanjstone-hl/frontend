@@ -1,17 +1,17 @@
 {
   "name": "geometry-aria",
   "generator": {
-    "hash": "b90de274d22f18ee6d4bac8d8019019c787e56122bfba1f129fe32d541b60f4c",
+    "hash": "b3442a69c42d6d4f646561c8909dd2d8f48be4af5a918be2f2d44e7c8832a0e3",
     "files": {
       "scripts/geometry-gate/checks.mjs": "f48b733524894f131b81dcc3d77e2eb5bbf858411af1493215bd9ab5c54098c7",
       "scripts/geometry-gate/collect.mjs": "4e6a90966a318edce62a564e98da437963f7dc17fe1a5972d37be32a8d22c4ca",
       "scripts/geometry-gate/geometry.mjs": "c77b7a2b8b128abc4f30c873a1a6b0c30ebcb40c5546e362b657bf5fa741a298",
       "scripts/geometry-gate/harness/index.css": "6e2c43ad2cda427c0340aa2aa93a772e524676879f30e75207147a1f06166b83",
       "scripts/geometry-gate/harness/index.html": "ab58e3c105e0382845877cd8dc001c7870baf44775e90960bebd902c09a3e118",
-      "scripts/geometry-gate/harness/main.tsx": "7b4ad0f7eaccc29324df0f81e3a3e2ff9d9cf78226b05d3d5079391e7ae76f11",
+      "scripts/geometry-gate/harness/main.tsx": "57b8df40ccd5afe0ba1fdc07bc685d112298e7a08f189b5aac8f8b1f60a7c809",
       "scripts/geometry-gate/harness/vite.config.mjs": "1bd428b0514cceb35708e534e6ed95f3a70177cdcf71bba09ba5d8d93f412e78",
       "scripts/geometry-gate/run.mjs": "68743dc0481a927187473310bb41e5dc7450f5040e3a699cad88b50efe442e4d",
-      "scripts/geometry-gate/session.mjs": "fcb9b0913bc40ca6b6364a458135cf36ce48b918a8af53334bb462ff62e008d9"
+      "scripts/geometry-gate/session.mjs": "b2ffa7ff1048cb8c689fbd68266f35dae7da0b4f05ab13e0f10b0b5fb2407557"
     }
   },
   "input": {
@@ -19,7 +19,7 @@
     "files": {}
   },
   "output": {
-    "hash": "1d37ab6092cb1f1c934ec4433d2edf979b5360e7f1c9d893272fe80b0ed4e866",
+    "hash": "27e157a8b33c75d688ea4d89e67386ea1422212d27b40cbf27ac72c7e8e369db",
     "files": {
       "scripts/geometry-gate/aria/alert-dialog.yml": "5fae6438bb0b98fc91b876957452324ccb63d1fe2945a8b79aa98dd8d5d94b12",
       "scripts/geometry-gate/aria/dialog.yml": "a5cf04bb40e110e8ed708d62e2c9c1cb629f8e0f1baf3ee696c6e0a580090d46",
@@ -30,6 +30,7 @@
       "scripts/geometry-gate/aria/sheet-right.yml": "535ac842c5c64dcb3fbf1fd495e455d2861891aa6bbd018f7fd22737bf8e6f7f",
       "scripts/geometry-gate/aria/sheet-top.yml": "535ac842c5c64dcb3fbf1fd495e455d2861891aa6bbd018f7fd22737bf8e6f7f",
       "scripts/geometry-gate/aria/shell-focus.yml": "5a433578a042b2a9ddca9478714619b89ef8c9f0c0597b26402cd0eeb467a3e8",
+      "scripts/geometry-gate/aria/shell-titled.yml": "4b24a275c9a92dc6ee62c4554ccb34f1cfa7b0a4c7f76684ac06ff8a6c745758",
       "scripts/geometry-gate/aria/shell.yml": "a61903b9f087306e209502f25d92c2d668cc0aa6ad233c7d87e4d1134397ceb2",
       "scripts/geometry-gate/aria/states.yml": "c322925087875426f4d21331af9546e317c3eb4b46b6d3fbb09482610edc1b06",
       "scripts/geometry-gate/aria/toast-bottom.yml": "48309f8a5b53116cb06dcd278998d10a15f264c2f1e806fc606c6e87e3123d24",

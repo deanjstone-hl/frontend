@@ -98,6 +98,94 @@ describe("AppShell", () => {
     expect(within(screen.getByRole("main")).getByText("Page body")).toBeTruthy()
   })
 
+  // The phone header can carry the page's title (frontend#208): on seven of 26 audited screens a phone showed
+  // only the app name, because `PageHeader hideOnPhone` removes the page's own h1. `pageTitle` is the opt-in.
+  describe("pageTitle", () => {
+    const titled = (props: Partial<React.ComponentProps<typeof AppShell>> = {}) =>
+      render(
+        <AppShell appName="Reader" sections={four} apps={apps} currentAppId="reader" pageTitle="Library" {...props}>
+          x
+        </AppShell>
+      )
+
+    it("draws nothing extra when it is not set", () => {
+      const { container } = render(<AppShell appName="Reader" sections={four} apps={apps}>x</AppShell>)
+
+      expect(container.querySelector("[data-slot=app-shell-title]")).toBeNull()
+      expect(container.querySelector("[data-slot=app-shell]")!.hasAttribute("data-phone-title")).toBe(false)
+      expect(screen.getByText("Reader").className).not.toContain("max-sm:sr-only")
+      expect(container.querySelector("[data-slot=app-switcher-trigger]")!.getAttribute("data-compact-on-phone")).toBeNull()
+    })
+
+    it("puts the title in the header as the page's h1, on a phone only", () => {
+      const { container } = titled()
+
+      const title = within(header(container)).getByRole("heading", { level: 1, name: "Library" })
+      expect(title.getAttribute("data-slot")).toBe("app-shell-title")
+      expect(title.className).toContain("sm:hidden")
+    })
+
+    it("sizes the title past the app name and caps it with the rest of the chrome", () => {
+      const { container } = titled()
+
+      const className = container.querySelector("[data-slot=app-shell-title]")!.className
+      expect(className).toContain("text-[min(1.25rem,30px)]")
+      expect(className).toContain("truncate")
+      expect(className).toContain("min-w-0")
+      expect(className).toContain("flex-1")
+    })
+
+    it("marks the shell, so a hidden-on-phone PageHeader steps aside for it", () => {
+      const { container } = titled()
+
+      expect(container.querySelector("[data-slot=app-shell]")!.hasAttribute("data-phone-title")).toBe(true)
+    })
+
+    it("moves the app name into the switcher, which collapses to an icon on a phone", () => {
+      const { container } = titled()
+
+      const trigger = container.querySelector<HTMLElement>("[data-slot=app-switcher-trigger]")!
+      expect(trigger.getAttribute("data-compact-on-phone")).toBe("true")
+      expect(within(trigger).getByText("Reader").className).toContain("max-sm:hidden")
+      expect(header(container).contains(trigger)).toBe(true)
+    })
+
+    it("keeps the title before the switcher and the actions after it", () => {
+      const { container } = titled({ headerActions: <button type="button">Alerts</button> })
+
+      const order = [...header(container).querySelectorAll<HTMLElement>("[data-slot=app-shell-title], [data-slot=app-switcher-trigger], button:not([data-slot])")]
+      expect(order.map((el) => el.getAttribute("data-slot") ?? el.textContent)).toEqual(["app-shell-title", "app-switcher-trigger", "Alerts"])
+    })
+
+    it("puts the back button first", () => {
+      const { container } = titled({ back: { href: "/library" } })
+
+      const first = header(container).firstElementChild!
+      expect(first.getAttribute("aria-label")).toBe("Back")
+      expect(first.nextElementSibling!.getAttribute("data-slot")).toBe("app-shell-title")
+    })
+
+    it("hides the app name on a phone when there is no switcher to move it into", () => {
+      const { container } = titled({ apps: [] })
+
+      const name = container.querySelector<HTMLElement>("[data-slot=app-switcher-name]")!
+      expect(name.className).toContain("max-sm:sr-only")
+    })
+
+    it("draws no title in focus mode, which has no header", () => {
+      const { container } = titled({ chrome: "none" })
+
+      expect(container.querySelector("[data-slot=app-shell-title]")).toBeNull()
+      expect(container.querySelector("[data-slot=app-shell]")!.hasAttribute("data-phone-title")).toBe(false)
+    })
+
+    it("leaves exactly one h1 in the tree", () => {
+      titled()
+
+      expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1)
+    })
+  })
+
   describe("header", () => {
     it("is a floating glass bar with xl corners", () => {
       const { container } = render(<AppShell appName="Reader" sections={four}>x</AppShell>)

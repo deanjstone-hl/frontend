@@ -63,6 +63,22 @@ describe("PageHeader", () => {
       expect(actions.parentElement!.className).not.toContain("sr-only")
     })
 
+    // An AppShell given `pageTitle` shows the title as its own h1 on a phone and marks its root
+    // `data-phone-title`. The page's h1 then drops out of the tree on a phone, so the page keeps one
+    // h1, and leaves it alone everywhere else (frontend#208).
+    it("steps aside on a phone for a shell that shows the page title", () => {
+      render(<PageHeader title="Inbox" hideOnPhone />)
+
+      const className = screen.getByRole("heading", { level: 1 }).className
+      expect(className).toContain("max-sm:group-data-[phone-title]/shell:hidden")
+    })
+
+    it("does not step aside when the page shows its title on a phone anyway", () => {
+      render(<PageHeader title="Inbox" />)
+
+      expect(screen.getByRole("heading", { level: 1 }).className).not.toContain("phone-title")
+    })
+
     it("shows the title on a phone by default", () => {
       const { container } = render(<PageHeader title="Inbox" />)
 
