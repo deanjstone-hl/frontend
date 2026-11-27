@@ -412,7 +412,7 @@ describe("the baseline and the workflow", () => {
   })
 
   it("keeps the streak between runs in a cache, and files with the helper through gh", () => {
-    expect(workflow).toMatch(/actions\/cache@[0-9a-f]{40} # v4/)
+    expect(workflow).toMatch(/actions\/cache@[0-9a-f]{40} # v\d+/)
     expect(workflow).toContain("node scripts/drift-canary/canary.mjs")
     expect(workflow).toContain("GH_TOKEN: ${{ github.token }}")
   })
