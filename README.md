@@ -796,9 +796,11 @@ adding the items.
 
    Pin a pre-1.0 npm dependency to its minor, e.g. `@shadcn/react@^0.3.1`,
    so a re-run `shadcn add` cannot pull a breaking release.
-3. Add its test under `test/`, run `pnpm check`, and commit straight to `main` in small
-   Conventional Commits (this is a trunk repo: no branch, no PR). `main` is not a release:
-   the owner promotes it to `deploy` ([docs/deploy-branch.md](docs/deploy-branch.md)).
+3. Add its test under `test/`, run `pnpm check` once before marking the PR ready, and push small
+   Conventional Commits on a branch off `origin/main` with a draft PR from the first push; merge with
+   `gh pr merge --rebase --delete-branch` once every check on the head SHA is green (no direct push to
+   `main`). `main` is not a release: the owner promotes it to `deploy`
+   ([docs/deploy-branch.md](docs/deploy-branch.md)).
 
 ## Themes
 
@@ -1069,7 +1071,7 @@ node scripts/upstream-follow/follow.mjs apply shadcn 4.23.0   # what a worker ru
 pnpm check
 ```
 
-- **No auto-push.** Under trunk rules 3 reds in a day pause the repo (`trunk-health.sh`), and an
+- **No auto-push.** 3 reds on `main` in a day pause the repo (`trunk-health.sh`), and an
   upstream release that broke the check would put that risk on the repo it came from. Landing a
   bump is a worker's commit with `pnpm check` and `Refs`; auto-push stays a later decision for the owner.
 - **No token near the new release.** The workflow runs three steps: the canary (with the token),
